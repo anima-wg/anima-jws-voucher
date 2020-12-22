@@ -1,11 +1,14 @@
 #!/usr/bin/perl
 
+use File::Basename;
+
 sub insert {
     local($file, $wrapped, $codewrapped) = @_;
 
     my $file;
     my $basefile;
     $file = $1;
+    $basefile = basename($file);
     print STDERR "File: $file\n";
     if( $file =~ /(.*)\@DATE/ ) {
         $base = $1;
@@ -24,14 +27,19 @@ sub insert {
     open(FILE, "<" . $file) || die "Can not open $file: $!\n";
     print "<figure><artwork><![CDATA[\n" if $wrapped;
     if($file =~ /\.yang$/) {
-        $codewrapper=1;
-        print "<CODE BEGINS> file \"$basefile\"\n";
+        $codewrapped=1;
     }
+    print "<CODE BEGINS> file \"$basefile\"\n" if $codewrapped;
     while(<FILE>) {
+        while(length($_) > 60) {
+            my $first60 = substr($_,0,59);
+            $_ = substr($_, 60);
+            print $first60."\\\n";
+        }
         print;
     }
     close(FILE);
-    print "<CODE ENDS>\n" if $codewrapper;
+    print "<CODE ENDS>\n" if $codewrapped;
     print "]]></artwork></figure>\n" if $wrapped;
 }
 

@@ -41,6 +41,7 @@ informative:
   RFC8572:
   RFC5652:
   RFC8949:
+  RFC8792:
 
 --- abstract
 
@@ -161,22 +162,23 @@ Hello.
 ## Example Voucher Request (from Pledge)
 
 The following is an example sent from a Pledge to the Registrar.
+These examples are folded according to {{RFC8792}} Single Backslash rule.
 
-INSERT_CODE_FROM_FILE examples/voucher_request_01.b64.folded END
+INSERT_CODE_FROM_FILE examples/voucher_request_01.b64 END
 
 It contains the following three parts:
 
 Header:
 
-INSERT_CODE_FROM_FILE examples/voucher_request_01-header.b64.folded END
+INSERT_CODE_FROM_FILE examples/voucher_request_01-header.b64 END
 
 Payload:
 
-INSERT_CODE_FROM_FILE examples/voucher_request_01-payload.b64.folded END
+INSERT_CODE_FROM_FILE examples/voucher_request_01-payload.b64 END
 
 Signature:
 
-INSERT_CODE_FROM_FILE examples/voucher_request_01-signature.b64.folded END
+INSERT_CODE_FROM_FILE examples/voucher_request_01-signature.b64 END
 
 
 
