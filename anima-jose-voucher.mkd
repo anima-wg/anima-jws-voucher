@@ -42,6 +42,10 @@ informative:
   RFC5652:
   RFC8949:
   RFC8792:
+  onpath:
+    target: "https://mailarchive.ietf.org/arch/msg/saag/m1r9uo4xYznOcf85Eyk0Rhut598/"
+    title: "can an on-path attacker drop traffic?"
+    org: IETF
 
 --- abstract
 
@@ -88,6 +92,10 @@ The JSON Compact Serialization is examplained in section 3.1 or section 7.1, and
       BASE64URL(JWS Signature)
 ~~~~
 
+Note that this results in a long base64 content (with two interspersed dots).
+The content is transmitted within the HTTPS session in this base64 format, even though HTTP can accomodate binary content.
+This is done to be most convenient for available JWT libraries, and for humans who are debugging.
+
 There are a number of attributes.
 They are:
 
@@ -110,11 +118,14 @@ or end systems may need to pin a trust anchor for future operations.
 
 # Privacy Considerations
 
-YYY
+The Voucher Request reveals the IDevID of the system that is onboarding.
+
+This request occurs over HTTPS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure via by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
+This is explained in {{BRSKI}} section 10.2.
 
 # Security Considerations
 
-ZZZ
+The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in
 
 # IANA Considerations
 
@@ -150,7 +161,7 @@ This section registers the the 'application/voucher-jwt+json' in the "Media Type
 
 # Acknowledgements
 
-Hello.
+Your name here.
 
 # Changelog
 
@@ -159,10 +170,12 @@ Hello.
 
 # Examples
 
-## Example Voucher Request (from Pledge)
-
-The following is an example sent from a Pledge to the Registrar.
 These examples are folded according to {{RFC8792}} Single Backslash rule.
+
+## Example Voucher Request (from Pledge to Registrar)
+
+The following is an example request sent from a Pledge to the Registrar.
+This example is from the Siemens reference Registrar system.
 
 INSERT_CODE_FROM_FILE examples/voucher_request_01.b64 END
 
@@ -179,6 +192,51 @@ INSERT_CODE_FROM_FILE examples/voucher_request_01-payload.b64 END
 Signature:
 
 INSERT_CODE_FROM_FILE examples/voucher_request_01-signature.b64 END
+
+
+## Example Parboiled Voucher Request (from Registrar to MASA)
+
+The following is an example request sent from the Registrar to the MASA.
+This example is from the Siemens reference Registrar system.
+Note that the previous voucher request can be seen in the payload as "prior-signed-voucher-request".
+
+INSERT_CODE_FROM_FILE examples/parboiled_voucher_request_01.b64 END
+
+It contains the following three parts:
+
+Header:
+
+INSERT_CODE_FROM_FILE examples/parboiled_voucher_request_01-header.b64 END
+
+Payload:
+
+INSERT_CODE_FROM_FILE examples/parboiled_voucher_request_01-payload.b64 END
+
+Signature:
+
+INSERT_CODE_FROM_FILE examples/parboiled_voucher_request_01-signature.b64 END
+
+
+## Example Voucher Result (from MASA to Pledge, via Registrar)
+
+The following is an example voucher sent from the Registrar to the MASA.
+This example is from the Siemens reference MASA system.
+
+INSERT_CODE_FROM_FILE examples/voucher_01.b64 END
+
+It contains the following three parts:
+
+Header:
+
+INSERT_CODE_FROM_FILE examples/voucher_01-header.b64 END
+
+Payload:
+
+INSERT_CODE_FROM_FILE examples/voucher_01-payload.b64 END
+
+Signature:
+
+INSERT_CODE_FROM_FILE examples/voucher_01-signature.b64 END
 
 
 
