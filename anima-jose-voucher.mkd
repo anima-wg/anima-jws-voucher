@@ -30,7 +30,7 @@ author:
   email: thomas-werner@siemens.com
 
 normative:
-  I-D.ietf-anima-bootstrapping-keyinfra:
+  BRSKI: I-D.ietf-anima-bootstrapping-keyinfra
   RFC8366:
   RFC7515:
   RFC8259:
@@ -52,7 +52,7 @@ In addition to explaining how the format is created, MIME types are registered a
 
 # Introduction
 
-{{RFC8366}} describes a voucher artifact used in {{I-D.ietf-anima-bootstrapping-keyinfra}} and {{RFC8572}} to transfer ownership of a device to from a manufacturer to an owner.
+{{RFC8366}} describes a voucher artifact used in {{BRSKI}} and {{RFC8572}} to transfer ownership of a device to from a manufacturer to an owner.
 That document defines the base YANG module, and also the initial serialization to JSON {{RFC8259}}, with a signature provided by {{RFC5652}}.
 
 Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
@@ -79,7 +79,7 @@ The {{RFC8366}} JSON structure consists of a nested map, the outer part of which
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
 
-The JSON Compact Serialization is examplained in section 3.1, and works out to:
+The JSON Compact Serialization is examplained in section 3.1 or section 7.1, and works out to:
 
 ~~~~
       BASE64URL(UTF8(JWS Protected Header)) || '.' ||
@@ -87,10 +87,7 @@ The JSON Compact Serialization is examplained in section 3.1, and works out to:
       BASE64URL(JWS Signature)
 ~~~~
 
-This is using the Simplified Signature of {{RFC7515}} section 7.2.2. (XXX Is it?)
-
-This specification defines a number of items that MAY be placed in the unprotected header,
-and into the protected header.
+There are a number of attributes.
 They are:
 
 ## Unprotected Header
@@ -101,7 +98,8 @@ There is no unprotected header in the Compact Serialization format.
 
 The standard "typ" and "alg" values described in {{RFC7515}} are expected in the protected headers.
 
-The "typ" header should contain "voucher" (?-or "jws" or do we even need it?)
+It is unclear what values, if any, should go into the "typ" header, as in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
+
 The "alg" should contain the algorithm type such as "ES256".
 
 If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
@@ -157,4 +155,29 @@ Hello.
 
 
 --- back
+
+# Examples
+
+## Example Voucher Request (from Pledge)
+
+The following is an example sent from a Pledge to the Registrar.
+
+INSERT_CODE_FROM_FILE examples/voucher_request_01.b64.folded END
+
+It contains the following three parts:
+
+Header:
+
+INSERT_CODE_FROM_FILE examples/voucher_request_01-header.b64.folded END
+
+Payload:
+
+INSERT_CODE_FROM_FILE examples/voucher_request_01-payload.b64.folded END
+
+Signature:
+
+INSERT_CODE_FROM_FILE examples/voucher_request_01-signature.b64.folded END
+
+
+
 
