@@ -1,0 +1,158 @@
+---
+title: JOSE signed Voucher Artifacts for Bootstrapping Protocols
+abbrev: JOSE-voucher
+docname: draft-richardson-anima-jose-voucher-00
+
+stand_alone: true
+
+ipr: trust200902
+area: Internet
+wg: anima Working Group
+kw: Internet-Draft
+cat: std
+
+pi:    # can use array (if all yes) or hash here
+  toc: yes
+  sortrefs:   # defaults to yes
+  symrefs: yes
+
+author:
+
+
+- ins: M. Richardson
+  name: Michael Richardson
+  org: Sandelman Software Works
+  email: mcr+ietf@sandelman.ca
+
+- ins: T. Werner
+  name: Thomas Werner
+  org: Siemens
+  email: thomas-werner@siemens.com
+
+normative:
+  I-D.ietf-anima-bootstrapping-keyinfra:
+  RFC8366:
+  RFC7515:
+  RFC8259:
+  RFC8812:
+
+informative:
+  RFC5280:
+  RFC8572:
+  RFC5652:
+  RFC8949:
+
+--- abstract
+
+This document describes a serialiation of the RFC8366 voucher format to a JSON format is then signed using the JSON Object Signing and Encryption mechanism described in RFC7515.
+
+In addition to explaining how the format is created, MIME types are registered and examples are provided.
+
+--- middle
+
+# Introduction
+
+{{RFC8366}} describes a voucher artifact used in {{I-D.ietf-anima-bootstrapping-keyinfra}} and {{RFC8572}} to transfer ownership of a device to from a manufacturer to an owner.
+That document defines the base YANG module, and also the initial serialization to JSON {{RFC8259}}, with a signature provided by {{RFC5652}}.
+
+Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
+
+This document provides an equivalent mapping of JSON format with the signature format in JOSE format {{RFC7515}}.
+
+This document does not extend the YANG definition of {{RFC8366}} at all, but accepts that other efforts such as {{?I-D.richardson-anima-voucher-delegation}}, {{?I-D.friel-anima-brski-cloud}}, and {{?I-D.ietf-anima-brski-async-enroll}} do.
+This document supports signing any of the extended schemas defined in those documents and any new documents that may appear after this one.
+
+# Terminology
+
+{::boilerplate bcp14}
+
+# JSON Web Signatures
+
+{{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
+This document restricts itself to the JWS JSON Serialization format.
+
+The {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
+
+~~~~
+{ "ietf-voucher:voucher" : { ..some items }}
+~~~~
+
+this is considered the JSON payload as described in {{RFC7515}} section 3.
+
+The JSON Serialization is examplained in section 3.2, and works out to:
+
+~~~~
+{
+    "header": { Unprotected-Items }
+    "protected" : "BASE64URL",
+    "payload" : "BASE64URL encoded voucher (above)",
+    "signature": "BASE64URL(signature)"
+}
+~~~~
+
+This is the Simplified Signature of {{RFC7515}} section 7.2.2.
+
+This specification defines a number of items that MAY be placed in the unprotected header,
+and into the protected header.
+They are:
+
+## Unprotected Header
+
+If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
+certificate chain SHOULD be used to contain the certificate and chain.
+Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
+or end systems may need to pin a trust anchor for future operations.
+
+## Protected Header
+
+The standard "typ" and "alg" values described in {{RFC7515}} are expected in the protected headers.
+
+# Privacy Considerations
+
+YYY
+
+# Security Considerations
+
+ZZZ
+
+# IANA Considerations
+
+## Media-Type Registry
+
+This section registers the the 'application/voucher-jose+json' in the "Media Types" registry.
+
+### application/voucher-jose+json
+
+    Type name:  application
+    Subtype name:  voucher-jose+json
+    Required parameters:  none
+    Optional parameters:  none
+    Encoding considerations:  JOSE+JSON vouchers are JOSE objects
+                              signed with one signer.
+    Security considerations:  See Security Considerations, Section
+    Interoperability considerations:  The format is designed to be
+      broadly interoperable.
+    Published specification:  THIS RFC.
+    Applications that use this media type:  ANIMA, 6tisch, and other
+      zero-touch imprinting systems
+    Additional information:
+      Magic number(s):  None
+      File extension(s):  .vjj
+      Macintosh file type code(s):  none
+    Person & email address to contact for further information:  IETF
+      ANIMA WG
+    Intended usage:  LIMITED
+    Restrictions on usage:  NONE
+    Author:  ANIMA WG
+    Change controller:  IETF
+    Provisional registration? (standards tree only):  NO
+
+# Acknowledgements
+
+Hello.
+
+# Changelog
+
+
+--- back
+
