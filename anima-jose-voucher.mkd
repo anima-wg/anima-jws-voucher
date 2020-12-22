@@ -69,7 +69,7 @@ This document supports signing any of the extended schemas defined in those docu
 # JSON Web Signatures
 
 {{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
-This document restricts itself to the JWS JSON Serialization format.
+This document restricts itself to the JWS Compact Serialization (JWT) format.
 
 The {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
 
@@ -79,18 +79,15 @@ The {{RFC8366}} JSON structure consists of a nested map, the outer part of which
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
 
-The JSON Serialization is examplained in section 3.2, and works out to:
+The JSON Compact Serialization is examplained in section 3.1, and works out to:
 
 ~~~~
-{
-    "header": { Unprotected-Items }
-    "protected" : "BASE64URL",
-    "payload" : "BASE64URL encoded voucher (above)",
-    "signature": "BASE64URL(signature)"
-}
+      BASE64URL(UTF8(JWS Protected Header)) || '.' ||
+      BASE64URL(JWS Payload) || '.' ||
+      BASE64URL(JWS Signature)
 ~~~~
 
-This is the Simplified Signature of {{RFC7515}} section 7.2.2.
+This is using the Simplified Signature of {{RFC7515}} section 7.2.2. (XXX Is it?)
 
 This specification defines a number of items that MAY be placed in the unprotected header,
 and into the protected header.
@@ -98,14 +95,19 @@ They are:
 
 ## Unprotected Header
 
-If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
-certificate chain SHOULD be used to contain the certificate and chain.
-Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
-or end systems may need to pin a trust anchor for future operations.
+There is no unprotected header in the Compact Serialization format.
 
 ## Protected Header
 
 The standard "typ" and "alg" values described in {{RFC7515}} are expected in the protected headers.
+
+The "typ" header should contain "voucher" (?-or "jws" or do we even need it?)
+The "alg" should contain the algorithm type such as "ES256".
+
+If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
+certificate chain SHOULD be used to contain the certificate and chain.
+Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
+or end systems may need to pin a trust anchor for future operations.
 
 # Privacy Considerations
 
@@ -119,15 +121,15 @@ ZZZ
 
 ## Media-Type Registry
 
-This section registers the the 'application/voucher-jose+json' in the "Media Types" registry.
+This section registers the the 'application/voucher-jwt+json' in the "Media Types" registry.
 
 ### application/voucher-jose+json
 
     Type name:  application
-    Subtype name:  voucher-jose+json
+    Subtype name:  voucher-jwt+json
     Required parameters:  none
     Optional parameters:  none
-    Encoding considerations:  JOSE+JSON vouchers are JOSE objects
+    Encoding considerations:  JWT+JSON vouchers are JOSE objects
                               signed with one signer.
     Security considerations:  See Security Considerations, Section
     Interoperability considerations:  The format is designed to be
