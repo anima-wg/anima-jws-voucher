@@ -1,7 +1,7 @@
 ---
 title: JOSE signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JOSE-voucher
-docname: draft-richardson-anima-jose-voucher-00
+docname: draft-richardson-anima-jose-voucher-01
 
 stand_alone: true
 
@@ -30,7 +30,7 @@ author:
   email: thomas-werner@siemens.com
 
 normative:
-  BRSKI: I-D.ietf-anima-bootstrapping-keyinfra
+  RFC8995: BRSKI
   RFC8366:
   RFC7515:
   RFC8259:
@@ -57,7 +57,7 @@ In addition to explaining how the format is created, MIME types are registered a
 
 # Introduction
 
-{{RFC8366}} describes a voucher artifact used in {{BRSKI}} and {{RFC8572}} to transfer ownership of a device to from a manufacturer to an owner.
+{{RFC8366}} describes a voucher artifact used in {{-BRSKI}} and {{RFC8572}} to transfer ownership of a device to from a manufacturer to an owner.
 That document defines the base YANG module, and also the initial serialization to JSON {{RFC8259}}, with a signature provided by {{RFC5652}}.
 
 Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
@@ -107,7 +107,7 @@ There is no unprotected header in the Compact Serialization format.
 
 The standard "typ" and "alg" values described in {{RFC7515}} are expected in the protected headers.
 
-It is unclear what values, if any, should go into the "typ" header, as in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
+It remains to be determined (XXX), what values, if any, should go into the "typ" header, as in the {{-BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
 
 The "alg" should contain the algorithm type such as "ES256".
 
@@ -115,17 +115,18 @@ If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.
 certificate chain SHOULD be used to contain the certificate and chain.
 Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.
+This is consistent with {{-BRSKI}} section 5.5.2.
 
 # Privacy Considerations
 
 The Voucher Request reveals the IDevID of the system that is onboarding.
 
 This request occurs over HTTPS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure via by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
-This is explained in {{BRSKI}} section 10.2.
+This is explained in {{-BRSKI}} section 10.2.
 
 # Security Considerations
 
-The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in
+The issues of how {{RFC8366}} vouchers are used in a {{-BRSKI}} system is addressed in
 
 # IANA Considerations
 
