@@ -50,7 +50,10 @@ informative:
 
 --- abstract
 
-This document describes a serialiation of the RFC8366 voucher format to a JSON format is then signed using the JSON Object Signing and Encryption mechanism described in RFC7515.
+RFC8366 defines a digital artifact called voucher as a YANG-defined JSON
+document that has been signed using a Cryptographic Message Syntax (CMS) structure.
+This memo introduces a variant of the voucher structure in which CMS is
+replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to better support use-cases in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, MIME types are registered and examples are provided.
 
@@ -85,7 +88,7 @@ The {{RFC8366}} JSON structure consists of a nested map, the outer part of which
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
 
-The JSON Compact Serialization is examplained in section 3.1 or section 7.1, and works out to:
+The JSON Compact Serialization is explained in section 3.1 or section 7.1, and works out to:
 
 ~~~~
       BASE64URL(UTF8(JWS Protected Header)) || '.' ||
@@ -94,7 +97,7 @@ The JSON Compact Serialization is examplained in section 3.1 or section 7.1, and
 ~~~~
 
 Note that this results in a long base64 content (with two interspersed dots).
-The content is transmitted within the HTTPS session in this base64 format, even though HTTP can accomodate binary content.
+The content is transmitted within the HTTPS session in this base64 format, even though HTTP can accommodate binary content.
 This is done to be most convenient for available JWT libraries, and for humans who are debugging.
 
 There are a number of attributes.
@@ -120,7 +123,7 @@ This is consistent with {{-BRSKI}} section 5.5.2.
 
 # Privacy Considerations
 
-The Voucher Request reveals the IDevID of the system that is onboarding.
+The Voucher Request reveals the IDevID of the system that is on-boarding.
 
 This request occurs over HTTPS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure via by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
 This is explained in {{-BRSKI}} section 10.2.
