@@ -10,6 +10,7 @@ area: Internet
 wg: anima Working Group
 kw: Internet-Draft
 cat: std
+updates: RFC8366
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
@@ -34,7 +35,6 @@ normative:
   RFC8366:
   RFC7515:
   RFC8259:
-  RFC8812:
 
 informative:
   RFC5280:
@@ -42,6 +42,7 @@ informative:
   RFC5652:
   RFC8949:
   RFC8792:
+  RFC8812:
   onpath:
     target: "https://mailarchive.ietf.org/arch/msg/saag/m1r9uo4xYznOcf85Eyk0Rhut598/"
     title: "can an on-path attacker drop traffic?"
