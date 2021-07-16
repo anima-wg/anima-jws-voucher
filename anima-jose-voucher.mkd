@@ -83,7 +83,7 @@ This document does not extend the YANG definition of {{RFC8366}} at all, but acc
 This document supports signing any of the extended schemas defined in those documents and any new documents that may appear after this one.
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher format is to be used.
-There is no provison across the different voucher formats that a receiver could safely recognize  which format it uses unless additional context is provided.
+There is no provision across the different voucher formats that a receiver could safely recognize  which format it uses unless additional context is provided.
 For example, {{BRSKI}} provides this context via the MIME-Type for the voucher payload.
 
 This document should be considered an Update to {{RFC8366}} in the category of "See Also"
@@ -153,7 +153,7 @@ The use of a JWS header brings no new privacy considerations.
 The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in section 11 of that document.
 This document does not change any of those issues, it just changes the signature technology used for vouchers and voucher requests.
 
-{{SZTP}} section 9 deals with voucher use in Secure Zero Touch Provisiioning, and this document also makes no changes to security.
+{{SZTP}} section 9 deals with voucher use in Secure Zero Touch Provisioning, and this document also makes no changes to security.
 
 # IANA Considerations
 
