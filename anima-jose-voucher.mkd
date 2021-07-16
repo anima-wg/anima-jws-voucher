@@ -159,15 +159,15 @@ This document does not change any of those issues, it just changes the signature
 
 ## Media-Type Registry
 
-This section registers the the 'application/voucher-jwt+json' in the "Media Types" registry.
+This section registers the 'application/voucher-jws+json' in the "Media Types" registry.
 
-### application/voucher-jose+json
+### application/voucher-jws+json
 
     Type name:  application
     Subtype name:  voucher-jwt+json
     Required parameters:  none
     Optional parameters:  none
-    Encoding considerations:  JWT+JSON vouchers are JOSE objects
+    Encoding considerations:  JWS+JSON vouchers are JOSE objects
                               signed with one signer.
     Security considerations:  See Security Considerations, Section
     Interoperability considerations:  The format is designed to be
