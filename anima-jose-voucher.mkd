@@ -1,7 +1,8 @@
 ---
-title: JOSE signed Voucher Artifacts for Bootstrapping Protocols
-abbrev: JOSE-voucher
+title: JWS signed Voucher Artifacts for Bootstrapping Protocols
+abbrev: JWS-voucher
 docname: draft-richardson-anima-jose-voucher-02
+#docname: draft-ietf-anima-jws-voucher-02
 
 stand_alone: true
 
@@ -88,12 +89,12 @@ as per {{?I-D.kuehlewind-update-tag}}.
 # JSON Web Signatures
 
 {{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
-This document restricts itself to the JWS Compact Serialization (JWT) format.
+The two serializations are mostly equivalent, and the JWS Compact Serialization (JWT) format has better library support in web frameworks, so this document restricts itself to that choice.
 
 The {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
 
 ~~~~
-{ "ietf-voucher:voucher" : { ..some items }}
+{ "ietf-voucher:voucher" : { some inner items }}
 ~~~~
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
