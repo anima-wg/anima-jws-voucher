@@ -1,7 +1,7 @@
 ---
 title: JOSE signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JOSE-voucher
-docname: draft-richardson-anima-jose-voucher-01
+docname: draft-richardson-anima-jose-voucher-02
 
 stand_alone: true
 
