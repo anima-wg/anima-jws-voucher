@@ -71,6 +71,9 @@ This document provides an equivalent mapping of JSON format with the signature f
 This document does not extend the YANG definition of {{RFC8366}} at all, but accepts that other efforts such as {{?I-D.richardson-anima-voucher-delegation}}, {{?I-D.friel-anima-brski-cloud}}, and {{?I-D.ietf-anima-brski-async-enroll}} do.
 This document supports signing any of the extended schemas defined in those documents and any new documents that may appear after this one.
 
+This document should be considered an Update to {{RFC8366}} in the category of "See Also"
+as per {{?I-D.kuehlewind-update-tag}}.
+
 # Terminology
 
 {::boilerplate bcp14}
