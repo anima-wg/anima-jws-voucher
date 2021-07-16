@@ -74,7 +74,7 @@ Table of Contents
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      6.1.  Media-Type Registry . . . . . . . . . . . . . . . . . . .   5
-       6.1.1.  application/voucher-jose+json . . . . . . . . . . . .   5
+       6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   5
    7.  Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   5
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
@@ -124,7 +124,7 @@ Internet-Draft                 JWS-voucher                     July 2021
 
    With the availability of different encoded vouchers, it is up to an
    industry specific application statement to indicate/decide which
-   voucher format is to be used.  There is no provison across the
+   voucher format is to be used.  There is no provision across the
    different voucher formats that a receiver could safely recognize
    which format it uses unless additional context is provided.  For
    example, [BRSKI] provides this context via the MIME-Type for the
@@ -234,22 +234,22 @@ Internet-Draft                 JWS-voucher                     July 2021
    used for vouchers and voucher requests.
 
    [SZTP] section 9 deals with voucher use in Secure Zero Touch
-   Provisiioning, and this document also makes no changes to security.
+   Provisioning, and this document also makes no changes to security.
 
 6.  IANA Considerations
 
 6.1.  Media-Type Registry
 
-   This section registers the the 'application/voucher-jwt+json' in the
+   This section registers the 'application/voucher-jws+json' in the
    "Media Types" registry.
 
-6.1.1.  application/voucher-jose+json
+6.1.1.  application/voucher-jws+json
 
    Type name:  application
    Subtype name:  voucher-jwt+json
    Required parameters:  none
    Optional parameters:  none
-   Encoding considerations:  JWT+JSON vouchers are JOSE objects
+   Encoding considerations:  JWS+JSON vouchers are JOSE objects
                              signed with one signer.
    Security considerations:  See Security Considerations, Section
    Interoperability considerations:  The format is designed to be
