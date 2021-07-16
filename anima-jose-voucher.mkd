@@ -68,9 +68,15 @@ That document defines the base YANG module, and also the initial serialization t
 Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
 
 This document provides an equivalent mapping of JSON format with the signature format in JOSE format {{RFC7515}}.
+The encoding specified in this document is required for {{?I-D.ietf-anima-brski-async-enroll}}
+and may be required and/or preferred in other use-cases, for example when JOSE is already used in  other parts of the use-case, but CMS is not.
 
 This document does not extend the YANG definition of {{RFC8366}} at all, but accepts that other efforts such as {{?I-D.richardson-anima-voucher-delegation}}, {{?I-D.friel-anima-brski-cloud}}, and {{?I-D.ietf-anima-brski-async-enroll}} do.
 This document supports signing any of the extended schemas defined in those documents and any new documents that may appear after this one.
+
+With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher format is to be used.
+There is no provison across the different voucher formats that a receiver could safely recognize  which format it uses unless additional context is provided.
+For example, {{BRSKI}} provides this context via the MIME-Type for the voucher payload.
 
 This document should be considered an Update to {{RFC8366}} in the category of "See Also"
 as per {{?I-D.kuehlewind-update-tag}}.
