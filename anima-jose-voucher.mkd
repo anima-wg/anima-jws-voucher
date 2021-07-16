@@ -31,6 +31,13 @@ author:
   org: Siemens
   email: thomas-werner@siemens.com
 
+contributors:
+- ins: T. Eckert
+  name: Toerless Eckert
+  org: Futurewei Technologies Inc.
+  email: tte+ietf@cs.fau.de
+
+
 normative:
   BRSKI: RFC8995
   SZTP: RFC8572
