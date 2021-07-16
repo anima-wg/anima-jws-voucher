@@ -115,7 +115,7 @@ The JSON Compact Serialization is explained in section 3.1 or section 7.1, and w
 ~~~~
 
 Note that this results in a long base64 content (with two interspersed dots).
-The content is transmitted within the HTTPS session in this base64 format, even though HTTP can accommodate binary content.
+When using HTTPS, the voucher is transmitted in base64 format, even though HTTP can accommodate binary content.
 This is done to be most convenient for available JWT libraries, and for humans who are debugging.
 
 There are a number of attributes.
@@ -146,9 +146,14 @@ The Voucher Request reveals the IDevID of the system that is on-boarding.
 This request occurs over HTTPS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure via by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
 This is explained in {{BRSKI}} section 10.2.
 
+The use of a JWS header brings no new privacy considerations.
+
 # Security Considerations
 
-The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in
+The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in section 11 of that document.
+This document does not change any of those issues, it just changes the signature technology used for vouchers and voucher requests.
+
+{{SZTP}} section 9 deals with voucher use in Secure Zero Touch Provisiioning, and this document also makes no changes to security.
 
 # IANA Considerations
 
@@ -182,12 +187,9 @@ This section registers the the 'application/voucher-jwt+json' in the "Media Type
     Change controller:  IETF
     Provisional registration? (standards tree only):  NO
 
-# Acknowledgements
-
-Your name here.
-
 # Changelog
 
+* Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
 
 --- back
 
