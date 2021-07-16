@@ -221,6 +221,9 @@ INSERT_CODE_FROM_FILE examples/voucher_request_01-signature.b64 END
 
 ## Example Parboiled Voucher Request (from Registrar to MASA)
 
+The term parboiled refers to food which is partially cooked.
+In {{BRSKI}}, the term refers to a voucher-request which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.
+
 The following is an example request sent from the Registrar to the MASA.
 This example is from the Siemens reference Registrar system.
 Note that the previous voucher request can be seen in the payload as "prior-signed-voucher-request".
