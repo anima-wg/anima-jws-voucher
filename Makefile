@@ -1,4 +1,4 @@
-DRAFT:=anima-jose-voucher
+DRAFT:=anima-jws-voucher
 VERSION:=$(shell ./getver ${DRAFT}.mkd )
 EXAMPLES=
 
