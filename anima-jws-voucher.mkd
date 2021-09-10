@@ -163,7 +163,7 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 ### application/voucher-jws+json
 
     Type name:  application
-    Subtype name:  voucher-jwt+json
+    Subtype name:  voucher-jws+json
     Required parameters:  none
     Optional parameters:  none
     Encoding considerations:  JWS+JSON vouchers are JOSE objects
