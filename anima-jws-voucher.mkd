@@ -27,7 +27,7 @@ author:
 
 - ins: T. Werner
   name: Thomas Werner
-  org: Siemens
+  org: Siemens AG
   email: thomas-werner@siemens.com
 
 contributors:
@@ -57,10 +57,10 @@ informative:
 
 --- abstract
 
-RFC8366 defines a digital artifact called voucher as a YANG-defined JSON
+{{RFC8366}} defines a digital artifact called voucher as a YANG-defined JSON
 document that has been signed using a Cryptographic Message Syntax (CMS) structure.
 This memo introduces a variant of the voucher structure in which CMS is
-replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to better support use-cases in which JOSE is preferred over CMS.
+replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in {{RFC7515}} to better support use-cases in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, MIME types are registered and examples are provided.
 
@@ -189,6 +189,7 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 # Changelog
 
 * Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
+* TODO: update I-D.ietf-anima-brski-async-enroll to "ietf-anima-brski-prm"
 
 --- back
 
