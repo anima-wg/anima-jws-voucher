@@ -1,15 +1,11 @@
-# ANIMA operational considerations for BRSKI Registrar
+# ANIMA JWS signed Voucher Artifacts for Bootstrapping Protocols
 
-The ANIMA WG Bootstrapping Remote Secure Key Infrastructure (BRSKI)
-protocol involves three parties: Pledge (device), Registrar and
-Manufacturer Authorized Signing Authority (MASA).
+ANIMA WG - JWS signed Voucher Artifacts for Bootstrapping Protocols.
 
-This repository contains operational considerations for the Registrar
-function.  It is a candidate document for the ANIMA WG
-http://datatracker.ietf.org/wg/anima 
+This is the repository for an www.ietf.org Internet Draft
+in the ANIMA WG http://datatracker.ietf.org/wg/anima.
 
-
-
-
+This work extends RFC8633 https://www.rfc-editor.org/info/rfc8633
+to signatures that use JWS https://www.rfc-editor.org/rfc/rfc7515.html.
 
 
