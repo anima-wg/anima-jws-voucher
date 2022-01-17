@@ -92,7 +92,11 @@ as per {{?I-D.kuehlewind-update-tag}}.
 
 {::boilerplate bcp14}
 
-# JSON Web Signatures
+# JSON Web Signatures - JWS Compact Serialization
+
+[RFC Editor: please delete] /*
+TODO: remove this section as focus switched to "General JWS JSON Serialization Syntax"
+*/
 
 {{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
 The two serializations are mostly equivalent, and the JWS Compact Serialization format has better library support in web frameworks, so this document restricts itself to that choice.
@@ -137,6 +141,13 @@ certificate chain SHOULD be used to contain the certificate and chain.
 Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.
 This is consistent with {{BRSKI}} section 5.5.2.
+
+# JSON Web Signatures - General JWS JSON Serialization Syntax
+
+[RFC Editor: please delete] /*
+TODO: ...
+*/
+
 
 # Privacy Considerations
 
@@ -196,6 +207,11 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 # Examples
 
 These examples are folded according to {{RFC8792}} Single Backslash rule.
+
+[RFC Editor: please delete] /*
+TODO: provide examples for "General JWS JSON Serialization Syntax"
+*/
+
 
 ## Example Voucher Request (from Pledge to Registrar)
 
