@@ -148,6 +148,33 @@ This is consistent with {{BRSKI}} section 5.5.2.
 TODO: ...
 */
 
+~~~~
+{
+    "payload": {
+         "ietf-voucher:voucher": {
+         "assertion": "logged",
+         "serial-number": "0123456789",
+         "nonce": "5742698422680472",
+         "created-on": "2022-03-02T03:01:24.618Z",
+         "pinned-domain-cert": "base64encodedvalue=="
+    },
+}
+    "signatures": [ {
+         "protected": {
+            "x5c": ["base64encodedvalue=="],
+            "alg": "ES256"
+            }.{ PAYLOAD EMPTY }.{ SIGNATURE },
+         "signature": "base64encodedvalue=="
+        } ]
+}
+
+~~~~
+{: #VoucherGeneralJWSfigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
+
+
+
+
+
 
 # Privacy Considerations
 
@@ -269,7 +296,9 @@ The following is an example request sent from a Pledge to the Registrar.
            Bd0NnWUlLb1pJemowRUF3SURTQUF3UlFJZ1d0UHpJSVhZMml4UlhKdEV
            4S0VoaFpkYTRYK0VwbFpvbUVJMnpBMGRzam9DSVFDM0pwUW1SWE1Hbi9
            wNEJ1OWl6aWk5MmVjbFR4NC9PNHJsbTdNeUxxa2hkQT09Il19",
-         "signature": "base64encodedvalue=="
+         "signature":
+           "xURZmcWSFaBD2cNkr37azT9osWfzTZ_veCsVho3fwdD6NR4ghL61VJm
+           Y_ra0a42SvoW2Tu4XlldzzD8VDtCCDg"
       }
    ]
 }
@@ -424,7 +453,9 @@ Note that the previous PVR can be seen in the payload as "prior-signed-voucher-r
            BZ05KQURCR0FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCt
            iXC9MQ1wvZlZZRGpRNm9DSVFERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDg
            rT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sImFsZyI6IkVTMjU2In0",
-         "signature":"base64encodedvalue=="
+         "signature":
+           "zvtnaEDpOqL49XnYVRbLxVAaZCMRtDiaLqMeFSH3UsjHdz4FT0lFywV
+           7-5inMpafXTnqqxnD2Gpr3ClUXUyAJg"
       }
    ]
 }
@@ -498,7 +529,9 @@ The following is an example voucher response from MASA to Pledge via Registrar.
               4XC90elVvUVwvU3N5ZEwzMERRSU5FdGNOOW1DVFhQQWlFQXZJYjNv
               K0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2FFS2JzVkRpV
               T0iXSwiYWxnIjoiRVMyNTYifQ",
-            "signature": "base64encodedvalue=="
+            "signature": 
+              "vyge3GENm1BNcijXT5VH7A8CJWW7wPzH61u2VCfR8E9v8H8Yr3g9
+              irYz4q5sYj2UnOVIh-hG_ogrZR0Tct_Vzw"
         }
     ]
 }
