@@ -79,8 +79,8 @@ Table of Contents
      6.1.  Media-Type Registry . . . . . . . . . . . . . . . . . . .   6
        6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   6
    7.  Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
      8.2.  Informative References  . . . . . . . . . . . . . . . . .   7
    Appendix A.  Examples . . . . . . . . . . . . . . . . . . . . . .   9
      A.1.  Example Pledge Voucher Request - PVR (from Pledge to
@@ -116,18 +116,17 @@ Internet-Draft                 JWS-voucher                    March 2022
 
    This document provides an equivalent mapping of JSON format with the
    signature format as JSON Web Signature (JWS) [RFC7515].  The encoding
-   specified in this document is required for
-   [I-D.ietf-anima-brski-async-enroll] and may be required and/or
-   preferred in other use cases, for example when JWS is already used in
-   other parts of the use case, but CMS is not.
+   specified in this document is required for [I-D.ietf-anima-brski-prm]
+   and may be required and/or preferred in other use cases, for example
+   when JWS is already used in other parts of the use case, but CMS is
+   not.
 
    This document does not extend the YANG definition of [RFC8366] at
    all, but accepts that other efforts such as
    [I-D.richardson-anima-voucher-delegation],
-   [I-D.friel-anima-brski-cloud], and
-   [I-D.ietf-anima-brski-async-enroll] do.  This document supports
-   signing any of the extended schemas defined in those documents and
-   any new documents that may appear after this one.
+   [I-D.friel-anima-brski-cloud], and [I-D.ietf-anima-brski-prm] do.
+   This document supports signing any of the extended schemas defined in
+   those documents and any new documents that may appear after this one.
 
    With the availability of different encoded vouchers, it is up to an
    industry specific application statement to indicate/decide which
@@ -152,16 +151,17 @@ Internet-Draft                 JWS-voucher                    March 2022
 
    [RFC Editor: please delete] /* TODO: ... */
 
-   [RFC7515] defines two serializations: the JWS Compact Serialization
-   and the JWS JSON Serialization.  The two serializations are mostly
-   equivalent, and the JWS Compact Serialization format has better
-   library support in web frameworks, so this document restricts itself
-   to that choice.
+   [RFC7515] defines two serializations: the "JWS Compact Serialization"
+   and the "JWS JSON Serialization".
 
    The [RFC8366] JSON structure consists of a nested map, the outer part
    of which is:
 
    { "ietf-voucher:voucher" : { some inner items }}
+
+   this is considered the JSON payload as described in [RFC7515] section
+   3.
+
 
 
 
@@ -170,19 +170,18 @@ Richardson & Werner     Expires 5 September 2022                [Page 3]
 Internet-Draft                 JWS-voucher                    March 2022
 
 
-   this is considered the JSON payload as described in [RFC7515] section
-   3.
+   A JWS JSON Serialization Overview is given by [RFC7515] in section
+   3.2 and section 7.2.1 provides more details.  It works out to:
 
-   A JWS JSON Serialization Overview is given in section 3.2 and section
-   7.2.1 provides more details.  It works out to:
-
-       TODO: ...
+   [RFC Editor: please delete] /*
+   TODO: ...
+   */
 
    There are a number of attributes.  They are:
 
 3.1.  Unprotected Header
 
-   TODO: ...
+   [RFC Editor: please delete] /* TODO: ... */
 
 3.2.  Protected Header
 
@@ -221,28 +220,31 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
+
 Richardson & Werner     Expires 5 September 2022                [Page 4]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
 
    {
-       "payload": {
-            "ietf-voucher:voucher": {
-            "assertion": "logged",
-            "serial-number": "0123456789",
-            "nonce": "5742698422680472",
-            "created-on": "2022-03-02T03:01:24.618Z",
-            "pinned-domain-cert": "base64encodedvalue=="
+     "payload": {
+       "ietf-voucher:voucher": {
+         "assertion": "logged",
+         "serial-number": "0123456789",
+         "nonce": "5742698422680472",
+         "created-on": "2022-03-02T03:01:24.618Z",
+         "pinned-domain-cert": "base64encodedvalue=="
        },
-   }
-       "signatures": [ {
-            "protected": {
-               "x5c": ["base64encodedvalue=="],
-               "alg": "ES256"
-               }.{ PAYLOAD EMPTY }.{ SIGNATURE },
-            "signature": "base64encodedvalue=="
-           } ]
+       "signatures": [
+         {
+           "protected": {
+             "x5c": [ "base64encodedvalue==" ],
+             "alg": "ES256"
+             },
+           "signature": "base64encodedvalue=="
+         }
+       ]
+     }
    }
 
             Figure 1: Voucher Representation in General JWS JSON
@@ -271,8 +273,6 @@ Internet-Draft                 JWS-voucher                    March 2022
    Provisioning, and this document also makes no changes to security.
 
 6.  IANA Considerations
-
-
 
 
 
@@ -318,8 +318,25 @@ Internet-Draft                 JWS-voucher                    March 2022
    *  Added adoption call comments from Toerless.  Changed from
       [RFCxxxx] to [THING] style for some key references.
 
-   *  TODO: update I-D.ietf-anima-brski-async-enroll to "ietf-anima-
-      brski-prm"
+   *  Updated references "I-D.ietf-anima-brski-async-enroll" switched to
+      "I-D.ietf-anima-brski-prm"
+
+   *  Switch from "JWS Compact Serialization" to "General JWS JSON
+      Serialization", as focus is now on "General JWS JSON
+      Serialization"
+
+   *  Include Voucher representation in "General JWS JSON Serialization"
+      syntax
+
+   *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
+
+
+
+
+Richardson & Werner     Expires 5 September 2022                [Page 6]
+
+Internet-Draft                 JWS-voucher                    March 2022
+
 
 8.  References
 
@@ -329,14 +346,6 @@ Internet-Draft                 JWS-voucher                    March 2022
               and K. Watsen, "Bootstrapping Remote Secure Key
               Infrastructure (BRSKI)", RFC 8995, DOI 10.17487/RFC8995,
               May 2021, <https://www.rfc-editor.org/info/rfc8995>.
-
-
-
-
-Richardson & Werner     Expires 5 September 2022                [Page 6]
-
-Internet-Draft                 JWS-voucher                    March 2022
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -375,17 +384,8 @@ Internet-Draft                 JWS-voucher                    March 2022
               <https://www.ietf.org/archive/id/draft-friel-anima-brski-
               cloud-04.txt>.
 
-   [I-D.ietf-anima-brski-async-enroll]
-              Fries, S., Brockhaus, H., Oheimb, D. V., and E. Lear,
-              "Support of Asynchronous Enrollment in BRSKI (BRSKI-AE)",
-              Work in Progress, Internet-Draft, draft-ietf-anima-brski-
-              async-enroll-04, 25 October 2021,
-              <https://www.ietf.org/archive/id/draft-ietf-anima-brski-
-              async-enroll-04.txt>.
 
-   [I-D.ietf-anima-constrained-voucher]
-              Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
-              Dijk, "Constrained Bootstrapping Remote Secure Key
+
 
 
 
@@ -394,6 +394,16 @@ Richardson & Werner     Expires 5 September 2022                [Page 7]
 Internet-Draft                 JWS-voucher                    March 2022
 
 
+   [I-D.ietf-anima-brski-prm]
+              Fries, S., Werner, T., Lear, E., and M. C. Richardson,
+              "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
+              Progress, Internet-Draft, draft-ietf-anima-brski-prm-01,
+              11 February 2022, <https://www.ietf.org/archive/id/draft-
+              ietf-anima-brski-prm-01.txt>.
+
+   [I-D.ietf-anima-constrained-voucher]
+              Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
+              Dijk, "Constrained Bootstrapping Remote Secure Key
               Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
               draft-ietf-anima-constrained-voucher-16, 14 February 2022,
               <https://www.ietf.org/archive/id/draft-ietf-anima-
@@ -432,6 +442,14 @@ Internet-Draft                 JWS-voucher                    March 2022
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
               <https://www.rfc-editor.org/info/rfc8792>.
 
+
+
+
+Richardson & Werner     Expires 5 September 2022                [Page 8]
+
+Internet-Draft                 JWS-voucher                    March 2022
+
+
    [RFC8812]  Jones, M., "CBOR Object Signing and Encryption (COSE) and
               JSON Object Signing and Encryption (JOSE) Registrations
               for Web Authentication (WebAuthn) Algorithms", RFC 8812,
@@ -443,13 +461,6 @@ Internet-Draft                 JWS-voucher                    March 2022
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
 
-
-
-Richardson & Werner     Expires 5 September 2022                [Page 8]
-
-Internet-Draft                 JWS-voucher                    March 2022
-
-
 Appendix A.  Examples
 
    These examples are folded according to [RFC8792] Single Backslash
@@ -458,9 +469,43 @@ Appendix A.  Examples
 A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
    The following is an example request sent from a Pledge to the
-   Registrar.
+   Registrar, in "General JWS JSON Serialization".
 
-   "General JWS JSON Serialization"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Richardson & Werner     Expires 5 September 2022                [Page 9]
+
+Internet-Draft                 JWS-voucher                    March 2022
+
+
    {
       "payload":
         "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7ImNyZWF0ZWQ
@@ -492,20 +537,6 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
       ]
    }
 
-
-
-
-
-
-
-
-
-
-Richardson & Werner     Expires 5 September 2022                [Page 9]
-
-Internet-Draft                 JWS-voucher                    March 2022
-
-
 A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
       to MASA)
 
@@ -515,10 +546,21 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
    Registrar ("cooked"), and is now being forwarded to the MASA.
 
    The following is an example Registrar voucher-request (RVR) sent from
-   the Registrar to the MASA.  Note that the previous PVR can be seen in
-   the payload as "prior-signed-voucher-request".
+   the Registrar to the MASA, in "General JWS JSON Serialization".  Note
+   that the previous PVR can be seen in the payload as "prior-signed-
+   voucher-request".
 
-   "General JWS JSON Serialization"
+
+
+
+
+
+
+
+Richardson & Werner     Expires 5 September 2022               [Page 10]
+
+Internet-Draft                 JWS-voucher                    March 2022
+
 
    {
       "payload":
@@ -554,14 +596,6 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
         SVTB4WkZad1dWVlVXbEJXUmtWM1ZGaHdRbFpGU201VWJGcEpWVEZXUmx
         KRlVrSlRNRXB1V2pOS1Exb3dWa2RSYkVacVVrVkdjVkZWT1VOYU1EVlh
         VMFpGTkZGclJtMVBSVlpEVVZVeFJGRnFVa0prTUU1dVYxVnNUR0l4Y0V
-
-
-
-Richardson & Werner     Expires 5 September 2022               [Page 10]
-
-Internet-Draft                 JWS-voucher                    March 2022
-
-
         wbGJXOTNVbFZHTTFOVlVsUlJWVVl6Vld4R1Nsb3haREJWU0hCS1UxWm9
         XazF0YkRSVmJHaExaRVZXTkZNd1ZtOWhSbkJyV1ZSU1dVc3dWbmRpUm5
         CMllsVldTazF1Y0VKTlIxSjZZVzA1UkZOV1JrUk5NSEIzVlZjeFUxZEZ
@@ -576,6 +610,14 @@ Internet-Draft                 JWS-voucher                    March 2022
          {
             "protected":
               "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk1Bb0d
+
+
+
+Richardson & Werner     Expires 5 September 2022               [Page 11]
+
+Internet-Draft                 JWS-voucher                    March 2022
+
+
               DQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzN
               NeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkR
               RVEFlRncweE9UQTVNVEV3TWpNM016SmFGdzB5T1RBNU1URXdNak0zTXp
@@ -610,52 +652,10 @@ Internet-Draft                 JWS-voucher                    March 2022
       ]
    }
 
-
-
-
-Richardson & Werner     Expires 5 September 2022               [Page 11]
-
-Internet-Draft                 JWS-voucher                    March 2022
-
-
 A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
    The following is an example voucher response from MASA to Pledge via
-   Registrar.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   Registrar, in "General JWS JSON Serialization".
 
 
 
@@ -674,7 +674,6 @@ Richardson & Werner     Expires 5 September 2022               [Page 12]
 Internet-Draft                 JWS-voucher                    March 2022
 
 
-   "General JWS JSON Serialization"
    {
        "payload":
          "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2
@@ -721,6 +720,7 @@ Internet-Draft                 JWS-voucher                    March 2022
    }
 
 Authors' Addresses
+
 
 
 

@@ -75,10 +75,10 @@ That document defines the base YANG module, and also the initial serialization t
 Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
 
 This document provides an equivalent mapping of JSON format with the signature format as JSON Web Signature (JWS) {{RFC7515}}.
-The encoding specified in this document is required for {{?I-D.ietf-anima-brski-async-enroll}}
+The encoding specified in this document is required for {{?I-D.ietf-anima-brski-prm}}
 and may be required and/or preferred in other use cases, for example when JWS is already used in other parts of the use case, but CMS is not.
 
-This document does not extend the YANG definition of {{RFC8366}} at all, but accepts that other efforts such as {{?I-D.richardson-anima-voucher-delegation}}, {{?I-D.friel-anima-brski-cloud}}, and {{?I-D.ietf-anima-brski-async-enroll}} do.
+This document does not extend the YANG definition of {{RFC8366}} at all, but accepts that other efforts such as {{?I-D.richardson-anima-voucher-delegation}}, {{?I-D.friel-anima-brski-cloud}}, and {{?I-D.ietf-anima-brski-prm}} do.
 This document supports signing any of the extended schemas defined in those documents and any new documents that may appear after this one.
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
@@ -98,8 +98,7 @@ as per {{?I-D.kuehlewind-update-tag}}.
 TODO: ...
 */
 
-{{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
-The two serializations are mostly equivalent, and the JWS Compact Serialization format has better library support in web frameworks, so this document restricts itself to that choice.
+{{RFC7515}} defines two serializations: the "JWS Compact Serialization" and the "JWS JSON Serialization".
 
 The {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
 
@@ -109,11 +108,13 @@ The {{RFC8366}} JSON structure consists of a nested map, the outer part of which
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
 
-A JWS JSON Serialization Overview is given in section 3.2 and section 7.2.1 provides more details.
+A JWS JSON Serialization Overview is given by {{RFC7515}} in section 3.2 and section 7.2.1 provides more details.
 It works out to:
 
 ~~~~
-    TODO: ...
+[RFC Editor: please delete] /*
+TODO: ...
+*/
 ~~~~
 
 There are a number of attributes.
@@ -121,7 +122,9 @@ They are:
 
 ## Unprotected Header
 
+[RFC Editor: please delete] /*
 TODO: ...
+*/
 
 ## Protected Header
 
@@ -140,31 +143,27 @@ This is consistent with {{BRSKI}} section 5.5.2.
 ## Voucher Representation in General JWS JSON Serialization Syntax
 ~~~~
 {
-    "payload": {
-         "ietf-voucher:voucher": {
-         "assertion": "logged",
-         "serial-number": "0123456789",
-         "nonce": "5742698422680472",
-         "created-on": "2022-03-02T03:01:24.618Z",
-         "pinned-domain-cert": "base64encodedvalue=="
+  "payload": {
+    "ietf-voucher:voucher": {
+      "assertion": "logged",
+      "serial-number": "0123456789",
+      "nonce": "5742698422680472",
+      "created-on": "2022-03-02T03:01:24.618Z",
+      "pinned-domain-cert": "base64encodedvalue=="
     },
+    "signatures": [
+      {
+        "protected": {
+          "x5c": [ "base64encodedvalue==" ],
+          "alg": "ES256"
+          },
+        "signature": "base64encodedvalue=="
+      }
+    ]
+  }
 }
-    "signatures": [ {
-         "protected": {
-            "x5c": ["base64encodedvalue=="],
-            "alg": "ES256"
-            }.{ PAYLOAD EMPTY }.{ SIGNATURE },
-         "signature": "base64encodedvalue=="
-        } ]
-}
-
 ~~~~
 {: #VoucherGeneralJWSfigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
-
-
-
-
-
 
 # Privacy Considerations
 
@@ -217,7 +216,11 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 # Changelog
 
 * Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
-* TODO: update I-D.ietf-anima-brski-async-enroll to "ietf-anima-brski-prm"
+* Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"  
+* Switch from "JWS Compact Serialization" to "General JWS JSON Serialization", as focus is now on "General JWS JSON Serialization"
+* Include Voucher representation in "General JWS JSON Serialization" syntax
+* Include examples A1, A2, A3 using "General JWS JSON Serialization"
+
 
 --- back
 
@@ -225,15 +228,10 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 
 These examples are folded according to {{RFC8792}} Single Backslash rule.
 
-
-
 ## Example Pledge Voucher Request - PVR (from Pledge to Registrar)
-
-The following is an example request sent from a Pledge to the Registrar.
-
+The following is an example request sent from a Pledge to the Registrar, in "General JWS JSON Serialization".
 
 ~~~~
-"General JWS JSON Serialization"
 {
    "payload":
      "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7ImNyZWF0ZWQ
@@ -264,21 +262,16 @@ The following is an example request sent from a Pledge to the Registrar.
       }
    ]
 }
-
 ~~~~
 
 ## Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)
-
 The term parboiled refers to food which is partially cooked.
 In {{BRSKI}}, the term refers to a Pledge voucher-request (PVR) which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.
 
-The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA.
+The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA, in "General JWS JSON Serialization".
 Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".
 
-
 ~~~~
-"General JWS JSON Serialization"
-
 {
    "payload":
      "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC1
@@ -360,17 +353,12 @@ Note that the previous PVR can be seen in the payload as "prior-signed-voucher-r
       }
    ]
 }
-
 ~~~~
-
 
 ## Example Voucher Response (from MASA to Pledge, via Registrar)
-
-The following is an example voucher response from MASA to Pledge via Registrar.
-
+The following is an example voucher response from MASA to Pledge via Registrar, in "General JWS JSON Serialization".
 
 ~~~~
-"General JWS JSON Serialization"
 {
     "payload":
       "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2
@@ -415,7 +403,6 @@ The following is an example voucher response from MASA to Pledge via Registrar.
         }
     ]
 }
-
 ~~~~
 
 
