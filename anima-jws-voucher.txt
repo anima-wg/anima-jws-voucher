@@ -10,7 +10,7 @@ Expires: 5 September 2022                                   4 March 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-00
+                    draft-ietf-anima-jws-voucher-02
 
 Abstract
 
