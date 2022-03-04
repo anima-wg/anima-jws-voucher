@@ -92,10 +92,10 @@ as per {{?I-D.kuehlewind-update-tag}}.
 
 {::boilerplate bcp14}
 
-# JSON Web Signatures - JWS Compact Serialization
+# JSON Web Signatures - General JWS JSON Serialization Syntax
 
 [RFC Editor: please delete] /*
-TODO: remove this section as focus switched to "General JWS JSON Serialization Syntax"
+TODO: ...
 */
 
 {{RFC7515}} defines two serializations: the JWS Compact Serialization and the JWS JSON Serialization.
@@ -109,24 +109,19 @@ The {{RFC8366}} JSON structure consists of a nested map, the outer part of which
 
 this is considered the JSON payload as described in {{RFC7515}} section 3.
 
-The JSON Compact Serialization is explained in section 3.1 or section 7.1, and works out to:
+A JWS JSON Serialization Overview is given in section 3.2 and section 7.2.1 provides more details.
+It works out to:
 
 ~~~~
-      BASE64URL(UTF8(JWS Protected Header)) || '.' ||
-      BASE64URL(JWS Payload) || '.' ||
-      BASE64URL(JWS Signature)
+    TODO: ...
 ~~~~
-
-Note that this results in a long base64 content (with two interspersed dots).
-When using HTTP-over-TLS, the voucher is transmitted in base64 format, even though HTTP can accommodate binary content.
-This is done to be most convenient for available JWS libraries, and for humans who are debugging.
 
 There are a number of attributes.
 They are:
 
 ## Unprotected Header
 
-There is no unprotected header in the Compact Serialization format.
+TODO: ...
 
 ## Protected Header
 
@@ -142,12 +137,7 @@ Vouchers will often need all certificates in the chain, including what would be 
 or end systems may need to pin a trust anchor for future operations.
 This is consistent with {{BRSKI}} section 5.5.2.
 
-# JSON Web Signatures - General JWS JSON Serialization Syntax
-
-[RFC Editor: please delete] /*
-TODO: ...
-*/
-
+## Voucher Representation in General JWS JSON Serialization Syntax
 ~~~~
 {
     "payload": {
@@ -235,40 +225,12 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 
 These examples are folded according to {{RFC8792}} Single Backslash rule.
 
-[RFC Editor: please delete] /*
-TODO: provide examples for "General JWS JSON Serialization Syntax"
-*/
 
-[RFC Editor: please delete] /*
-TODO: examples "Compact JWS JSON Serialization - Format" to be removed
-*/
 
 ## Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
 The following is an example request sent from a Pledge to the Registrar.
 
-
-~~~~
-"Compact JWS JSON Serialization - Format"
-{
-  "alg": "ES256",
-  "x5c": [
-    "base64encodedvalue=="
-  ]
-}
-{
-  "ietf-voucher-request:voucher": {
-    "created-on": "2021-07-14T04:33:22.000Z",
-    "nonce": "XOHwmTtxlxueLvek1D0hIA==",
-    "proximity-registrar-cert": "base64encodedvalue==",
-    "serial-number": "0123456789"
-  }
-}
-{
-    SIGNATURE
-}
-
-~~~~
 
 ~~~~
 "General JWS JSON Serialization"
@@ -313,67 +275,6 @@ In {{BRSKI}}, the term refers to a Pledge voucher-request (PVR) which has been r
 The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA.
 Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".
 
-~~~~
-"Compact JWS JSON Serialization - Format"
-{
-  "alg": "ES256",
-  "x5c": [
-    "base64encodedvalue==",
-    "base64encodedvalue=="
-  ]
-}
-{
-  "ietf-voucher-request:voucher": {
-    "serial-number": "0123456789",
-    "idevid-issuer": "BBgwFoAUVAuM3M/9L+Si6NDCODkTl+/Bxhs=",
-    "nonce": "XOHwmTtxlxueLvek1D0hIA==",
-    "prior-signed-voucher-request": 
-      "eyJhbGciOiAiRVMyNTYiLCAieDVjIjogWyJNSUlCK1RDQ0FhQ2dBd0
-      lCQWdJR0FYblZqc1U1TUFvR0NDcUdTTTQ5QkFNQ01EMHhDekFKQmdOV
-      kJBWVRBa0ZSTVJVd0V3WURWUVFLREF4S2FXNW5TbWx1WjBOdmNuQXhG
-      ekFWQmdOVkJBTU1Ea3BwYm1kS2FXNW5WR1Z6ZEVOQk1DQVhEVEl4TUR
-      Zd05EQTFORFl4TkZvWUR6azVPVGt4TWpNeE1qTTFPVFU1V2pCU01Rc3
-      dDUVlEVlFRR0V3SkJVVEVWTUJNR0ExVUVDZ3dNU21sdVowcHBibWREY
-      jNKd01STXdFUVlEVlFRRkV3b3dNVEl6TkRVMk56ZzVNUmN3RlFZRFZR
-      UUREQTVLYVc1blNtbHVaMFJsZG1salpUQlpNQk1HQnlxR1NNNDlBZ0V
-      HQ0NxR1NNNDlBd0VIQTBJQUJDNzlsaWFSY0JqWmNFRVh3N3JVZWF2dE
-      dKQXVINHBrNEk0MnZhQk1zVTExaUxEQ0NMa1ZodFVWMjFtdmFLQ3ZNe
-      DJZK1NNZ1E4ZmZ3TDIzejNUSVZCV2pkVEJ6TUNzR0NDc0dBUVVGQndF
-      Z0JCOFdIVzFoYzJFdGRHVnpkQzV6YVdWdFpXNXpMV0owTG01bGREbzV
-      ORFF6TUI4R0ExVWRJd1FZTUJhQUZGUUxqTnpQL1Mva291alF3amc1RT
-      VmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0NzR0FRVUZCd01DTUE0R0ExV
-      WREd0VCL3dRRUF3SUhnREFLQmdncWhrak9QUVFEQWdOSEFEQkVBaUJ1
-      M3dSQkxzSk1QNXNNMDcwSCtVRnJ5TlU2Z0t6TE9SY0Z5UlJPbHFxSGl
-      nSWdYQ21KTFR6RWx2RDJwb0s2ZHg2bDEvdXltVG5iUUREZkpsYXR1WD
-      JSb09FPSJdfQ.eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIj
-      ogeyJjcmVhdGVkLW9uIjogIjIwMjEtMDctMTRUMDQ6MzM6MjIuMDAwW
-      iIsICJub25jZSI6ICJYT0h3bVR0eGx4dWVMdmVrMUQwaElBPT0iLCAi
-      cHJveGltaXR5LXJlZ2lzdHJhci1jZXJ0IjogIk1JSUI0akNDQVlpZ0F
-      3SUJBZ0lHQVhZNzJiYlpNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ0
-      5WQkFvTUNrMTVRblZ6YVc1bGMzTXhEVEFMQmdOVkJBY01CRk5wZEdVe
-      ER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MHlNREV5TURjd05qRTRN
-      VEphRncwek1ERXlNRGN3TmpFNE1USmFNRDR4RXpBUkJnTlZCQW9NQ2s
-      xNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4R0RBV0JnTl
-      ZCQU1NRDBSdmJXRnBibEpsWjJsemRISmhjakJaTUJNR0J5cUdTTTQ5Q
-      WdFR0NDcUdTTTQ5QXdFSEEwSUFCQmsxNksvaTc5b1JrSzVZYmVQZzhV
-      U1I4L3VzMWRQVWlaSE10b2tTZHFLVzVmbldzQmQrcVJMN1dSZmZlV2t
-      5Z2Vib0pmSWxsdXJjaTI1d25oaU9WQ0dqZXpCNU1CMEdBMVVkSlFRV0
-      1CUUdDQ3NHQVFVRkJ3TUJCZ2dyQmdFRkJRY0RIREFPQmdOVkhROEJBZ
-      jhFQkFNQ0I0QXdTQVlEVlIwUkJFRXdQNElkY21WbmFYTjBjbUZ5TFhS
-      bGMzUXVjMmxsYldWdWN5MWlkQzV1WlhTQ0huSmxaMmx6ZEhKaGNpMTB
-      aWE4wTmk1emFXVnRaVzV6TFdKMExtNWxkREFLQmdncWhrak9QUVFEQW
-      dOSUFEQkZBaUJ4bGRCaFpxMEV2NUpMMlByV0N0eVM2aERZVzF5Q08vU
-      mF1YnBDN01hSURnSWhBTFNKYmdMbmdoYmJBZzBkY1dGVVZvL2dHTjAv
-      and6SlowU2wyaDR4SVhrMSIsICJzZXJpYWwtbnVtYmVyIjogIjAxMjM
-      0NTY3ODkifX0.AZ-pScAwWVVrgiB3cJvt8clgwBW5KrpxwQUyWZ8qdv
-      JK3UVhhmw_tXZgPqYVIOQyZ3ZkTc1P7Z_1a3wdcjtPVw",
-    "created-on": "2021-07-14T04:33:23.033Z"
-  }
-}
-{
-    SIGNATURE
-}
-~~~~
 
 ~~~~
 "General JWS JSON Serialization"
@@ -467,27 +368,6 @@ Note that the previous PVR can be seen in the payload as "prior-signed-voucher-r
 
 The following is an example voucher response from MASA to Pledge via Registrar.
 
-~~~~
-"Compact JWS JSON Serialization - Format"
-{
-  "alg": "ES256",
-  "x5c": [
-    "base64encodedvalue=="
-  ]
-}
-{
-  "ietf-voucher:voucher": {
-    "assertion": "logged",
-    "serial-number": "0123456789",
-    "nonce": "XOHwmTtxlxueLvek1D0hIA==",
-    "created-on": "2021-07-14T04:33:23.129Z",
-    "pinned-domain-cert": "base64encodedvalue=="
-  }
-}
-{
-    SIGNATURE
-}
-~~~~
 
 ~~~~
 "General JWS JSON Serialization"
