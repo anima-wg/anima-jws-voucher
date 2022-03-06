@@ -216,7 +216,7 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 # Changelog
 
 * Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
-* Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"  
+* Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"
 * Switch from "JWS Compact Serialization" to "General JWS JSON Serialization", as focus is now on "General JWS JSON Serialization"
 * Include Voucher representation in "General JWS JSON Serialization" syntax
 * Include examples A1, A2, A3 using "General JWS JSON Serialization"
@@ -397,7 +397,7 @@ The following is an example voucher response from MASA to Pledge via Registrar, 
               4XC90elVvUVwvU3N5ZEwzMERRSU5FdGNOOW1DVFhQQWlFQXZJYjNv
               K0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2FFS2JzVkRpV
               T0iXSwiYWxnIjoiRVMyNTYifQ",
-            "signature": 
+            "signature":
               "vyge3GENm1BNcijXT5VH7A8CJWW7wPzH61u2VCfR8E9v8H8Yr3g9
               irYz4q5sYj2UnOVIh-hG_ogrZR0Tct_Vzw"
         }
