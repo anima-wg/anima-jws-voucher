@@ -89,7 +89,7 @@ Table of Contents
            Registrar to MASA)  . . . . . . . . . . . . . . . . . . .  10
      A.3.  Example Voucher Response (from MASA to Pledge, via
            Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  12
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -537,6 +537,8 @@ Internet-Draft                 JWS-voucher                    March 2022
       ]
    }
 
+               Figure 2: Example Pledge Voucher Request - PVR
+
 A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
       to MASA)
 
@@ -549,8 +551,6 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
    the Registrar to the MASA, in "General JWS JSON Serialization".  Note
    that the previous PVR can be seen in the payload as "prior-signed-
    voucher-request".
-
-
 
 
 
@@ -652,12 +652,12 @@ Internet-Draft                 JWS-voucher                    March 2022
       ]
    }
 
+        Figure 3: Example Parboiled Registrar Voucher Request - RVR
+
 A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
    The following is an example voucher response from MASA to Pledge via
    Registrar, in "General JWS JSON Serialization".
-
-
 
 
 
@@ -719,7 +719,7 @@ Internet-Draft                 JWS-voucher                    March 2022
        ]
    }
 
-Authors' Addresses
+                     Figure 4: Example Voucher Response
 
 
 
@@ -729,6 +729,8 @@ Richardson & Werner     Expires 8 September 2022               [Page 13]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
+
+Authors' Addresses
 
    Michael Richardson
    Sandelman Software Works
@@ -740,8 +742,6 @@ Internet-Draft                 JWS-voucher                    March 2022
    Siemens AG
 
    Email: thomas-werner@siemens.com
-
-
 
 
 

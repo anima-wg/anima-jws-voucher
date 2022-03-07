@@ -265,6 +265,7 @@ The following is an example request sent from a Pledge to the Registrar, in "Gen
    ]
 }
 ~~~~
+{: #ExamplePledgeVoucherRequestfigure title='Example Pledge Voucher Request - PVR' artwork-align="left"}
 
 ## Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)
 The term parboiled refers to food which is partially cooked.
@@ -356,6 +357,7 @@ Note that the previous PVR can be seen in the payload as "prior-signed-voucher-r
    ]
 }
 ~~~~
+{: #ExampleParboiledRegistrarVoucherRequestfigure title='Example Parboiled Registrar Voucher Request - RVR' artwork-align="left"}
 
 ## Example Voucher Response (from MASA to Pledge, via Registrar)
 The following is an example voucher response from MASA to Pledge via Registrar, in "General JWS JSON Serialization".
@@ -406,7 +408,7 @@ The following is an example voucher response from MASA to Pledge via Registrar, 
     ]
 }
 ~~~~
-
+{: #ExampleVoucherResponsefigure title='Example Voucher Response' artwork-align="left"}  
 
 
 
