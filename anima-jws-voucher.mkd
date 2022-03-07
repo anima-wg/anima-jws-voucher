@@ -150,17 +150,19 @@ This is consistent with {{BRSKI}} section 5.5.2.
       "nonce": "5742698422680472",
       "created-on": "2022-03-02T03:01:24.618Z",
       "pinned-domain-cert": "base64encodedvalue=="
-    },
-    "signatures": [
-      {
-        "protected": {
-          "x5c": [ "base64encodedvalue==" ],
-          "alg": "ES256"
-          },
-        "signature": "base64encodedvalue=="
-      }
-    ]
-  }
+    }
+  },
+  "signatures": [
+    {
+      "protected": {
+        "x5c": [
+          "base64encodedvalue=="
+        ],
+        "alg": "ES256"
+      },
+      "signature": "base64encodedvalue=="
+    }
+  ]
 }
 ~~~~
 {: #VoucherGeneralJWSfigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}

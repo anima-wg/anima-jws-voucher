@@ -6,7 +6,7 @@ anima Working Group                                        M. Richardson
 Internet-Draft                                  Sandelman Software Works
 Updates: RFC8366 (if approved)                                 T. Werner
 Intended status: Standards Track                              Siemens AG
-Expires: 5 September 2022                                   4 March 2022
+Expires: 8 September 2022                                   7 March 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2022.
+   This Internet-Draft will expire on 8 September 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 1]
+Richardson & Werner     Expires 8 September 2022                [Page 1]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -75,7 +75,7 @@ Table of Contents
            Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   4
    4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   5
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
      6.1.  Media-Type Registry . . . . . . . . . . . . . . . . . . .   6
        6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   6
    7.  Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   6
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 2]
+Richardson & Werner     Expires 8 September 2022                [Page 2]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 3]
+Richardson & Werner     Expires 8 September 2022                [Page 3]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 4]
+Richardson & Werner     Expires 8 September 2022                [Page 4]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -234,17 +234,19 @@ Internet-Draft                 JWS-voucher                    March 2022
          "nonce": "5742698422680472",
          "created-on": "2022-03-02T03:01:24.618Z",
          "pinned-domain-cert": "base64encodedvalue=="
-       },
-       "signatures": [
-         {
-           "protected": {
-             "x5c": [ "base64encodedvalue==" ],
-             "alg": "ES256"
-             },
-           "signature": "base64encodedvalue=="
-         }
-       ]
-     }
+       }
+     },
+     "signatures": [
+       {
+         "protected": {
+           "x5c": [
+             "base64encodedvalue=="
+           ],
+           "alg": "ES256"
+         },
+         "signature": "base64encodedvalue=="
+       }
+     ]
    }
 
             Figure 1: Voucher Representation in General JWS JSON
@@ -272,15 +274,15 @@ Internet-Draft                 JWS-voucher                    March 2022
    [SZTP] section 9 deals with voucher use in Secure Zero Touch
    Provisioning, and this document also makes no changes to security.
 
-6.  IANA Considerations
 
 
 
-
-Richardson & Werner     Expires 5 September 2022                [Page 5]
+Richardson & Werner     Expires 8 September 2022                [Page 5]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
+
+6.  IANA Considerations
 
 6.1.  Media-Type Registry
 
@@ -328,15 +330,15 @@ Internet-Draft                 JWS-voucher                    March 2022
    *  Include Voucher representation in "General JWS JSON Serialization"
       syntax
 
-   *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
 
 
 
-
-Richardson & Werner     Expires 5 September 2022                [Page 6]
+Richardson & Werner     Expires 8 September 2022                [Page 6]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
+
+   *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
 
 8.  References
 
@@ -387,9 +389,7 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-
-
-Richardson & Werner     Expires 5 September 2022                [Page 7]
+Richardson & Werner     Expires 8 September 2022                [Page 7]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -397,9 +397,9 @@ Internet-Draft                 JWS-voucher                    March 2022
    [I-D.ietf-anima-brski-prm]
               Fries, S., Werner, T., Lear, E., and M. C. Richardson,
               "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
-              Progress, Internet-Draft, draft-ietf-anima-brski-prm-01,
-              11 February 2022, <https://www.ietf.org/archive/id/draft-
-              ietf-anima-brski-prm-01.txt>.
+              Progress, Internet-Draft, draft-ietf-anima-brski-prm-02, 4
+              March 2022, <https://www.ietf.org/archive/id/draft-ietf-
+              anima-brski-prm-02.txt>.
 
    [I-D.ietf-anima-constrained-voucher]
               Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
@@ -445,7 +445,7 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 8]
+Richardson & Werner     Expires 8 September 2022                [Page 8]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -501,7 +501,7 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
 
 
-Richardson & Werner     Expires 5 September 2022                [Page 9]
+Richardson & Werner     Expires 8 September 2022                [Page 9]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -557,7 +557,7 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
 
 
 
-Richardson & Werner     Expires 5 September 2022               [Page 10]
+Richardson & Werner     Expires 8 September 2022               [Page 10]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -613,7 +613,7 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-Richardson & Werner     Expires 5 September 2022               [Page 11]
+Richardson & Werner     Expires 8 September 2022               [Page 11]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -669,7 +669,7 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-Richardson & Werner     Expires 5 September 2022               [Page 12]
+Richardson & Werner     Expires 8 September 2022               [Page 12]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -725,7 +725,7 @@ Authors' Addresses
 
 
 
-Richardson & Werner     Expires 5 September 2022               [Page 13]
+Richardson & Werner     Expires 8 September 2022               [Page 13]
 
 Internet-Draft                 JWS-voucher                    March 2022
 
@@ -781,4 +781,4 @@ Internet-Draft                 JWS-voucher                    March 2022
 
 
 
-Richardson & Werner     Expires 5 September 2022               [Page 14]
+Richardson & Werner     Expires 8 September 2022               [Page 14]
