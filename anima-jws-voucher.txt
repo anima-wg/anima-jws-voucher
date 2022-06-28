@@ -6,7 +6,7 @@ anima Working Group                                        M. Richardson
 Internet-Draft                                  Sandelman Software Works
 Updates: RFC8366 (if approved)                                 T. Werner
 Intended status: Standards Track                              Siemens AG
-Expires: 25 December 2022                                   23 June 2022
+Expires: 30 December 2022                                   28 June 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 December 2022.
+   This Internet-Draft will expire on 30 December 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 1]
+Richardson & Werner     Expires 30 December 2022                [Page 1]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 2]
+Richardson & Werner     Expires 30 December 2022                [Page 2]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -142,39 +142,41 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 3.  Voucher Artifact with JSON Web Signature
 
-   The following serializations are defined by [RFC7515] section 7.2
+   The voucher [RFC8366] JSON structure consists of a nested map, the
+   outer part of which is:
 
-   1.  "JWS Compact Serialization"
+   { "ietf-voucher:voucher" : { some inner items }}
 
-   2.  "JWS JSON Serialization" in
+   this is considered the JSON payload as described in [RFC7515] section
+   3.
 
-       - "General JWS JSON Serialization Syntax"
+   A JWS JSON Serialization Overview is given by The following
+   serializations are defined:[RFC7515] in section 3.2 and section 7
+   provides more details.
 
-       - "Flattened JWS JSON Serialization Syntax"
+   1.  "JWS Compact Serialization", [RFC7515] section 7.1
+
+   2.  "JWS JSON Serialization" in, [RFC7515] section 7.2
+
+       - "General JWS JSON Serialization Syntax", [RFC7515] section
+       7.2.1
+
+
+
+
+
+Richardson & Werner     Expires 30 December 2022                [Page 3]
+
+Internet-Draft                 JWS-voucher                     June 2022
+
+
+       - "Flattened JWS JSON Serialization Syntax", [RFC7515] section
+       7.2.2
 
    This document makes use of the "General JWS JSON Serialization
    Syntax" to support multi signatures.
 
    [RFC Editor: please delete] /* TODO: ... */
-
-   The [RFC8366] JSON structure consists of a nested map, the outer part
-   of which is:
-
-   { "ietf-voucher:voucher" : { some inner items }}
-
-
-
-
-Richardson & Werner     Expires 25 December 2022                [Page 3]
-
-Internet-Draft                 JWS-voucher                     June 2022
-
-
-   this is considered the JSON payload as described in [RFC7515] section
-   3.
-
-   A JWS JSON Serialization Overview is given by [RFC7515] in section
-   3.2 and section 7.2.1 provides more details.  It works out to:
 
    [RFC Editor: please delete] /*
    TODO: ...
@@ -219,9 +221,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-
-
-Richardson & Werner     Expires 25 December 2022                [Page 4]
+Richardson & Werner     Expires 30 December 2022                [Page 4]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 5]
+Richardson & Werner     Expires 30 December 2022                [Page 5]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 6]
+Richardson & Werner     Expires 30 December 2022                [Page 6]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -389,7 +389,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 7]
+Richardson & Werner     Expires 30 December 2022                [Page 7]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -445,7 +445,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 8]
+Richardson & Werner     Expires 30 December 2022                [Page 8]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -501,7 +501,7 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
 
 
-Richardson & Werner     Expires 25 December 2022                [Page 9]
+Richardson & Werner     Expires 30 December 2022                [Page 9]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -557,7 +557,7 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
 
 
 
-Richardson & Werner     Expires 25 December 2022               [Page 10]
+Richardson & Werner     Expires 30 December 2022               [Page 10]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -613,7 +613,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022               [Page 11]
+Richardson & Werner     Expires 30 December 2022               [Page 11]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -669,7 +669,7 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-Richardson & Werner     Expires 25 December 2022               [Page 12]
+Richardson & Werner     Expires 30 December 2022               [Page 12]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -725,7 +725,7 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 25 December 2022               [Page 13]
+Richardson & Werner     Expires 30 December 2022               [Page 13]
 
 Internet-Draft                 JWS-voucher                     June 2022
 
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-Richardson & Werner     Expires 25 December 2022               [Page 14]
+Richardson & Werner     Expires 30 December 2022               [Page 14]

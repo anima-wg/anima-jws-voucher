@@ -94,12 +94,21 @@ as per {{?I-D.kuehlewind-update-tag}}.
 
 # Voucher Artifact with JSON Web Signature
 
-The following serializations are defined by {{RFC7515}} section 7.2 
+The voucher {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
 
-1. "JWS Compact Serialization"  
-2. "JWS JSON Serialization" in  
-- "General JWS JSON Serialization Syntax"  
-- "Flattened JWS JSON Serialization Syntax"  
+~~~~
+{ "ietf-voucher:voucher" : { some inner items }}
+~~~~
+
+this is considered the JSON payload as described in {{RFC7515}} section 3.
+
+A JWS JSON Serialization Overview is given by {{RFC7515}} in section 3.2 and section 7 provides more details.  
+The following serializations are defined:  
+
+1. "JWS Compact Serialization", {{RFC7515}} section 7.1  
+2. "JWS JSON Serialization" in, {{RFC7515}} section 7.2  
+- "General JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.1  
+- "Flattened JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.2  
 
 This document makes use of the "General JWS JSON Serialization Syntax" to support multi signatures.
 
@@ -109,16 +118,7 @@ TODO: ...
 */
 
 
-The {{RFC8366}} JSON structure consists of a nested map, the outer part of which is:
 
-~~~~
-{ "ietf-voucher:voucher" : { some inner items }}
-~~~~
-
-this is considered the JSON payload as described in {{RFC7515}} section 3.
-
-A JWS JSON Serialization Overview is given by {{RFC7515}} in section 3.2 and section 7.2.1 provides more details.
-It works out to:
 
 ~~~~
 [RFC Editor: please delete] /*
