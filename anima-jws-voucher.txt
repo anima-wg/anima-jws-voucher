@@ -6,7 +6,7 @@ anima Working Group                                        M. Richardson
 Internet-Draft                                  Sandelman Software Works
 Updates: RFC8366 (if approved)                                 T. Werner
 Intended status: Standards Track                              Siemens AG
-Expires: 30 December 2022                                   28 June 2022
+Expires: 9 January 2023                                      8 July 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 December 2022.
+   This Internet-Draft will expire on 9 January 2023.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Richardson & Werner     Expires 30 December 2022                [Page 1]
+Richardson & Werner      Expires 9 January 2023                 [Page 1]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
    and restrictions with respect to this document.  Code Components
@@ -87,8 +87,8 @@ Table of Contents
      A.2.  Example Parboiled Registrar Voucher Request - RVR (from
            Registrar to MASA)  . . . . . . . . . . . . . . . . . . .  10
      A.3.  Example Voucher Response (from MASA to Pledge, via
-           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  12
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Richardson & Werner     Expires 30 December 2022                [Page 2]
+Richardson & Werner      Expires 9 January 2023                 [Page 2]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
    This document provides an equivalent mapping of JSON format with the
@@ -165,9 +165,9 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 30 December 2022                [Page 3]
+Richardson & Werner      Expires 9 January 2023                 [Page 3]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
        - "Flattened JWS JSON Serialization Syntax", [RFC7515] section
@@ -221,9 +221,9 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 30 December 2022                [Page 4]
+Richardson & Werner      Expires 9 January 2023                 [Page 4]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
    {
@@ -242,7 +242,8 @@ Internet-Draft                 JWS-voucher                     June 2022
            "x5c": [
              "base64encodedvalue=="
            ],
-           "alg": "ES256"
+           "alg": "ES256",
+           "typ": "voucher-jws+json"
          },
          "signature": "base64encodedvalue=="
        }
@@ -276,10 +277,9 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-
-Richardson & Werner     Expires 30 December 2022                [Page 5]
+Richardson & Werner      Expires 9 January 2023                 [Page 5]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
 6.  IANA Considerations
@@ -333,12 +333,15 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 
 
-Richardson & Werner     Expires 30 December 2022                [Page 6]
+Richardson & Werner      Expires 9 January 2023                 [Page 6]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
    *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
+
+   *  Added optional "typ": "voucher-jws+json" header parameter to JWS
+      objects
 
 8.  References
 
@@ -379,20 +382,24 @@ Internet-Draft                 JWS-voucher                     June 2022
 
 8.2.  Informative References
 
+
+
+
+
+
+
+
+Richardson & Werner      Expires 9 January 2023                 [Page 7]
+
+Internet-Draft                 JWS-voucher                     July 2022
+
+
    [I-D.ietf-anima-brski-prm]
               Fries, S., Werner, T., Lear, E., and M. C. Richardson,
               "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
-              Progress, Internet-Draft, draft-ietf-anima-brski-prm-03,
-              29 April 2022, <https://www.ietf.org/archive/id/draft-
-              ietf-anima-brski-prm-03.txt>.
-
-
-
-
-Richardson & Werner     Expires 30 December 2022                [Page 7]
-
-Internet-Draft                 JWS-voucher                     June 2022
-
+              Progress, Internet-Draft, draft-ietf-anima-brski-prm-04, 8
+              July 2022, <https://www.ietf.org/archive/id/draft-ietf-
+              anima-brski-prm-04.txt>.
 
    [I-D.ietf-anima-constrained-voucher]
               Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
@@ -434,21 +441,19 @@ Internet-Draft                 JWS-voucher                     June 2022
               DOI 10.17487/RFC8812, August 2020,
               <https://www.rfc-editor.org/info/rfc8812>.
 
+
+
+
+
+Richardson & Werner      Expires 9 January 2023                 [Page 8]
+
+Internet-Draft                 JWS-voucher                     July 2022
+
+
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", STD 94, RFC 8949,
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
-
-
-
-
-
-
-
-Richardson & Werner     Expires 30 December 2022                [Page 8]
-
-Internet-Draft                 JWS-voucher                     June 2022
-
 
 Appendix A.  Examples
 
@@ -462,49 +467,63 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
    {
       "payload":
-        "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7ImNyZWF0ZWQ
-        tb24iOiIyMDE5LTAyLTE4VDA3OjM5OjAzLjAwMFoiLCJub25jZSI6IjU
-        3NDI2OTg0MjI2ODA0NzIifX0",
-      "signatures":[
+        "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC1
+        udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI2R3RuK1pRS04ySHF
+        ERlZrQkV4WkxRPT0iLCJjcmVhdGVkLW9uIjoiMjAyMi0wNy0wOFQwODo
+        0MDo0Mi44MjBaIiwicHJveGltaXR5LXJlZ2lzdHJhci1jZXJ0IjoiTUl
+        JQjRqQ0NBWWlnQXdJQkFnSUdBWFk3MmJiWk1Bb0dDQ3FHU000OUJBTUN
+        NRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkF
+        jTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweU1ERXl
+        NRGN3TmpFNE1USmFGdzB6TURFeU1EY3dOakU0TVRKYU1ENHhFekFSQmd
+        OVkJBb01DazE1UW5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXh
+        HREFXQmdOVkJBTU1EMFJ2YldGcGJsSmxaMmx6ZEhKaGNqQlpNQk1HQnl
+        xR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJCazE2Sy9pNzlvUmtLNVl
+        iZVBnOFVTUjgvdXMxZFBVaVpITXRva1NkcUtXNWZuV3NCZCtxUkw3V1J
+        mZmVXa3lnZWJvSmZJbGx1cmNpMjV3bmhpT1ZDR2plekI1TUIwR0ExVWR
+        KUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREhEQU9CZ05WSFE
+        4QkFmOEVCQU1DQjRBd1NBWURWUjBSQkVFd1A0SWRjbVZuYVhOMGNtRnl
+        MWFJsYzNRdWMybGxiV1Z1Y3kxaWRDNXVaWFNDSG5KbFoybHpkSEpoY2k
+        xMFpYTjBOaTV6YVdWdFpXNXpMV0owTG01bGREQUtCZ2dxaGtqT1BRUUR
+        BZ05JQURCRkFpQnhsZEJoWnEwRXY1SkwyUHJXQ3R5UzZoRFlXMXlDTy9
+        SYXVicEM3TWFJRGdJaEFMU0piZ0xuZ2hiYkFnMGRjV0ZVVm8vZ0dOMC9
+        qd3pKWjBTbDJoNHhJWGsxIn19",
+      "signatures": [
          {
             "protected":
-              "eyJhbGciOiJFUzI1NiIsIng1YyI6WyJNSUlCMmpDQ0FZQ2dBd0lCQWd
-              JR0FXZWdkY1NMTUFvR0NDcUdTTTQ5QkFNQ01EMHhDekFKQmdOVkJBWVR
-              Ba0ZSTVJVd0V3WURWUVFLREF4S2FXNW5TbWx1WjBOdmNuQXhGekFWQmd
-              OVkJBTU1Ea3BwYm1kS2FXNW5WR1Z6ZEVOQk1DQVhEVEU0TVRJeE1qQXp
-              NamcxTVZvWUR6azVPVGt4TWpNeE1qTTFPVFU1V2pCU01Rc3dDUVlEVlF
-              RR0V3SkJVVEVWTUJNR0ExVUVDZ3dNU21sdVowcHBibWREYjNKd01STXd
-              FUVlEVlFRRkV3b3dNVEl6TkRVMk56ZzVNUmN3RlFZRFZRUUREQTVLYVc
-              1blNtbHVaMFJsZG1salpUQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDl
-              Bd0VIQTBJQUJNVkdHOFo1cGpmNWpYbnlyVXJYeVoxa1BncUJlM05YdTF
-              kVEFEZStyL3Y2SnpJSGwzNTVJZ2NIQzNheHBpYnFKTS9iV1JhRXlqcWN
-              DSmo0akprb3dDdWpWVEJUTUN3R0NTc0dBUVFCZ3U1U0FnUWZEQjF0WVh
-              OaExYUmxjM1F1YzJsbGJXVnVjeTFpZEM1dVpYUTZPVFEwTXpBVEJnTlZ
-              IU1VFRERBS0JnZ3JCZ0VGQlFjREFqQU9CZ05WSFE4QkFmOEVCQU1DQjR
-              Bd0NnWUlLb1pJemowRUF3SURTQUF3UlFJZ1d0UHpJSVhZMml4UlhKdEV
-              4S0VoaFpkYTRYK0VwbFpvbUVJMnpBMGRzam9DSVFDM0pwUW1SWE1Hbi9
-              wNEJ1OWl6aWk5MmVjbFR4NC9PNHJsbTdNeUxxa2hkQT09Il19",
+              "eyJ4NWMiOlsiTUlJQitUQ0NBYUNnQXdJQkFnSUdBWG5WanNVNU1Bb0d
+              DQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlF
+              RS0RBeEthVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEt
+              hVzVuVkdWemRFTkJNQ0FYRFRJeE1EWXdOREExTkRZeE5Gb1lEems1T1R
+              reE1qTXhNak0xT1RVNVdqQlNNUXN3Q1FZRFZRUUdFd0pCVVRFVk1CTUd
+              BMVVFQ2d3TVNtbHVaMHBwYm1kRGIzSndNUk13RVFZRFZRUUZFd293TVR
+              Jek5EVTJOemc1TVJjd0ZRWURWUVFEREE1S2FXNW5TbWx1WjBSbGRtbGp
+              aVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCQzc5bGl
+
+
+
+Richardson & Werner      Expires 9 January 2023                 [Page 9]
+
+Internet-Draft                 JWS-voucher                     July 2022
+
+
+              hUmNCalpjRUVYdzdyVWVhdnRHSkF1SDRwazRJNDJ2YUJNc1UxMWlMREN
+              DTGtWaHRVVjIxbXZhS0N2TXgyWStTTWdROGZmd0wyM3ozVElWQldqZFR
+              Cek1Dc0dDQ3NHQVFVRkJ3RWdCQjhXSFcxaGMyRXRkR1Z6ZEM1emFXVnR
+              aVzV6TFdKMExtNWxkRG81TkRRek1COEdBMVVkSXdRWU1CYUFGRlFMak5
+              6UFwvU1wva291alF3amc1RTVmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0N
+              zR0FRVUZCd01DTUE0R0ExVWREd0VCXC93UUVBd0lIZ0RBS0JnZ3Foa2p
+              PUFFRREFnTkhBREJFQWlCdTN3UkJMc0pNUDVzTTA3MEgrVUZyeU5VNmd
+              LekxPUmNGeVJST2xxcUhpZ0lnWENtSkxUekVsdkQycG9LNmR4NmwxXC9
+              1eW1UbmJRRERmSmxhdHVYMlJvT0U9Il0sInR5cCI6InZvdWNoZXItand
+              zK2pzb24iLCJhbGciOiJFUzI1NiJ9",
             "signature":
-              "xURZmcWSFaBD2cNkr37azT9osWfzTZ_veCsVho3fwdD6NR4ghL61VJm
-              Y_ra0a42SvoW2Tu4XlldzzD8VDtCCDg"
+              "abVg4TDGzSTjVHkQlNeIW3ABu5ZXdMl1cEqwcIAlHFW4BrlGbO-DRTK
+              fyCOGxSW49-ktJcrVlYgKqC4xmZoy0Q"
          }
       ]
    }
 
                Figure 2: Example Pledge Voucher Request - PVR
-
-
-
-
-
-
-
-
-
-Richardson & Werner     Expires 30 December 2022                [Page 9]
-
-Internet-Draft                 JWS-voucher                     June 2022
-
 
 A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
       to MASA)
@@ -522,56 +541,98 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
    {
       "payload":
         "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC1
-        udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI1NzQyNjk4NDIyNjg
-        wNDcyIiwicHJpb3Itc2lnbmVkLXZvdWNoZXItcmVxdWVzdCI6ImV5Snd
-        ZWGxzYjJGa0lqb2laWGxLY0ZwWVVtMU1XRnAyWkZkT2IxcFlTWFJqYlZ
-        aNFpGZFdlbVJFY0RKaU0xWnFZVWRXZVVscWNEZEpiVTU1V2xkR01GcFh
-        VWFJpTWpScFQybEplVTFFUlRWTVZFRjVURlJGTkZaRVFUTlBhazAxVDJ
-        wQmVreHFRWGROUm05cFRFTktkV0l5TldwYVUwazJTV3BWTTA1RVNUSlB
-        WR2N3VFdwSk1rOUVRVEJPZWtscFpsZ3dJaXdpYzJsbmJtRjBkWEpsY3l
-        JNlczc2ljSEp2ZEdWamRHVmtJam9pWlhsS2FHSkhZMmxQYVVwR1ZYcEp
-        NVTVwU1hOSmJtY3hXWGxKTmxkNVNrNVRWV3hEVFcxd1JGRXdSbHBSTW1
-        SQ1pEQnNRMUZYWkVwU01FWllXbGRrYTFreFRrMVVWVVoyVWpCT1JHTlZ
-        aRlJVVkZFMVVXdEdUbEV3TVVWTlNHaEVaV3RHUzFGdFpFOVdhMHBDVjF
-        aU1FtRXdXbE5VVmtwV1pEQldNMWRWVWxkVlZrWk1Va1ZHTkZNeVJsaE9
-        WelZVWWxkNE1WZHFRazlrYlU1MVVWaG9SMlZyUmxkUmJXUlBWbXRLUWx
-        SVk1VVmhNMEozV1cweGExTXlSbGhPVnpWWFVqRmFObHBGVms5UmF6RkV
-        VVlpvUlZaRlZUQlVWbEpLWlVVeGNWRlljRTVoYldONFZGWmFkbGRWVWp
-        aaGVsWlFWa2QwTkZSWGNFNWxSVEZ4VkZSR1VGWkdWVEZXTW5CRFZUQXh
-        VbU16WkVSVlZteEZWbXhHVWxJd1ZqTlRhMHBXVmtWV1YxUlZTazVTTUV
-        WNFZsVldSRm96WkU1Vk1qRnpaRlp2ZDJOSVFtbGlWMUpGV1dwT1MyUXd
-        NVk5VV0dSR1ZWWnNSVlpzUmxKU2ExWXpZak5rVGxaRmJEWlVhMUpXVFd
-        zMU5scDZWazVWYlU0elVteEdXbEpHV2xKVlZWSkZVVlJXVEZsV1l6Rml
-        iRTUwWWtoV1lVMUdTbk5hUnpGellXeHdWVkZzY0U1UmF6RklVVzVzZUZ
-        JeFRrNU9SR3hDV2pCV1NGRXdUbmhTTVU1T1RrUnNRbVF3VmtsUlZFSkt
-        VVlZLVGxaclpFaFBSbTh4WTBkd2JVNVhjRmxpYm14NVZsaEtXV1ZXYjN
-        oaE1VSnVZMVZLYkUwd05WbGtWRVpyVmtWR1JWcFRkSGxNTTFreVUyNXd
-        TbE5IZDNwT1ZGWktXakpPU1ZGNlRtaGxTRUp3V1c1R1MxUlRPV2xXTVV
-        wb1VsaHNjV05YVGtSVGJXOHdZV3R3Y21JelpFUmtWM0JYVmtWS1ZWUlZ
-        Uak5TTUU1VVl6QmtRbFZXUmtOYU0xVXhWVEJHYmxWWFdrVlJha1l3VjF
-        ab1QyRkZlRmxWYlhocVRURkdNVmw2U25OaVIwcFlWbTVXYW1WVVJuQmF
-        SVTB4WkZad1dWVlVXbEJXUmtWM1ZGaHdRbFpGU201VWJGcEpWVEZXUmx
-        KRlVrSlRNRXB1V2pOS1Exb3dWa2RSYkVacVVrVkdjVkZWT1VOYU1EVlh
-        VMFpGTkZGclJtMVBSVlpEVVZVeFJGRnFVa0prTUU1dVYxVnNUR0l4Y0V
-        wbGJXOTNVbFZHTTFOVlVsUlJWVVl6Vld4R1Nsb3haREJWU0hCS1UxWm9
+        udW1iZXIiOiIwMTIzNDU2Nzg5IiwiaWRldmlkLWlzc3VlciI6IkJCZ3d
+        Gb0FVVkF1TTNNLzlMK1NpNk5EQ09Ea1RsKy9CeGhzPSIsIm5vbmNlIjo
+        iNkd0bitaUUtOMkhxREZWa0JFeFpMUT09IiwicHJpb3Itc2lnbmVkLXZ
+        vdWNoZXItcmVxdWVzdCI6ImV5SndZWGxzYjJGa0lqb2laWGxLY0ZwWVV
+        tMU1XRnAyWkZkT2IxcFlTWFJqYlZaNFpGZFdlbVJFY0RKaU0xWnFZVWR
+        XZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU1hkTlZ
+        FbDZUa1JWTWs1Nlp6VkphWGRwWW0wNWRWa3lWV2xQYVVreVVqTlNkVXN
+        4Y0ZKVE1EUjVVMGhHUlZKc1duSlJhMVkwVjJ0NFVsQlVNR2xNUTBwcVk
+        yMVdhR1JIVm10TVZ6bDFTV3B2YVUxcVFYbE5hVEIzVG5rd2QwOUdVWGR
+        QUkc4d1RVUnZNRTFwTkRSTmFrSmhTV2wzYVdOSVNuWmxSMngwWVZoU05
+        VeFlTbXhhTW14NlpFaEthR05wTVdwYVdFb3dTV3B2YVZSVmJFcFJhbEp
+        4VVRCT1FsZFhiRzVSV0dSS1VXdEdibE5WWkVKWFJtc3pUVzFLYVZkck1
+        VSmlNR1JFVVROR1NGVXdNREJQVlVwQ1ZGVk9UbEpHVmpSU1dIQkNWV3R
 
 
 
-Richardson & Werner     Expires 30 December 2022               [Page 10]
+Richardson & Werner      Expires 9 January 2023                [Page 10]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
-        XazF0YkRSVmJHaExaRVZXTkZNd1ZtOWhSbkJyV1ZSU1dVc3dWbmRpUm5
-        CMllsVldTazF1Y0VKTlIxSjZZVzA1UkZOV1JrUk5NSEIzVlZjeFUxZEZ
-        NVWhpYVRsM1RrVktNVTlYYkRaaFYyczFUVzFXYW1KR1VqUk9RemxRVGt
-        oS2MySlVaRTVsVlhoNFlUSm9hMUZVTURsSmJERTVJaXdpYzJsbmJtRjB
-        kWEpsSWpvaWVGVlNXbTFqVjFOR1lVSkVNbU5PYTNJek4yRjZWRGx2YzF
-        kbWVsUmFYM1psUTNOV2FHOHpabmRrUkRaT1VqUm5hRXcyTVZaS2JWbGZ
-        jbUV3WVRReVUzWnZWekpVZFRSWWJHeGtlbnBFT0ZaRWRFTkRSR2NpZlY
-        xOSIsImNyZWF0ZWQtb24iOiIyMDIyLTAzLTAyVDAzOjAxOjI0LjQ2Nlo
-        ifX0",
-      "signatures":[
+        LYmxSc1drTlJWemxPVVRKemVFNVdSblZXYm5Cb1ZucFdjMWw2VGs1bFJ
+        WSlZVVlY0UTFvd05WZFJhMFpxVkZWS1IxUnVRbXRTTVZZMFVraHdRbFJ
+        yU201VWJGcERVVlV4VGxGdGVGTmlSMDE2Vld0U1VsWkZSbXhTYm1OM1p
+        WVXhSVkpZYkU1U1IwNHpWRzF3Ums1Rk1WVlRiVVpIWkhwQ05sUlZVa1p
+        sVlRGRldUTmtUMkZyVlRCVVZsSkxXVlV4UlU1SWFFWmxhMFpUVVcxa1Q
+        xWnJTa0ppTURGRVlYcEZNVlZYTlZkbGJVWllUbGQ0YWswd01UUlNSbEp
+        DVkVWS2JsUnNXa05SVjA1T1VXdGFUMk5IVWtoV1dHaElVa1ZHV0ZGdFp
+        FOVdhMHBDVkZVeFJVMUdTakpaYkdSSFkwZEtjMU50ZUdGTmJYZzJXa1Z
+        vUzJGSFRuRlJiSEJPVVdzeFNGRnViSGhTTVU1T1RrUnNRbG93VmtoUk1
+        FNTRVakZPVGs1RWJFSmtNRlpKVVZSQ1NsRlZTa05oZWtVeVUzazVjRTU
+        2YkhaVmJYUk1UbFpzYVZwV1FtNVBSbFpVVldwbmRtUllUWGhhUmtKV1l
+        WWndTVlJZVW5aaE1VNXJZMVYwV0U1WFduVldNMDVEV2tOMGVGVnJkek5
+        XTVVwdFdtMVdXR0V6Ykc1YVYwcDJVMjFhU21KSGVERmpiVTV3VFdwV00
+        ySnRhSEJVTVZwRVVqSndiR1ZyU1RGVVZVbDNVakJGZUZaWFVrdFZWa1p
+        ZVkZWS1VsSXdUa1JqTUdSQ1ZWWldSMUZ1WkU1UmEwcHVXak5LUTFvd1Z
+        rZFJiRVpxVWtWb1JWRlZPVU5hTURWWFUwWkZORkZyUm0xUFJWWkRVVlV
+        4UkZGcVVrSmtNVTVDVjFWU1YxVnFRbE5SYTFaR1pERkJNRk5YVW1waVZ
+        scDFXVlpvVDAxSFRuUlNibXhOVjBaS2MxbDZUbEprVjAxNVlrZDRhVll
+        4V2pGWk0ydDRZVmRTUkU1WVZtRlhSazVFVTBjMVMySkdiM2xpU0hCclU
+        wVndiMWt5YTNoTlJuQlpWR3BDVDJGVVZqWlpWbVJYWkVad1dFNVljRTF
+        XTUc5M1ZFY3dNV0pIVWtWUlZYUkRXakprZUdGSGRIRlVNVUpTVlZWU1F
+        sb3dOVXBSVlZKRFVtdEdjRkZ1YUhOYVJVcHZWMjVGZDFKWVdURlRhM2Q
+        1VlVoS1dGRXpValZWZWxwdlVrWnNXRTFZYkVSVWVUbFRXVmhXYVdORlR
+        UTlVWMFpLVWtka1NtRkZSazFWTUhCcFdqQjRkVm95YUdsWmEwWnVUVWR
+        TYWxZd1dsWldiVGgyV2pCa1QwMURPWEZrTTNCTFYycENWR0pFU205T1N
+        HaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYmV5SndjbTk
+        wWldOMFpXUWlPaUpsZVVvMFRsZE5hVTlzYzJsVVZXeEtVV2wwVlZFd1R
+        rSlpWVTV1VVZoa1NsRnJSbTVUVldSQ1YwYzFWMkZ1VGxaT1ZURkNZakJ
+        rUkZFelJraFZNREF3VDFWS1FsUlZUazVTUkVJMFVUTndRbE5yU201VWJ
+        GcERVVlpzVlZGWGRFZFZhekZUVmxoa1JtUXhiRVZXYkVaU1V6QlNRbVZ
+        GZEdoV2VsWjFWVEl4YzJSV2IzZFVibHBxWW10R05GSnVjRUpXYTBwdVZ
+        HeGFRMUZWTVU1U1IzUjNZMGRLZEZwRmRHaFdlbFoxVm10a1YyVnRVa1p
+        VYTBwT1VUQkdXVkpHVWtwbFJURkZWMWhrVDFKRlJYaFVhMUphWlVVMVI
+        ySXhiRVZsYlhNeFZERlNjbVZGTVhGVVdHaE9ZV3N3ZUZReFVsWk9WbVJ
+        4VVd4T1RsVllUak5STVVaYVVrWmFVbFZWWkVaa01IQkRWbFpTUmxack1
+        VTlVWV1JDVFZaV1JsRXlaRE5VVms1MFlraFdZVTFJUW5kWmJURnJVa2R
+        KZWxOdVpFNVZhekV6VWxaR1dsSkdXbEpWVlZwR1pESTVNMVJXVWtwbGF
+        6VkZWbFJLVDJWdFl6RlVWa3BxWkRCYVVsZFZVbGRWVmtaRlVrVkZNVk1
+        5UmxoT1Z6VlVZbGQ0TVZkcVFsTmlSMUowWWtkd1lWWkZTbUZVVlVwT1V
+        qQktOV05WWkZSVVZGRTFVVmRrUmxJd1RrUmpWV1JVVkZSUk5WRllaRVp
+        UUlVWM1UxVkdRMUY2WXpWaVIyeG9WVzFPUTJGc2NHcFNWVlpaWkhwa2V
+        WWlhWbWhrYmxKSVUydEdNVk5FVW5kaGVsSktUa1JLTWxsVlNrNWpNVlY
+        0VFZkc1RWSkZUa1JVUjNSWFlVaFNWbFpxU1hoaVdGcG9VekJPTWxSWVo
+        zbFhVM1JVVkZka1VrOUhXbTFrTUhkNVRUTnZlbFpGYkZkUmJHUnhXa1p
+        TUTJWck1VUmpNR1JFVVROT1NGRldSbFpTYTBvelVsZGtRMUZxYUZoVFJ
+        tTjRZVWROZVZKWVVtdFNNVm8yV2tWTk1XVnRSbGhXYmxKaFZucFdObFJ
+        HWkV0TlJYaDBUbGQ0YTFKSE9ERlVhMUpTWldzeFEwOUZaRUpOVmxaclU
+        xaGtVbGRWTVVOWlZVWkhVbXhHVFdGck5UWlZSbmQyVlRGM2RtRXlPVEZ
+
+
+
+Richardson & Werner      Expires 9 January 2023                [Page 11]
+
+Internet-Draft                 JWS-voucher                     July 2022
+
+
+        oYkVZellXMWpNVkpVVm0xa2JtUnFWMWRLVGxGck1VaFJWRVpXV2tWd1V
+        sVlZNVTVSVnpsSVVUQk9lbEl3UmxKV1ZWcERaREF4UkZSVlJUQlNNRVY
+        0VmxkU1JXUXdWa05ZUXprelZWVldRbVF3YkVsYU1GSkNVekJLYmxvelJ
+        tOWhNbkJRVlVaR1VsSkZSbTVVYTJoQ1VrVktSbEZYYkVOa1ZFNHpWV3R
+        LVFdNd2NFNVZSRlo2VkZSQk0wMUZaM0pXVlZwNVpWVTFWazV0WkV4bGE
+        zaFFWVzFPUjJWV1NsTlVNbmg0WTFWb2NGb3diRzVYUlU1MFUydDRWV1Z
+        yVm5Oa2ExRjVZMGM1VEU1dFVqUk9iWGQ0V0VNNU1XVlhNVlZpYlVwU1V
+        rVlNiVk50ZUdoa1NGWlpUV3hLZGxRd1ZUbEpiREJ6U1c1U05XTkRTVFp
+        KYmxwMlpGZE9iMXBZU1hSaGJtUjZTekp3ZW1JeU5HbE1RMHBvWWtkamF
+        VOXBTa1pWZWtreFRtbEtPU0lzSW5OcFoyNWhkSFZ5WlNJNkltRmlWbWM
+        wVkVSSGVsTlVhbFpJYTFGc1RtVkpWek5CUW5VMVdsaGtUV3d4WTBWeGQ
+        yTkpRV3hJUmxjMFFuSnNSMkpQTFVSU1ZFdG1lVU5QUjNoVFZ6UTVMV3Q
+        wU21OeVZteFpaMHR4UXpSNGJWcHZlVEJSSW4xZGZRPT0iLCJjcmVhdGV
+        kLW9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44NDhaIn19",
+      "signatures": [
          {
             "protected":
               "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk1Bb0d
@@ -601,22 +662,24 @@ Internet-Draft                 JWS-voucher                     June 2022
               NelFkc0RcL2pcLytnWFwvN2NCSnVjSFwvWG1qQUtCZ2dxaGtqT1BRUUR
               BZ05KQURCR0FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCt
               iXC9MQ1wvZlZZRGpRNm9DSVFERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDg
-              rT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sImFsZyI6IkVTMjU2In0",
+              rT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sInR5cCI6InZvdWNoZXItand
+              zK2pzb24iLCJhbGciOiJFUzI1NiJ9",
             "signature":
-              "zvtnaEDpOqL49XnYVRbLxVAaZCMRtDiaLqMeFSH3UsjHdz4FT0lFywV
-              7-5inMpafXTnqqxnD2Gpr3ClUXUyAJg"
+              "0fzuqVdyhemWsu_HQeF-CmQwJeLp9IStNf-bWZwz6SojrEOR4aDq6VS
+
+
+
+Richardson & Werner      Expires 9 January 2023                [Page 12]
+
+Internet-Draft                 JWS-voucher                     July 2022
+
+
+              tyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
          }
       ]
    }
 
         Figure 3: Example Parboiled Registrar Voucher Request - RVR
-
-
-
-Richardson & Werner     Expires 30 December 2022               [Page 11]
-
-Internet-Draft                 JWS-voucher                     June 2022
-
 
 A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
@@ -662,38 +725,32 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-
-
-
-
-
-
-
-Richardson & Werner     Expires 30 December 2022               [Page 12]
+Richardson & Werner      Expires 9 January 2023                [Page 13]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
    {
        "payload":
          "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2
          dnZWQiLCJzZXJpYWwtbnVtYmVyIjoiMDEyMzQ1Njc4OSIsIm5vbmNlI
-         joiNTc0MjY5ODQyMjY4MDQ3MiIsImNyZWF0ZWQtb24iOiIyMDIyLTAz
-         LTAyVDAzOjAxOjI0LjYxOFoiLCJwaW5uZWQtZG9tYWluLWNlcnQiOiJ
-         NSUlCcERDQ0FVbWdBd0lCQWdJR0FXMGVMdUgrTUFvR0NDcUdTTTQ5Qk
-         FNQ01EVXhFekFSQmdOVkJBb01DazE1UW5WemFXNWxjM014RFRBTEJnT
-         lZCQWNNQkZOcGRHVXhEekFOQmdOVkJBTU1CbFJsYzNSRFFUQWVGdzB4
-         T1RBNU1URXdNak0zTXpKYUZ3MHlPVEE1TVRFd01qTTNNekphTURVeEV
-         6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bGMzTXhEVEFMQmdOVkJBY01CRk
-         5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRCWk1CTUdCeXFHU000O
-         UFnRUdDQ3FHU000OUF3RUhBMElBQk9rdmtUSHU4UWxUM0ZISjFVYUk3
-         K1dzSE9iMFVTM1NBTHRHNXd1S1FEamlleDA2L1NjWTVQSmlidmdIVEI
-         rRi9RVGpnZWxIR3kxWUtwd2NOTWNzU3lhalJUQkRNQklHQTFVZEV3RU
-         Ivd1FJTUFZQkFmOENBUUV3RGdZRFZSMFBBUUgvQkFRREFnSUVNQjBHQ
-         TFVZERnUVdCQlRvWklNelFkc0Qvai8rZ1gvN2NCSnVjSC9YbWpBS0Jn
-         Z3Foa2pPUFFRREFnTkpBREJHQWlFQXR4UTMrSUxHQlBJdFNoNGI5V1h
-         oWE51aHFTUDZIK2IvTEMvZlZZRGpRNm9DSVFERzJ1UkNIbFZxM3loQj
-         U4VFhNVWJ6SDgrT2xoV1V2T2xSRDNWRXFEZGNRdz09In19",
+         joiZGRoSGQ4MlFpUGtzMDBTck1USTlEUT09IiwiY3JlYXRlZC1vbiI6
+         IjIwMjItMDctMDdUMTc6NDc6MDEuODkwWiIsInBpbm5lZC1kb21haW4
+         tY2VydCI6Ik1JSUJwRENDQVVtZ0F3SUJBZ0lHQVcwZUx1SCtNQW9HQ0
+         NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bGMzT
+         XhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JE
+         UVRBZUZ3MHhPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM01
+         6SmFNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ0
+         5WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEJaTUJNR
+         0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdThRbFQz
+         RkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDYvU2NZNVB
+         KaWJ2Z0hUQitGL1FUamdlbEhHeTFZS3B3Y05NY3NTeWFqUlRCRE1CSU
+         dBMVVkRXdFQi93UUlNQVlCQWY4Q0FRRXdEZ1lEVlIwUEFRSC9CQVFEQ
+         WdJRU1CMEdBMVVkRGdRV0JCVG9aSU16UWRzRC9qLytnWC83Y0JKdWNI
+         L1htakFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBdHhRMytJTEdCUEl
+         0U2g0YjlXWGhYTnVocVNQNkgrYi9MQy9mVllEalE2b0NJUURHMnVSQ0
+         hsVnEzeWhCNThUWE1VYnpIOCtPbGhXVXZPbFJEM1ZFcURkY1F3PT0if
+         X0",
        "signatures": [
            {
                "protected":
@@ -711,23 +768,22 @@ Internet-Draft                 JWS-voucher                     June 2022
                  dDZ1lJS29aSXpqMEVBd0lEU1FBd1JnSWhBSTRQWWJ4dHNzSFAyVkh
                  4XC90elVvUVwvU3N5ZEwzMERRSU5FdGNOOW1DVFhQQWlFQXZJYjNv
                  K0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2FFS2JzVkRpV
-                 T0iXSwiYWxnIjoiRVMyNTYifQ",
+                 T0iXSwidHlwIjoidm91Y2hlci1qd3MranNvbiIsImFsZyI6IkVTMj
+                 U2In0",
                "signature":
-                 "vyge3GENm1BNcijXT5VH7A8CJWW7wPzH61u2VCfR8E9v8H8Yr3g9
-                 irYz4q5sYj2UnOVIh-hG_ogrZR0Tct_Vzw"
-           }
-       ]
+                 "y1HLYBFlwouf42XWSKUWjeYQHnG2Q6A4bjA7hvTkB3z1dPwTUljP
+                 HtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
+         }
+      ]
    }
 
                      Figure 4: Example Voucher Response
 
 
 
-
-
-Richardson & Werner     Expires 30 December 2022               [Page 13]
+Richardson & Werner      Expires 9 January 2023                [Page 14]
 
-Internet-Draft                 JWS-voucher                     June 2022
+Internet-Draft                 JWS-voucher                     July 2022
 
 
 Authors' Addresses
@@ -781,4 +837,4 @@ Authors' Addresses
 
 
 
-Richardson & Werner     Expires 30 December 2022               [Page 14]
+Richardson & Werner      Expires 9 January 2023                [Page 15]
