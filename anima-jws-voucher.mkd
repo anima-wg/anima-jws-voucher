@@ -157,7 +157,7 @@ This is consistent with {{BRSKI}} section 5.5.2.
       "assertion": "logged",
       "serial-number": "0123456789",
       "nonce": "5742698422680472",
-      "created-on": "2022-03-02T03:01:24.618Z",
+      "created-on": "2022-07-08T03:01:24.618Z",
       "pinned-domain-cert": "base64encodedvalue=="
     }
   },
