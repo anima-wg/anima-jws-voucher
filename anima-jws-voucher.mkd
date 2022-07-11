@@ -19,16 +19,15 @@ pi:    # can use array (if all yes) or hash here
 
 author:
 
+- ins: T. Werner
+  name: Thomas Werner
+  org: Siemens AG
+  email: thomas-werner@siemens.com
 
 - ins: M. Richardson
   name: Michael Richardson
   org: Sandelman Software Works
   email: mcr+ietf@sandelman.ca
-
-- ins: T. Werner
-  name: Thomas Werner
-  org: Siemens AG
-  email: thomas-werner@siemens.com
 
 contributors:
 - ins: T. Eckert
