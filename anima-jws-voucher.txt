@@ -2,15 +2,15 @@
 
 
 
-anima Working Group                                        M. Richardson
-Internet-Draft                                  Sandelman Software Works
-Updates: RFC8366 (if approved)                                 T. Werner
-Intended status: Standards Track                              Siemens AG
-Expires: 9 January 2023                                      8 July 2022
+anima Working Group                                            T. Werner
+Internet-Draft                                                Siemens AG
+Updates: RFC8366 (if approved)                             M. Richardson
+Intended status: Standards Track                Sandelman Software Works
+Expires: 12 January 2023                                    11 July 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-03
+                    draft-ietf-anima-jws-voucher-04
 
 Abstract
 
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2023.
+   This Internet-Draft will expire on 12 January 2023.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 1]
+Werner & Richardson      Expires 12 January 2023                [Page 1]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 2]
+Werner & Richardson      Expires 12 January 2023                [Page 2]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 3]
+Werner & Richardson      Expires 12 January 2023                [Page 3]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 4]
+Werner & Richardson      Expires 12 January 2023                [Page 4]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 5]
+Werner & Richardson      Expires 12 January 2023                [Page 5]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 6]
+Werner & Richardson      Expires 12 January 2023                [Page 6]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -389,7 +389,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 7]
+Werner & Richardson      Expires 12 January 2023                [Page 7]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -445,7 +445,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 8]
+Werner & Richardson      Expires 12 January 2023                [Page 8]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -501,7 +501,7 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
 
 
-Richardson & Werner      Expires 9 January 2023                 [Page 9]
+Werner & Richardson      Expires 12 January 2023                [Page 9]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -557,7 +557,7 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 10]
+Werner & Richardson      Expires 12 January 2023               [Page 10]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -613,7 +613,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 11]
+Werner & Richardson      Expires 12 January 2023               [Page 11]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -669,7 +669,7 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 12]
+Werner & Richardson      Expires 12 January 2023               [Page 12]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -725,7 +725,7 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 13]
+Werner & Richardson      Expires 12 January 2023               [Page 13]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
@@ -781,18 +781,12 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 14]
+Werner & Richardson      Expires 12 January 2023               [Page 14]
 
 Internet-Draft                 JWS-voucher                     July 2022
 
 
 Authors' Addresses
-
-   Michael Richardson
-   Sandelman Software Works
-
-   Email: mcr+ietf@sandelman.ca
-
 
    Thomas Werner
    Siemens AG
@@ -800,6 +794,10 @@ Authors' Addresses
    Email: thomas-werner@siemens.com
 
 
+   Michael Richardson
+   Sandelman Software Works
+
+   Email: mcr+ietf@sandelman.ca
 
 
 
@@ -837,4 +835,6 @@ Authors' Addresses
 
 
 
-Richardson & Werner      Expires 9 January 2023                [Page 15]
+
+
+Werner & Richardson      Expires 12 January 2023               [Page 15]
