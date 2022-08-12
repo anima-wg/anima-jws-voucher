@@ -6,11 +6,11 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: RFC8366 (if approved)                             M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 12 January 2023                                    11 July 2022
+Expires: 13 February 2023                                 12 August 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-04
+                    draft-ietf-anima-jws-voucher-05
 
 Abstract
 
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 January 2023.
+   This Internet-Draft will expire on 13 February 2023.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 1]
+Werner & Richardson     Expires 13 February 2023                [Page 1]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    and restrictions with respect to this document.  Code Components
@@ -85,10 +85,10 @@ Table of Contents
      A.1.  Example Pledge Voucher Request - PVR (from Pledge to
            Registrar)  . . . . . . . . . . . . . . . . . . . . . . .   9
      A.2.  Example Parboiled Registrar Voucher Request - RVR (from
-           Registrar to MASA)  . . . . . . . . . . . . . . . . . . .  10
+           Registrar to MASA)  . . . . . . . . . . . . . . . . . . .  11
      A.3.  Example Voucher Response (from MASA to Pledge, via
            Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  13
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 2]
+Werner & Richardson     Expires 13 February 2023                [Page 2]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    This document provides an equivalent mapping of JSON format with the
@@ -150,28 +150,25 @@ Internet-Draft                 JWS-voucher                     July 2022
    this is considered the JSON payload as described in [RFC7515] section
    3.
 
-   A JWS JSON Serialization Overview is given by The following
-   serializations are defined:[RFC7515] in section 3.2 and section 7
-   provides more details.
+   A JWS JSON Serialization Overview is given by [RFC7515] in section
+   3.2 and section 7 provides more details.
+   The following serializations are defined:
 
    1.  "JWS Compact Serialization", [RFC7515] section 7.1
 
    2.  "JWS JSON Serialization" in, [RFC7515] section 7.2
-
        - "General JWS JSON Serialization Syntax", [RFC7515] section
        7.2.1
-
-
-
-
-
-Werner & Richardson      Expires 12 January 2023                [Page 3]
-
-Internet-Draft                 JWS-voucher                     July 2022
-
-
        - "Flattened JWS JSON Serialization Syntax", [RFC7515] section
        7.2.2
+
+
+
+
+Werner & Richardson     Expires 13 February 2023                [Page 3]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
    This document makes use of the "General JWS JSON Serialization
    Syntax" to support multi signatures.
@@ -221,9 +218,12 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 4]
+
+
+
+Werner & Richardson     Expires 13 February 2023                [Page 4]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    {
@@ -277,9 +277,9 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 5]
+Werner & Richardson     Expires 13 February 2023                [Page 5]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
 6.  IANA Considerations
@@ -333,9 +333,9 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 6]
+Werner & Richardson     Expires 13 February 2023                [Page 6]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
@@ -389,9 +389,9 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 7]
+Werner & Richardson     Expires 13 February 2023                [Page 7]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    [I-D.ietf-anima-brski-prm]
@@ -405,9 +405,9 @@ Internet-Draft                 JWS-voucher                     July 2022
               Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
               Dijk, "Constrained Bootstrapping Remote Secure Key
               Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
-              draft-ietf-anima-constrained-voucher-17, 7 April 2022,
+              draft-ietf-anima-constrained-voucher-18, 11 July 2022,
               <https://www.ietf.org/archive/id/draft-ietf-anima-
-              constrained-voucher-17.txt>.
+              constrained-voucher-18.txt>.
 
    [I-D.kuehlewind-update-tag]
               Kuehlewind, M. and S. Krishnan, "Definition of new tags
@@ -445,9 +445,9 @@ Internet-Draft                 JWS-voucher                     July 2022
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 8]
+Werner & Richardson     Expires 13 February 2023                [Page 8]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
@@ -465,65 +465,102 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
    The following is an example request sent from a Pledge to the
    Registrar, in "General JWS JSON Serialization".
 
-   {
-      "payload":
-        "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC1
-        udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI2R3RuK1pRS04ySHF
-        ERlZrQkV4WkxRPT0iLCJjcmVhdGVkLW9uIjoiMjAyMi0wNy0wOFQwODo
-        0MDo0Mi44MjBaIiwicHJveGltaXR5LXJlZ2lzdHJhci1jZXJ0IjoiTUl
-        JQjRqQ0NBWWlnQXdJQkFnSUdBWFk3MmJiWk1Bb0dDQ3FHU000OUJBTUN
-        NRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkF
-        jTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweU1ERXl
-        NRGN3TmpFNE1USmFGdzB6TURFeU1EY3dOakU0TVRKYU1ENHhFekFSQmd
-        OVkJBb01DazE1UW5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXh
-        HREFXQmdOVkJBTU1EMFJ2YldGcGJsSmxaMmx6ZEhKaGNqQlpNQk1HQnl
-        xR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJCazE2Sy9pNzlvUmtLNVl
-        iZVBnOFVTUjgvdXMxZFBVaVpITXRva1NkcUtXNWZuV3NCZCtxUkw3V1J
-        mZmVXa3lnZWJvSmZJbGx1cmNpMjV3bmhpT1ZDR2plekI1TUIwR0ExVWR
-        KUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREhEQU9CZ05WSFE
-        4QkFmOEVCQU1DQjRBd1NBWURWUjBSQkVFd1A0SWRjbVZuYVhOMGNtRnl
-        MWFJsYzNRdWMybGxiV1Z1Y3kxaWRDNXVaWFNDSG5KbFoybHpkSEpoY2k
-        xMFpYTjBOaTV6YVdWdFpXNXpMV0owTG01bGREQUtCZ2dxaGtqT1BRUUR
-        BZ05JQURCRkFpQnhsZEJoWnEwRXY1SkwyUHJXQ3R5UzZoRFlXMXlDTy9
-        SYXVicEM3TWFJRGdJaEFMU0piZ0xuZ2hiYkFnMGRjV0ZVVm8vZ0dOMC9
-        qd3pKWjBTbDJoNHhJWGsxIn19",
-      "signatures": [
-         {
-            "protected":
-              "eyJ4NWMiOlsiTUlJQitUQ0NBYUNnQXdJQkFnSUdBWG5WanNVNU1Bb0d
-              DQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlF
-              RS0RBeEthVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEt
-              hVzVuVkdWemRFTkJNQ0FYRFRJeE1EWXdOREExTkRZeE5Gb1lEems1T1R
-              reE1qTXhNak0xT1RVNVdqQlNNUXN3Q1FZRFZRUUdFd0pCVVRFVk1CTUd
-              BMVVFQ2d3TVNtbHVaMHBwYm1kRGIzSndNUk13RVFZRFZRUUZFd293TVR
-              Jek5EVTJOemc1TVJjd0ZRWURWUVFEREE1S2FXNW5TbWx1WjBSbGRtbGp
-              aVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCQzc5bGl
 
 
 
-Werner & Richardson      Expires 12 January 2023                [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Werner & Richardson     Expires 13 February 2023                [Page 9]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
-              hUmNCalpjRUVYdzdyVWVhdnRHSkF1SDRwazRJNDJ2YUJNc1UxMWlMREN
-              DTGtWaHRVVjIxbXZhS0N2TXgyWStTTWdROGZmd0wyM3ozVElWQldqZFR
-              Cek1Dc0dDQ3NHQVFVRkJ3RWdCQjhXSFcxaGMyRXRkR1Z6ZEM1emFXVnR
-              aVzV6TFdKMExtNWxkRG81TkRRek1COEdBMVVkSXdRWU1CYUFGRlFMak5
-              6UFwvU1wva291alF3amc1RTVmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0N
-              zR0FRVUZCd01DTUE0R0ExVWREd0VCXC93UUVBd0lIZ0RBS0JnZ3Foa2p
-              PUFFRREFnTkhBREJFQWlCdTN3UkJMc0pNUDVzTTA3MEgrVUZyeU5VNmd
-              LekxPUmNGeVJST2xxcUhpZ0lnWENtSkxUekVsdkQycG9LNmR4NmwxXC9
-              1eW1UbmJRRERmSmxhdHVYMlJvT0U9Il0sInR5cCI6InZvdWNoZXItand
-              zK2pzb24iLCJhbGciOiJFUzI1NiJ9",
-            "signature":
-              "abVg4TDGzSTjVHkQlNeIW3ABu5ZXdMl1cEqwcIAlHFW4BrlGbO-DRTK
-              fyCOGxSW49-ktJcrVlYgKqC4xmZoy0Q"
-         }
-      ]
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
+   {
+     "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
+   1udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI2R3RuK1pRS04ySHFERlZrQkV4Wk\
+   xRPT0iLCJjcmVhdGVkLW9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44MjBaIiwicHJveG\
+   ltaXR5LXJlZ2lzdHJhci1jZXJ0IjoiTUlJQjRqQ0NBWWlnQXdJQkFnSUdBWFk3MmJiWk\
+   1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
+   xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweU1ERXlNRG\
+   N3TmpFNE1USmFGdzB6TURFeU1EY3dOakU0TVRKYU1ENHhFekFSQmdOVkJBb01DazE1UW\
+   5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhHREFXQmdOVkJBTU1EMFJ2YldGcG\
+   JsSmxaMmx6ZEhKaGNqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJCaz\
+   E2Sy9pNzlvUmtLNVliZVBnOFVTUjgvdXMxZFBVaVpITXRva1NkcUtXNWZuV3NCZCtxUk\
+   w3V1JmZmVXa3lnZWJvSmZJbGx1cmNpMjV3bmhpT1ZDR2plekI1TUIwR0ExVWRKUVFXTU\
+   JRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREhEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd1\
+   NBWURWUjBSQkVFd1A0SWRjbVZuYVhOMGNtRnlMWFJsYzNRdWMybGxiV1Z1Y3kxaWRDNX\
+   VaWFNDSG5KbFoybHpkSEpoY2kxMFpYTjBOaTV6YVdWdFpXNXpMV0owTG01bGREQUtCZ2\
+   dxaGtqT1BRUURBZ05JQURCRkFpQnhsZEJoWnEwRXY1SkwyUHJXQ3R5UzZoRFlXMXlDTy\
+   9SYXVicEM3TWFJRGdJaEFMU0piZ0xuZ2hiYkFnMGRjV0ZVVm8vZ0dOMC9qd3pKWjBTbD\
+   JoNHhJWGsxIn19",
+     "signatures": [{
+       "protected": "eyJ4NWMiOlsiTUlJQitUQ0NBYUNnQXdJQkFnSUdBWG5WanNVNU\
+   1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
+   thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQ0\
+   FYRFRJeE1EWXdOREExTkRZeE5Gb1lEems1T1RreE1qTXhNak0xT1RVNVdqQlNNUXN3Q1\
+   FZRFZRUUdFd0pCVVRFVk1CTUdBMVVFQ2d3TVNtbHVaMHBwYm1kRGIzSndNUk13RVFZRF\
+   ZRUUZFd293TVRJek5EVTJOemc1TVJjd0ZRWURWUVFEREE1S2FXNW5TbWx1WjBSbGRtbG\
+   paVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCQzc5bGlhUmNCalpjRU\
+   VYdzdyVWVhdnRHSkF1SDRwazRJNDJ2YUJNc1UxMWlMRENDTGtWaHRVVjIxbXZhS0N2TX\
+   gyWStTTWdROGZmd0wyM3ozVElWQldqZFRCek1Dc0dDQ3NHQVFVRkJ3RWdCQjhXSFcxaG\
+   MyRXRkR1Z6ZEM1emFXVnRaVzV6TFdKMExtNWxkRG81TkRRek1COEdBMVVkSXdRWU1CYU\
+   FGRlFMak56UFwvU1wva291alF3amc1RTVmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0NzR0\
+   FRVUZCd01DTUE0R0ExVWREd0VCXC93UUVBd0lIZ0RBS0JnZ3Foa2pPUFFRREFnTkhBRE\
+   JFQWlCdTN3UkJMc0pNUDVzTTA3MEgrVUZyeU5VNmdLekxPUmNGeVJST2xxcUhpZ0lnWE\
+   NtSkxUekVsdkQycG9LNmR4NmwxXC91eW1UbmJRRERmSmxhdHVYMlJvT0U9Il0sInR5cC\
+   I6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
+       "signature": "abVg4TDGzSTjVHkQlNeIW3ABu5ZXdMl1cEqwcIAlHFW4BrlGbO\
+   -DRTKfyCOGxSW49-ktJcrVlYgKqC4xmZoy0Q"
+     }]
    }
 
                Figure 2: Example Pledge Voucher Request - PVR
+
+
+
+
+
+
+
+
+
+Werner & Richardson     Expires 13 February 2023               [Page 10]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
 A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
       to MASA)
@@ -538,145 +575,116 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
    that the previous PVR can be seen in the payload as "prior-signed-
    voucher-request".
 
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
    {
-      "payload":
-        "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC1
-        udW1iZXIiOiIwMTIzNDU2Nzg5IiwiaWRldmlkLWlzc3VlciI6IkJCZ3d
-        Gb0FVVkF1TTNNLzlMK1NpNk5EQ09Ea1RsKy9CeGhzPSIsIm5vbmNlIjo
-        iNkd0bitaUUtOMkhxREZWa0JFeFpMUT09IiwicHJpb3Itc2lnbmVkLXZ
-        vdWNoZXItcmVxdWVzdCI6ImV5SndZWGxzYjJGa0lqb2laWGxLY0ZwWVV
-        tMU1XRnAyWkZkT2IxcFlTWFJqYlZaNFpGZFdlbVJFY0RKaU0xWnFZVWR
-        XZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU1hkTlZ
-        FbDZUa1JWTWs1Nlp6VkphWGRwWW0wNWRWa3lWV2xQYVVreVVqTlNkVXN
-        4Y0ZKVE1EUjVVMGhHUlZKc1duSlJhMVkwVjJ0NFVsQlVNR2xNUTBwcVk
-        yMVdhR1JIVm10TVZ6bDFTV3B2YVUxcVFYbE5hVEIzVG5rd2QwOUdVWGR
-        QUkc4d1RVUnZNRTFwTkRSTmFrSmhTV2wzYVdOSVNuWmxSMngwWVZoU05
-        VeFlTbXhhTW14NlpFaEthR05wTVdwYVdFb3dTV3B2YVZSVmJFcFJhbEp
-        4VVRCT1FsZFhiRzVSV0dSS1VXdEdibE5WWkVKWFJtc3pUVzFLYVZkck1
-        VSmlNR1JFVVROR1NGVXdNREJQVlVwQ1ZGVk9UbEpHVmpSU1dIQkNWV3R
+     "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
+   1udW1iZXIiOiIwMTIzNDU2Nzg5IiwiaWRldmlkLWlzc3VlciI6IkJCZ3dGb0FVVkF1TT\
+   NNLzlMK1NpNk5EQ09Ea1RsKy9CeGhzPSIsIm5vbmNlIjoiNkd0bitaUUtOMkhxREZWa0\
+   JFeFpMUT09IiwicHJpb3Itc2lnbmVkLXZvdWNoZXItcmVxdWVzdCI6ImV5SndZWGxzYj\
+   JGa0lqb2laWGxLY0ZwWVVtMU1XRnAyWkZkT2IxcFlTWFJqYlZaNFpGZFdlbVJFY0RKaU\
+   0xWnFZVWRXZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU1hkTlZFbD\
+   ZUa1JWTWs1Nlp6VkphWGRwWW0wNWRWa3lWV2xQYVVreVVqTlNkVXN4Y0ZKVE1EUjVVMG\
+   hHUlZKc1duSlJhMVkwVjJ0NFVsQlVNR2xNUTBwcVkyMVdhR1JIVm10TVZ6bDFTV3B2YV\
+   UxcVFYbE5hVEIzVG5rd2QwOUdVWGRQUkc4d1RVUnZNRTFwTkRSTmFrSmhTV2wzYVdOSV\
+   NuWmxSMngwWVZoU05VeFlTbXhhTW14NlpFaEthR05wTVdwYVdFb3dTV3B2YVZSVmJFcF\
+   JhbEp4VVRCT1FsZFhiRzVSV0dSS1VXdEdibE5WWkVKWFJtc3pUVzFLYVZkck1VSmlNR1\
+   JFVVROR1NGVXdNREJQVlVwQ1ZGVk9UbEpHVmpSU1dIQkNWV3RLYmxSc1drTlJWemxPVV\
+   RKemVFNVdSblZXYm5Cb1ZucFdjMWw2VGs1bFJWSlZVVlY0UTFvd05WZFJhMFpxVkZWS1\
+   IxUnVRbXRTTVZZMFVraHdRbFJyU201VWJGcERVVlV4VGxGdGVGTmlSMDE2Vld0U1VsWk\
+   ZSbXhTYm1OM1pWVXhSVkpZYkU1U1IwNHpWRzF3Ums1Rk1WVlRiVVpIWkhwQ05sUlZVa1\
+   psVlRGRldUTmtUMkZyVlRCVVZsSkxXVlV4UlU1SWFFWmxhMFpUVVcxa1QxWnJTa0ppTU\
+   RGRVlYcEZNVlZYTlZkbGJVWllUbGQ0YWswd01UUlNSbEpDVkVWS2JsUnNXa05SVjA1T1\
+   VXdGFUMk5IVWtoV1dHaElVa1ZHV0ZGdFpFOVdhMHBDVkZVeFJVMUdTakpaYkdSSFkwZE\
+   tjMU50ZUdGTmJYZzJXa1ZvUzJGSFRuRlJiSEJPVVdzeFNGRnViSGhTTVU1T1RrUnNRbG\
+   93VmtoUk1FNTRVakZPVGs1RWJFSmtNRlpKVVZSQ1NsRlZTa05oZWtVeVUzazVjRTU2Yk\
+   haVmJYUk1UbFpzYVZwV1FtNVBSbFpVVldwbmRtUllUWGhhUmtKV1lWWndTVlJZVW5aaE\
+   1VNXJZMVYwV0U1WFduVldNMDVEV2tOMGVGVnJkek5XTVVwdFdtMVdXR0V6Ykc1YVYwcD\
+   JVMjFhU21KSGVERmpiVTV3VFdwV00ySnRhSEJVTVZwRVVqSndiR1ZyU1RGVVZVbDNVak\
+   JGZUZaWFVrdFZWa1pZVkZWS1VsSXdUa1JqTUdSQ1ZWWldSMUZ1WkU1UmEwcHVXak5LUT\
+   Fvd1ZrZFJiRVpxVWtWb1JWRlZPVU5hTURWWFUwWkZORkZyUm0xUFJWWkRVVlV4UkZGcV\
+   VrSmtNVTVDVjFWU1YxVnFRbE5SYTFaR1pERkJNRk5YVW1waVZscDFXVlpvVDAxSFRuUl\
+   NibXhOVjBaS2MxbDZUbEprVjAxNVlrZDRhVll4V2pGWk0ydDRZVmRTUkU1WVZtRlhSaz\
+   VFVTBjMVMySkdiM2xpU0hCclUwVndiMWt5YTNoTlJuQlpWR3BDVDJGVVZqWlpWbVJYWk\
+   Vad1dFNVljRTFXTUc5M1ZFY3dNV0pIVWtWUlZYUkRXakprZUdGSGRIRlVNVUpTVlZWU1\
+   Fsb3dOVXBSVlZKRFVtdEdjRkZ1YUhOYVJVcHZWMjVGZDFKWVdURlRhM2Q1VlVoS1dGRX\
+   pValZWZWxwdlVrWnNXRTFZYkVSVWVUbFRXVmhXYVdORlRUTlVWMFpLVWtka1NtRkZSaz\
+   FWTUhCcFdqQjRkVm95YUdsWmEwWnVUVWRTYWxZd1dsWldiVGgyV2pCa1QwMURPWEZrTT\
 
 
 
-Werner & Richardson      Expires 12 January 2023               [Page 10]
+Werner & Richardson     Expires 13 February 2023               [Page 11]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
-        LYmxSc1drTlJWemxPVVRKemVFNVdSblZXYm5Cb1ZucFdjMWw2VGs1bFJ
-        WSlZVVlY0UTFvd05WZFJhMFpxVkZWS1IxUnVRbXRTTVZZMFVraHdRbFJ
-        yU201VWJGcERVVlV4VGxGdGVGTmlSMDE2Vld0U1VsWkZSbXhTYm1OM1p
-        WVXhSVkpZYkU1U1IwNHpWRzF3Ums1Rk1WVlRiVVpIWkhwQ05sUlZVa1p
-        sVlRGRldUTmtUMkZyVlRCVVZsSkxXVlV4UlU1SWFFWmxhMFpUVVcxa1Q
-        xWnJTa0ppTURGRVlYcEZNVlZYTlZkbGJVWllUbGQ0YWswd01UUlNSbEp
-        DVkVWS2JsUnNXa05SVjA1T1VXdGFUMk5IVWtoV1dHaElVa1ZHV0ZGdFp
-        FOVdhMHBDVkZVeFJVMUdTakpaYkdSSFkwZEtjMU50ZUdGTmJYZzJXa1Z
-        vUzJGSFRuRlJiSEJPVVdzeFNGRnViSGhTTVU1T1RrUnNRbG93VmtoUk1
-        FNTRVakZPVGs1RWJFSmtNRlpKVVZSQ1NsRlZTa05oZWtVeVUzazVjRTU
-        2YkhaVmJYUk1UbFpzYVZwV1FtNVBSbFpVVldwbmRtUllUWGhhUmtKV1l
-        WWndTVlJZVW5aaE1VNXJZMVYwV0U1WFduVldNMDVEV2tOMGVGVnJkek5
-        XTVVwdFdtMVdXR0V6Ykc1YVYwcDJVMjFhU21KSGVERmpiVTV3VFdwV00
-        ySnRhSEJVTVZwRVVqSndiR1ZyU1RGVVZVbDNVakJGZUZaWFVrdFZWa1p
-        ZVkZWS1VsSXdUa1JqTUdSQ1ZWWldSMUZ1WkU1UmEwcHVXak5LUTFvd1Z
-        rZFJiRVpxVWtWb1JWRlZPVU5hTURWWFUwWkZORkZyUm0xUFJWWkRVVlV
-        4UkZGcVVrSmtNVTVDVjFWU1YxVnFRbE5SYTFaR1pERkJNRk5YVW1waVZ
-        scDFXVlpvVDAxSFRuUlNibXhOVjBaS2MxbDZUbEprVjAxNVlrZDRhVll
-        4V2pGWk0ydDRZVmRTUkU1WVZtRlhSazVFVTBjMVMySkdiM2xpU0hCclU
-        wVndiMWt5YTNoTlJuQlpWR3BDVDJGVVZqWlpWbVJYWkVad1dFNVljRTF
-        XTUc5M1ZFY3dNV0pIVWtWUlZYUkRXakprZUdGSGRIRlVNVUpTVlZWU1F
-        sb3dOVXBSVlZKRFVtdEdjRkZ1YUhOYVJVcHZWMjVGZDFKWVdURlRhM2Q
-        1VlVoS1dGRXpValZWZWxwdlVrWnNXRTFZYkVSVWVUbFRXVmhXYVdORlR
-        UTlVWMFpLVWtka1NtRkZSazFWTUhCcFdqQjRkVm95YUdsWmEwWnVUVWR
-        TYWxZd1dsWldiVGgyV2pCa1QwMURPWEZrTTNCTFYycENWR0pFU205T1N
-        HaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYmV5SndjbTk
-        wWldOMFpXUWlPaUpsZVVvMFRsZE5hVTlzYzJsVVZXeEtVV2wwVlZFd1R
-        rSlpWVTV1VVZoa1NsRnJSbTVUVldSQ1YwYzFWMkZ1VGxaT1ZURkNZakJ
-        rUkZFelJraFZNREF3VDFWS1FsUlZUazVTUkVJMFVUTndRbE5yU201VWJ
-        GcERVVlpzVlZGWGRFZFZhekZUVmxoa1JtUXhiRVZXYkVaU1V6QlNRbVZ
-        GZEdoV2VsWjFWVEl4YzJSV2IzZFVibHBxWW10R05GSnVjRUpXYTBwdVZ
-        HeGFRMUZWTVU1U1IzUjNZMGRLZEZwRmRHaFdlbFoxVm10a1YyVnRVa1p
-        VYTBwT1VUQkdXVkpHVWtwbFJURkZWMWhrVDFKRlJYaFVhMUphWlVVMVI
-        ySXhiRVZsYlhNeFZERlNjbVZGTVhGVVdHaE9ZV3N3ZUZReFVsWk9WbVJ
-        4VVd4T1RsVllUak5STVVaYVVrWmFVbFZWWkVaa01IQkRWbFpTUmxack1
-        VTlVWV1JDVFZaV1JsRXlaRE5VVms1MFlraFdZVTFJUW5kWmJURnJVa2R
-        KZWxOdVpFNVZhekV6VWxaR1dsSkdXbEpWVlZwR1pESTVNMVJXVWtwbGF
-        6VkZWbFJLVDJWdFl6RlVWa3BxWkRCYVVsZFZVbGRWVmtaRlVrVkZNVk1
-        5UmxoT1Z6VlVZbGQ0TVZkcVFsTmlSMUowWWtkd1lWWkZTbUZVVlVwT1V
-        qQktOV05WWkZSVVZGRTFVVmRrUmxJd1RrUmpWV1JVVkZSUk5WRllaRVp
-        UUlVWM1UxVkdRMUY2WXpWaVIyeG9WVzFPUTJGc2NHcFNWVlpaWkhwa2V
-        WWlhWbWhrYmxKSVUydEdNVk5FVW5kaGVsSktUa1JLTWxsVlNrNWpNVlY
-        0VFZkc1RWSkZUa1JVUjNSWFlVaFNWbFpxU1hoaVdGcG9VekJPTWxSWVo
-        zbFhVM1JVVkZka1VrOUhXbTFrTUhkNVRUTnZlbFpGYkZkUmJHUnhXa1p
-        TUTJWck1VUmpNR1JFVVROT1NGRldSbFpTYTBvelVsZGtRMUZxYUZoVFJ
-        tTjRZVWROZVZKWVVtdFNNVm8yV2tWTk1XVnRSbGhXYmxKaFZucFdObFJ
-        HWkV0TlJYaDBUbGQ0YTFKSE9ERlVhMUpTWldzeFEwOUZaRUpOVmxaclU
-        xaGtVbGRWTVVOWlZVWkhVbXhHVFdGck5UWlZSbmQyVlRGM2RtRXlPVEZ
+   NCTFYycENWR0pFU205T1NHaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYm\
+   V5SndjbTkwWldOMFpXUWlPaUpsZVVvMFRsZE5hVTlzYzJsVVZXeEtVV2wwVlZFd1RrSl\
+   pWVTV1VVZoa1NsRnJSbTVUVldSQ1YwYzFWMkZ1VGxaT1ZURkNZakJrUkZFelJraFZNRE\
+   F3VDFWS1FsUlZUazVTUkVJMFVUTndRbE5yU201VWJGcERVVlpzVlZGWGRFZFZhekZUVm\
+   xoa1JtUXhiRVZXYkVaU1V6QlNRbVZGZEdoV2VsWjFWVEl4YzJSV2IzZFVibHBxWW10R0\
+   5GSnVjRUpXYTBwdVZHeGFRMUZWTVU1U1IzUjNZMGRLZEZwRmRHaFdlbFoxVm10a1YyVn\
+   RVa1pVYTBwT1VUQkdXVkpHVWtwbFJURkZWMWhrVDFKRlJYaFVhMUphWlVVMVIySXhiRV\
+   ZsYlhNeFZERlNjbVZGTVhGVVdHaE9ZV3N3ZUZReFVsWk9WbVJ4VVd4T1RsVllUak5STV\
+   VaYVVrWmFVbFZWWkVaa01IQkRWbFpTUmxack1VTlVWV1JDVFZaV1JsRXlaRE5VVms1MF\
+   lraFdZVTFJUW5kWmJURnJVa2RKZWxOdVpFNVZhekV6VWxaR1dsSkdXbEpWVlZwR1pEST\
+   VNMVJXVWtwbGF6VkZWbFJLVDJWdFl6RlVWa3BxWkRCYVVsZFZVbGRWVmtaRlVrVkZNVk\
+   15UmxoT1Z6VlVZbGQ0TVZkcVFsTmlSMUowWWtkd1lWWkZTbUZVVlVwT1VqQktOV05WWk\
+   ZSVVZGRTFVVmRrUmxJd1RrUmpWV1JVVkZSUk5WRllaRVpUUlVWM1UxVkdRMUY2WXpWaV\
+   IyeG9WVzFPUTJGc2NHcFNWVlpaWkhwa2VWWlhWbWhrYmxKSVUydEdNVk5FVW5kaGVsSk\
+   tUa1JLTWxsVlNrNWpNVlY0VFZkc1RWSkZUa1JVUjNSWFlVaFNWbFpxU1hoaVdGcG9Vek\
+   JPTWxSWVozbFhVM1JVVkZka1VrOUhXbTFrTUhkNVRUTnZlbFpGYkZkUmJHUnhXa1pTUT\
+   JWck1VUmpNR1JFVVROT1NGRldSbFpTYTBvelVsZGtRMUZxYUZoVFJtTjRZVWROZVZKWV\
+   VtdFNNVm8yV2tWTk1XVnRSbGhXYmxKaFZucFdObFJHWkV0TlJYaDBUbGQ0YTFKSE9ERl\
+   VhMUpTWldzeFEwOUZaRUpOVmxaclUxaGtVbGRWTVVOWlZVWkhVbXhHVFdGck5UWlZSbm\
+   QyVlRGM2RtRXlPVEZoYkVZellXMWpNVkpVVm0xa2JtUnFWMWRLVGxGck1VaFJWRVpXV2\
+   tWd1VsVlZNVTVSVnpsSVVUQk9lbEl3UmxKV1ZWcERaREF4UkZSVlJUQlNNRVY0VmxkU1\
+   JXUXdWa05ZUXprelZWVldRbVF3YkVsYU1GSkNVekJLYmxvelJtOWhNbkJRVlVaR1VsSk\
+   ZSbTVVYTJoQ1VrVktSbEZYYkVOa1ZFNHpWV3RLVFdNd2NFNVZSRlo2VkZSQk0wMUZaM0\
+   pXVlZwNVpWVTFWazV0WkV4bGEzaFFWVzFPUjJWV1NsTlVNbmg0WTFWb2NGb3diRzVYUl\
+   U1MFUydDRWV1ZyVm5Oa2ExRjVZMGM1VEU1dFVqUk9iWGQ0V0VNNU1XVlhNVlZpYlVwU1\
+   VrVlNiVk50ZUdoa1NGWlpUV3hLZGxRd1ZUbEpiREJ6U1c1U05XTkRTVFpKYmxwMlpGZE\
+   9iMXBZU1hSaGJtUjZTekp3ZW1JeU5HbE1RMHBvWWtkamFVOXBTa1pWZWtreFRtbEtPU0\
+   lzSW5OcFoyNWhkSFZ5WlNJNkltRmlWbWMwVkVSSGVsTlVhbFpJYTFGc1RtVkpWek5CUW\
+   5VMVdsaGtUV3d4WTBWeGQyTkpRV3hJUmxjMFFuSnNSMkpQTFVSU1ZFdG1lVU5QUjNoVF\
+   Z6UTVMV3QwU21OeVZteFpaMHR4UXpSNGJWcHZlVEJSSW4xZGZRPT0iLCJjcmVhdGVkLW\
+   9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44NDhaIn19",
+     "signatures": [{
+       "protected": "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk\
+   1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
+   xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweE9UQTVNVE\
+   V3TWpNM016SmFGdzB5T1RBNU1URXdNak0zTXpKYU1GUXhFekFSQmdOVkJBb01DazE1UW\
+   5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhMakFzQmdOVkJBTU1KVkpsWjJsem\
+   RISmhjaUJXYjNWamFHVnlJRkpsY1hWbGMzUWdVMmxuYm1sdVp5QkxaWGt3V1RBVEJnY3\
+   Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVQ2eFZ2QXZxVHoxWlVpdU5XaFhwUXNrYV\
+   B5N0FISFFMd1hpSjBpRUx0NnVOUGFuQU4wUW5XTVlPXC8wQ0RFaklrQlFvYnc4WUtxan\
+   R4SkhWU0dUajlLT295Y3dKVEFUQmdOVkhTVUVEREFLQmdnckJnRUZCUWNESERBT0JnTl\
+   ZIUThCQWY4RUJBTUNCNEF3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnWXIyTGZxb2FDS0\
+   RGNFJBY01tSmkrTkNacWRTaXVWdWdJU0E3T2hLUnEzWUNJRHhuUE1NbnBYQU1UclBKdV\
+   BXeWNlRVIxMVB4SE9uKzBDcFNIaTJxZ3BXWCIsIk1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
+   cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
+   MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
+   hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
+   9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
 
 
 
-Werner & Richardson      Expires 12 January 2023               [Page 11]
+Werner & Richardson     Expires 13 February 2023               [Page 12]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
 
-        oYkVZellXMWpNVkpVVm0xa2JtUnFWMWRLVGxGck1VaFJWRVpXV2tWd1V
-        sVlZNVTVSVnpsSVVUQk9lbEl3UmxKV1ZWcERaREF4UkZSVlJUQlNNRVY
-        0VmxkU1JXUXdWa05ZUXprelZWVldRbVF3YkVsYU1GSkNVekJLYmxvelJ
-        tOWhNbkJRVlVaR1VsSkZSbTVVYTJoQ1VrVktSbEZYYkVOa1ZFNHpWV3R
-        LVFdNd2NFNVZSRlo2VkZSQk0wMUZaM0pXVlZwNVpWVTFWazV0WkV4bGE
-        zaFFWVzFPUjJWV1NsTlVNbmg0WTFWb2NGb3diRzVYUlU1MFUydDRWV1Z
-        yVm5Oa2ExRjVZMGM1VEU1dFVqUk9iWGQ0V0VNNU1XVlhNVlZpYlVwU1V
-        rVlNiVk50ZUdoa1NGWlpUV3hLZGxRd1ZUbEpiREJ6U1c1U05XTkRTVFp
-        KYmxwMlpGZE9iMXBZU1hSaGJtUjZTekp3ZW1JeU5HbE1RMHBvWWtkamF
-        VOXBTa1pWZWtreFRtbEtPU0lzSW5OcFoyNWhkSFZ5WlNJNkltRmlWbWM
-        wVkVSSGVsTlVhbFpJYTFGc1RtVkpWek5CUW5VMVdsaGtUV3d4WTBWeGQ
-        yTkpRV3hJUmxjMFFuSnNSMkpQTFVSU1ZFdG1lVU5QUjNoVFZ6UTVMV3Q
-        wU21OeVZteFpaMHR4UXpSNGJWcHZlVEJSSW4xZGZRPT0iLCJjcmVhdGV
-        kLW9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44NDhaIn19",
-      "signatures": [
-         {
-            "protected":
-              "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk1Bb0d
-              DQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzN
-              NeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkR
-              RVEFlRncweE9UQTVNVEV3TWpNM016SmFGdzB5T1RBNU1URXdNak0zTXp
-              KYU1GUXhFekFSQmdOVkJBb01DazE1UW5WemFXNWxjM014RFRBTEJnTlZ
-              CQWNNQkZOcGRHVXhMakFzQmdOVkJBTU1KVkpsWjJsemRISmhjaUJXYjN
-              WamFHVnlJRkpsY1hWbGMzUWdVMmxuYm1sdVp5QkxaWGt3V1RBVEJnY3F
-              oa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVQ2eFZ2QXZxVHoxWlVpdU5
-              XaFhwUXNrYVB5N0FISFFMd1hpSjBpRUx0NnVOUGFuQU4wUW5XTVlPXC8
-              wQ0RFaklrQlFvYnc4WUtxanR4SkhWU0dUajlLT295Y3dKVEFUQmdOVkh
-              TVUVEREFLQmdnckJnRUZCUWNESERBT0JnTlZIUThCQWY4RUJBTUNCNEF
-              3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnWXIyTGZxb2FDS0RGNFJBY01
-              tSmkrTkNacWRTaXVWdWdJU0E3T2hLUnEzWUNJRHhuUE1NbnBYQU1UclB
-              KdVBXeWNlRVIxMVB4SE9uKzBDcFNIaTJxZ3BXWCIsIk1JSUJwRENDQVV
-              tZ0F3SUJBZ0lHQVcwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJ
-              CZ05WQkFvTUNrMTVRblZ6YVc1bGMzTXhEVEFMQmdOVkJBY01CRk5wZEd
-              VeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MHhPVEE1TVRFd01qTTN
-              NekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW9NQ2s
-              xNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZ
-              CQU1NQmxSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXd
-              FSEEwSUFCT2t2a1RIdThRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc
-              1d3VLUURqaWV4MDZcL1NjWTVQSmlidmdIVEIrRlwvUVRqZ2VsSEd5MVl
-              LcHdjTk1jc1N5YWpSVEJETUJJR0ExVWRFd0VCXC93UUlNQVlCQWY4Q0F
-              RRXdEZ1lEVlIwUEFRSFwvQkFRREFnSUVNQjBHQTFVZERnUVdCQlRvWkl
-              NelFkc0RcL2pcLytnWFwvN2NCSnVjSFwvWG1qQUtCZ2dxaGtqT1BRUUR
-              BZ05KQURCR0FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCt
-              iXC9MQ1wvZlZZRGpRNm9DSVFERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDg
-              rT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sInR5cCI6InZvdWNoZXItand
-              zK2pzb24iLCJhbGciOiJFUzI1NiJ9",
-            "signature":
-              "0fzuqVdyhemWsu_HQeF-CmQwJeLp9IStNf-bWZwz6SojrEOR4aDq6VS
-
-
-
-Werner & Richardson      Expires 12 January 2023               [Page 12]
-
-Internet-Draft                 JWS-voucher                     July 2022
-
-
-              tyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
-         }
-      ]
+   xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
+   hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDZcL1NjWTVQSmlidm\
+   dIVEIrRlwvUVRqZ2VsSEd5MVlLcHdjTk1jc1N5YWpSVEJETUJJR0ExVWRFd0VCXC93UU\
+   lNQVlCQWY4Q0FRRXdEZ1lEVlIwUEFRSFwvQkFRREFnSUVNQjBHQTFVZERnUVdCQlRvWk\
+   lNelFkc0RcL2pcLytnWFwvN2NCSnVjSFwvWG1qQUtCZ2dxaGtqT1BRUURBZ05KQURCR0\
+   FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCtiXC9MQ1wvZlZZRGpRNm9DSV\
+   FERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDgrT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sIn\
+   R5cCI6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
+       "signature": "0fzuqVdyhemWsu_HQeF-CmQwJeLp9IStNf-bWZwz6SojrEOR4a\
+   Dq6VStyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
+     }]
    }
 
         Figure 3: Example Parboiled Registrar Voucher Request - RVR
@@ -717,74 +725,49 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-
-
-
-
-
-
-
-
-Werner & Richardson      Expires 12 January 2023               [Page 13]
+Werner & Richardson     Expires 13 February 2023               [Page 13]
 
-Internet-Draft                 JWS-voucher                     July 2022
+Internet-Draft                 JWS-voucher                   August 2022
 
+
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
 
    {
-       "payload":
-         "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2
-         dnZWQiLCJzZXJpYWwtbnVtYmVyIjoiMDEyMzQ1Njc4OSIsIm5vbmNlI
-         joiZGRoSGQ4MlFpUGtzMDBTck1USTlEUT09IiwiY3JlYXRlZC1vbiI6
-         IjIwMjItMDctMDdUMTc6NDc6MDEuODkwWiIsInBpbm5lZC1kb21haW4
-         tY2VydCI6Ik1JSUJwRENDQVVtZ0F3SUJBZ0lHQVcwZUx1SCtNQW9HQ0
-         NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bGMzT
-         XhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JE
-         UVRBZUZ3MHhPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM01
-         6SmFNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ0
-         5WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEJaTUJNR
-         0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdThRbFQz
-         RkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDYvU2NZNVB
-         KaWJ2Z0hUQitGL1FUamdlbEhHeTFZS3B3Y05NY3NTeWFqUlRCRE1CSU
-         dBMVVkRXdFQi93UUlNQVlCQWY4Q0FRRXdEZ1lEVlIwUEFRSC9CQVFEQ
-         WdJRU1CMEdBMVVkRGdRV0JCVG9aSU16UWRzRC9qLytnWC83Y0JKdWNI
-         L1htakFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBdHhRMytJTEdCUEl
-         0U2g0YjlXWGhYTnVocVNQNkgrYi9MQy9mVllEalE2b0NJUURHMnVSQ0
-         hsVnEzeWhCNThUWE1VYnpIOCtPbGhXVXZPbFJEM1ZFcURkY1F3PT0if
-         X0",
-       "signatures": [
-           {
-               "protected":
-                 "eyJ4NWMiOlsiTUlJQmt6Q0NBVGlnQXdJQkFnSUdBV0ZCakNrWU1B
-                 b0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd
-                 1lEVlFRS0RBeEthVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRG
-                 twcGJtZEthVzVuVkdWemRFTkJNQjRYRFRFNE1ERXlPVEV3TlRJME1
-                 Gb1hEVEk0TURFeU9URXdOVEkwTUZvd1R6RUxNQWtHQTFVRUJoTUNR
-                 VkV4RlRBVEJnTlZCQW9NREVwcGJtZEthVzVuUTI5eWNERXBNQ2NHQ
-                 TFVRUF3d2dTbWx1WjBwcGJtZERiM0p3SUZadmRXTm9aWElnVTJsbm
-                 JtbHVaeUJMWlhrd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJ
-                 Cd05DQUFTQzZiZUxBbWVxMVZ3NmlRclJzOFIwWlcrNGIxR1d5ZG1X
-                 czJHQU1GV3diaXRmMm5JWEgzT3FIS1Z1OHMyUnZpQkdOaXZPS0dCS
-                 Eh0QmRpRkVaWnZiN294SXdFREFPQmdOVkhROEJBZjhFQkFNQ0I0QX
-                 dDZ1lJS29aSXpqMEVBd0lEU1FBd1JnSWhBSTRQWWJ4dHNzSFAyVkh
-                 4XC90elVvUVwvU3N5ZEwzMERRSU5FdGNOOW1DVFhQQWlFQXZJYjNv
-                 K0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2FFS2JzVkRpV
-                 T0iXSwidHlwIjoidm91Y2hlci1qd3MranNvbiIsImFsZyI6IkVTMj
-                 U2In0",
-               "signature":
-                 "y1HLYBFlwouf42XWSKUWjeYQHnG2Q6A4bjA7hvTkB3z1dPwTUljP
-                 HtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
-         }
-      ]
+     "payload": "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2\
+   dnZWQiLCJzZXJpYWwtbnVtYmVyIjoiMDEyMzQ1Njc4OSIsIm5vbmNlIjoiZGRoSGQ4Ml\
+   FpUGtzMDBTck1USTlEUT09IiwiY3JlYXRlZC1vbiI6IjIwMjItMDctMDdUMTc6NDc6MD\
+   EuODkwWiIsInBpbm5lZC1kb21haW4tY2VydCI6Ik1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
+   cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
+   MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
+   hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
+   9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
+   xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
+   hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDYvU2NZNVBKaWJ2Z0\
+   hUQitGL1FUamdlbEhHeTFZS3B3Y05NY3NTeWFqUlRCRE1CSUdBMVVkRXdFQi93UUlNQV\
+   lCQWY4Q0FRRXdEZ1lEVlIwUEFRSC9CQVFEQWdJRU1CMEdBMVVkRGdRV0JCVG9aSU16UW\
+   RzRC9qLytnWC83Y0JKdWNIL1htakFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBdHhRMy\
+   tJTEdCUEl0U2g0YjlXWGhYTnVocVNQNkgrYi9MQy9mVllEalE2b0NJUURHMnVSQ0hsVn\
+   EzeWhCNThUWE1VYnpIOCtPbGhXVXZPbFJEM1ZFcURkY1F3PT0ifX0",
+     "signatures": [{
+       "protected": "eyJ4NWMiOlsiTUlJQmt6Q0NBVGlnQXdJQkFnSUdBV0ZCakNrWU\
+   1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
+   thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQj\
+   RYRFRFNE1ERXlPVEV3TlRJME1Gb1hEVEk0TURFeU9URXdOVEkwTUZvd1R6RUxNQWtHQT\
+   FVRUJoTUNRVkV4RlRBVEJnTlZCQW9NREVwcGJtZEthVzVuUTI5eWNERXBNQ2NHQTFVRU\
+   F3d2dTbWx1WjBwcGJtZERiM0p3SUZadmRXTm9aWElnVTJsbmJtbHVaeUJMWlhrd1dUQV\
+   RCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFTQzZiZUxBbWVxMVZ3NmlRclJzOF\
+   IwWlcrNGIxR1d5ZG1XczJHQU1GV3diaXRmMm5JWEgzT3FIS1Z1OHMyUnZpQkdOaXZPS0\
+   dCSEh0QmRpRkVaWnZiN294SXdFREFPQmdOVkhROEJBZjhFQkFNQ0I0QXdDZ1lJS29aSX\
+   pqMEVBd0lEU1FBd1JnSWhBSTRQWWJ4dHNzSFAyVkh4XC90elVvUVwvU3N5ZEwzMERRSU\
+   5FdGNOOW1DVFhQQWlFQXZJYjNvK0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2\
+   FFS2JzVkRpVT0iXSwidHlwIjoidm91Y2hlci1qd3MranNvbiIsImFsZyI6IkVTMjU2In\
+   0",
+       "signature": "y1HLYBFlwouf42XWSKUWjeYQHnG2Q6A4bjA7hvTkB3z1dPwTUl\
+   jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
+     }]
    }
 
                      Figure 4: Example Voucher Response
-
-
-
-Werner & Richardson      Expires 12 January 2023               [Page 14]
-
-Internet-Draft                 JWS-voucher                     July 2022
-
 
 Authors' Addresses
 
@@ -792,6 +775,15 @@ Authors' Addresses
    Siemens AG
 
    Email: thomas-werner@siemens.com
+
+
+
+
+
+
+Werner & Richardson     Expires 13 February 2023               [Page 14]
+
+Internet-Draft                 JWS-voucher                   August 2022
 
 
    Michael Richardson
@@ -837,4 +829,12 @@ Authors' Addresses
 
 
 
-Werner & Richardson      Expires 12 January 2023               [Page 15]
+
+
+
+
+
+
+
+
+Werner & Richardson     Expires 13 February 2023               [Page 15]
