@@ -150,7 +150,7 @@ This is consistent with {{BRSKI}} section 5.5.2.
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
 
-TODO: short description ...
+The following figures gives a full overview of the Voucher Representation in General JWS JSON Serialization Syntax.
 
 ~~~~
 {
@@ -166,7 +166,7 @@ TODO: short description ...
 {: #VoucherGeneralJWSFigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
 
 
-TODO: short description ...
+The following figures gives the decoded voucher payload representation JSON syntax.
 
 ~~~~
     "ietf-voucher:voucher": {
@@ -179,7 +179,7 @@ TODO: short description ...
 ~~~~
 {: #VoucherGeneralJWSVoucherPayloadFigure title='Voucher payload Representation JSON Syntax' artwork-align="left"}
 
-TODO: short description ...
+The following figures gives the decoded protected header representation in JSON syntax.
 
 ~~~~
     { "x5c": [
