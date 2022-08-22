@@ -162,7 +162,7 @@ The following figures gives the decoded protected header representation in JSON 
     { 
       "alg": "ES256",
       "typ": "voucher-jws+json",
-	  "x5c": [
+      "x5c": [
         "base64encodedvalue=="
       ]
     }  

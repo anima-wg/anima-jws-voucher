@@ -241,7 +241,7 @@ Internet-Draft                 JWS-voucher                   August 2022
        {
          "alg": "ES256",
          "typ": "voucher-jws+json",
-             "x5c": [
+         "x5c": [
            "base64encodedvalue=="
          ]
        }
