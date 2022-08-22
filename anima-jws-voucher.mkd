@@ -59,7 +59,7 @@ informative:
 {{RFC8366}} defines a digital artifact called voucher as a YANG-defined JSON
 document that has been signed using a Cryptographic Message Syntax (CMS) structure.
 This memo introduces a variant of the voucher structure in which CMS is
-replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to better support use-cases in which JOSE is preferred over CMS.
+replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in {{RFC7515}} to support deployments in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, MIME types are registered and examples are provided.
 
@@ -68,15 +68,15 @@ In addition to explaining how the format is created, MIME types are registered a
 # Introduction
 
 "A Voucher Artifact for Bootstrapping Protocols" {{RFC8366}} describes a voucher artifact used in "Bootstrapping Remote Secure Key Infrastructure" {{BRSKI}} and
-"Secure Zero Touch Provisioning" {{SZTP}} to transfer ownership of a device from a manufacturer to an owner.
+"Secure Zero Touch Provisioning" {{SZTP}} to transfer ownership of a device from a manufacturer to a new owner (site domain).
 That document defines the base YANG module and the serialization to JSON {{RFC8259}} with a CMS signature according to {{RFC5652}}.
 The resulting Voucher artifact has the media type "application/voucher-cms+json".
 
-Other work, {{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
+{{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
 
-This document provides an equivalent mapping of JSON format with the signature format JSON Web Signature (JWS) {{RFC7515}}.
+This document provides a mapping of JSON format with the signature in form of JSON Web Signature (JWS) {{RFC7515}}.
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
-and may be preferred for use cases requiring signed JSON objects.
+and may be more handy for use cases requiring signed JSON objects.
 
 This document does not extend the YANG definition of {{RFC8366}}.
 
