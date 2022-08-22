@@ -109,48 +109,11 @@ The following serializations are defined:
 - "General JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.1  
 - "Flattened JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.2  
 
-This document makes use of the "General JWS JSON Serialization Syntax" to support multi signatures.
-
-
-[RFC Editor: please delete] /*
-TODO: ...
-*/
-
-
-
-
-~~~~
-[RFC Editor: please delete] /*
-TODO: ...
-*/
-~~~~
-
-There are a number of attributes.
-They are:
-
-## Unprotected Header
-
-[RFC Editor: please delete] /*
-TODO: ...
-*/
-
-## Protected Header
-
-The standard "typ" and "alg" values described in {{RFC7515}} are expected in the protected headers.
-
-It remains to be determined (TODO: ... XXX), what values, if any, should go into the "typ" header, as in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
-
-The "alg" should contain the algorithm type such as "ES256".
-
-If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
-certificate chain SHOULD be used to contain the certificate and chain.
-Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
-or end systems may need to pin a trust anchor for future operations.
-This is consistent with {{BRSKI}} section 5.5.2.
+This document makes use of the "General JWS JSON Serialization Syntax" to support multi signatures, as already supported by {{RFC8366}} for vouchers in form of "voucher-cms+json".
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
 
-The following figures gives a full overview of the Voucher Representation in General JWS JSON Serialization Syntax.
+The following figures gives an overview of the Voucher Representation in General JWS JSON Serialization Syntax.
 
 ~~~~
 {
@@ -165,6 +128,7 @@ The following figures gives a full overview of the Voucher Representation in Gen
 ~~~~
 {: #VoucherGeneralJWSFigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
 
+## JWS Payload of Voucher in General JWS JSON Serialization
 
 The following figures gives the decoded voucher payload representation JSON syntax.
 
@@ -179,21 +143,35 @@ The following figures gives the decoded voucher payload representation JSON synt
 ~~~~
 {: #VoucherGeneralJWSVoucherPayloadFigure title='Voucher payload Representation JSON Syntax' artwork-align="left"}
 
+## JWS Protected Header of Voucher in General JWS JSON Serialization
+
+The standard header parameters "typ" and "alg" as described in {{RFC7515}} are expected in the protected header.
+The "alg" header should contain the algorithm type such as "ES256".
+The "typ" header should contain the value "TODO: voucher-jws+json", if present. 
+As in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
+
+If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
+certificate chain SHOULD be used to contain the certificate and chain.
+Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
+or end systems may need to pin a trust anchor for future operations.
+This is consistent with {{BRSKI}} section 5.5.2.
+
 The following figures gives the decoded protected header representation in JSON syntax.
 
 ~~~~
-    { "x5c": [
-        "base64encodedvalue=="
-      ],
+    { 
       "alg": "ES256",
-      "typ": "voucher-jws+json"
+      "typ": "voucher-jws+json",
+	  "x5c": [
+        "base64encodedvalue=="
+      ]
     }  
 ~~~~
 {: #VoucherGeneralJWSProtectedHeaderFigure title='Protected Header Representation in JSON Syntax' artwork-align="left"}
 
 # Privacy Considerations
 
-The Voucher Request reveals the IDevID of the component (Pledge) that is on-boarding.
+The Voucher Request reveals the IDevID of the component (Pledge) that is bootstrapping.
 
 This request occurs over HTTP-over-TLS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
 This is explained in {{BRSKI}} section 10.2.

@@ -68,19 +68,21 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Voucher Artifact with JSON Web Signature  . . . . . . . . . .   3
-     3.1.  Unprotected Header  . . . . . . . . . . . . . . . . . . .   4
-     3.2.  Protected Header  . . . . . . . . . . . . . . . . . . . .   4
-     3.3.  Voucher Representation in General JWS JSON Serialization
+     3.1.  Voucher Representation in General JWS JSON Serialization
            Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.2.  JWS Payload of Voucher in General JWS JSON
+           Serialization . . . . . . . . . . . . . . . . . . . . . .   4
+     3.3.  JWS Protected Header of Voucher in General JWS JSON
+           Serialization . . . . . . . . . . . . . . . . . . . . . .   4
    4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   5
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      6.1.  Media-Type Registry . . . . . . . . . . . . . . . . . . .   6
        6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   6
    7.  Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   7
    Appendix A.  Examples . . . . . . . . . . . . . . . . . . . . . .   9
      A.1.  Example Pledge Voucher Request - PVR (from Pledge to
            Registrar)  . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -103,8 +105,6 @@ Table of Contents
 
    [I-D.ietf-anima-constrained-voucher] provides a mapping of the YANG
    to CBOR [RFC8949] with a signature format of COSE [RFC8812].
-
-
 
 
 
@@ -171,60 +171,13 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
    This document makes use of the "General JWS JSON Serialization
-   Syntax" to support multi signatures.
+   Syntax" to support multi signatures, as already supported by
+   [RFC8366] for vouchers in form of "voucher-cms+json".
 
-   [RFC Editor: please delete] /* TODO: ... */
+3.1.  Voucher Representation in General JWS JSON Serialization Syntax
 
-   [RFC Editor: please delete] /*
-   TODO: ...
-   */
-
-   There are a number of attributes.  They are:
-
-3.1.  Unprotected Header
-
-   [RFC Editor: please delete] /* TODO: ... */
-
-3.2.  Protected Header
-
-   The standard "typ" and "alg" values described in [RFC7515] are
-   expected in the protected headers.
-
-   It remains to be determined (TODO: ... XXX), what values, if any,
-   should go into the "typ" header, as in the [BRSKI] use cases, there
-   are additional HTTP MIME type headers to indicate content types.
-
-   The "alg" should contain the algorithm type such as "ES256".
-
-   If PKIX [RFC5280] format certificates are used then the [RFC7515]
-   section 4.1.6 "x5c" certificate chain SHOULD be used to contain the
-   certificate and chain.  Vouchers will often need all certificates in
-   the chain, including what would be considered the trust anchor
-   certificate because intermediate devices (such as the Registrar) may
-   need to audit the artifact, or end systems may need to pin a trust
-   anchor for future operations.  This is consistent with [BRSKI]
-   section 5.5.2.
-
-3.3.  Voucher Representation in General JWS JSON Serialization Syntax
-
-   The following figures gives a full overview of the Voucher
-   Representation in General JWS JSON Serialization Syntax.
-
-
-
-
-
-
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 4]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
+   The following figures gives an overview of the Voucher Representation
+   in General JWS JSON Serialization Syntax.
 
    {
      "payload": "BASE64URL(ietf-voucher:voucher)",
@@ -239,6 +192,8 @@ Internet-Draft                 JWS-voucher                   August 2022
             Figure 1: Voucher Representation in General JWS JSON
                             Serialization Syntax
 
+3.2.  JWS Payload of Voucher in General JWS JSON Serialization
+
    The following figures gives the decoded voucher payload
    representation JSON syntax.
 
@@ -252,14 +207,43 @@ Internet-Draft                 JWS-voucher                   August 2022
 
             Figure 2: Voucher payload Representation JSON Syntax
 
+3.3.  JWS Protected Header of Voucher in General JWS JSON Serialization
+
+   The standard header parameters "typ" and "alg" as described in
+   [RFC7515] are expected in the protected header.  The "alg" header
+   should contain the algorithm type such as "ES256".  The "typ" header
+   should contain the value "TODO: voucher-jws+json", if present.  As in
+   the [BRSKI] use cases, there are additional HTTP MIME type headers to
+   indicate content types.
+
+
+
+
+
+
+Werner & Richardson     Expires 23 February 2023                [Page 4]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
+   If PKIX [RFC5280] format certificates are used then the [RFC7515]
+   section 4.1.6 "x5c" certificate chain SHOULD be used to contain the
+   certificate and chain.  Vouchers will often need all certificates in
+   the chain, including what would be considered the trust anchor
+   certificate because intermediate devices (such as the Registrar) may
+   need to audit the artifact, or end systems may need to pin a trust
+   anchor for future operations.  This is consistent with [BRSKI]
+   section 5.5.2.
+
    The following figures gives the decoded protected header
    representation in JSON syntax.
 
-       { "x5c": [
-           "base64encodedvalue=="
-         ],
+       {
          "alg": "ES256",
-         "typ": "voucher-jws+json"
+         "typ": "voucher-jws+json",
+             "x5c": [
+           "base64encodedvalue=="
+         ]
        }
 
           Figure 3: Protected Header Representation in JSON Syntax
@@ -267,20 +251,12 @@ Internet-Draft                 JWS-voucher                   August 2022
 4.  Privacy Considerations
 
    The Voucher Request reveals the IDevID of the component (Pledge) that
-   is on-boarding.
+   is bootstrapping.
 
    This request occurs over HTTP-over-TLS, however the Pledge to
    Registrar transaction is over a provisional TLS session, and it is
    subject to disclosure by a Dolev-Yao attacker (a "malicious
    messenger")[onpath].  This is explained in [BRSKI] section 10.2.
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 5]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
 
    The use of a JWS header brings no new privacy considerations.
 
@@ -295,6 +271,16 @@ Internet-Draft                 JWS-voucher                   August 2022
    Provisioning, and this document also makes no changes to security.
 
 6.  IANA Considerations
+
+
+
+
+
+
+Werner & Richardson     Expires 23 February 2023                [Page 5]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
 6.1.  Media-Type Registry
 
@@ -329,15 +315,6 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 7.  Changelog
 
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 6]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
    *  Added adoption call comments from Toerless.  Changed from
       [RFCxxxx] to [THING] style for some key references.
 
@@ -352,6 +329,14 @@ Internet-Draft                 JWS-voucher                   August 2022
       syntax
 
    *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
+
+
+
+
+Werner & Richardson     Expires 23 February 2023                [Page 6]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
    *  Added optional "typ": "voucher-jws+json" header parameter to JWS
       objects
@@ -383,17 +368,6 @@ Internet-Draft                 JWS-voucher                   August 2022
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 7]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
    [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
               "A Voucher Artifact for Bootstrapping Protocols",
               RFC 8366, DOI 10.17487/RFC8366, May 2018,
@@ -412,6 +386,13 @@ Internet-Draft                 JWS-voucher                   August 2022
               Progress, Internet-Draft, draft-ietf-anima-brski-prm-04, 8
               July 2022, <https://www.ietf.org/archive/id/draft-ietf-
               anima-brski-prm-04.txt>.
+
+
+
+Werner & Richardson     Expires 23 February 2023                [Page 7]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
    [I-D.ietf-anima-constrained-voucher]
               Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
@@ -442,14 +423,6 @@ Internet-Draft                 JWS-voucher                   August 2022
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
               <https://www.rfc-editor.org/info/rfc5652>.
 
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 8]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
    [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
               "Handling Long Lines in Content of Internet-Drafts and
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
@@ -466,6 +439,17 @@ Internet-Draft                 JWS-voucher                   August 2022
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
 
+
+
+
+
+
+
+Werner & Richardson     Expires 23 February 2023                [Page 8]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
 Appendix A.  Examples
 
    These examples are folded according to [RFC8792] Single Backslash
@@ -475,6 +459,22 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
    The following is an example request sent from a Pledge to the
    Registrar, in "General JWS JSON Serialization".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
