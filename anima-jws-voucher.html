@@ -1396,7 +1396,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </pre><a href="#section-3-2" class="pilcrow">¶</a>
 </div>
 <p id="section-3-3">this is considered the JSON payload as described in <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> section 3.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">A JWS JSON Serialization Overview is given by <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> in section 3.2 and section 7 provides more details.<br>
+<p id="section-3-4"><span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> section 3.2 provides "JWS JSON Serialization Overview", find more details in <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> section 7 "Serializations".<br>
 The following serializations are defined:<a href="#section-3-4" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3-5">
 <li id="section-3-5.1">"JWS Compact Serialization", <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> section 7.1<a href="#section-3-5.1" class="pilcrow">¶</a>
@@ -1435,7 +1435,7 @@ TODO: ...
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-protected-header" class="section-name selfRef">Protected Header</a>
         </h3>
 <p id="section-3.2-1">The standard "typ" and "alg" values described in <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> are expected in the protected headers.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">It remains to be determined (XXX), what values, if any, should go into the "typ" header, as in the <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span> use cases, there are additional HTTP MIME type headers to indicate content types.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">It remains to be determined (TODO: ... XXX), what values, if any, should go into the "typ" header, as in the <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span> use cases, there are additional HTTP MIME type headers to indicate content types.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <p id="section-3.2-3">The "alg" should contain the algorithm type such as "ES256".<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <p id="section-3.2-4">If PKIX <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span> format certificates are used then the <span>[<a href="#RFC7515" class="xref">RFC7515</a>]</span> section 4.1.6 "x5c"
 certificate chain SHOULD be used to contain the certificate and chain.
@@ -1492,7 +1492,7 @@ This is consistent with <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span> s
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
 <p id="section-4-1">The Voucher Request reveals the IDevID of the component (Pledge) that is on-boarding.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">This request occurs over HTTP-over-TLS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure via by a Dolev-Yao attacker (a "malicious messenger")<span>[<a href="#onpath" class="xref">onpath</a>]</span>.
+<p id="section-4-2">This request occurs over HTTP-over-TLS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger")<span>[<a href="#onpath" class="xref">onpath</a>]</span>.
 This is explained in <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span> section 10.2.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">The use of a JWS header brings no new privacy considerations.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>

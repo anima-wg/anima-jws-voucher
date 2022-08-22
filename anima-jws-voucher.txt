@@ -150,8 +150,8 @@ Internet-Draft                 JWS-voucher                   August 2022
    this is considered the JSON payload as described in [RFC7515] section
    3.
 
-   A JWS JSON Serialization Overview is given by [RFC7515] in section
-   3.2 and section 7 provides more details.
+   [RFC7515] section 3.2 provides "JWS JSON Serialization Overview",
+   find more details in [RFC7515] section 7 "Serializations".
    The following serializations are defined:
 
    1.  "JWS Compact Serialization", [RFC7515] section 7.1
@@ -190,9 +190,9 @@ Internet-Draft                 JWS-voucher                   August 2022
    The standard "typ" and "alg" values described in [RFC7515] are
    expected in the protected headers.
 
-   It remains to be determined (XXX), what values, if any, should go
-   into the "typ" header, as in the [BRSKI] use cases, there are
-   additional HTTP MIME type headers to indicate content types.
+   It remains to be determined (TODO: ... XXX), what values, if any,
+   should go into the "typ" header, as in the [BRSKI] use cases, there
+   are additional HTTP MIME type headers to indicate content types.
 
    The "alg" should contain the algorithm type such as "ES256".
 
@@ -260,7 +260,7 @@ Internet-Draft                 JWS-voucher                   August 2022
 
    This request occurs over HTTP-over-TLS, however the Pledge to
    Registrar transaction is over a provisional TLS session, and it is
-   subject to disclosure via by a Dolev-Yao attacker (a "malicious
+   subject to disclosure by a Dolev-Yao attacker (a "malicious
    messenger")[onpath].  This is explained in [BRSKI] section 10.2.
 
    The use of a JWS header brings no new privacy considerations.
