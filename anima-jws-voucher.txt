@@ -207,17 +207,17 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 3.3.  Voucher Representation in General JWS JSON Serialization Syntax
 
+   TODO: short description ...
 
-
-
-
-
-
-
-
-
-
-
+   {
+     "payload": "BASE64URL(ietf-voucher:voucher)",
+     "signatures": [
+       {
+         "protected": "BASE64URL(UTF8(JWS Protected Header))",
+         "signature": "base64encodedvalue=="
+       }
+     ]
+   }
 
 
 
@@ -226,8 +226,11 @@ Werner & Richardson     Expires 23 February 2023                [Page 4]
 Internet-Draft                 JWS-voucher                   August 2022
 
 
-   {
-     "payload": {
+            Figure 1: Voucher Representation in General JWS JSON
+                            Serialization Syntax
+
+   TODO: short description ...
+
        "ietf-voucher:voucher": {
          "assertion": "logged",
          "serial-number": "0123456789",
@@ -235,23 +238,19 @@ Internet-Draft                 JWS-voucher                   August 2022
          "created-on": "2022-07-08T03:01:24.618Z",
          "pinned-domain-cert": "base64encodedvalue=="
        }
-     },
-     "signatures": [
-       {
-         "protected": {
-           "x5c": [
-             "base64encodedvalue=="
-           ],
-           "alg": "ES256",
-           "typ": "voucher-jws+json"
-         },
-         "signature": "base64encodedvalue=="
-       }
-     ]
-   }
 
-            Figure 1: Voucher Representation in General JWS JSON
-                            Serialization Syntax
+            Figure 2: Voucher payload Representation JSON Syntax
+
+   TODO: short description ...
+
+       { "x5c": [
+           "base64encodedvalue=="
+         ],
+         "alg": "ES256",
+         "typ": "voucher-jws+json"
+       }
+
+          Figure 3: Protected Header Representation in JSON Syntax
 
 4.  Privacy Considerations
 
@@ -274,6 +273,7 @@ Internet-Draft                 JWS-voucher                   August 2022
 
    [SZTP] section 9 deals with voucher use in Secure Zero Touch
    Provisioning, and this document also makes no changes to security.
+
 
 
 
@@ -547,7 +547,7 @@ Internet-Draft                 JWS-voucher                   August 2022
      }]
    }
 
-               Figure 2: Example Pledge Voucher Request - PVR
+               Figure 4: Example Pledge Voucher Request - PVR
 
 
 
@@ -687,7 +687,7 @@ Internet-Draft                 JWS-voucher                   August 2022
      }]
    }
 
-        Figure 3: Example Parboiled Registrar Voucher Request - RVR
+        Figure 5: Example Parboiled Registrar Voucher Request - RVR
 
 A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
@@ -767,7 +767,7 @@ Internet-Draft                 JWS-voucher                   August 2022
      }]
    }
 
-                     Figure 4: Example Voucher Response
+                     Figure 6: Example Voucher Response
 
 Authors' Addresses
 

@@ -149,9 +149,26 @@ or end systems may need to pin a trust anchor for future operations.
 This is consistent with {{BRSKI}} section 5.5.2.
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
+
+TODO: short description ...
+
 ~~~~
 {
-  "payload": {
+  "payload": "BASE64URL(ietf-voucher:voucher)",
+  "signatures": [
+    {
+      "protected": "BASE64URL(UTF8(JWS Protected Header))",
+      "signature": "base64encodedvalue=="
+    }
+  ]
+}
+~~~~
+{: #VoucherGeneralJWSFigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
+
+
+TODO: short description ...
+
+~~~~
     "ietf-voucher:voucher": {
       "assertion": "logged",
       "serial-number": "0123456789",
@@ -159,22 +176,20 @@ This is consistent with {{BRSKI}} section 5.5.2.
       "created-on": "2022-07-08T03:01:24.618Z",
       "pinned-domain-cert": "base64encodedvalue=="
     }
-  },
-  "signatures": [
-    {
-      "protected": {
-        "x5c": [
-          "base64encodedvalue=="
-        ],
-        "alg": "ES256",
-        "typ": "voucher-jws+json"
-      },
-      "signature": "base64encodedvalue=="
-    }
-  ]
-}
 ~~~~
-{: #VoucherGeneralJWSfigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
+{: #VoucherGeneralJWSVoucherPayloadFigure title='Voucher payload Representation JSON Syntax' artwork-align="left"}
+
+TODO: short description ...
+
+~~~~
+    { "x5c": [
+        "base64encodedvalue=="
+      ],
+      "alg": "ES256",
+      "typ": "voucher-jws+json"
+    }  
+~~~~
+{: #VoucherGeneralJWSProtectedHeaderFigure title='Protected Header Representation in JSON Syntax' artwork-align="left"}
 
 # Privacy Considerations
 
