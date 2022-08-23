@@ -22,7 +22,7 @@
         <email>mcr+ietf@sandelman.ca</email>
       </address>
     </author>
-    <date year="2022" month="August" day="22"/>
+    <date year="2022" month="August" day="23"/>
     <area>Internet</area>
     <workgroup>anima Working Group</workgroup>
     <keyword>Internet-Draft</keyword>
@@ -41,14 +41,16 @@ replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in
 "Secure Zero Touch Provisioning" <xref target="SZTP" format="default"/> to transfer ownership of a device from a manufacturer to a new owner (site domain).
 That document defines the base YANG module and the serialization to JSON <xref target="RFC8259" format="default"/> with a CMS signature according to <xref target="RFC5652" format="default"/>.
 The resulting Voucher artifact has the media type "application/voucher-cms+json".</t>
-      <t><xref target="I-D.ietf-anima-constrained-voucher" format="default"/> provides a mapping of the YANG to CBOR <xref target="RFC8949" format="default"/> with a signature format of COSE <xref target="RFC8812" format="default"/>.</t>
-      <t>This document provides a mapping of JSON format with the signature in form of JSON Web Signature (JWS) <xref target="RFC7515" format="default"/>.
+      <t><xref target="I-D.ietf-anima-constrained-voucher" format="default"/> provides a mapping of the YANG module to CBOR <xref target="RFC8949" format="default"/> with a signature format of COSE <xref target="RFC8812" format="default"/>.</t>
+      <t>This document provides a mapping of the Voucher YANG module to JSON format with the signature in form of JSON Web Signature (JWS) <xref target="RFC7515" format="default"/>.
 The encoding specified in this document is used by <xref target="I-D.ietf-anima-brski-prm" format="default"/>
 and may be more handy for use cases requiring signed JSON objects.</t>
       <t>This document does not extend the YANG definition of <xref target="RFC8366" format="default"/>.</t>
       <t>With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
-For example, <xref target="BRSKI" format="default"/> provides this context via the MIME-Type for the voucher artifact.</t>
+For example, <xref target="BRSKI" format="default"/> provides this context via the MIME-Type for the voucher artifact.
++++ stf: Is this a reference to the optional usage of "typ" in the voucher? Proposal to include: 
+This document utilizes the optional "type" in the signature to provide information about the signed object.</t>
       <t>This document should be considered an update to <xref target="RFC8366" format="default"/> in the category of "See Also"
 as per <xref target="I-D.kuehlewind-update-tag" format="default"/>.</t>
     </section>
@@ -74,10 +76,10 @@ The following serializations are defined:</t>
 - "General JWS JSON Serialization Syntax", <xref target="RFC7515" format="default"/> section 7.2.1<br/>
 - "Flattened JWS JSON Serialization Syntax", <xref target="RFC7515" format="default"/> section 7.2.2</li>
       </ol>
-      <t>This document makes use of the "General JWS JSON Serialization Syntax" to support multi signatures, as already supported by <xref target="RFC8366" format="default"/> for vouchers in form of "voucher-cms+json".</t>
+      <t>This document makes use of the "General JWS JSON Serialization Syntax" to support multiple signatures, as already supported by <xref target="RFC8366" format="default"/> for vouchers in form of "voucher-cms+json".</t>
       <section anchor="voucher-representation-in-general-jws-json-serialization-syntax" numbered="true" toc="default">
         <name>Voucher Representation in General JWS JSON Serialization Syntax</name>
-        <t>The following figures gives an overview of the Voucher Representation in General JWS JSON Serialization Syntax.</t>
+        <t>The following figures gives an overview of the Voucher representation in "General JWS JSON Serialization Syntax".</t>
         <figure anchor="VoucherGeneralJWSFigure">
           <name>Voucher Representation in General JWS JSON Serialization Syntax</name>
           <artwork align="left" name="" type="" alt=""><![CDATA[
@@ -97,7 +99,7 @@ The following serializations are defined:</t>
         <name>JWS Payload of Voucher in General JWS JSON Serialization</name>
         <t>The following figures gives the decoded voucher payload representation JSON syntax.</t>
         <figure anchor="VoucherGeneralJWSVoucherPayloadFigure">
-          <name>Voucher payload Representation JSON Syntax</name>
+          <name>Voucher payload representation JSON Syntax</name>
           <artwork align="left" name="" type="" alt=""><![CDATA[
     "ietf-voucher:voucher": {
       "assertion": "logged",
@@ -111,16 +113,16 @@ The following serializations are defined:</t>
       </section>
       <section anchor="jws-protected-header-of-voucher-in-general-jws-json-serialization" numbered="true" toc="default">
         <name>JWS Protected Header of Voucher in General JWS JSON Serialization</name>
-        <t>The standard header parameters "typ" and "alg" as described in <xref target="RFC7515" format="default"/> are expected in the protected header.
-The "alg" header should contain the algorithm type such as "ES256".
-The "typ" header should contain the value "TODO: voucher-jws+json", if present. 
+        <t>The standard header parameters "typ" and "alg" as described in <xref target="RFC7515" format="default"/> are utilized in the protected header.
+The "alg" header MUST contain the algorithm type used to create the signature, such as "ES256".
+The "typ" header SHOULD contain the value "TODO: voucher-jws+json", if present. 
 As in the <xref target="BRSKI" format="default"/> use cases, there are additional HTTP MIME type headers to indicate content types.</t>
         <t>If PKIX <xref target="RFC5280" format="default"/> format certificates are used then the <xref target="RFC7515" format="default"/> section 4.1.6 "x5c"
 certificate chain SHOULD be used to contain the certificate and chain.
 Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.
 This is consistent with <xref target="BRSKI" format="default"/> section 5.5.2.</t>
-        <t>The following figures gives the decoded protected header representation in JSON syntax.</t>
+        <t>The following figure gives the decoded protected header representation in JSON syntax.</t>
         <figure anchor="VoucherGeneralJWSProtectedHeaderFigure">
           <name>Protected Header Representation in JSON Syntax</name>
           <artwork align="left" name="" type="" alt=""><![CDATA[
@@ -144,8 +146,8 @@ This is explained in <xref target="BRSKI" format="default"/> section 10.2.</t>
     </section>
     <section anchor="security-considerations" numbered="true" toc="default">
       <name>Security Considerations</name>
-      <t>The issues of how <xref target="RFC8366" format="default"/> vouchers are used in a <xref target="BRSKI" format="default"/> system is addressed in section 11 of that document.
-This document does not change any of those issues, it just changes the signature technology used for vouchers and voucher requests.</t>
+      <t>The issues of how <xref target="RFC8366" format="default"/> vouchers are used in a <xref target="BRSKI" format="default"/> system is addressed in section 11 of the <xref target="BRSKI" format="default"/> specification.
+This document does not change any of those issues, it just changes the signature technology used for voucher request and response objects.</t>
       <t><xref target="SZTP" format="default"/> section 9 deals with voucher use in Secure Zero Touch Provisioning, and this document also makes no changes to security.</t>
     </section>
     <section anchor="iana-considerations" numbered="true" toc="default">
@@ -161,13 +163,13 @@ Subtype name:  voucher-jws+json
 Required parameters:  none
 Optional parameters:  none
 Encoding considerations:  JWS+JSON vouchers are JOSE objects
-                          signed with one signer.
-Security considerations:  See Security Considerations, Section
+                          signed with one or multiple signers.
+Security considerations:  See section [Security Considerations]
 Interoperability considerations:  The format is designed to be
   broadly interoperable.
-Published specification:  THIS RFC.
+Published specification:  [THIS RFC].
 Applications that use this media type:  ANIMA, 6tisch, and other
-  zero-touch imprinting systems
+  zero-touch bootstrapping/provisioning solutions
 Additional information:
   Magic number(s):  None
   File extension(s):  .vjj
@@ -183,8 +185,15 @@ Provisional registration? (standards tree only):  NO
         </section>
       </section>
     </section>
-    <section anchor="changelog" numbered="true" toc="default">
-      <name>Changelog</name>
+    <section anchor="acknowledgments" numbered="true" toc="default">
+      <name>Acknowledgments</name>
+      <t>We would like to thank the various reviewers for their input, in particular Steffen Fries, Ingo Wenda, ...TODO
+Support in PoC implementations Hong Rui Li and He Peng Jia, ...TODO</t>
+      <t>[RFC Editor: please delete]
+TODO: ...</t>
+    </section>
+    <section anchor="changelog-rfc-editor-please-delete" numbered="true" toc="default">
+      <name>Changelog [RFC Editor: please delete]</name>
       <ul spacing="normal">
         <li>Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.</li>
         <li>Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"</li>
@@ -193,6 +202,212 @@ Provisional registration? (standards tree only):  NO
         <li>Include examples A1, A2, A3 using "General JWS JSON Serialization"</li>
         <li>Added optional "typ": "voucher-jws+json" header parameter to JWS objects</li>
       </ul>
+      <t>-- back</t>
+    </section>
+    <section anchor="examples" numbered="true" toc="default">
+      <name>Examples</name>
+      <t>These examples are folded according to <xref target="RFC8792" format="default"/> Single Backslash rule.</t>
+      <section anchor="example-pledge-voucher-request-pvr-from-pledge-to-registrar" numbered="true" toc="default">
+        <name>Example Pledge Voucher Request - PVR (from Pledge to Registrar)</name>
+        <t>The following is an example request sent from a Pledge to the Registrar, in "General JWS JSON Serialization".</t>
+        <figure anchor="ExamplePledgeVoucherRequestfigure">
+          <name>Example Pledge Voucher Request - PVR</name>
+          <artwork align="left" name="" type="" alt=""><![CDATA[
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+{
+  "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
+1udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI2R3RuK1pRS04ySHFERlZrQkV4Wk\
+xRPT0iLCJjcmVhdGVkLW9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44MjBaIiwicHJveG\
+ltaXR5LXJlZ2lzdHJhci1jZXJ0IjoiTUlJQjRqQ0NBWWlnQXdJQkFnSUdBWFk3MmJiWk\
+1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
+xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweU1ERXlNRG\
+N3TmpFNE1USmFGdzB6TURFeU1EY3dOakU0TVRKYU1ENHhFekFSQmdOVkJBb01DazE1UW\
+5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhHREFXQmdOVkJBTU1EMFJ2YldGcG\
+JsSmxaMmx6ZEhKaGNqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJCaz\
+E2Sy9pNzlvUmtLNVliZVBnOFVTUjgvdXMxZFBVaVpITXRva1NkcUtXNWZuV3NCZCtxUk\
+w3V1JmZmVXa3lnZWJvSmZJbGx1cmNpMjV3bmhpT1ZDR2plekI1TUIwR0ExVWRKUVFXTU\
+JRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREhEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd1\
+NBWURWUjBSQkVFd1A0SWRjbVZuYVhOMGNtRnlMWFJsYzNRdWMybGxiV1Z1Y3kxaWRDNX\
+VaWFNDSG5KbFoybHpkSEpoY2kxMFpYTjBOaTV6YVdWdFpXNXpMV0owTG01bGREQUtCZ2\
+dxaGtqT1BRUURBZ05JQURCRkFpQnhsZEJoWnEwRXY1SkwyUHJXQ3R5UzZoRFlXMXlDTy\
+9SYXVicEM3TWFJRGdJaEFMU0piZ0xuZ2hiYkFnMGRjV0ZVVm8vZ0dOMC9qd3pKWjBTbD\
+JoNHhJWGsxIn19",
+  "signatures": [{
+    "protected": "eyJ4NWMiOlsiTUlJQitUQ0NBYUNnQXdJQkFnSUdBWG5WanNVNU\
+1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
+thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQ0\
+FYRFRJeE1EWXdOREExTkRZeE5Gb1lEems1T1RreE1qTXhNak0xT1RVNVdqQlNNUXN3Q1\
+FZRFZRUUdFd0pCVVRFVk1CTUdBMVVFQ2d3TVNtbHVaMHBwYm1kRGIzSndNUk13RVFZRF\
+ZRUUZFd293TVRJek5EVTJOemc1TVJjd0ZRWURWUVFEREE1S2FXNW5TbWx1WjBSbGRtbG\
+paVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCQzc5bGlhUmNCalpjRU\
+VYdzdyVWVhdnRHSkF1SDRwazRJNDJ2YUJNc1UxMWlMRENDTGtWaHRVVjIxbXZhS0N2TX\
+gyWStTTWdROGZmd0wyM3ozVElWQldqZFRCek1Dc0dDQ3NHQVFVRkJ3RWdCQjhXSFcxaG\
+MyRXRkR1Z6ZEM1emFXVnRaVzV6TFdKMExtNWxkRG81TkRRek1COEdBMVVkSXdRWU1CYU\
+FGRlFMak56UFwvU1wva291alF3amc1RTVmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0NzR0\
+FRVUZCd01DTUE0R0ExVWREd0VCXC93UUVBd0lIZ0RBS0JnZ3Foa2pPUFFRREFnTkhBRE\
+JFQWlCdTN3UkJMc0pNUDVzTTA3MEgrVUZyeU5VNmdLekxPUmNGeVJST2xxcUhpZ0lnWE\
+NtSkxUekVsdkQycG9LNmR4NmwxXC91eW1UbmJRRERmSmxhdHVYMlJvT0U9Il0sInR5cC\
+I6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
+    "signature": "abVg4TDGzSTjVHkQlNeIW3ABu5ZXdMl1cEqwcIAlHFW4BrlGbO\
+-DRTKfyCOGxSW49-ktJcrVlYgKqC4xmZoy0Q"
+  }]
+}
+]]></artwork>
+        </figure>
+      </section>
+      <section anchor="example-parboiled-registrar-voucher-request-rvr-from-registrar-to-masa" numbered="true" toc="default">
+        <name>Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)</name>
+        <t>The term parboiled refers to food which is partially cooked.
+In <xref target="BRSKI" format="default"/>, the term refers to a Pledge voucher-request (PVR) which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.</t>
+        <t>The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA, in "General JWS JSON Serialization".
+Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".</t>
+        <figure anchor="ExampleParboiledRegistrarVoucherRequestfigure">
+          <name>Example Parboiled Registrar Voucher Request - RVR</name>
+          <artwork align="left" name="" type="" alt=""><![CDATA[
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+{
+  "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
+1udW1iZXIiOiIwMTIzNDU2Nzg5IiwiaWRldmlkLWlzc3VlciI6IkJCZ3dGb0FVVkF1TT\
+NNLzlMK1NpNk5EQ09Ea1RsKy9CeGhzPSIsIm5vbmNlIjoiNkd0bitaUUtOMkhxREZWa0\
+JFeFpMUT09IiwicHJpb3Itc2lnbmVkLXZvdWNoZXItcmVxdWVzdCI6ImV5SndZWGxzYj\
+JGa0lqb2laWGxLY0ZwWVVtMU1XRnAyWkZkT2IxcFlTWFJqYlZaNFpGZFdlbVJFY0RKaU\
+0xWnFZVWRXZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU1hkTlZFbD\
+ZUa1JWTWs1Nlp6VkphWGRwWW0wNWRWa3lWV2xQYVVreVVqTlNkVXN4Y0ZKVE1EUjVVMG\
+hHUlZKc1duSlJhMVkwVjJ0NFVsQlVNR2xNUTBwcVkyMVdhR1JIVm10TVZ6bDFTV3B2YV\
+UxcVFYbE5hVEIzVG5rd2QwOUdVWGRQUkc4d1RVUnZNRTFwTkRSTmFrSmhTV2wzYVdOSV\
+NuWmxSMngwWVZoU05VeFlTbXhhTW14NlpFaEthR05wTVdwYVdFb3dTV3B2YVZSVmJFcF\
+JhbEp4VVRCT1FsZFhiRzVSV0dSS1VXdEdibE5WWkVKWFJtc3pUVzFLYVZkck1VSmlNR1\
+JFVVROR1NGVXdNREJQVlVwQ1ZGVk9UbEpHVmpSU1dIQkNWV3RLYmxSc1drTlJWemxPVV\
+RKemVFNVdSblZXYm5Cb1ZucFdjMWw2VGs1bFJWSlZVVlY0UTFvd05WZFJhMFpxVkZWS1\
+IxUnVRbXRTTVZZMFVraHdRbFJyU201VWJGcERVVlV4VGxGdGVGTmlSMDE2Vld0U1VsWk\
+ZSbXhTYm1OM1pWVXhSVkpZYkU1U1IwNHpWRzF3Ums1Rk1WVlRiVVpIWkhwQ05sUlZVa1\
+psVlRGRldUTmtUMkZyVlRCVVZsSkxXVlV4UlU1SWFFWmxhMFpUVVcxa1QxWnJTa0ppTU\
+RGRVlYcEZNVlZYTlZkbGJVWllUbGQ0YWswd01UUlNSbEpDVkVWS2JsUnNXa05SVjA1T1\
+VXdGFUMk5IVWtoV1dHaElVa1ZHV0ZGdFpFOVdhMHBDVkZVeFJVMUdTakpaYkdSSFkwZE\
+tjMU50ZUdGTmJYZzJXa1ZvUzJGSFRuRlJiSEJPVVdzeFNGRnViSGhTTVU1T1RrUnNRbG\
+93VmtoUk1FNTRVakZPVGs1RWJFSmtNRlpKVVZSQ1NsRlZTa05oZWtVeVUzazVjRTU2Yk\
+haVmJYUk1UbFpzYVZwV1FtNVBSbFpVVldwbmRtUllUWGhhUmtKV1lWWndTVlJZVW5aaE\
+1VNXJZMVYwV0U1WFduVldNMDVEV2tOMGVGVnJkek5XTVVwdFdtMVdXR0V6Ykc1YVYwcD\
+JVMjFhU21KSGVERmpiVTV3VFdwV00ySnRhSEJVTVZwRVVqSndiR1ZyU1RGVVZVbDNVak\
+JGZUZaWFVrdFZWa1pZVkZWS1VsSXdUa1JqTUdSQ1ZWWldSMUZ1WkU1UmEwcHVXak5LUT\
+Fvd1ZrZFJiRVpxVWtWb1JWRlZPVU5hTURWWFUwWkZORkZyUm0xUFJWWkRVVlV4UkZGcV\
+VrSmtNVTVDVjFWU1YxVnFRbE5SYTFaR1pERkJNRk5YVW1waVZscDFXVlpvVDAxSFRuUl\
+NibXhOVjBaS2MxbDZUbEprVjAxNVlrZDRhVll4V2pGWk0ydDRZVmRTUkU1WVZtRlhSaz\
+VFVTBjMVMySkdiM2xpU0hCclUwVndiMWt5YTNoTlJuQlpWR3BDVDJGVVZqWlpWbVJYWk\
+Vad1dFNVljRTFXTUc5M1ZFY3dNV0pIVWtWUlZYUkRXakprZUdGSGRIRlVNVUpTVlZWU1\
+Fsb3dOVXBSVlZKRFVtdEdjRkZ1YUhOYVJVcHZWMjVGZDFKWVdURlRhM2Q1VlVoS1dGRX\
+pValZWZWxwdlVrWnNXRTFZYkVSVWVUbFRXVmhXYVdORlRUTlVWMFpLVWtka1NtRkZSaz\
+FWTUhCcFdqQjRkVm95YUdsWmEwWnVUVWRTYWxZd1dsWldiVGgyV2pCa1QwMURPWEZrTT\
+NCTFYycENWR0pFU205T1NHaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYm\
+V5SndjbTkwWldOMFpXUWlPaUpsZVVvMFRsZE5hVTlzYzJsVVZXeEtVV2wwVlZFd1RrSl\
+pWVTV1VVZoa1NsRnJSbTVUVldSQ1YwYzFWMkZ1VGxaT1ZURkNZakJrUkZFelJraFZNRE\
+F3VDFWS1FsUlZUazVTUkVJMFVUTndRbE5yU201VWJGcERVVlpzVlZGWGRFZFZhekZUVm\
+xoa1JtUXhiRVZXYkVaU1V6QlNRbVZGZEdoV2VsWjFWVEl4YzJSV2IzZFVibHBxWW10R0\
+5GSnVjRUpXYTBwdVZHeGFRMUZWTVU1U1IzUjNZMGRLZEZwRmRHaFdlbFoxVm10a1YyVn\
+RVa1pVYTBwT1VUQkdXVkpHVWtwbFJURkZWMWhrVDFKRlJYaFVhMUphWlVVMVIySXhiRV\
+ZsYlhNeFZERlNjbVZGTVhGVVdHaE9ZV3N3ZUZReFVsWk9WbVJ4VVd4T1RsVllUak5STV\
+VaYVVrWmFVbFZWWkVaa01IQkRWbFpTUmxack1VTlVWV1JDVFZaV1JsRXlaRE5VVms1MF\
+lraFdZVTFJUW5kWmJURnJVa2RKZWxOdVpFNVZhekV6VWxaR1dsSkdXbEpWVlZwR1pEST\
+VNMVJXVWtwbGF6VkZWbFJLVDJWdFl6RlVWa3BxWkRCYVVsZFZVbGRWVmtaRlVrVkZNVk\
+15UmxoT1Z6VlVZbGQ0TVZkcVFsTmlSMUowWWtkd1lWWkZTbUZVVlVwT1VqQktOV05WWk\
+ZSVVZGRTFVVmRrUmxJd1RrUmpWV1JVVkZSUk5WRllaRVpUUlVWM1UxVkdRMUY2WXpWaV\
+IyeG9WVzFPUTJGc2NHcFNWVlpaWkhwa2VWWlhWbWhrYmxKSVUydEdNVk5FVW5kaGVsSk\
+tUa1JLTWxsVlNrNWpNVlY0VFZkc1RWSkZUa1JVUjNSWFlVaFNWbFpxU1hoaVdGcG9Vek\
+JPTWxSWVozbFhVM1JVVkZka1VrOUhXbTFrTUhkNVRUTnZlbFpGYkZkUmJHUnhXa1pTUT\
+JWck1VUmpNR1JFVVROT1NGRldSbFpTYTBvelVsZGtRMUZxYUZoVFJtTjRZVWROZVZKWV\
+VtdFNNVm8yV2tWTk1XVnRSbGhXYmxKaFZucFdObFJHWkV0TlJYaDBUbGQ0YTFKSE9ERl\
+VhMUpTWldzeFEwOUZaRUpOVmxaclUxaGtVbGRWTVVOWlZVWkhVbXhHVFdGck5UWlZSbm\
+QyVlRGM2RtRXlPVEZoYkVZellXMWpNVkpVVm0xa2JtUnFWMWRLVGxGck1VaFJWRVpXV2\
+tWd1VsVlZNVTVSVnpsSVVUQk9lbEl3UmxKV1ZWcERaREF4UkZSVlJUQlNNRVY0VmxkU1\
+JXUXdWa05ZUXprelZWVldRbVF3YkVsYU1GSkNVekJLYmxvelJtOWhNbkJRVlVaR1VsSk\
+ZSbTVVYTJoQ1VrVktSbEZYYkVOa1ZFNHpWV3RLVFdNd2NFNVZSRlo2VkZSQk0wMUZaM0\
+pXVlZwNVpWVTFWazV0WkV4bGEzaFFWVzFPUjJWV1NsTlVNbmg0WTFWb2NGb3diRzVYUl\
+U1MFUydDRWV1ZyVm5Oa2ExRjVZMGM1VEU1dFVqUk9iWGQ0V0VNNU1XVlhNVlZpYlVwU1\
+VrVlNiVk50ZUdoa1NGWlpUV3hLZGxRd1ZUbEpiREJ6U1c1U05XTkRTVFpKYmxwMlpGZE\
+9iMXBZU1hSaGJtUjZTekp3ZW1JeU5HbE1RMHBvWWtkamFVOXBTa1pWZWtreFRtbEtPU0\
+lzSW5OcFoyNWhkSFZ5WlNJNkltRmlWbWMwVkVSSGVsTlVhbFpJYTFGc1RtVkpWek5CUW\
+5VMVdsaGtUV3d4WTBWeGQyTkpRV3hJUmxjMFFuSnNSMkpQTFVSU1ZFdG1lVU5QUjNoVF\
+Z6UTVMV3QwU21OeVZteFpaMHR4UXpSNGJWcHZlVEJSSW4xZGZRPT0iLCJjcmVhdGVkLW\
+9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44NDhaIn19",
+  "signatures": [{
+    "protected": "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk\
+1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
+xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweE9UQTVNVE\
+V3TWpNM016SmFGdzB5T1RBNU1URXdNak0zTXpKYU1GUXhFekFSQmdOVkJBb01DazE1UW\
+5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhMakFzQmdOVkJBTU1KVkpsWjJsem\
+RISmhjaUJXYjNWamFHVnlJRkpsY1hWbGMzUWdVMmxuYm1sdVp5QkxaWGt3V1RBVEJnY3\
+Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVQ2eFZ2QXZxVHoxWlVpdU5XaFhwUXNrYV\
+B5N0FISFFMd1hpSjBpRUx0NnVOUGFuQU4wUW5XTVlPXC8wQ0RFaklrQlFvYnc4WUtxan\
+R4SkhWU0dUajlLT295Y3dKVEFUQmdOVkhTVUVEREFLQmdnckJnRUZCUWNESERBT0JnTl\
+ZIUThCQWY4RUJBTUNCNEF3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnWXIyTGZxb2FDS0\
+RGNFJBY01tSmkrTkNacWRTaXVWdWdJU0E3T2hLUnEzWUNJRHhuUE1NbnBYQU1UclBKdV\
+BXeWNlRVIxMVB4SE9uKzBDcFNIaTJxZ3BXWCIsIk1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
+cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
+MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
+hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
+9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
+xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
+hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDZcL1NjWTVQSmlidm\
+dIVEIrRlwvUVRqZ2VsSEd5MVlLcHdjTk1jc1N5YWpSVEJETUJJR0ExVWRFd0VCXC93UU\
+lNQVlCQWY4Q0FRRXdEZ1lEVlIwUEFRSFwvQkFRREFnSUVNQjBHQTFVZERnUVdCQlRvWk\
+lNelFkc0RcL2pcLytnWFwvN2NCSnVjSFwvWG1qQUtCZ2dxaGtqT1BRUURBZ05KQURCR0\
+FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCtiXC9MQ1wvZlZZRGpRNm9DSV\
+FERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDgrT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sIn\
+R5cCI6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
+    "signature": "0fzuqVdyhemWsu_HQeF-CmQwJeLp9IStNf-bWZwz6SojrEOR4a\
+Dq6VStyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
+  }]
+}
+]]></artwork>
+        </figure>
+      </section>
+      <section anchor="example-voucher-response-from-masa-to-pledge-via-registrar" numbered="true" toc="default">
+        <name>Example Voucher Response (from MASA to Pledge, via Registrar)</name>
+        <t>The following is an example voucher response from MASA to Pledge via Registrar, in "General JWS JSON Serialization".</t>
+        <figure anchor="ExampleVoucherResponsefigure">
+          <name>Example Voucher Response</name>
+          <artwork align="left" name="" type="" alt=""><![CDATA[
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+{
+  "payload": "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2\
+dnZWQiLCJzZXJpYWwtbnVtYmVyIjoiMDEyMzQ1Njc4OSIsIm5vbmNlIjoiZGRoSGQ4Ml\
+FpUGtzMDBTck1USTlEUT09IiwiY3JlYXRlZC1vbiI6IjIwMjItMDctMDdUMTc6NDc6MD\
+EuODkwWiIsInBpbm5lZC1kb21haW4tY2VydCI6Ik1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
+cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
+MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
+hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
+9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
+xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
+hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDYvU2NZNVBKaWJ2Z0\
+hUQitGL1FUamdlbEhHeTFZS3B3Y05NY3NTeWFqUlRCRE1CSUdBMVVkRXdFQi93UUlNQV\
+lCQWY4Q0FRRXdEZ1lEVlIwUEFRSC9CQVFEQWdJRU1CMEdBMVVkRGdRV0JCVG9aSU16UW\
+RzRC9qLytnWC83Y0JKdWNIL1htakFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBdHhRMy\
+tJTEdCUEl0U2g0YjlXWGhYTnVocVNQNkgrYi9MQy9mVllEalE2b0NJUURHMnVSQ0hsVn\
+EzeWhCNThUWE1VYnpIOCtPbGhXVXZPbFJEM1ZFcURkY1F3PT0ifX0",
+  "signatures": [{
+    "protected": "eyJ4NWMiOlsiTUlJQmt6Q0NBVGlnQXdJQkFnSUdBV0ZCakNrWU\
+1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
+thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQj\
+RYRFRFNE1ERXlPVEV3TlRJME1Gb1hEVEk0TURFeU9URXdOVEkwTUZvd1R6RUxNQWtHQT\
+FVRUJoTUNRVkV4RlRBVEJnTlZCQW9NREVwcGJtZEthVzVuUTI5eWNERXBNQ2NHQTFVRU\
+F3d2dTbWx1WjBwcGJtZERiM0p3SUZadmRXTm9aWElnVTJsbmJtbHVaeUJMWlhrd1dUQV\
+RCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFTQzZiZUxBbWVxMVZ3NmlRclJzOF\
+IwWlcrNGIxR1d5ZG1XczJHQU1GV3diaXRmMm5JWEgzT3FIS1Z1OHMyUnZpQkdOaXZPS0\
+dCSEh0QmRpRkVaWnZiN294SXdFREFPQmdOVkhROEJBZjhFQkFNQ0I0QXdDZ1lJS29aSX\
+pqMEVBd0lEU1FBd1JnSWhBSTRQWWJ4dHNzSFAyVkh4XC90elVvUVwvU3N5ZEwzMERRSU\
+5FdGNOOW1DVFhQQWlFQXZJYjNvK0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2\
+FFS2JzVkRpVT0iXSwidHlwIjoidm91Y2hlci1qd3MranNvbiIsImFsZyI6IkVTMjU2In\
+0",
+    "signature": "y1HLYBFlwouf42XWSKUWjeYQHnG2Q6A4bjA7hvTkB3z1dPwTUl\
+jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
+  }]
+}
+]]></artwork>
+        </figure>
+      </section>
     </section>
   </middle>
   <back>
@@ -553,450 +768,251 @@ Provisional registration? (standards tree only):  NO
         </reference>
       </references>
     </references>
-    <section anchor="examples" numbered="true" toc="default">
-      <name>Examples</name>
-      <t>These examples are folded according to <xref target="RFC8792" format="default"/> Single Backslash rule.</t>
-      <section anchor="example-pledge-voucher-request-pvr-from-pledge-to-registrar" numbered="true" toc="default">
-        <name>Example Pledge Voucher Request - PVR (from Pledge to Registrar)</name>
-        <t>The following is an example request sent from a Pledge to the Registrar, in "General JWS JSON Serialization".</t>
-        <figure anchor="ExamplePledgeVoucherRequestfigure">
-          <name>Example Pledge Voucher Request - PVR</name>
-          <artwork align="left" name="" type="" alt=""><![CDATA[
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-{
-  "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
-1udW1iZXIiOiIwMTIzNDU2Nzg5Iiwibm9uY2UiOiI2R3RuK1pRS04ySHFERlZrQkV4Wk\
-xRPT0iLCJjcmVhdGVkLW9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44MjBaIiwicHJveG\
-ltaXR5LXJlZ2lzdHJhci1jZXJ0IjoiTUlJQjRqQ0NBWWlnQXdJQkFnSUdBWFk3MmJiWk\
-1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
-xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweU1ERXlNRG\
-N3TmpFNE1USmFGdzB6TURFeU1EY3dOakU0TVRKYU1ENHhFekFSQmdOVkJBb01DazE1UW\
-5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhHREFXQmdOVkJBTU1EMFJ2YldGcG\
-JsSmxaMmx6ZEhKaGNqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJCaz\
-E2Sy9pNzlvUmtLNVliZVBnOFVTUjgvdXMxZFBVaVpITXRva1NkcUtXNWZuV3NCZCtxUk\
-w3V1JmZmVXa3lnZWJvSmZJbGx1cmNpMjV3bmhpT1ZDR2plekI1TUIwR0ExVWRKUVFXTU\
-JRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREhEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd1\
-NBWURWUjBSQkVFd1A0SWRjbVZuYVhOMGNtRnlMWFJsYzNRdWMybGxiV1Z1Y3kxaWRDNX\
-VaWFNDSG5KbFoybHpkSEpoY2kxMFpYTjBOaTV6YVdWdFpXNXpMV0owTG01bGREQUtCZ2\
-dxaGtqT1BRUURBZ05JQURCRkFpQnhsZEJoWnEwRXY1SkwyUHJXQ3R5UzZoRFlXMXlDTy\
-9SYXVicEM3TWFJRGdJaEFMU0piZ0xuZ2hiYkFnMGRjV0ZVVm8vZ0dOMC9qd3pKWjBTbD\
-JoNHhJWGsxIn19",
-  "signatures": [{
-    "protected": "eyJ4NWMiOlsiTUlJQitUQ0NBYUNnQXdJQkFnSUdBWG5WanNVNU\
-1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
-thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQ0\
-FYRFRJeE1EWXdOREExTkRZeE5Gb1lEems1T1RreE1qTXhNak0xT1RVNVdqQlNNUXN3Q1\
-FZRFZRUUdFd0pCVVRFVk1CTUdBMVVFQ2d3TVNtbHVaMHBwYm1kRGIzSndNUk13RVFZRF\
-ZRUUZFd293TVRJek5EVTJOemc1TVJjd0ZRWURWUVFEREE1S2FXNW5TbWx1WjBSbGRtbG\
-paVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCQzc5bGlhUmNCalpjRU\
-VYdzdyVWVhdnRHSkF1SDRwazRJNDJ2YUJNc1UxMWlMRENDTGtWaHRVVjIxbXZhS0N2TX\
-gyWStTTWdROGZmd0wyM3ozVElWQldqZFRCek1Dc0dDQ3NHQVFVRkJ3RWdCQjhXSFcxaG\
-MyRXRkR1Z6ZEM1emFXVnRaVzV6TFdKMExtNWxkRG81TkRRek1COEdBMVVkSXdRWU1CYU\
-FGRlFMak56UFwvU1wva291alF3amc1RTVmdndjWWJNQk1HQTFVZEpRUU1NQW9HQ0NzR0\
-FRVUZCd01DTUE0R0ExVWREd0VCXC93UUVBd0lIZ0RBS0JnZ3Foa2pPUFFRREFnTkhBRE\
-JFQWlCdTN3UkJMc0pNUDVzTTA3MEgrVUZyeU5VNmdLekxPUmNGeVJST2xxcUhpZ0lnWE\
-NtSkxUekVsdkQycG9LNmR4NmwxXC91eW1UbmJRRERmSmxhdHVYMlJvT0U9Il0sInR5cC\
-I6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
-    "signature": "abVg4TDGzSTjVHkQlNeIW3ABu5ZXdMl1cEqwcIAlHFW4BrlGbO\
--DRTKfyCOGxSW49-ktJcrVlYgKqC4xmZoy0Q"
-  }]
-}
-]]></artwork>
-        </figure>
-      </section>
-      <section anchor="example-parboiled-registrar-voucher-request-rvr-from-registrar-to-masa" numbered="true" toc="default">
-        <name>Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)</name>
-        <t>The term parboiled refers to food which is partially cooked.
-In <xref target="BRSKI" format="default"/>, the term refers to a Pledge voucher-request (PVR) which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.</t>
-        <t>The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA, in "General JWS JSON Serialization".
-Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".</t>
-        <figure anchor="ExampleParboiledRegistrarVoucherRequestfigure">
-          <name>Example Parboiled Registrar Voucher Request - RVR</name>
-          <artwork align="left" name="" type="" alt=""><![CDATA[
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-{
-  "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
-1udW1iZXIiOiIwMTIzNDU2Nzg5IiwiaWRldmlkLWlzc3VlciI6IkJCZ3dGb0FVVkF1TT\
-NNLzlMK1NpNk5EQ09Ea1RsKy9CeGhzPSIsIm5vbmNlIjoiNkd0bitaUUtOMkhxREZWa0\
-JFeFpMUT09IiwicHJpb3Itc2lnbmVkLXZvdWNoZXItcmVxdWVzdCI6ImV5SndZWGxzYj\
-JGa0lqb2laWGxLY0ZwWVVtMU1XRnAyWkZkT2IxcFlTWFJqYlZaNFpGZFdlbVJFY0RKaU\
-0xWnFZVWRXZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU1hkTlZFbD\
-ZUa1JWTWs1Nlp6VkphWGRwWW0wNWRWa3lWV2xQYVVreVVqTlNkVXN4Y0ZKVE1EUjVVMG\
-hHUlZKc1duSlJhMVkwVjJ0NFVsQlVNR2xNUTBwcVkyMVdhR1JIVm10TVZ6bDFTV3B2YV\
-UxcVFYbE5hVEIzVG5rd2QwOUdVWGRQUkc4d1RVUnZNRTFwTkRSTmFrSmhTV2wzYVdOSV\
-NuWmxSMngwWVZoU05VeFlTbXhhTW14NlpFaEthR05wTVdwYVdFb3dTV3B2YVZSVmJFcF\
-JhbEp4VVRCT1FsZFhiRzVSV0dSS1VXdEdibE5WWkVKWFJtc3pUVzFLYVZkck1VSmlNR1\
-JFVVROR1NGVXdNREJQVlVwQ1ZGVk9UbEpHVmpSU1dIQkNWV3RLYmxSc1drTlJWemxPVV\
-RKemVFNVdSblZXYm5Cb1ZucFdjMWw2VGs1bFJWSlZVVlY0UTFvd05WZFJhMFpxVkZWS1\
-IxUnVRbXRTTVZZMFVraHdRbFJyU201VWJGcERVVlV4VGxGdGVGTmlSMDE2Vld0U1VsWk\
-ZSbXhTYm1OM1pWVXhSVkpZYkU1U1IwNHpWRzF3Ums1Rk1WVlRiVVpIWkhwQ05sUlZVa1\
-psVlRGRldUTmtUMkZyVlRCVVZsSkxXVlV4UlU1SWFFWmxhMFpUVVcxa1QxWnJTa0ppTU\
-RGRVlYcEZNVlZYTlZkbGJVWllUbGQ0YWswd01UUlNSbEpDVkVWS2JsUnNXa05SVjA1T1\
-VXdGFUMk5IVWtoV1dHaElVa1ZHV0ZGdFpFOVdhMHBDVkZVeFJVMUdTakpaYkdSSFkwZE\
-tjMU50ZUdGTmJYZzJXa1ZvUzJGSFRuRlJiSEJPVVdzeFNGRnViSGhTTVU1T1RrUnNRbG\
-93VmtoUk1FNTRVakZPVGs1RWJFSmtNRlpKVVZSQ1NsRlZTa05oZWtVeVUzazVjRTU2Yk\
-haVmJYUk1UbFpzYVZwV1FtNVBSbFpVVldwbmRtUllUWGhhUmtKV1lWWndTVlJZVW5aaE\
-1VNXJZMVYwV0U1WFduVldNMDVEV2tOMGVGVnJkek5XTVVwdFdtMVdXR0V6Ykc1YVYwcD\
-JVMjFhU21KSGVERmpiVTV3VFdwV00ySnRhSEJVTVZwRVVqSndiR1ZyU1RGVVZVbDNVak\
-JGZUZaWFVrdFZWa1pZVkZWS1VsSXdUa1JqTUdSQ1ZWWldSMUZ1WkU1UmEwcHVXak5LUT\
-Fvd1ZrZFJiRVpxVWtWb1JWRlZPVU5hTURWWFUwWkZORkZyUm0xUFJWWkRVVlV4UkZGcV\
-VrSmtNVTVDVjFWU1YxVnFRbE5SYTFaR1pERkJNRk5YVW1waVZscDFXVlpvVDAxSFRuUl\
-NibXhOVjBaS2MxbDZUbEprVjAxNVlrZDRhVll4V2pGWk0ydDRZVmRTUkU1WVZtRlhSaz\
-VFVTBjMVMySkdiM2xpU0hCclUwVndiMWt5YTNoTlJuQlpWR3BDVDJGVVZqWlpWbVJYWk\
-Vad1dFNVljRTFXTUc5M1ZFY3dNV0pIVWtWUlZYUkRXakprZUdGSGRIRlVNVUpTVlZWU1\
-Fsb3dOVXBSVlZKRFVtdEdjRkZ1YUhOYVJVcHZWMjVGZDFKWVdURlRhM2Q1VlVoS1dGRX\
-pValZWZWxwdlVrWnNXRTFZYkVSVWVUbFRXVmhXYVdORlRUTlVWMFpLVWtka1NtRkZSaz\
-FWTUhCcFdqQjRkVm95YUdsWmEwWnVUVWRTYWxZd1dsWldiVGgyV2pCa1QwMURPWEZrTT\
-NCTFYycENWR0pFU205T1NHaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYm\
-V5SndjbTkwWldOMFpXUWlPaUpsZVVvMFRsZE5hVTlzYzJsVVZXeEtVV2wwVlZFd1RrSl\
-pWVTV1VVZoa1NsRnJSbTVUVldSQ1YwYzFWMkZ1VGxaT1ZURkNZakJrUkZFelJraFZNRE\
-F3VDFWS1FsUlZUazVTUkVJMFVUTndRbE5yU201VWJGcERVVlpzVlZGWGRFZFZhekZUVm\
-xoa1JtUXhiRVZXYkVaU1V6QlNRbVZGZEdoV2VsWjFWVEl4YzJSV2IzZFVibHBxWW10R0\
-5GSnVjRUpXYTBwdVZHeGFRMUZWTVU1U1IzUjNZMGRLZEZwRmRHaFdlbFoxVm10a1YyVn\
-RVa1pVYTBwT1VUQkdXVkpHVWtwbFJURkZWMWhrVDFKRlJYaFVhMUphWlVVMVIySXhiRV\
-ZsYlhNeFZERlNjbVZGTVhGVVdHaE9ZV3N3ZUZReFVsWk9WbVJ4VVd4T1RsVllUak5STV\
-VaYVVrWmFVbFZWWkVaa01IQkRWbFpTUmxack1VTlVWV1JDVFZaV1JsRXlaRE5VVms1MF\
-lraFdZVTFJUW5kWmJURnJVa2RKZWxOdVpFNVZhekV6VWxaR1dsSkdXbEpWVlZwR1pEST\
-VNMVJXVWtwbGF6VkZWbFJLVDJWdFl6RlVWa3BxWkRCYVVsZFZVbGRWVmtaRlVrVkZNVk\
-15UmxoT1Z6VlVZbGQ0TVZkcVFsTmlSMUowWWtkd1lWWkZTbUZVVlVwT1VqQktOV05WWk\
-ZSVVZGRTFVVmRrUmxJd1RrUmpWV1JVVkZSUk5WRllaRVpUUlVWM1UxVkdRMUY2WXpWaV\
-IyeG9WVzFPUTJGc2NHcFNWVlpaWkhwa2VWWlhWbWhrYmxKSVUydEdNVk5FVW5kaGVsSk\
-tUa1JLTWxsVlNrNWpNVlY0VFZkc1RWSkZUa1JVUjNSWFlVaFNWbFpxU1hoaVdGcG9Vek\
-JPTWxSWVozbFhVM1JVVkZka1VrOUhXbTFrTUhkNVRUTnZlbFpGYkZkUmJHUnhXa1pTUT\
-JWck1VUmpNR1JFVVROT1NGRldSbFpTYTBvelVsZGtRMUZxYUZoVFJtTjRZVWROZVZKWV\
-VtdFNNVm8yV2tWTk1XVnRSbGhXYmxKaFZucFdObFJHWkV0TlJYaDBUbGQ0YTFKSE9ERl\
-VhMUpTWldzeFEwOUZaRUpOVmxaclUxaGtVbGRWTVVOWlZVWkhVbXhHVFdGck5UWlZSbm\
-QyVlRGM2RtRXlPVEZoYkVZellXMWpNVkpVVm0xa2JtUnFWMWRLVGxGck1VaFJWRVpXV2\
-tWd1VsVlZNVTVSVnpsSVVUQk9lbEl3UmxKV1ZWcERaREF4UkZSVlJUQlNNRVY0VmxkU1\
-JXUXdWa05ZUXprelZWVldRbVF3YkVsYU1GSkNVekJLYmxvelJtOWhNbkJRVlVaR1VsSk\
-ZSbTVVYTJoQ1VrVktSbEZYYkVOa1ZFNHpWV3RLVFdNd2NFNVZSRlo2VkZSQk0wMUZaM0\
-pXVlZwNVpWVTFWazV0WkV4bGEzaFFWVzFPUjJWV1NsTlVNbmg0WTFWb2NGb3diRzVYUl\
-U1MFUydDRWV1ZyVm5Oa2ExRjVZMGM1VEU1dFVqUk9iWGQ0V0VNNU1XVlhNVlZpYlVwU1\
-VrVlNiVk50ZUdoa1NGWlpUV3hLZGxRd1ZUbEpiREJ6U1c1U05XTkRTVFpKYmxwMlpGZE\
-9iMXBZU1hSaGJtUjZTekp3ZW1JeU5HbE1RMHBvWWtkamFVOXBTa1pWZWtreFRtbEtPU0\
-lzSW5OcFoyNWhkSFZ5WlNJNkltRmlWbWMwVkVSSGVsTlVhbFpJYTFGc1RtVkpWek5CUW\
-5VMVdsaGtUV3d4WTBWeGQyTkpRV3hJUmxjMFFuSnNSMkpQTFVSU1ZFdG1lVU5QUjNoVF\
-Z6UTVMV3QwU21OeVZteFpaMHR4UXpSNGJWcHZlVEJSSW4xZGZRPT0iLCJjcmVhdGVkLW\
-9uIjoiMjAyMi0wNy0wOFQwODo0MDo0Mi44NDhaIn19",
-  "signatures": [{
-    "protected": "eyJ4NWMiOlsiTUlJQm96Q0NBVXFnQXdJQkFnSUdBVzBlTHVJRk\
-1Bb0dDQ3FHU000OUJBTUNNRFV4RXpBUkJnTlZCQW9NQ2sxNVFuVnphVzVsYzNNeERUQU\
-xCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQmxSbGMzUkRRVEFlRncweE9UQTVNVE\
-V3TWpNM016SmFGdzB5T1RBNU1URXdNak0zTXpKYU1GUXhFekFSQmdOVkJBb01DazE1UW\
-5WemFXNWxjM014RFRBTEJnTlZCQWNNQkZOcGRHVXhMakFzQmdOVkJBTU1KVkpsWjJsem\
-RISmhjaUJXYjNWamFHVnlJRkpsY1hWbGMzUWdVMmxuYm1sdVp5QkxaWGt3V1RBVEJnY3\
-Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVQ2eFZ2QXZxVHoxWlVpdU5XaFhwUXNrYV\
-B5N0FISFFMd1hpSjBpRUx0NnVOUGFuQU4wUW5XTVlPXC8wQ0RFaklrQlFvYnc4WUtxan\
-R4SkhWU0dUajlLT295Y3dKVEFUQmdOVkhTVUVEREFLQmdnckJnRUZCUWNESERBT0JnTl\
-ZIUThCQWY4RUJBTUNCNEF3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnWXIyTGZxb2FDS0\
-RGNFJBY01tSmkrTkNacWRTaXVWdWdJU0E3T2hLUnEzWUNJRHhuUE1NbnBYQU1UclBKdV\
-BXeWNlRVIxMVB4SE9uKzBDcFNIaTJxZ3BXWCIsIk1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
-cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
-MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
-hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
-9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
-xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
-hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDZcL1NjWTVQSmlidm\
-dIVEIrRlwvUVRqZ2VsSEd5MVlLcHdjTk1jc1N5YWpSVEJETUJJR0ExVWRFd0VCXC93UU\
-lNQVlCQWY4Q0FRRXdEZ1lEVlIwUEFRSFwvQkFRREFnSUVNQjBHQTFVZERnUVdCQlRvWk\
-lNelFkc0RcL2pcLytnWFwvN2NCSnVjSFwvWG1qQUtCZ2dxaGtqT1BRUURBZ05KQURCR0\
-FpRUF0eFEzK0lMR0JQSXRTaDRiOVdYaFhOdWhxU1A2SCtiXC9MQ1wvZlZZRGpRNm9DSV\
-FERzJ1UkNIbFZxM3loQjU4VFhNVWJ6SDgrT2xoV1V2T2xSRDNWRXFEZGNRdz09Il0sIn\
-R5cCI6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
-    "signature": "0fzuqVdyhemWsu_HQeF-CmQwJeLp9IStNf-bWZwz6SojrEOR4a\
-Dq6VStyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
-  }]
-}
-]]></artwork>
-        </figure>
-      </section>
-      <section anchor="example-voucher-response-from-masa-to-pledge-via-registrar" numbered="true" toc="default">
-        <name>Example Voucher Response (from MASA to Pledge, via Registrar)</name>
-        <t>The following is an example voucher response from MASA to Pledge via Registrar, in "General JWS JSON Serialization".</t>
-        <figure anchor="ExampleVoucherResponsefigure">
-          <name>Example Voucher Response</name>
-          <artwork align="left" name="" type="" alt=""><![CDATA[
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-{
-  "payload": "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2\
-dnZWQiLCJzZXJpYWwtbnVtYmVyIjoiMDEyMzQ1Njc4OSIsIm5vbmNlIjoiZGRoSGQ4Ml\
-FpUGtzMDBTck1USTlEUT09IiwiY3JlYXRlZC1vbiI6IjIwMjItMDctMDdUMTc6NDc6MD\
-EuODkwWiIsInBpbm5lZC1kb21haW4tY2VydCI6Ik1JSUJwRENDQVVtZ0F3SUJBZ0lHQV\
-cwZUx1SCtNQW9HQ0NxR1NNNDlCQU1DTURVeEV6QVJCZ05WQkFvTUNrMTVRblZ6YVc1bG\
-MzTXhEVEFMQmdOVkJBY01CRk5wZEdVeER6QU5CZ05WQkFNTUJsUmxjM1JEUVRBZUZ3MH\
-hPVEE1TVRFd01qTTNNekphRncweU9UQTVNVEV3TWpNM016SmFNRFV4RXpBUkJnTlZCQW\
-9NQ2sxNVFuVnphVzVsYzNNeERUQUxCZ05WQkFjTUJGTnBkR1V4RHpBTkJnTlZCQU1NQm\
-xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
-hRbFQzRkhKMVVhSTcrV3NIT2IwVVMzU0FMdEc1d3VLUURqaWV4MDYvU2NZNVBKaWJ2Z0\
-hUQitGL1FUamdlbEhHeTFZS3B3Y05NY3NTeWFqUlRCRE1CSUdBMVVkRXdFQi93UUlNQV\
-lCQWY4Q0FRRXdEZ1lEVlIwUEFRSC9CQVFEQWdJRU1CMEdBMVVkRGdRV0JCVG9aSU16UW\
-RzRC9qLytnWC83Y0JKdWNIL1htakFLQmdncWhrak9QUVFEQWdOSkFEQkdBaUVBdHhRMy\
-tJTEdCUEl0U2g0YjlXWGhYTnVocVNQNkgrYi9MQy9mVllEalE2b0NJUURHMnVSQ0hsVn\
-EzeWhCNThUWE1VYnpIOCtPbGhXVXZPbFJEM1ZFcURkY1F3PT0ifX0",
-  "signatures": [{
-    "protected": "eyJ4NWMiOlsiTUlJQmt6Q0NBVGlnQXdJQkFnSUdBV0ZCakNrWU\
-1Bb0dDQ3FHU000OUJBTUNNRDB4Q3pBSkJnTlZCQVlUQWtGUk1SVXdFd1lEVlFRS0RBeE\
-thVzVuU21sdVowTnZjbkF4RnpBVkJnTlZCQU1NRGtwcGJtZEthVzVuVkdWemRFTkJNQj\
-RYRFRFNE1ERXlPVEV3TlRJME1Gb1hEVEk0TURFeU9URXdOVEkwTUZvd1R6RUxNQWtHQT\
-FVRUJoTUNRVkV4RlRBVEJnTlZCQW9NREVwcGJtZEthVzVuUTI5eWNERXBNQ2NHQTFVRU\
-F3d2dTbWx1WjBwcGJtZERiM0p3SUZadmRXTm9aWElnVTJsbmJtbHVaeUJMWlhrd1dUQV\
-RCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFTQzZiZUxBbWVxMVZ3NmlRclJzOF\
-IwWlcrNGIxR1d5ZG1XczJHQU1GV3diaXRmMm5JWEgzT3FIS1Z1OHMyUnZpQkdOaXZPS0\
-dCSEh0QmRpRkVaWnZiN294SXdFREFPQmdOVkhROEJBZjhFQkFNQ0I0QXdDZ1lJS29aSX\
-pqMEVBd0lEU1FBd1JnSWhBSTRQWWJ4dHNzSFAyVkh4XC90elVvUVwvU3N5ZEwzMERRSU\
-5FdGNOOW1DVFhQQWlFQXZJYjNvK0ZPM0JUbmNMRnNhSlpSQWtkN3pPdXNuXC9cL1pLT2\
-FFS2JzVkRpVT0iXSwidHlwIjoidm91Y2hlci1qd3MranNvbiIsImFsZyI6IkVTMjU2In\
-0",
-    "signature": "y1HLYBFlwouf42XWSKUWjeYQHnG2Q6A4bjA7hvTkB3z1dPwTUl\
-jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
-  }]
-}
-]]></artwork>
-        </figure>
-      </section>
-    </section>
   </back>
   <!-- ##markdown-source:
-H4sIAB6oA2MAA+1865KjSJbmfz2FNtpsO2umIgqQFJVKs7aekARIRIBCDu5I
-TI6NISACxDUAhS5lNc+yz7JPtp+DFJe8VOd2748es02rqpSE+/Hj5/Kd77jT
-fXl52amjOgk+dTXb7FbRYxb4XZZvvTAouzdlHT24Xl11H/KyO8rzuqpLtyii
-7LF7X+Z17uVJ1XHX6zJ4bgRcPrczO37uZW4KqX7pPtSXUVA/XLpZlLqXm111
-HnUpDDqdqnYz/z/dJM8wui63QacTFWXzsaolQRgKUsctA/dTd5bVQZkFdWf3
-+KnbCOvaeRlzZdQy3xadePc66HLCF+54bv2pW9V+Z1v4bh1Un7pEGX/sXV93
-OkX0qYs/f+p6btbdVkHXLUv30P0QPXTdJOkeguqnLnYdulXYhbJBp9vFhj/x
-B/hY5WVdBg/Vp0aEHzy42wR2qvPz80PaPuZfO+62DvPyU6dz2Y0y/GhddW2u
-ZomRrZ2sME/d6vXXvMQmzShIg6zq3qj4JUjdKIFdmoGXu2bgv1XtiCsvT1+E
-61ddEnmhW/pVnr0soPOfguT9o3YVOCBIUljBzB/qHYzd2LV6XTP1yn/lLvy3
-6jz0ynM7HS/P6jJab+u8rD692ZrsxUFZv24tD8okqKrX35tllW29LYNdEHWt
-wAuzPMkfo6CCA72rN7utg3Zlr7qCia98hEcny8vUraPn4BMGjoh5O2vdOhwO
-8IPpWPft98GvEr6fHP6p/fjrQBycPn6UBkO4JMoe3srDg4H0UTh/vB5I5+HD
-/vD88dfhy68fxeZjnhVuHfJPCBO3fAwQdxdhXRfVp19+4XtxSy/EEld8N1cw
-wC/8h1/S6vGXynUff0nFcrjN+/vVMZt7Dx8H8iEWSLitB8OPv1y0Uts0veDh
-in/y7JKv2HXr2uV2RablBbLGfXiIvL+2Uxo7z2RLQWxcXnbdNU9fr+50fvvt
-ZJXff+exG2UwvNv1o8eodhMkQpv2yIwkARyc0rXr8kGrG0O9bOf4Xc2cGzzX
-twjCGqHp1jxfuusgyM5Ysq14grrdcXko6vwR8BFGXldHPLiPQdc8ZLW7734Y
-6+ZPyNNy6/GguOpYYVR10yDNEVR1mftbr9Hw2S0jFyvlD1gseFHsZSJGd3eQ
-H3YhsBtVnTIoEteDGutDM4Mr3J2vNwF2Z0LBRrfM78qZx/WL8qz7QZub8k9Y
-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
+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
+J+GhzOvcy5Oq465WZfDSCLh8aWd2/NzL3BRS/dJ9rC+joH68dLModS/X2+o0
+6lIcdDpV7Wb+v7tJnmF0XW6CTicqyuZjVXdF8UbsdtwycD8J06wOyiyoO9un
+T0IjTLDzMubKqGW+KTrx9nXQ5Zgv3PHc+pNQ1X5nU/huHVSfBKKMPvaurzud
+Ivok4M+fBM/NhE0VCG5Zunvhp+hRcJNE2AfVzwJ2HbpVKEDZoCMI2PAn/gAf
+q7ysy+Cx+tSI8INHd5PATnV+er5P28f8a8fd1GFefup0LoUow4/WlWBzNUuM
+bO1khXnqVq+/5iU2aUZBGmSVcKvilyB1owR2aQZebpuB/6NqR1x5eXoWrl8J
+JPJCt/SrPDsvoPOfguT9o3YVOCBIUljBzB/rLYzd2LV6XTP1yr9wF/6P6jT0
+ynM7HS/P6jJabeq8rD692ZrsxUFZv24tD8okqKrX35tllU29KYNtEAlW4IVZ
+nuRPUVDBgd7Vm93WQbuyV13BxFc+wqOT5WXq1tFL8AkDh8S8m7ZuvbkZ4AfT
+sR7a74Nfu/h+dPin9uOvA2lw/PixO7iBS6Ls8a08PBh0P4qnj9eD7mn4Tf/m
+9PHXm/OvH6XmY54Vbh3yTwgTt3wKEHcXYV0X1adffuF7cUsvxBJXfDdXMMAv
+/Idf0urpl8p1n35JpfJmk/d3y0M28x4/DuR9LJJwUw9uPv5y0Upt0/SChyv+
+ybNLvqLg1rXL7YpMywtkjfv4GHl/a6c0dp7KloLYuLwU3BVPX6/udH777WiV
+33/nsRtlMLwr+NFTVLsJEqFNe2RGkgAOjukquHzQ8tZQL9s5vqCZM4Pn+gZB
+WCM03Zrni7AKguyEJZuKJ6grjMp9UedPgI8w8gQd8eA+BYK5z2p3J/w00s2f
+kaflxuNBcdWxwqgS0iDNEVR1mfsbr9HwxS0jFyvlj1gsOCt2nojRwhbyQwEC
+hajqlEGRuB7UWO2bGVxhYbZaB9idCQUb3TJfkDOP6xflmfCTNjPln7E48iSL
+qhQGqjyEOYRAemM5HkSwHJK92hQFkABjiiTfcytUrzpwQVBCKIAEQVlCQP4C
+baHaVaczhRd9P2qWhKBgB0WjRp8w3za6tmHJBXjAvzrwPwj6VJeFel9wY2C3
+ZfAUVcA7SOabCHZuWiTHZ0WZv0R+4F+1vk8j30+QPH/iCNkYlK/c6VzcfoX2
+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
+gzm/MFPrHoPO8H227IFFnU7Etfb27vyd3+b1rNgYztm8CzbRnS+cHZvkO/CN
+wqeDhauEW7owSn7aMRwYojI1FUX3pbAw18OC0J1oZGxGVWUzp/0t6j96q+Rh
+MfqI7pkobpyU80R5WWZe36b1zuX8p2/GoU1FdEHr5N7qgun2/Dv4gbY2CDlL
+lIGT9/ieedCXUAdZY8imDBuK3IaI/Sm1Qlhy2SdtrIwMWenNuz5Kc/1ix8m1
+ux4qPNqIovXwtzmnSWYvpntLdXarrjI2Rd6PG4o2XIpSbaZxCTu4Hpi2Cxbi
+275GRblndcN7mskHmxoamYQbKkvGKhsuEUfUS4Z3PrfLIrCNhLDpTmfDPurT
+5u4wHKPWT11L2zm94cIeTatpLGkm1bb87mbOWO2ISg/fh46YTOaQ4m0dupPM
+UX26+zjdDzc3qej1WCCDszLtFOMv2HWpW4ysEgdc3pN4P64jNkMZ1tRPEYXd
+jdDboef3IYFcz+ngJMFAllQN2kiaTBkBPDo9fYJ+HJVQliBa8UXp2bKQYXER
+tjfvpzx5lyXfyFQgyx/k6o9mKnL6Ta7+392xWd2660pk6oO5hGSlzA8kDu90
+xkLT8kpw5KnVnW7Bqw9UREzLnuT32D2l5Nm1WV8fO969ZKxBIeZmmkQ+dPGn
+TJ6WJNm+wFrPDnoGU/YHOkvuvYm/BpNZe5IxWNqFCV1l6Kodb6uU19sq1BBj
+zpImdueiQoApstPcs063VFaIqWxfYJfm7sqkzJivh8ebMZJR5o/mCXnhHDUx
+gkSJPZF4993Cu9/XmY2ZRtcY8S6FS7FV6bm99f7qzvuuufPmd2vIYUUEgzrc
+iYkOy85N9K/umEQz5qP7CGe+HYJN3nYRmRF2oM+l7YuTOA5RC2KkN2N+gqnI
+5KBJNDam6CN2ei/J52vaZwrquK1dm+On0urucnSDXfxtkjH604UiO6pB/IN4
+vBlDNg680f+DmzHx8bB5Zv4+DFK72vz7ZB4ol6N0vtWC++JmatbG4+XKdraH
+azNfl/KM9N3PnfHzNTPrvfoxsBdrdWI4Ednv77X8V/IglXcQbXa3378ZO90x
+na9IfuiW7EdvuX7kyux14vEt8/ZmjF/R8Oua9rrqQ/P/IfjBd7Ne32E/SvyG
+wPfy/pO+onXtpzfSshs2Fy14Hno9I/EyUvCgQjBVK/5SSObYcx5iB2ehFUt7
+W68yVi9TfrkDcjSW9/phDjDw+rMvLl7QJuamOu/rCU8mqtYHfTy00CBQ00rk
+08XLsqclywUBrEkvK37hs55u9fW01sce/vWpbnnXALFrffy5I29m43hrR1gn
+GxardMBnxauuFLp2v1522b65ovn/5eS/WDlZvtCugQ5xeOfaWtcB+IZ0HtXq
+vaRQN/XRKoaTwFIcszfsLcWBsewZVmArzzQBVMvSyGxfbYlRMJR5xEsJLyQo
+BN8vJaOb0ZwpMnalESqN9OMrGkT1CRO1EVNvXHQW15yukgMZ3Tw3ZWT0Eetr
+d8if6b0U1qCnLRWzw9KNb+a0lTgzY/wd+0OXv4AxCYm+RyOsWbI/onIi0u6T
+uFwnC1sNl1bGcg+VzIifymWEErK/SVmSyG4id1eiocFGEz1j5lwMK35EJh8C
+OxwZVkhtWWLLrJjORvUDPyBgC+dhpWgyP+71KImXktLjTc3jQvzXu5O67U7U
+9+87MtEZubFR2v+Z3p5aw1H87Sn+vqPcnlggcRKi6bKkriSeqrHYvv94w7uV
+Gb5vLQowlMg12DrAoAabAFQx8OYcuyDoV/skaXuFU49FZPZOB2pNB+C4WHGI
+JDQaPsLfWFJ6ftc/vQ11nEEiXSwARY7rp2RhpTeuLScZswC0qda8jxVQTbeT
+sPQln/IAJmAoxpmhAMTeMRak6MgXB+M5Vaz5wYkAa8OVzcC1nZ6RJsRLtMMM
+3fB0aydeaahTAJ0/cFRp4R20CSyqoseOXBQFPR1otvx0sHroYiRHmk30Pc2c
+AkE8cxFYvCPwR6YcivOUFCRmrp05kdG96ZvwJvjYw7FDITMZQLsOFQ56c3Eq
+Im7GSDzN7CKh+J3Asy43byXJVFKGvqRlph0OTYvMbVvr+xPjYCq3e0jqg1GJ
+QcLAJ8Epe8bAkbcHXSawAjpIdPzGbGZLYzCp+dxO0M84GvrAlzvRedBFjaII
+6SQzQjMpTHg2NnrFg78wNpAK7lqgu4KPFLOrHZD0BUOiLMxt5E+SLS9dr4VR
+evZ7eulmBi9OKG9K5ex5iWGWvqZdzs3Eb1KtvTS5Xw6VZJtvHvvdhW3eUXsd
+LOeTTO3Or2/7q/Xtr+GLFQ97B8l/QCCiSK4fJvXG6M6D3fXTeGc9umZ0F+QL
+tZqN+5o9e5prD0/fpVpnYtWSkm8zqy/J0HcIFP+/guDP/wHehNziDVUAAA==
 
 -->
 

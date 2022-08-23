@@ -6,7 +6,7 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: RFC8366 (if approved)                             M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 23 February 2023                                 22 August 2022
+Expires: 24 February 2023                                 23 August 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 February 2023.
+   This Internet-Draft will expire on 24 February 2023.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Werner & Richardson     Expires 23 February 2023                [Page 1]
+Werner & Richardson     Expires 24 February 2023                [Page 1]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
@@ -73,23 +73,24 @@ Table of Contents
      3.2.  JWS Payload of Voucher in General JWS JSON
            Serialization . . . . . . . . . . . . . . . . . . . . . .   4
      3.3.  JWS Protected Header of Voucher in General JWS JSON
-           Serialization . . . . . . . . . . . . . . . . . . . . . .   4
+           Serialization . . . . . . . . . . . . . . . . . . . . . .   5
    4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   5
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
      6.1.  Media-Type Registry . . . . . . . . . . . . . . . . . . .   6
        6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   6
-   7.  Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  Examples . . . . . . . . . . . . . . . . . . . . . .   9
-     A.1.  Example Pledge Voucher Request - PVR (from Pledge to
-           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .   9
-     A.2.  Example Parboiled Registrar Voucher Request - RVR (from
-           Registrar to MASA)  . . . . . . . . . . . . . . . . . . .  11
-     A.3.  Example Voucher Response (from MASA to Pledge, via
-           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  13
+   7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   8.  Changelog [RFC Editor: please delete] . . . . . . . . . . . .   7
+   9.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     9.1.  Example Pledge Voucher Request - PVR (from Pledge to
+           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .   7
+     9.2.  Example Parboiled Registrar Voucher Request - RVR (from
+           Registrar to MASA)  . . . . . . . . . . . . . . . . . . .   9
+     9.3.  Example Voucher Response (from MASA to Pledge, via
+           Registrar)  . . . . . . . . . . . . . . . . . . . . . . .  11
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  13
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
@@ -104,20 +105,20 @@ Table of Contents
    "application/voucher-cms+json".
 
    [I-D.ietf-anima-constrained-voucher] provides a mapping of the YANG
-   to CBOR [RFC8949] with a signature format of COSE [RFC8812].
+   module to CBOR [RFC8949] with a signature format of COSE [RFC8812].
 
 
 
-
-Werner & Richardson     Expires 23 February 2023                [Page 2]
+Werner & Richardson     Expires 24 February 2023                [Page 2]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
 
-   This document provides a mapping of JSON format with the signature in
-   form of JSON Web Signature (JWS) [RFC7515].  The encoding specified
-   in this document is used by [I-D.ietf-anima-brski-prm] and may be
-   more handy for use cases requiring signed JSON objects.
+   This document provides a mapping of the Voucher YANG module to JSON
+   format with the signature in form of JSON Web Signature (JWS)
+   [RFC7515].  The encoding specified in this document is used by
+   [I-D.ietf-anima-brski-prm] and may be more handy for use cases
+   requiring signed JSON objects.
 
    This document does not extend the YANG definition of [RFC8366].
 
@@ -127,7 +128,10 @@ Internet-Draft                 JWS-voucher                   August 2022
    the different voucher signature formats that a receiver could safely
    recognize which format it uses unless additional context is provided.
    For example, [BRSKI] provides this context via the MIME-Type for the
-   voucher artifact.
+   voucher artifact. +++ stf: Is this a reference to the optional usage
+   of "typ" in the voucher?  Proposal to include: This document utilizes
+   the optional "type" in the signature to provide information about the
+   signed object.
 
    This document should be considered an update to [RFC8366] in the
    category of "See Also" as per [I-D.kuehlewind-update-tag].
@@ -156,28 +160,30 @@ Internet-Draft                 JWS-voucher                   August 2022
 
    1.  "JWS Compact Serialization", [RFC7515] section 7.1
 
+
+
+
+
+
+Werner & Richardson     Expires 24 February 2023                [Page 3]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
    2.  "JWS JSON Serialization" in, [RFC7515] section 7.2
        - "General JWS JSON Serialization Syntax", [RFC7515] section
        7.2.1
        - "Flattened JWS JSON Serialization Syntax", [RFC7515] section
        7.2.2
 
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 3]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
    This document makes use of the "General JWS JSON Serialization
-   Syntax" to support multi signatures, as already supported by
+   Syntax" to support multiple signatures, as already supported by
    [RFC8366] for vouchers in form of "voucher-cms+json".
 
 3.1.  Voucher Representation in General JWS JSON Serialization Syntax
 
-   The following figures gives an overview of the Voucher Representation
-   in General JWS JSON Serialization Syntax.
+   The following figures gives an overview of the Voucher representation
+   in "General JWS JSON Serialization Syntax".
 
    {
      "payload": "BASE64URL(ietf-voucher:voucher)",
@@ -205,26 +211,29 @@ Internet-Draft                 JWS-voucher                   August 2022
          "pinned-domain-cert": "base64encodedvalue=="
        }
 
-            Figure 2: Voucher payload Representation JSON Syntax
+            Figure 2: Voucher payload representation JSON Syntax
+
+
+
+
+
+
+
+
+
+Werner & Richardson     Expires 24 February 2023                [Page 4]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
 
 3.3.  JWS Protected Header of Voucher in General JWS JSON Serialization
 
    The standard header parameters "typ" and "alg" as described in
-   [RFC7515] are expected in the protected header.  The "alg" header
-   should contain the algorithm type such as "ES256".  The "typ" header
-   should contain the value "TODO: voucher-jws+json", if present.  As in
-   the [BRSKI] use cases, there are additional HTTP MIME type headers to
-   indicate content types.
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 4]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
+   [RFC7515] are utilized in the protected header.  The "alg" header
+   MUST contain the algorithm type used to create the signature, such as
+   "ES256".  The "typ" header SHOULD contain the value "TODO: voucher-
+   jws+json", if present.  As in the [BRSKI] use cases, there are
+   additional HTTP MIME type headers to indicate content types.
 
    If PKIX [RFC5280] format certificates are used then the [RFC7515]
    section 4.1.6 "x5c" certificate chain SHOULD be used to contain the
@@ -235,7 +244,7 @@ Internet-Draft                 JWS-voucher                   August 2022
    anchor for future operations.  This is consistent with [BRSKI]
    section 5.5.2.
 
-   The following figures gives the decoded protected header
+   The following figure gives the decoded protected header
    representation in JSON syntax.
 
        {
@@ -260,27 +269,30 @@ Internet-Draft                 JWS-voucher                   August 2022
 
    The use of a JWS header brings no new privacy considerations.
 
+
+
+
+
+
+
+
+
+Werner & Richardson     Expires 24 February 2023                [Page 5]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
 5.  Security Considerations
 
    The issues of how [RFC8366] vouchers are used in a [BRSKI] system is
-   addressed in section 11 of that document.  This document does not
-   change any of those issues, it just changes the signature technology
-   used for vouchers and voucher requests.
+   addressed in section 11 of the [BRSKI] specification.  This document
+   does not change any of those issues, it just changes the signature
+   technology used for voucher request and response objects.
 
    [SZTP] section 9 deals with voucher use in Secure Zero Touch
    Provisioning, and this document also makes no changes to security.
 
 6.  IANA Considerations
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 5]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
 
 6.1.  Media-Type Registry
 
@@ -294,13 +306,13 @@ Internet-Draft                 JWS-voucher                   August 2022
    Required parameters:  none
    Optional parameters:  none
    Encoding considerations:  JWS+JSON vouchers are JOSE objects
-                             signed with one signer.
-   Security considerations:  See Security Considerations, Section
+                             signed with one or multiple signers.
+   Security considerations:  See section [Security Considerations]
    Interoperability considerations:  The format is designed to be
      broadly interoperable.
-   Published specification:  THIS RFC.
+   Published specification:  [THIS RFC].
    Applications that use this media type:  ANIMA, 6tisch, and other
-     zero-touch imprinting systems
+     zero-touch bootstrapping/provisioning solutions
    Additional information:
      Magic number(s):  None
      File extension(s):  .vjj
@@ -313,7 +325,22 @@ Internet-Draft                 JWS-voucher                   August 2022
    Change controller:  IETF
    Provisional registration? (standards tree only):  NO
 
-7.  Changelog
+7.  Acknowledgments
+
+   We would like to thank the various reviewers for their input, in
+   particular Steffen Fries, Ingo Wenda, ...TODO Support in PoC
+   implementations Hong Rui Li and He Peng Jia, ...TODO
+
+
+
+Werner & Richardson     Expires 24 February 2023                [Page 6]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
+   [RFC Editor: please delete] TODO: ...
+
+8.  Changelog [RFC Editor: please delete]
 
    *  Added adoption call comments from Toerless.  Changed from
       [RFCxxxx] to [THING] style for some key references.
@@ -330,132 +357,17 @@ Internet-Draft                 JWS-voucher                   August 2022
 
    *  Include examples A1, A2, A3 using "General JWS JSON Serialization"
 
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 6]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
    *  Added optional "typ": "voucher-jws+json" header parameter to JWS
       objects
 
-8.  References
+   -- back
 
-8.1.  Normative References
-
-   [BRSKI]    Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
-              and K. Watsen, "Bootstrapping Remote Secure Key
-              Infrastructure (BRSKI)", RFC 8995, DOI 10.17487/RFC8995,
-              May 2021, <https://www.rfc-editor.org/info/rfc8995>.
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
-              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <https://www.rfc-editor.org/info/rfc7515>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
-
-   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", STD 90, RFC 8259,
-              DOI 10.17487/RFC8259, December 2017,
-              <https://www.rfc-editor.org/info/rfc8259>.
-
-   [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
-              "A Voucher Artifact for Bootstrapping Protocols",
-              RFC 8366, DOI 10.17487/RFC8366, May 2018,
-              <https://www.rfc-editor.org/info/rfc8366>.
-
-   [SZTP]     Watsen, K., Farrer, I., and M. Abrahamsson, "Secure Zero
-              Touch Provisioning (SZTP)", RFC 8572,
-              DOI 10.17487/RFC8572, April 2019,
-              <https://www.rfc-editor.org/info/rfc8572>.
-
-8.2.  Informative References
-
-   [I-D.ietf-anima-brski-prm]
-              Fries, S., Werner, T., Lear, E., and M. C. Richardson,
-              "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
-              Progress, Internet-Draft, draft-ietf-anima-brski-prm-04, 8
-              July 2022, <https://www.ietf.org/archive/id/draft-ietf-
-              anima-brski-prm-04.txt>.
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 7]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
-   [I-D.ietf-anima-constrained-voucher]
-              Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
-              Dijk, "Constrained Bootstrapping Remote Secure Key
-              Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
-              draft-ietf-anima-constrained-voucher-18, 11 July 2022,
-              <https://www.ietf.org/archive/id/draft-ietf-anima-
-              constrained-voucher-18.txt>.
-
-   [I-D.kuehlewind-update-tag]
-              Kuehlewind, M. and S. Krishnan, "Definition of new tags
-              for relations between RFCs", Work in Progress, Internet-
-              Draft, draft-kuehlewind-update-tag-04, 12 July 2021,
-              <https://www.ietf.org/archive/id/draft-kuehlewind-update-
-              tag-04.txt>.
-
-   [onpath]   "can an on-path attacker drop traffic?", n.d.,
-              <https://mailarchive.ietf.org/arch/msg/saag/
-              m1r9uo4xYznOcf85Eyk0Rhut598/>.
-
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/info/rfc5280>.
-
-   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
-              RFC 5652, DOI 10.17487/RFC5652, September 2009,
-              <https://www.rfc-editor.org/info/rfc5652>.
-
-   [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
-              "Handling Long Lines in Content of Internet-Drafts and
-              RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
-              <https://www.rfc-editor.org/info/rfc8792>.
-
-   [RFC8812]  Jones, M., "CBOR Object Signing and Encryption (COSE) and
-              JSON Object Signing and Encryption (JOSE) Registrations
-              for Web Authentication (WebAuthn) Algorithms", RFC 8812,
-              DOI 10.17487/RFC8812, August 2020,
-              <https://www.rfc-editor.org/info/rfc8812>.
-
-   [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
-              Representation (CBOR)", STD 94, RFC 8949,
-              DOI 10.17487/RFC8949, December 2020,
-              <https://www.rfc-editor.org/info/rfc8949>.
-
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 8]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
-
-Appendix A.  Examples
+9.  Examples
 
    These examples are folded according to [RFC8792] Single Backslash
    rule.
 
-A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
+9.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
    The following is an example request sent from a Pledge to the
    Registrar, in "General JWS JSON Serialization".
@@ -477,31 +389,7 @@ A.1.  Example Pledge Voucher Request - PVR (from Pledge to Registrar)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023                [Page 9]
+Werner & Richardson     Expires 24 February 2023                [Page 7]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
@@ -557,12 +445,12 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 23 February 2023               [Page 10]
+Werner & Richardson     Expires 24 February 2023                [Page 8]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
 
-A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
+9.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
       to MASA)
 
    The term parboiled refers to food which is partially cooked.  In
@@ -613,7 +501,7 @@ A.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
 
 
 
-Werner & Richardson     Expires 23 February 2023               [Page 11]
+Werner & Richardson     Expires 24 February 2023                [Page 9]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
@@ -669,7 +557,7 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 23 February 2023               [Page 12]
+Werner & Richardson     Expires 24 February 2023               [Page 10]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
@@ -689,7 +577,7 @@ Internet-Draft                 JWS-voucher                   August 2022
 
         Figure 5: Example Parboiled Registrar Voucher Request - RVR
 
-A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
+9.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
    The following is an example voucher response from MASA to Pledge via
    Registrar, in "General JWS JSON Serialization".
@@ -725,7 +613,7 @@ A.3.  Example Voucher Response (from MASA to Pledge, via Registrar)
 
 
 
-Werner & Richardson     Expires 23 February 2023               [Page 13]
+Werner & Richardson     Expires 24 February 2023               [Page 11]
 
 Internet-Draft                 JWS-voucher                   August 2022
 
@@ -769,21 +657,119 @@ Internet-Draft                 JWS-voucher                   August 2022
 
                      Figure 6: Example Voucher Response
 
+10.  References
+
+10.1.  Normative References
+
+   [BRSKI]    Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
+              and K. Watsen, "Bootstrapping Remote Secure Key
+              Infrastructure (BRSKI)", RFC 8995, DOI 10.17487/RFC8995,
+              May 2021, <https://www.rfc-editor.org/info/rfc8995>.
+
+
+
+
+Werner & Richardson     Expires 24 February 2023               [Page 12]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <https://www.rfc-editor.org/info/rfc7515>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
+
+   [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
+              "A Voucher Artifact for Bootstrapping Protocols",
+              RFC 8366, DOI 10.17487/RFC8366, May 2018,
+              <https://www.rfc-editor.org/info/rfc8366>.
+
+   [SZTP]     Watsen, K., Farrer, I., and M. Abrahamsson, "Secure Zero
+              Touch Provisioning (SZTP)", RFC 8572,
+              DOI 10.17487/RFC8572, April 2019,
+              <https://www.rfc-editor.org/info/rfc8572>.
+
+10.2.  Informative References
+
+   [I-D.ietf-anima-brski-prm]
+              Fries, S., Werner, T., Lear, E., and M. C. Richardson,
+              "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
+              Progress, Internet-Draft, draft-ietf-anima-brski-prm-04, 8
+              July 2022, <https://www.ietf.org/archive/id/draft-ietf-
+              anima-brski-prm-04.txt>.
+
+   [I-D.ietf-anima-constrained-voucher]
+              Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
+              Dijk, "Constrained Bootstrapping Remote Secure Key
+              Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
+              draft-ietf-anima-constrained-voucher-18, 11 July 2022,
+              <https://www.ietf.org/archive/id/draft-ietf-anima-
+              constrained-voucher-18.txt>.
+
+   [I-D.kuehlewind-update-tag]
+              Kuehlewind, M. and S. Krishnan, "Definition of new tags
+              for relations between RFCs", Work in Progress, Internet-
+
+
+
+Werner & Richardson     Expires 24 February 2023               [Page 13]
+
+Internet-Draft                 JWS-voucher                   August 2022
+
+
+              Draft, draft-kuehlewind-update-tag-04, 12 July 2021,
+              <https://www.ietf.org/archive/id/draft-kuehlewind-update-
+              tag-04.txt>.
+
+   [onpath]   "can an on-path attacker drop traffic?", n.d.,
+              <https://mailarchive.ietf.org/arch/msg/saag/
+              m1r9uo4xYznOcf85Eyk0Rhut598/>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/info/rfc5280>.
+
+   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
+              RFC 5652, DOI 10.17487/RFC5652, September 2009,
+              <https://www.rfc-editor.org/info/rfc5652>.
+
+   [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
+              "Handling Long Lines in Content of Internet-Drafts and
+              RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
+              <https://www.rfc-editor.org/info/rfc8792>.
+
+   [RFC8812]  Jones, M., "CBOR Object Signing and Encryption (COSE) and
+              JSON Object Signing and Encryption (JOSE) Registrations
+              for Web Authentication (WebAuthn) Algorithms", RFC 8812,
+              DOI 10.17487/RFC8812, August 2020,
+              <https://www.rfc-editor.org/info/rfc8812>.
+
+   [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
+              Representation (CBOR)", STD 94, RFC 8949,
+              DOI 10.17487/RFC8949, December 2020,
+              <https://www.rfc-editor.org/info/rfc8949>.
+
 Authors' Addresses
 
    Thomas Werner
    Siemens AG
 
    Email: thomas-werner@siemens.com
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023               [Page 14]
-
-Internet-Draft                 JWS-voucher                   August 2022
 
 
    Michael Richardson
@@ -795,46 +781,4 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Werner & Richardson     Expires 23 February 2023               [Page 15]
+Werner & Richardson     Expires 24 February 2023               [Page 14]

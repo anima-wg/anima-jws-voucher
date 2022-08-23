@@ -72,9 +72,9 @@ In addition to explaining how the format is created, MIME types are registered a
 That document defines the base YANG module and the serialization to JSON {{RFC8259}} with a CMS signature according to {{RFC5652}}.
 The resulting Voucher artifact has the media type "application/voucher-cms+json".
 
-{{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
+{{?I-D.ietf-anima-constrained-voucher}} provides a mapping of the YANG module to CBOR {{?RFC8949}} with a signature format of COSE {{RFC8812}}.
 
-This document provides a mapping of JSON format with the signature in form of JSON Web Signature (JWS) {{RFC7515}}.
+This document provides a mapping of the Voucher YANG module to JSON format with the signature in form of JSON Web Signature (JWS) {{RFC7515}}.
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases requiring signed JSON objects.
 
@@ -83,6 +83,8 @@ This document does not extend the YANG definition of {{RFC8366}}.
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
 For example, {{BRSKI}} provides this context via the MIME-Type for the voucher artifact.
++++ stf: Is this a reference to the optional usage of "typ" in the voucher? Proposal to include: 
+This document utilizes the optional "type" in the signature to provide information about the signed object.
 
 This document should be considered an update to {{RFC8366}} in the category of "See Also"
 as per {{?I-D.kuehlewind-update-tag}}.
@@ -109,11 +111,11 @@ The following serializations are defined:
 - "General JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.1  
 - "Flattened JWS JSON Serialization Syntax", {{RFC7515}} section 7.2.2  
 
-This document makes use of the "General JWS JSON Serialization Syntax" to support multi signatures, as already supported by {{RFC8366}} for vouchers in form of "voucher-cms+json".
+This document makes use of the "General JWS JSON Serialization Syntax" to support multiple signatures, as already supported by {{RFC8366}} for vouchers in form of "voucher-cms+json".
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
 
-The following figures gives an overview of the Voucher Representation in General JWS JSON Serialization Syntax.
+The following figures gives an overview of the Voucher representation in "General JWS JSON Serialization Syntax".
 
 ~~~~
 {
@@ -141,13 +143,13 @@ The following figures gives the decoded voucher payload representation JSON synt
       "pinned-domain-cert": "base64encodedvalue=="
     }
 ~~~~
-{: #VoucherGeneralJWSVoucherPayloadFigure title='Voucher payload Representation JSON Syntax' artwork-align="left"}
+{: #VoucherGeneralJWSVoucherPayloadFigure title='Voucher payload representation JSON Syntax' artwork-align="left"}
 
 ## JWS Protected Header of Voucher in General JWS JSON Serialization
 
-The standard header parameters "typ" and "alg" as described in {{RFC7515}} are expected in the protected header.
-The "alg" header should contain the algorithm type such as "ES256".
-The "typ" header should contain the value "TODO: voucher-jws+json", if present. 
+The standard header parameters "typ" and "alg" as described in {{RFC7515}} are utilized in the protected header.
+The "alg" header MUST contain the algorithm type used to create the signature, such as "ES256".
+The "typ" header SHOULD contain the value "TODO: voucher-jws+json", if present. 
 As in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
 
 If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
@@ -156,7 +158,7 @@ Vouchers will often need all certificates in the chain, including what would be 
 or end systems may need to pin a trust anchor for future operations.
 This is consistent with {{BRSKI}} section 5.5.2.
 
-The following figures gives the decoded protected header representation in JSON syntax.
+The following figure gives the decoded protected header representation in JSON syntax.
 
 ~~~~
     { 
@@ -180,8 +182,8 @@ The use of a JWS header brings no new privacy considerations.
 
 # Security Considerations
 
-The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in section 11 of that document.
-This document does not change any of those issues, it just changes the signature technology used for vouchers and voucher requests.
+The issues of how {{RFC8366}} vouchers are used in a {{BRSKI}} system is addressed in section 11 of the {{BRSKI}} specification.
+This document does not change any of those issues, it just changes the signature technology used for voucher request and response objects.
 
 {{SZTP}} section 9 deals with voucher use in Secure Zero Touch Provisioning, and this document also makes no changes to security.
 
@@ -198,13 +200,13 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
     Required parameters:  none
     Optional parameters:  none
     Encoding considerations:  JWS+JSON vouchers are JOSE objects
-                              signed with one signer.
-    Security considerations:  See Security Considerations, Section
+                              signed with one or multiple signers.
+    Security considerations:  See section [Security Considerations]
     Interoperability considerations:  The format is designed to be
       broadly interoperable.
-    Published specification:  THIS RFC.
+    Published specification:  [THIS RFC].
     Applications that use this media type:  ANIMA, 6tisch, and other
-      zero-touch imprinting systems
+      zero-touch bootstrapping/provisioning solutions
     Additional information:
       Magic number(s):  None
       File extension(s):  .vjj
@@ -217,7 +219,16 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
     Change controller:  IETF
     Provisional registration? (standards tree only):  NO
 
-# Changelog
+# Acknowledgments
+
+We would like to thank the various reviewers for their input, in particular Steffen Fries, Ingo Wenda, ...TODO
+Support in PoC implementations Hong Rui Li and He Peng Jia, ...TODO
+
+[RFC Editor: please delete]
+TODO: ... 
+
+
+# Changelog [RFC Editor: please delete]
 
 * Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
 * Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"
@@ -226,8 +237,7 @@ This section registers the 'application/voucher-jws+json' in the "Media Types" r
 * Include examples A1, A2, A3 using "General JWS JSON Serialization"
 * Added optional "typ": "voucher-jws+json" header parameter to JWS objects
 
-
---- back
+-- back
 
 # Examples
 
