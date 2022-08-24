@@ -1,11 +1,10 @@
-dist: trusty
+dist: focal
 sudo: false
 language: python
 python:
-  - "3.6"
+  - "3.10"
 
 before_install:
-  - "pip3 install -U Jinja2"
   - "pip3 install xml2rfc"
   - "gem install kramdown-rfc2629"
   - "export PATH=$HOME/.local/bin:$PATH."
