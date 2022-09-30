@@ -29,13 +29,19 @@ author:
   org: Sandelman Software Works
   email: mcr+ietf@sandelman.ca
 
-contributors:
+contributor:
 - ins: T. Eckert
   name: Toerless Eckert
   org: Futurewei Technologies Inc.
   email: tte+ietf@cs.fau.de
-
-
+- ins: E. Dijk
+  name: Esko Dijk
+  email: esko.dijk@iotconsultancy.nl
+- ins: S. Fries
+  name: Steffen Fries
+  org: Siemens AG
+  email: steffen.fries@siemens.com
+  
 normative:
   BRSKI: RFC8995
   SZTP: RFC8572

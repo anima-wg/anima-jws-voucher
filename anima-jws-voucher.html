@@ -14,25 +14,25 @@ This memo introduces a variant of the voucher structure in which CMS is
 replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in   to support deployments in which JOSE is preferred over CMS. 
        In addition to explaining how the format is created, MIME types are registered and examples are provided. 
     " name="description">
-<meta content="xml2rfc 3.8.0" name="generator">
+<meta content="xml2rfc 3.14.2" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-anima-jws-voucher-05" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.8.0
-    Python 3.9.5
+  xml2rfc 3.14.2
+    Python 3.10.6
     appdirs 1.4.4
     ConfigArgParse 1.4.1
     google-i18n-address 2.4.0
     html5lib 1.1
     intervaltree 3.1.0
-    Jinja2 2.11.3
+    Jinja2 3.1.2
     kitchen 1.2.6
-    lxml 4.6.3
-    pycountry 20.7.3
-    pyflakes 2.3.1
+    lxml 4.9.1
+    MarkupSafe 2.1.1
+    pycountry 22.3.5
     PyYAML 5.4.1
     requests 2.25.1
-    setuptools 56.0.0
+    setuptools 63.2.0
     six 1.16.0
 -->
 <link href="anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
@@ -175,11 +175,8 @@ svg {
   margin: 1em 0;
 }
 .alignCenter > *:first-child {
-  border: none;
-  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
-     support flexbox yet.
-  */
   display: table;
+  border: none;
   margin: 0 auto;
 }
 
@@ -202,6 +199,9 @@ ul.empty, .ulEmpty {
 }
 ul.empty li, .ulEmpty li {
   margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
 }
 ul.compact, .ulCompact,
 ol.compact, .olCompact {
@@ -385,6 +385,12 @@ hr {
 #identifiers dd {
   float: left;
   margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    float: none;
+  }
 }
 #identifiers .authors .author {
   display: inline-block;
@@ -649,6 +655,9 @@ hr.addr {
   }
   figure {
     overflow: scroll;
+  }
+  pre.breakable {
+    break-inside: auto;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
@@ -1061,6 +1070,9 @@ table {
 td {
   border-top: 1px solid #ddd;
 }
+tr {
+  break-inside: avoid;
+}
 tr:nth-child(2n+1) > td {
   background-color: #f8f8f8;
 }
@@ -1080,7 +1092,7 @@ tr:nth-child(2n+1) > td {
 }
 /* Change the approach to avoiding breaks inside artwork etc. */
 figure, pre, table, .artwork, .sourcecode  {
-  break-before: avoid-page;
+  break-before: auto;
   break-after: auto;
 }
 /* Avoid breaks between <dt> and <dd> */
@@ -1181,11 +1193,11 @@ li > p:last-of-type {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">JWS-voucher</td>
-<td class="right">August 2022</td>
+<td class="right">September 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Werner &amp; Richardson</td>
-<td class="center">Expires 24 February 2023</td>
+<td class="center">Expires 3 April 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1201,12 +1213,12 @@ li > p:last-of-type {
 <a href="https://www.rfc-editor.org/rfc/rfcRFC8366" class="eref">RFC8366</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-08-23" class="published">23 August 2022</time>
+<time datetime="2022-09-30" class="published">30 September 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-02-24">24 February 2023</time></dd>
+<dd class="expires"><time datetime="2023-04-03">3 April 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1248,7 +1260,7 @@ replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 February 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 April 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1266,9 +1278,9 @@ replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
             respect to this document. Code Components extracted from this
-            document must include Simplified BSD License text as described in
+            document must include Revised BSD License text as described in
             Section 4.e of the Trust Legal Provisions and are provided without
-            warranty as described in the Simplified BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -1276,79 +1288,82 @@ replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-voucher-artifact-with-json-" class="xref">Voucher Artifact with JSON Web Signature</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.3.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-voucher-representation-in-g" class="xref">Voucher Representation in General JWS JSON Serialization Syntax</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-jws-payload-of-voucher-in-g" class="xref">JWS Payload of Voucher in General JWS JSON Serialization</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-jws-protected-header-of-vou" class="xref">JWS Protected Header of Voucher in General JWS JSON Serialization</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-media-type-registry" class="xref">Media-Type Registry</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.1.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="xref">6.1.1</a>.  <a href="#name-application-voucher-jwsjson" class="xref">application/voucher-jws+json</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.8">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-changelog-rfc-editor-please" class="xref">Changelog [RFC Editor: please delete]</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.9">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-examples" class="xref">Examples</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-example-pledge-voucher-requ" class="xref">Example Pledge Voucher Request - PVR (from Pledge to Registrar)</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-example-parboiled-registrar" class="xref">Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.3">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-example-voucher-response-fr" class="xref">Example Voucher Response (from MASA to Pledge, via Registrar)</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.10">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.10.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.10.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1395,7 +1410,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-voucher-artifact-with-json-" class="section-name selfRef">Voucher Artifact with JSON Web Signature</a>
       </h2>
 <p id="section-3-1">The voucher <span>[<a href="#RFC8366" class="xref">RFC8366</a>]</span> JSON structure consists of a nested map, the outer part of which is:<a href="#section-3-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-3-2">
+<div class="alignLeft art-text artwork" id="section-3-2">
 <pre>
 { "ietf-voucher:voucher" : { some inner items }}
 </pre><a href="#section-3-2" class="pilcrow">¶</a>
@@ -1420,7 +1435,7 @@ The following serializations are defined:<a href="#section-3-4" class="pilcrow">
 <p id="section-3.1-1">The following figures gives an overview of the Voucher representation in "General JWS JSON Serialization Syntax".<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <span id="name-voucher-representation-in-ge"></span><div id="VoucherGeneralJWSFigure">
 <figure id="figure-1">
-          <div class="artwork art-text alignLeft" id="section-3.1-2.1">
+          <div class="alignLeft art-text artwork" id="section-3.1-2.1">
 <pre>
 {
   "payload": "BASE64URL(ietf-voucher:voucher)",
@@ -1447,7 +1462,7 @@ The following serializations are defined:<a href="#section-3-4" class="pilcrow">
 <p id="section-3.2-1">The following figures gives the decoded voucher payload representation JSON syntax.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <span id="name-voucher-payload-representat"></span><div id="VoucherGeneralJWSVoucherPayloadFigure">
 <figure id="figure-2">
-          <div class="artwork art-text alignLeft" id="section-3.2-2.1">
+          <div class="alignLeft art-text artwork" id="section-3.2-2.1">
 <pre>
     "ietf-voucher:voucher": {
       "assertion": "logged",
@@ -1481,7 +1496,7 @@ This is consistent with <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span> s
 <p id="section-3.3-3">The following figure gives the decoded protected header representation in JSON syntax.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <span id="name-protected-header-representa"></span><div id="VoucherGeneralJWSProtectedHeaderFigure">
 <figure id="figure-3">
-          <div class="artwork art-text alignLeft" id="section-3.3-4.1">
+          <div class="alignLeft art-text artwork" id="section-3.3-4.1">
 <pre>
     {
       "alg": "ES256",
@@ -1537,7 +1552,7 @@ This document does not change any of those issues, it just changes the signature
           <h4 id="name-application-voucher-jwsjson">
 <a href="#section-6.1.1" class="section-number selfRef">6.1.1. </a><a href="#name-application-voucher-jwsjson" class="section-name selfRef">application/voucher-jws+json</a>
           </h4>
-<div class="artwork art-text alignLeft" id="section-6.1.1-1">
+<div class="alignLeft art-text artwork" id="section-6.1.1-1">
 <pre>
 Type name:  application
 Subtype name:  voucher-jws+json
@@ -1617,7 +1632,7 @@ TODO: ...<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-9.1-1">The following is an example request sent from a Pledge to the Registrar, in "General JWS JSON Serialization".<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <span id="name-example-pledge-voucher-reque"></span><div id="ExamplePledgeVoucherRequestfigure">
 <figure id="figure-4">
-          <div class="artwork art-text alignLeft" id="section-9.1-2.1">
+          <div class="alignLeft art-text artwork" id="section-9.1-2.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
@@ -1678,7 +1693,7 @@ In <span>[<a href="#BRSKI" class="xref">BRSKI</a>]</span>, the term refers to a 
 Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".<a href="#section-9.2-2" class="pilcrow">¶</a></p>
 <span id="name-example-parboiled-registrar-"></span><div id="ExampleParboiledRegistrarVoucherRequestfigure">
 <figure id="figure-5">
-          <div class="artwork art-text alignLeft" id="section-9.2-3.1">
+          <div class="alignLeft art-text artwork" id="section-9.2-3.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
@@ -1791,7 +1806,7 @@ Dq6VStyG8eWXjGHNZiRyyLJo7RP1rKatuS2w"
 <p id="section-9.3-1">The following is an example voucher response from MASA to Pledge via Registrar, in "General JWS JSON Serialization".<a href="#section-9.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-voucher-response"></span><div id="ExampleVoucherResponsefigure">
 <figure id="figure-6">
-          <div class="artwork art-text alignLeft" id="section-9.3-2.1">
+          <div class="alignLeft art-text artwork" id="section-9.3-2.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
@@ -1885,15 +1900,15 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dl class="references">
 <dt id="I-D.ietf-anima-brski-prm">[I-D.ietf-anima-brski-prm]</dt>
         <dd>
-<span class="refAuthor">Fries, S.</span>, <span class="refAuthor">Werner, T.</span>, <span class="refAuthor">Lear, E.</span>, and <span class="refAuthor">M. C. Richardson</span>, <span class="refTitle">"BRSKI with Pledge in Responder Mode (BRSKI-PRM)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-brski-prm-04</span>, <time datetime="2022-07-08" class="refDate">8 July 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-anima-brski-prm-04.txt">https://www.ietf.org/archive/id/draft-ietf-anima-brski-prm-04.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Fries, S.</span>, <span class="refAuthor">Werner, T.</span>, <span class="refAuthor">Lear, E.</span>, and <span class="refAuthor">M. Richardson</span>, <span class="refTitle">"BRSKI with Pledge in Responder Mode (BRSKI-PRM)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-brski-prm-04</span>, <time datetime="2022-07-08" class="refDate">8 July 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-anima-brski-prm-04.txt">https://www.ietf.org/archive/id/draft-ietf-anima-brski-prm-04.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-anima-constrained-voucher">[I-D.ietf-anima-constrained-voucher]</dt>
         <dd>
-<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Stok, P. V. D.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (BRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-18</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-anima-constrained-voucher-18.txt">https://www.ietf.org/archive/id/draft-ietf-anima-constrained-voucher-18.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (BRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-18</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-anima-constrained-voucher-18.txt">https://www.ietf.org/archive/id/draft-ietf-anima-constrained-voucher-18.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.kuehlewind-update-tag">[I-D.kuehlewind-update-tag]</dt>
         <dd>
-<span class="refAuthor">Kuehlewind, M.</span> and <span class="refAuthor">S. Krishnan</span>, <span class="refTitle">"Definition of new tags for relations between RFCs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kuehlewind-update-tag-04</span>, <time datetime="2021-07-12" class="refDate">12 July 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-kuehlewind-update-tag-04.txt">https://www.ietf.org/archive/id/draft-kuehlewind-update-tag-04.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Kühlewind, M.</span> and <span class="refAuthor">S. Krishnan</span>, <span class="refTitle">"Definition of new tags for relations between RFCs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kuehlewind-update-tag-04</span>, <time datetime="2021-07-12" class="refDate">12 July 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-kuehlewind-update-tag-04.txt">https://www.ietf.org/archive/id/draft-kuehlewind-update-tag-04.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="onpath">[onpath]</dt>
         <dd>
@@ -1922,8 +1937,38 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 </dl>
 </section>
 </section>
+<div id="contributors">
+<section id="appendix-A">
+      <h2 id="name-contributors">
+<a href="#name-contributors" class="section-name selfRef">Contributors</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Toerless Eckert</span></div>
+<div dir="auto" class="left"><span class="org">Futurewei Technologies Inc.</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:tte+ietf@cs.fau.de" class="email">tte+ietf@cs.fau.de</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Esko Dijk</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:esko.dijk@iotconsultancy.nl" class="email">esko.dijk@iotconsultancy.nl</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Steffen Fries</span></div>
+<div dir="auto" class="left"><span class="org">Siemens AG</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:steffen.fries@siemens.com" class="email">steffen.fries@siemens.com</a>
+</div>
+</address>
+</section>
+</div>
 <div id="authors-addresses">
-<section id="section-appendix.a">
+<section id="appendix-B">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

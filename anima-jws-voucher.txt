@@ -6,7 +6,7 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: RFC8366 (if approved)                             M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 24 February 2023                                 23 August 2022
+Expires: 3 April 2023                                  30 September 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 February 2023.
+   This Internet-Draft will expire on 3 April 2023.
 
 Copyright Notice
 
@@ -53,15 +53,15 @@ Copyright Notice
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 1]
+Werner & Richardson       Expires 3 April 2023                  [Page 1]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    and restrictions with respect to this document.  Code Components
-   extracted from this document must include Simplified BSD License text
-   as described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Simplified BSD License.
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
 
 Table of Contents
 
@@ -91,7 +91,8 @@ Table of Contents
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
      10.2.  Informative References . . . . . . . . . . . . . . . . .  13
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
@@ -104,15 +105,17 @@ Table of Contents
    [RFC5652].  The resulting Voucher artifact has the media type
    "application/voucher-cms+json".
 
+
+
+
+
+Werner & Richardson       Expires 3 April 2023                  [Page 2]
+
+Internet-Draft                 JWS-voucher                September 2022
+
+
    [I-D.ietf-anima-constrained-voucher] provides a mapping of the YANG
    module to CBOR [RFC8949] with a signature format of COSE [RFC8812].
-
-
-
-Werner & Richardson     Expires 24 February 2023                [Page 2]
-
-Internet-Draft                 JWS-voucher                   August 2022
-
 
    This document provides a mapping of the Voucher YANG module to JSON
    format with the signature in form of JSON Web Signature (JWS)
@@ -162,12 +165,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-
-
-
-Werner & Richardson     Expires 24 February 2023                [Page 3]
+Werner & Richardson       Expires 3 April 2023                  [Page 3]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    2.  "JWS JSON Serialization" in, [RFC7515] section 7.2
@@ -221,9 +221,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 4]
+Werner & Richardson       Expires 3 April 2023                  [Page 4]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
 3.3.  JWS Protected Header of Voucher in General JWS JSON Serialization
@@ -277,9 +277,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 5]
+Werner & Richardson       Expires 3 April 2023                  [Page 5]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
 5.  Security Considerations
@@ -333,9 +333,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 6]
+Werner & Richardson       Expires 3 April 2023                  [Page 6]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    [RFC Editor: please delete] TODO: ...
@@ -389,9 +389,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 7]
+Werner & Richardson       Expires 3 April 2023                  [Page 7]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -445,9 +445,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 8]
+Werner & Richardson       Expires 3 April 2023                  [Page 8]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
 9.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
@@ -501,9 +501,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023                [Page 9]
+Werner & Richardson       Expires 3 April 2023                  [Page 9]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    NCTFYycENWR0pFU205T1NHaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYm\
@@ -557,9 +557,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023               [Page 10]
+Werner & Richardson       Expires 3 April 2023                 [Page 10]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
@@ -613,9 +613,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023               [Page 11]
+Werner & Richardson       Expires 3 April 2023                 [Page 11]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -669,9 +669,9 @@ Internet-Draft                 JWS-voucher                   August 2022
 
 
 
-Werner & Richardson     Expires 24 February 2023               [Page 12]
+Werner & Richardson       Expires 3 April 2023                 [Page 12]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -705,14 +705,14 @@ Internet-Draft                 JWS-voucher                   August 2022
 10.2.  Informative References
 
    [I-D.ietf-anima-brski-prm]
-              Fries, S., Werner, T., Lear, E., and M. C. Richardson,
-              "BRSKI with Pledge in Responder Mode (BRSKI-PRM)", Work in
+              Fries, S., Werner, T., Lear, E., and M. Richardson, "BRSKI
+              with Pledge in Responder Mode (BRSKI-PRM)", Work in
               Progress, Internet-Draft, draft-ietf-anima-brski-prm-04, 8
               July 2022, <https://www.ietf.org/archive/id/draft-ietf-
               anima-brski-prm-04.txt>.
 
    [I-D.ietf-anima-constrained-voucher]
-              Richardson, M., Stok, P. V. D., Kampanakis, P., and E.
+              Richardson, M., Van der Stok, P., Kampanakis, P., and E.
               Dijk, "Constrained Bootstrapping Remote Secure Key
               Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
               draft-ietf-anima-constrained-voucher-18, 11 July 2022,
@@ -720,17 +720,17 @@ Internet-Draft                 JWS-voucher                   August 2022
               constrained-voucher-18.txt>.
 
    [I-D.kuehlewind-update-tag]
-              Kuehlewind, M. and S. Krishnan, "Definition of new tags
-              for relations between RFCs", Work in Progress, Internet-
+              Kühlewind, M. and S. Krishnan, "Definition of new tags for
+              relations between RFCs", Work in Progress, Internet-Draft,
 
 
 
-Werner & Richardson     Expires 24 February 2023               [Page 13]
+Werner & Richardson       Expires 3 April 2023                 [Page 13]
 
-Internet-Draft                 JWS-voucher                   August 2022
+Internet-Draft                 JWS-voucher                September 2022
 
 
-              Draft, draft-kuehlewind-update-tag-04, 12 July 2021,
+              draft-kuehlewind-update-tag-04, 12 July 2021,
               <https://www.ietf.org/archive/id/draft-kuehlewind-update-
               tag-04.txt>.
 
@@ -764,21 +764,77 @@ Internet-Draft                 JWS-voucher                   August 2022
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
 
+Contributors
+
+   Toerless Eckert
+   Futurewei Technologies Inc.
+   Email: tte+ietf@cs.fau.de
+
+
+   Esko Dijk
+   Email: esko.dijk@iotconsultancy.nl
+
+
+   Steffen Fries
+   Siemens AG
+   Email: steffen.fries@siemens.com
+
+
+
+Werner & Richardson       Expires 3 April 2023                 [Page 14]
+
+Internet-Draft                 JWS-voucher                September 2022
+
+
 Authors' Addresses
 
    Thomas Werner
    Siemens AG
-
    Email: thomas-werner@siemens.com
 
 
    Michael Richardson
    Sandelman Software Works
-
    Email: mcr+ietf@sandelman.ca
 
 
 
 
 
-Werner & Richardson     Expires 24 February 2023               [Page 14]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Werner & Richardson       Expires 3 April 2023                 [Page 15]
