@@ -156,12 +156,14 @@ The following figures gives the decoded voucher payload representation JSON synt
 The standard header parameters "typ" and "alg" as described in {{RFC7515}} are utilized in the protected header.
 The "alg" header MUST contain the algorithm type used to create the signature, such as "ES256".
 The "typ" header SHOULD contain the value "TODO: voucher-jws+json", if present. 
-As in the {{BRSKI}} use cases, there are additional HTTP MIME type headers to indicate content types.
 
 If PKIX {{RFC5280}} format certificates are used then the {{RFC7515}} section 4.1.6 "x5c"
 certificate chain SHOULD be used to contain the certificate and chain.
-Vouchers will often need all certificates in the chain, including what would be considered the trust anchor certificate because intermediate devices (such as the Registrar) may need to audit the artifact,
-or end systems may need to pin a trust anchor for future operations.
+Vouchers will often need all certificates in the chain,
+including what would be considered the trust anchor certificate 
+because intermediate devices (such as the Registrar) may need to audit the artifact,
+or end systems may need to pin a trust anchor for future operations.  
+Note, a trust anchor SHOULD be provided differntly to be trusted.
 This is consistent with {{BRSKI}} section 5.5.2.
 
 The following figure gives the decoded protected header representation in JSON syntax.
@@ -179,9 +181,9 @@ The following figure gives the decoded protected header representation in JSON s
 
 # Privacy Considerations
 
-The Voucher Request reveals the IDevID of the component (Pledge) that is bootstrapping.
+The Voucher Request reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
 
-This request occurs over HTTP-over-TLS, however the Pledge to Registrar transaction is over a provisional TLS session, and it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
+This request occurs via HTTP-over-TLS, however the Pledge to Registrar TLS connection the Pledge is provisinally accepting the Registrar server certificate, and it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger"){{onpath}}.
 This is explained in {{BRSKI}} section 10.2.
 
 The use of a JWS header brings no new privacy considerations.

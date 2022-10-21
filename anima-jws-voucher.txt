@@ -6,7 +6,7 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: RFC8366 (if approved)                             M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 3 April 2023                                  30 September 2022
+Expires: 24 April 2023                                   21 October 2022
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 April 2023.
+   This Internet-Draft will expire on 24 April 2023.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 1]
+Werner & Richardson       Expires 24 April 2023                 [Page 1]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    and restrictions with respect to this document.  Code Components
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 2]
+Werner & Richardson       Expires 24 April 2023                 [Page 2]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    [I-D.ietf-anima-constrained-voucher] provides a mapping of the YANG
@@ -165,9 +165,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 3]
+Werner & Richardson       Expires 24 April 2023                 [Page 3]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    2.  "JWS JSON Serialization" in, [RFC7515] section 7.2
@@ -221,9 +221,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 4]
+Werner & Richardson       Expires 24 April 2023                 [Page 4]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
 3.3.  JWS Protected Header of Voucher in General JWS JSON Serialization
@@ -232,8 +232,7 @@ Internet-Draft                 JWS-voucher                September 2022
    [RFC7515] are utilized in the protected header.  The "alg" header
    MUST contain the algorithm type used to create the signature, such as
    "ES256".  The "typ" header SHOULD contain the value "TODO: voucher-
-   jws+json", if present.  As in the [BRSKI] use cases, there are
-   additional HTTP MIME type headers to indicate content types.
+   jws+json", if present.
 
    If PKIX [RFC5280] format certificates are used then the [RFC7515]
    section 4.1.6 "x5c" certificate chain SHOULD be used to contain the
@@ -241,8 +240,9 @@ Internet-Draft                 JWS-voucher                September 2022
    the chain, including what would be considered the trust anchor
    certificate because intermediate devices (such as the Registrar) may
    need to audit the artifact, or end systems may need to pin a trust
-   anchor for future operations.  This is consistent with [BRSKI]
-   section 5.5.2.
+   anchor for future operations.
+   Note, a trust anchor SHOULD be provided differntly to be trusted.
+   This is consistent with [BRSKI] section 5.5.2.
 
    The following figure gives the decoded protected header
    representation in JSON syntax.
@@ -260,12 +260,13 @@ Internet-Draft                 JWS-voucher                September 2022
 4.  Privacy Considerations
 
    The Voucher Request reveals the IDevID of the component (Pledge) that
-   is bootstrapping.
+   is in the process of bootstrapping.
 
-   This request occurs over HTTP-over-TLS, however the Pledge to
-   Registrar transaction is over a provisional TLS session, and it is
-   subject to disclosure by a Dolev-Yao attacker (a "malicious
-   messenger")[onpath].  This is explained in [BRSKI] section 10.2.
+   This request occurs via HTTP-over-TLS, however the Pledge to
+   Registrar TLS connection the Pledge is provisinally accepting the
+   Registrar server certificate, and it is subject to disclosure by a
+   Dolev-Yao attacker (a "malicious messenger")[onpath].  This is
+   explained in [BRSKI] section 10.2.
 
    The use of a JWS header brings no new privacy considerations.
 
@@ -276,10 +277,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-
-Werner & Richardson       Expires 3 April 2023                  [Page 5]
+Werner & Richardson       Expires 24 April 2023                 [Page 5]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
 5.  Security Considerations
@@ -333,9 +333,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 6]
+Werner & Richardson       Expires 24 April 2023                 [Page 6]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    [RFC Editor: please delete] TODO: ...
@@ -389,9 +389,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 7]
+Werner & Richardson       Expires 24 April 2023                 [Page 7]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -445,9 +445,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 8]
+Werner & Richardson       Expires 24 April 2023                 [Page 8]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
 9.2.  Example Parboiled Registrar Voucher Request - RVR (from Registrar
@@ -501,9 +501,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                  [Page 9]
+Werner & Richardson       Expires 24 April 2023                 [Page 9]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    NCTFYycENWR0pFU205T1NHaEtWMGR6ZUVsdU1Ua2lMQ0p6YVdkdVlYUjFjbVZ6SWpwYm\
@@ -557,9 +557,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 10]
+Werner & Richardson       Expires 24 April 2023                [Page 10]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    xSbGMzUkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCT2t2a1RIdT\
@@ -613,9 +613,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 11]
+Werner & Richardson       Expires 24 April 2023                [Page 11]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -669,9 +669,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 12]
+Werner & Richardson       Expires 24 April 2023                [Page 12]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -725,9 +725,9 @@ Internet-Draft                 JWS-voucher                September 2022
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 13]
+Werner & Richardson       Expires 24 April 2023                [Page 13]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
               draft-kuehlewind-update-tag-04, 12 July 2021,
@@ -781,9 +781,9 @@ Contributors
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 14]
+Werner & Richardson       Expires 24 April 2023                [Page 14]
 
-Internet-Draft                 JWS-voucher                September 2022
+Internet-Draft                 JWS-voucher                  October 2022
 
 
 Authors' Addresses
@@ -837,4 +837,4 @@ Authors' Addresses
 
 
 
-Werner & Richardson       Expires 3 April 2023                 [Page 15]
+Werner & Richardson       Expires 24 April 2023                [Page 15]
