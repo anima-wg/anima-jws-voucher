@@ -244,6 +244,8 @@ TODO: ...
 * Include Voucher representation in "General JWS JSON Serialization" syntax
 * Include examples A1, A2, A3 using "General JWS JSON Serialization"
 * Added optional "typ": "voucher-jws+json" header parameter to JWS objects
+* Examples folded according to RFC8792, Single Backslash rule
+* Restructuring and clean-up, preparation for WGLC
 
 -- back
 
