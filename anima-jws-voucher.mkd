@@ -163,7 +163,7 @@ Vouchers will often need all certificates in the chain,
 including what would be considered the trust anchor certificate 
 because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.  
-Note, a trust anchor SHOULD be provided differntly to be trusted.
+Note, a trust anchor SHOULD be provided differently to be trusted.
 This is consistent with {{BRSKI}} section 5.5.2.
 
 The following figure gives the decoded protected header representation in JSON syntax.
