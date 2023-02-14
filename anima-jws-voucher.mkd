@@ -105,7 +105,7 @@ as per {{?I-D.kuehlewind-update-tag}}.
 
 # Voucher Artifact with JSON Web Signature
 
-{{RFC7515}} deines the following serializations for JWS:
+{{RFC7515}} defines the following serializations for JWS:
 
 1. "JWS Compact Serialization" in {{Section 7.1 of RFC7515}}
 2. "JWS JSON Serialization" in {{Section 7.2 of RFC7515}} 
