@@ -132,14 +132,14 @@ Internet-Draft                 JWS-voucher                 February 2023
    voucher signature format is to be used.  There is no provision across
    the different voucher signature formats that a receiver could safely
    recognize which format it uses unless additional context is provided.
-   For example, [BRSKI] provides this context via the MIME-Type for the
-   voucher artifact. +++ stf: Is this a reference to the optional usage
-   of "typ" in the voucher?  Proposal to include: This document utilizes
-   the optional "type" in the signature to provide information about the
+   For example, [BRSKI] provides this context via the media type for the
+   voucher artifact.  This document utilizes the optional "typ" (Type)
+   Header Parameter of JWS [RFC7515] to provide information about the
    signed object.
 
    This document should be considered an update to [RFC8366] in the
-   category of "See Also" as per [I-D.kuehlewind-update-tag].
+   category of "See Also" as per [I-D.kuehlewind-update-tag].  TODO:
+   double check with RFC8366bis
 
 2.  Terminology
 
@@ -370,6 +370,8 @@ Internet-Draft                 JWS-voucher                 February 2023
 
    *  Restructuring and clean-up, preparation for WGLC
 
+   *  Included feedback from shepherd review
+
    -- back
 
 9.  Examples
@@ -381,8 +383,6 @@ Internet-Draft                 JWS-voucher                 February 2023
 
    The following is an example request sent from a Pledge to the
    Registrar, in "General JWS JSON Serialization".
-
-
 
 
 

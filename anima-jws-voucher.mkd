@@ -41,7 +41,7 @@ contributor:
   name: Steffen Fries
   org: Siemens AG
   email: steffen.fries@siemens.com
-  
+
 normative:
   BRSKI: RFC8995
   SZTP: RFC8572
@@ -92,12 +92,12 @@ This document does not extend the YANG definition of {{RFC8366}}.
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
-For example, {{BRSKI}} provides this context via the MIME-Type for the voucher artifact.
-+++ stf: Is this a reference to the optional usage of "typ" in the voucher? Proposal to include: 
-This document utilizes the optional "type" in the signature to provide information about the signed object.
+For example, {{BRSKI}} provides this context via the media type for the voucher artifact.
+This document utilizes the optional "typ" (Type) Header Parameter of JWS {{RFC7515}} to provide information about the signed object.
 
 This document should be considered an update to {{RFC8366}} in the category of "See Also"
 as per {{?I-D.kuehlewind-update-tag}}.
+TODO: double check with RFC8366bis
 
 # Terminology
 
@@ -108,7 +108,7 @@ as per {{?I-D.kuehlewind-update-tag}}.
 {{RFC7515}} defines the following serializations for JWS:
 
 1. "JWS Compact Serialization" in {{Section 7.1 of RFC7515}}
-2. "JWS JSON Serialization" in {{Section 7.2 of RFC7515}} 
+2. "JWS JSON Serialization" in {{Section 7.2 of RFC7515}}
 - "General JWS JSON Serialization Syntax" in {{Section 7.2.1 of RFC7515}}   
 - "Flattened JWS JSON Serialization Syntax" in {{Section 7.2.2 of RFC7515}}
 
@@ -167,7 +167,7 @@ The "typ" header SHOULD contain the value "TODO: voucher-jws+json", if present.
 If X.509 (PKIX) certificates {{RFC5280}} are used,
 then the "x5c" parameter defined in {{Section 4.1.6 of RFC7515}} SHOULD be used to contain the certificate and chain.
 Vouchers will often need all certificates in the chain,
-including what would be considered the trust anchor certificate, 
+including what would be considered the trust anchor certificate,
 because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.
 Note, a trust anchor SHOULD be provided differently to be trusted.
@@ -176,7 +176,7 @@ This is consistent with {{Section 5.5.2 of BRSKI}}.
 The following figure gives the decoded JWS Protected Header in JSON syntax:
 
 ~~~~
-    { 
+    {
       "alg": "ES256",
       "typ": "voucher-jws+json",
       "x5c": [
@@ -241,7 +241,7 @@ We would like to thank the various reviewers for their input, in particular Stef
 Support in PoC implementations Hong Rui Li and He Peng Jia, ...TODO
 
 [RFC Editor: please delete]
-TODO: ... 
+TODO: ...
 
 
 # Changelog [RFC Editor: please delete]
@@ -254,6 +254,7 @@ TODO: ...
 * Added optional "typ": "voucher-jws+json" header parameter to JWS objects
 * Examples folded according to RFC8792, Single Backslash rule
 * Restructuring and clean-up, preparation for WGLC
+* Included feedback from shepherd review  
 
 -- back
 
@@ -456,7 +457,3 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 }
 ~~~~
 {: #ExampleVoucherResponsefigure title='Example Voucher Response' artwork-align="left"}  
-
-
-
-

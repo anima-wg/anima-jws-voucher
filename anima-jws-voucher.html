@@ -1405,11 +1405,11 @@ and may be more handy for use cases requiring signed JSON objects.<a href="#sect
 <p id="section-1-4">This document does not extend the YANG definition of <span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
-For example, <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> provides this context via the MIME-Type for the voucher artifact.
-+++ stf: Is this a reference to the optional usage of "typ" in the voucher? Proposal to include: 
-This document utilizes the optional "type" in the signature to provide information about the signed object.<a href="#section-1-5" class="pilcrow">¶</a></p>
+For example, <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> provides this context via the media type for the voucher artifact.
+This document utilizes the optional "typ" (Type) Header Parameter of JWS <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> to provide information about the signed object.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">This document should be considered an update to <span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]</span> in the category of "See Also"
-as per <span>[<a href="#I-D.kuehlewind-update-tag" class="cite xref">I-D.kuehlewind-update-tag</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+as per <span>[<a href="#I-D.kuehlewind-update-tag" class="cite xref">I-D.kuehlewind-update-tag</a>]</span>.
+TODO: double check with RFC8366bis<a href="#section-1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terminology">
@@ -1433,7 +1433,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <ol start="1" type="1" class="normal type-1" id="section-3-2">
 <li id="section-3-2.1">"JWS Compact Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-3-2.2">"JWS JSON Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> 
+        <li id="section-3-2.2">"JWS JSON Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>
 - "General JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.1" class="relref">Section 7.2.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> <br>
 - "Flattened JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.2" class="relref">Section 7.2.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2" class="pilcrow">¶</a>
 </li>
@@ -1513,7 +1513,7 @@ The "typ" header SHOULD contain the value "TODO: voucher-jws+json", if present.<
 <p id="section-3.3-2">If X.509 (PKIX) certificates <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> are used,
 then the "x5c" parameter defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> SHOULD be used to contain the certificate and chain.
 Vouchers will often need all certificates in the chain,
-including what would be considered the trust anchor certificate, 
+including what would be considered the trust anchor certificate,
 because intermediate devices (such as the Registrar) may need to audit the artifact,
 or end systems may need to pin a trust anchor for future operations.
 Note, a trust anchor SHOULD be provided differently to be trusted.
@@ -1643,6 +1643,8 @@ TODO: ...<a href="#section-7-2" class="pilcrow">¶</a></p>
         <li class="normal" id="section-8-1.7">Examples folded according to RFC8792, Single Backslash rule<a href="#section-8-1.7" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-8-1.8">Restructuring and clean-up, preparation for WGLC<a href="#section-8-1.8" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-1.9">Included feedback from shepherd review<a href="#section-8-1.9" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="section-8-2">-- back<a href="#section-8-2" class="pilcrow">¶</a></p>
