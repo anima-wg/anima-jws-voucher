@@ -204,7 +204,7 @@ The generated JWS Signature is base64url-encoded to become the string value of t
 
 # Privacy Considerations
 
-The voucher request reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
+The Voucher Request reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
 
 This request occurs via HTTP-over-TLS, however, for the Pledge-to-Registrar TLS connection, the Pledge is provisionally accepting the Registrar server certificate.
 Hence it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{?ONPATH}}, as explained in {{Section 10.2 of BRSKI}}.
@@ -213,7 +213,7 @@ The use of a JWS header brings no new privacy considerations.
 
 # Security Considerations
 
-The issues of how RFC8366 vouchers are used in a {{BRSKI}} system is addressed in {{Section 11 of BRSKI}}.
+The issues of how {{I-D.draft-ietf-anima-rfc8366bis}} vouchers are used in a {{BRSKI}} system is addressed in {{Section 11 of BRSKI}}.
 This document does not change any of those issues, it just changes the signature technology used for voucher request and response artifacts.
 
 {{Section 9 of SZTP}} deals with voucher use in Secure Zero Touch Provisioning, for which this document also makes no changes to security.
