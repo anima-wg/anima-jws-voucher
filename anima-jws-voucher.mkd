@@ -10,7 +10,7 @@ area: Internet
 wg: anima Working Group
 kw: Internet-Draft
 cat: std
-updates: 8366
+updates: RFC8366
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
@@ -46,16 +46,20 @@ normative:
   BRSKI: RFC8995
   SZTP: RFC8572
   RFC8366:
+  I-D.draft-ietf-anima-rfc8366bis:
   RFC7515:
   RFC8259:
 
 informative:
+  RFC3629:
   RFC5280:
   RFC5652:
+  RFC7951:
+  RFC7950:
   RFC8949:
   RFC8792:
   RFC8812:
-  ONPATH:
+  ON-PATH:
     target: "https://mailarchive.ietf.org/arch/msg/saag/m1r9uo4xYznOcf85Eyk0Rhut598/"
     title: "can an on-path attacker drop traffic?"
     org: IETF
@@ -148,7 +152,7 @@ The following figure summarizes the serialization of JWS Voucher artifacts:
 
 ## JSON Voucher Data
 
-The JSON Voucher Data is an unsigned JSON document {{RFC8259}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 5.3 of RFC8366bis}} and is encoded using the rules defined in {{RFC7951}}.
+The JSON Voucher Data is an unsigned JSON document {{RFC8259}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 5.3 of I-D.draft-ietf-anima-rfc8366bis}} and is encoded using the rules defined in {{RFC7951}}.
 The following figure provides an example of JSON Voucher Data:
 
 ~~~~
@@ -207,7 +211,7 @@ The generated JWS Signature is base64url-encoded to become the string value of t
 The Voucher Request reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
 
 This request occurs via HTTP-over-TLS, however, for the Pledge-to-Registrar TLS connection, the Pledge is provisionally accepting the Registrar server certificate.
-Hence it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{?ONPATH}}, as explained in {{Section 10.2 of BRSKI}}.
+Hence it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{ON-PATH}}, as explained in {{Section 10.2 of BRSKI}}.
 
 The use of a JWS header brings no new privacy considerations.
 
