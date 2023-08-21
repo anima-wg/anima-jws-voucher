@@ -1,7 +1,7 @@
 ---
 title: JWS signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JWS-voucher
-docname: draft-ietf-anima-jws-voucher-07
+docname: draft-ietf-anima-jws-voucher-08
 
 stand_alone: true
 
@@ -10,7 +10,7 @@ area: Internet
 wg: anima Working Group
 kw: Internet-Draft
 cat: std
-updates: RFC8366
+updates: I-D.draft-ietf-anima-rfc8366bis
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
@@ -45,7 +45,6 @@ contributor:
 normative:
   BRSKI: RFC8995
   SZTP: RFC8572
-  RFC8366:
   I-D.draft-ietf-anima-rfc8366bis:
   RFC7515:
   RFC8259:
@@ -54,11 +53,12 @@ informative:
   RFC3629:
   RFC5280:
   RFC5652:
-  RFC7951:
   RFC7950:
-  RFC8949:
+  RFC7951:
+  RFC8366:
   RFC8792:
   RFC8812:
+  RFC8949:
   ON-PATH:
     target: "https://mailarchive.ietf.org/arch/msg/saag/m1r9uo4xYznOcf85Eyk0Rhut598/"
     title: "can an on-path attacker drop traffic?"
@@ -66,7 +66,7 @@ informative:
 
 --- abstract
 
-RFC8366 defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+TODO: RFC8366bis defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided.
@@ -77,18 +77,17 @@ In addition to explaining how the format is created, the "application/voucher-jw
 
 "A Voucher Artifact for Bootstrapping Protocols" {{I-D.draft-ietf-anima-rfc8366bis}} defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" {{BRSKI}} and
 "Secure Zero Touch Provisioning" {{SZTP}} to transfer ownership of a device from a manufacturer to a new owner (site domain).
-That document provides a serialization of the voucher data to JSON {{RFC8259}} with a signature according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
+That document provides a serialization of the voucher data to JSON {{RFC8259}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
 
 {{?I-D.ietf-anima-constrained-voucher}} provides a serialization of the voucher to CBOR {{?RFC8949}}
 with the signature format of COSE {{?RFC8812}}
 and the media type "application/voucher-cose+cbor".
 
-This document provides a serialization of the voucher data to JSON {{RFC8259}}
-with the signature in form of JSON Web Signature (JWS) {{RFC7515}}
+This document provides cryptographic signing of the JSON Voucher Data in form of JSON Web Signature (JWS) {{RFC7515}}
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
-and may be more handy for use cases requiring signed JSON objects.
+and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
 
 This document does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
 
@@ -98,7 +97,6 @@ For example, {{BRSKI}} provides this context via the media type for the voucher 
 This document utilizes the optional "typ" (Type) Header Parameter of JWS {{RFC7515}} to provide information about the signed object.
 
 This document should be considered an update to {{I-D.draft-ietf-anima-rfc8366bis}} in the category of "See Also" as per {{?I-D.kuehlewind-update-tag}}.
-TODO: double check with RFC8366bis
 
 # Terminology
 
@@ -148,7 +146,12 @@ The following figure summarizes the serialization of JWS Voucher artifacts:
       ]
     }
 ~~~~
-{: #VoucherGeneralJWSFigure title='Voucher Representation in General JWS JSON Serialization Syntax' artwork-align="left"}
+{: #VoucherGeneralJWSFigure title='Voucher Representation in General JWS JSON Serialization Syntax (JWS Voucher)' artwork-align="left"}
+
+The JSON Voucher Data MUST be UTF-8 encoded to become the octet-based JWS Payload defined in {{RFC7515}}.
+The JWS Payload is further base64url-encoded to become the string value of the "payload" member as described in {{Section 3.2 of RFC7515}}.
+The octets of the UTF-8 representation of the JWS Protected Header are base64url-encoded to become the string value of the "protected" member.
+The generated JWS Signature is base64url-encoded to become the string value of the "signature" member.
 
 ## JSON Voucher Data
 
@@ -166,20 +169,15 @@ The following figure provides an example of JSON Voucher Data:
       }
     }
 ~~~~
-{: #VoucherGeneralJWSVoucherPayloadFigure title='Unsigned voucher data in JSON syntax' artwork-align="left"}
-
-The JSON Voucher Data MUST be UTF-8 encoded to become the octet-based JWS Payload defined in {{RFC7515}}.
-The JWS Payload is further base64url-encoded to become the string value of the "payload" member as described in {{Section 3.2 of RFC7515}}.
+{: #VoucherGeneralJWSVoucherPayloadFigure title='JSON Voucher Data Example' artwork-align="left"}
 
 ## JWS Protected Header
 
 The JWS Protected Header defined in {{RFC7515}} uses the standard header parameters "alg", "typ", and "x5c".
-The octets of the UTF-8 representation of the JWS Protected Header are base64url-encoded to become the string value of the "protected" member as described in {{Section 3.2 of RFC7515}}.
-
 The "alg" parameter MUST contain the algorithm type used to create the signature, e.g., "ES256" as defined in {{Section 4.1.1 of RFC7515}}.
 If present, the "typ" parameter SHOULD contain the value "TODO: voucher-jws+json" as defined in {{Section 4.1.9 of RFC7515}}.
-
 If X.509 (PKIX) certificates {{RFC5280}} are used, the "x5c" parameter SHOULD contain the base64-encoded (not base64url-encoded) DER certificate and chain as defined in {{Section 4.1.6 of RFC7515}}.
+
 Vouchers will often need all certificates in the chain,
 including what would be considered the trust anchor certificate,
 because intermediate devices (such as the Registrar) may need to audit the artifact,
@@ -187,7 +185,7 @@ or end systems may need to pin a trust anchor for future operations.
 Note, a trust anchor SHOULD be provided differently to be trusted.
 This is consistent with {{Section 5.5.2 of BRSKI}}.
 
-The following figure gives an example of a JWS Protected Header in JSON syntax:
+The following figure gives an example of a JWS Protected Header:
 
 ~~~~
     {
@@ -199,12 +197,11 @@ The following figure gives an example of a JWS Protected Header in JSON syntax:
       ]
     }  
 ~~~~
-{: #VoucherGeneralJWSProtectedHeaderFigure title='Decoded JWS Protected Header Example' artwork-align="left"}
+{: #VoucherGeneralJWSProtectedHeaderFigure title='JWS Protected Header Example' artwork-align="left"}
 
 ## JWS Signature
 
 The JWS Signature is generated over the JWS Protected Header and the JWS Payload (= UTF-8 encoded JSON Voucher Data) as described in {{Section 5.1 of RFC7515}}.
-The generated JWS Signature is base64url-encoded to become the string value of the "signature" member.
 
 # Privacy Considerations
 
