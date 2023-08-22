@@ -77,7 +77,7 @@ In addition to explaining how the format is created, the "application/voucher-jw
 
 "A Voucher Artifact for Bootstrapping Protocols" {{I-D.draft-ietf-anima-rfc8366bis}} defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" {{BRSKI}} and
 "Secure Zero Touch Provisioning" {{SZTP}} to transfer ownership of a device from a manufacturer to a new owner (site domain).
-That document provides a serialization of the voucher data to JSON {{}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
+That document provides a serialization of the voucher data to JSON {{RFC8259}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
 
 {{?I-D.ietf-anima-constrained-voucher}} provides a serialization of the voucher to CBOR {{?RFC8949}}
@@ -155,7 +155,7 @@ The generated JWS Signature is base64url-encoded to become the string value of t
 
 ## JSON Voucher Data
 
-The JSON Voucher Data is an unsigned JSON document {{}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 5.3 of I-D.draft-ietf-anima-rfc8366bis}} and is encoded using the rules defined in {{RFC7951}}.
+The JSON Voucher Data is an unsigned JSON document {{RFC8259}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 5.3 of I-D.draft-ietf-anima-rfc8366bis}} and is encoded using the rules defined in {{RFC7951}}.
 The following figure provides an example of JSON Voucher Data:
 
 ~~~~
