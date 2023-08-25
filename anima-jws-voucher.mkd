@@ -2,6 +2,7 @@
 title: JWS signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JWS-voucher
 docname: draft-ietf-anima-jws-voucher-08
+submissionType: IETF
 
 stand_alone: true
 
@@ -268,20 +269,6 @@ This section registers the "application/voucher-jws+json" in the "Media Types" r
 We would like to thank the various reviewers for their input,
 in particular Steffen Fries, Ingo Wenda, Esko Dijk and Toerless Eckert.
 Thanks for the supporting PoC implementations to Hong Rui Li and He Peng Jia.
-
-# Changelog [RFC Editor: please delete]
-
-* Added adoption call comments from Toerless.  Changed from [RFCxxxx] to [THING] style for some key references.
-* Updated references "I-D.ietf-anima-brski-async-enroll" switched to "I-D.ietf-anima-brski-prm"
-* Switch from "JWS Compact Serialization" to "General JWS JSON Serialization", as focus is now on "General JWS JSON Serialization"
-* Include Voucher representation in "General JWS JSON Serialization" syntax
-* Include examples A1, A2, A3 using "General JWS JSON Serialization"
-* Added optional "typ": "voucher-jws+json" header parameter to JWS objects
-* Examples folded according to RFC8792, Single Backslash rule
-* Restructuring and clean-up, preparation for WGLC
-* Included feedback from shepherd review  
-
--- back
 
 # Examples
 
