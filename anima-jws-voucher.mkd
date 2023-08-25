@@ -258,12 +258,9 @@ This section registers the "application/voucher-jws+json" in the "Media Types" r
 
 # Acknowledgments
 
-We would like to thank the various reviewers for their input, in particular Steffen Fries, Ingo Wenda, ...TODO
-Support in PoC implementations Hong Rui Li and He Peng Jia, ...TODO
-
-[RFC Editor: please delete]
-TODO: ...
-
+We would like to thank the various reviewers for their input,
+in particular Steffen Fries, Ingo Wenda, Esko Dijk and Toerless Eckert.
+Thanks for the supporting PoC implementations to Hong Rui Li and He Peng Jia.
 
 # Changelog [RFC Editor: please delete]
 
