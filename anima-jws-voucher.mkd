@@ -101,14 +101,21 @@ It does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 {::boilerplate bcp14}
 
+This document uses the following terms:
+
 JSON Voucher Data:
-: An unsigned JSON document that conforms with the data model described by the ietf-voucher YANG module, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+: An unsigned JSON representation of the Voucher Data.
 
 JWS Voucher:
 : A JWS structure signing the JSON Voucher Data.
 
 Voucher:
-: A signed statement from the MASA service, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+: A short form for Voucher Artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+Voucher Data:
+: The raw (serialized) representation of the ietf-voucher YANG module without any enclosing signature, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+This document uses the following encoding notations:
 
 BASE64URL(OCTETS):
 : Denotes the base64url encoding of OCTETS, per {{Section 2 of RFC7515}}.
