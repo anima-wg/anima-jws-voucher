@@ -44,13 +44,13 @@ contributor:
   email: steffen.fries@siemens.com
 
 normative:
+  BRSKI: RFC8995
   I-D.draft-ietf-anima-rfc8366bis:
   RFC5280:
   RFC7515:
   RFC8259:
 
 informative:
-  BRSKI: RFC8995
   SZTP: RFC8572
   RFC3629:
   RFC5652:
@@ -76,7 +76,7 @@ In addition to explaining how the format is created, the "application/voucher-jw
 
 # Introduction
 
-"A Voucher Artifact for Bootstrapping Protocols" {{I-D.draft-ietf-anima-rfc8366bis}} defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" {{?BRSKI}} and
+"A Voucher Artifact for Bootstrapping Protocols" {{I-D.draft-ietf-anima-rfc8366bis}} defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" {{!BRSKI}} and
 "Secure Zero Touch Provisioning" {{?SZTP}} to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
 That document provides a serialization of the voucher data to JSON {{RFC8259}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
