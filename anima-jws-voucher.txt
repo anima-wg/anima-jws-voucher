@@ -6,15 +6,15 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: 8366 (if approved)                                M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 26 February 2024                                 25 August 2023
+Expires: 1 March 2024                                     29 August 2023
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-08
+                    draft-ietf-anima-jws-voucher-09
 
 Abstract
 
-   TODO: [I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact
+   [TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact
    called voucher as a YANG-defined JSON document that is signed using a
    Cryptographic Message Syntax (CMS) structure.  This document
    introduces a variant of the voucher artifact in which CMS is replaced
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2024.
+   This Internet-Draft will expire on 1 March 2024.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 1]
+Werner & Richardson       Expires 1 March 2024                  [Page 1]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 2]
+Werner & Richardson       Expires 1 March 2024                  [Page 2]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -140,7 +140,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
    This document should be considered an update to
    [I-D.draft-ietf-anima-rfc8366bis] in the category of "See Also" as
-   per [I-D.kuehlewind-update-tag].  TODO: [Fix "Updates:" header with
+   per [I-D.kuehlewind-update-tag].  [TODO: Fix "Updates:" header with
    I-D.draft-ietf-anima-rfc8366bis number.]  It does not extend the YANG
    definition of [I-D.draft-ietf-anima-rfc8366bis].
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 3]
+Werner & Richardson       Expires 1 March 2024                  [Page 3]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 4]
+Werner & Richardson       Expires 1 March 2024                  [Page 4]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 5]
+Werner & Richardson       Expires 1 March 2024                  [Page 5]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -288,11 +288,11 @@ Internet-Draft                 JWS-voucher                   August 2023
    header parameters "alg", "typ", and "x5c".  The "alg" parameter MUST
    contain the algorithm type used to create the signature, e.g.,
    "ES256" as defined in Section 4.1.1 of [RFC7515].  If present, the
-   "typ" parameter SHOULD contain the value TODO: [voucher-jws+json] as
-   defined in Section 4.1.9 of [RFC7515].  If X.509 (PKIX) certificates
-   [RFC5280] are used, the "x5c" parameter SHOULD contain the
-   base64-encoded (not base64url-encoded) DER certificate and chain as
-   defined in Section 4.1.6 of [RFC7515].
+   "typ" parameter SHOULD contain the value "[TODO: voucher-jws+json]"
+   as defined in Section 4.1.9 of [RFC7515].  If X.509 (PKIX)
+   certificates [RFC5280] are used, the "x5c" parameter SHOULD contain
+   the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate
+   and chain as defined in Section 4.1.6 of [RFC7515].
 
    Implementation Note: base64-encoded values opposed to base64url-
    encoded values may contain slashes ('/').  JSON [RFC8259] optionally
@@ -312,7 +312,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
        {
          "alg": "ES256",
-         "typ": "TODO: [voucher-jws+json]",
+         "typ": "[TODO: voucher-jws+json]",
          "x5c": [
            "base64encodedvalue1==",
            "base64encodedvalue2=="
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 6]
+Werner & Richardson       Expires 1 March 2024                  [Page 6]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -389,7 +389,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 7]
+Werner & Richardson       Expires 1 March 2024                  [Page 7]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -445,7 +445,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 8]
+Werner & Richardson       Expires 1 March 2024                  [Page 8]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -501,7 +501,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024                [Page 9]
+Werner & Richardson       Expires 1 March 2024                  [Page 9]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -557,7 +557,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024               [Page 10]
+Werner & Richardson       Expires 1 March 2024                 [Page 10]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -613,7 +613,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024               [Page 11]
+Werner & Richardson       Expires 1 March 2024                 [Page 11]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -669,7 +669,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024               [Page 12]
+Werner & Richardson       Expires 1 March 2024                 [Page 12]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -725,7 +725,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-Werner & Richardson     Expires 26 February 2024               [Page 13]
+Werner & Richardson       Expires 1 March 2024                 [Page 13]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -743,6 +743,12 @@ Internet-Draft                 JWS-voucher                   August 2023
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
+
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <https://www.rfc-editor.org/rfc/rfc7515>.
@@ -751,10 +757,10 @@ Internet-Draft                 JWS-voucher                   August 2023
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-   [SZTP]     Watsen, K., Farrer, I., and M. Abrahamsson, "Secure Zero
-              Touch Provisioning (SZTP)", RFC 8572,
-              DOI 10.17487/RFC8572, April 2019,
-              <https://www.rfc-editor.org/rfc/rfc8572>.
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/rfc/rfc8259>.
 
 9.2.  Informative References
 
@@ -775,13 +781,7 @@ Internet-Draft                 JWS-voucher                   August 2023
 
 
 
-
-
-
-
-
-
-Werner & Richardson     Expires 26 February 2024               [Page 14]
+Werner & Richardson       Expires 1 March 2024                 [Page 14]
 
 Internet-Draft                 JWS-voucher                   August 2023
 
@@ -801,12 +801,6 @@ Internet-Draft                 JWS-voucher                   August 2023
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
               2003, <https://www.rfc-editor.org/rfc/rfc3629>.
 
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/rfc/rfc5280>.
-
    [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
               <https://www.rfc-editor.org/rfc/rfc5652>.
@@ -819,11 +813,6 @@ Internet-Draft                 JWS-voucher                   August 2023
               RFC 7951, DOI 10.17487/RFC7951, August 2016,
               <https://www.rfc-editor.org/rfc/rfc7951>.
 
-   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", STD 90, RFC 8259,
-              DOI 10.17487/RFC8259, December 2017,
-              <https://www.rfc-editor.org/rfc/rfc8259>.
-
    [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
               "A Voucher Artifact for Bootstrapping Protocols",
               RFC 8366, DOI 10.17487/RFC8366, May 2018,
@@ -833,14 +822,6 @@ Internet-Draft                 JWS-voucher                   August 2023
               "Handling Long Lines in Content of Internet-Drafts and
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8792>.
-
-
-
-
-Werner & Richardson     Expires 26 February 2024               [Page 15]
-
-Internet-Draft                 JWS-voucher                   August 2023
-
 
    [RFC8812]  Jones, M., "CBOR Object Signing and Encryption (COSE) and
               JSON Object Signing and Encryption (JOSE) Registrations
@@ -852,6 +833,19 @@ Internet-Draft                 JWS-voucher                   August 2023
               Representation (CBOR)", STD 94, RFC 8949,
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
+
+
+
+
+Werner & Richardson       Expires 1 March 2024                 [Page 15]
+
+Internet-Draft                 JWS-voucher                   August 2023
+
+
+   [SZTP]     Watsen, K., Farrer, I., and M. Abrahamsson, "Secure Zero
+              Touch Provisioning (SZTP)", RFC 8572,
+              DOI 10.17487/RFC8572, April 2019,
+              <https://www.rfc-editor.org/rfc/rfc8572>.
 
 Contributors
 
@@ -893,4 +887,10 @@ Authors' Addresses
 
 
 
-Werner & Richardson     Expires 26 February 2024               [Page 16]
+
+
+
+
+
+
+Werner & Richardson       Expires 1 March 2024                 [Page 16]

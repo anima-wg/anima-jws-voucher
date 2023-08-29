@@ -8,13 +8,13 @@
 <meta content="Thomas Werner" name="author">
 <meta content="Michael Richardson" name="author">
 <meta content='
-       TODO:   defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+       [TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS. 
        In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided. 
     ' name="description">
 <meta content="xml2rfc 3.16.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
-<meta content="draft-ietf-anima-jws-voucher-08" name="ietf.draft">
+<meta content="draft-ietf-anima-jws-voucher-09" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.16.0
     Python 3.9.6
@@ -1211,7 +1211,7 @@ li > p:last-of-type:only-child {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Werner &amp; Richardson</td>
-<td class="center">Expires 26 February 2024</td>
+<td class="center">Expires 1 March 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1221,18 +1221,18 @@ li > p:last-of-type:only-child {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">anima Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-ietf-anima-jws-voucher-08</dd>
+<dd class="internet-draft">draft-ietf-anima-jws-voucher-09</dd>
 <dt class="label-updates">Updates:</dt>
 <dd class="updates">
 <a href="https://www.rfc-editor.org/rfc/rfc8366" class="eref">8366</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-08-25" class="published">25 August 2023</time>
+<time datetime="2023-08-29" class="published">29 August 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-02-26">26 February 2024</time></dd>
+<dd class="expires"><time datetime="2024-03-01">1 March 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1249,7 +1249,7 @@ li > p:last-of-type:only-child {
 <h1 id="title">JWS signed Voucher Artifacts for Bootstrapping Protocols</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO: <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+<p id="section-abstract-1">[TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
@@ -1272,7 +1272,7 @@ This document introduces a variant of the voucher artifact in which CMS is repla
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 February 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1402,7 +1402,7 @@ There is no provision across the different voucher signature formats that a rece
 For example, <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> provides this context via the media type for the voucher artifact.
 This document utilizes the optional "typ" (Type) Header Parameter of JWS <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> to provide information about the signed object.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">This document should be considered an update to <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> in the category of "See Also" as per <span>[<a href="#I-D.kuehlewind-update-tag" class="cite xref">I-D.kuehlewind-update-tag</a>]</span>.
-TODO: [Fix "Updates:" header with I-D.draft-ietf-anima-rfc8366bis number.]
+[TODO: Fix "Updates:" header with I-D.draft-ietf-anima-rfc8366bis number.]
 It does not extend the YANG definition of <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1543,8 +1543,8 @@ The following figure provides an example of JSON Voucher Data:<a href="#section-
         </h3>
 <p id="section-3.3-1">The JWS Protected Header defined in <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> uses the standard header parameters "alg", "typ", and "x5c".
 The "alg" parameter MUST contain the algorithm type used to create the signature, e.g., "ES256" as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
-If present, the "typ" parameter SHOULD contain the value TODO: [voucher-jws+json] as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.9" class="relref">Section 4.1.9</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
-If X.509 (PKIX) certificates <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> are used, the "x5c" parameter SHOULD contain the base64-encoded (not base64url-encoded) DER certificate and chain as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+If present, the "typ" parameter SHOULD contain the value "[TODO: voucher-jws+json]" as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.9" class="relref">Section 4.1.9</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
+If X.509 (PKIX) certificates <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> are used, the "x5c" parameter SHOULD contain the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate and chain as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.3-2">Implementation Note:
 base64-encoded values opposed to base64url-encoded values may contain slashes ('/').
 JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> optionally allows to escape these with backslashes ('').
@@ -1563,7 +1563,7 @@ This is consistent with <span><a href="https://rfc-editor.org/rfc/rfc8995#sectio
 <pre>
     {
       "alg": "ES256",
-      "typ": "TODO: [voucher-jws+json]",
+      "typ": "[TODO: voucher-jws+json]",
       "x5c": [
         "base64encodedvalue1==",
         "base64encodedvalue2=="
@@ -1924,6 +1924,10 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5280">[RFC5280]</dt>
+        <dd>
+<span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7515">[RFC7515]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7515">https://www.rfc-editor.org/rfc/rfc7515</a>&gt;</span>. </dd>
@@ -1932,9 +1936,9 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="SZTP">[SZTP]</dt>
+<dt id="RFC8259">[RFC8259]</dt>
       <dd>
-<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Farrer, I.</span>, and <span class="refAuthor">M. Abrahamsson</span>, <span class="refTitle">"Secure Zero Touch Provisioning (SZTP)"</span>, <span class="seriesInfo">RFC 8572</span>, <span class="seriesInfo">DOI 10.17487/RFC8572</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8572">https://www.rfc-editor.org/rfc/rfc8572</a>&gt;</span>. </dd>
+<span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8259">https://www.rfc-editor.org/rfc/rfc8259</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1963,10 +1967,6 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
         <dd>
 <span class="refAuthor">Yergeau, F.</span>, <span class="refTitle">"UTF-8, a transformation format of ISO 10646"</span>, <span class="seriesInfo">STD 63</span>, <span class="seriesInfo">RFC 3629</span>, <span class="seriesInfo">DOI 10.17487/RFC3629</span>, <time datetime="2003-11" class="refDate">November 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3629">https://www.rfc-editor.org/rfc/rfc3629</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC5280">[RFC5280]</dt>
-        <dd>
-<span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC5652">[RFC5652]</dt>
         <dd>
 <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">STD 70</span>, <span class="seriesInfo">RFC 5652</span>, <span class="seriesInfo">DOI 10.17487/RFC5652</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5652">https://www.rfc-editor.org/rfc/rfc5652</a>&gt;</span>. </dd>
@@ -1978,10 +1978,6 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dt id="RFC7951">[RFC7951]</dt>
         <dd>
 <span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7951">https://www.rfc-editor.org/rfc/rfc7951</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8259">[RFC8259]</dt>
-        <dd>
-<span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8259">https://www.rfc-editor.org/rfc/rfc8259</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8366">[RFC8366]</dt>
         <dd>
@@ -1996,8 +1992,12 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE) and JSON Object Signing and Encryption (JOSE) Registrations for Web Authentication (WebAuthn) Algorithms"</span>, <span class="seriesInfo">RFC 8812</span>, <span class="seriesInfo">DOI 10.17487/RFC8812</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8812">https://www.rfc-editor.org/rfc/rfc8812</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8949">[RFC8949]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">STD 94</span>, <span class="seriesInfo">RFC 8949</span>, <span class="seriesInfo">DOI 10.17487/RFC8949</span>, <time datetime="2020-12" class="refDate">December 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8949">https://www.rfc-editor.org/rfc/rfc8949</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SZTP">[SZTP]</dt>
+      <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Farrer, I.</span>, and <span class="refAuthor">M. Abrahamsson</span>, <span class="refTitle">"Secure Zero Touch Provisioning (SZTP)"</span>, <span class="seriesInfo">RFC 8572</span>, <span class="seriesInfo">DOI 10.17487/RFC8572</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8572">https://www.rfc-editor.org/rfc/rfc8572</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
