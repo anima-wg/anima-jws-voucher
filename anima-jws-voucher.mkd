@@ -81,10 +81,6 @@ In addition to explaining how the format is created, the "application/voucher-jw
 That document provides a serialization of the voucher data to JSON {{RFC8259}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
 
-{{?I-D.ietf-anima-constrained-voucher}} provides a serialization of the voucher data to CBOR {{?RFC8949}}
-with the signature format of COSE {{?RFC8812}}
-and the media type "application/voucher-cose+cbor".
-
 This document provides cryptographic signing of the JSON Voucher Data in form of JSON Web Signature (JWS) {{RFC7515}}
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
@@ -92,6 +88,10 @@ and may be more handy for use cases already using Javascript Object Signing and 
 This document should be considered as enhancement of {{I-D.draft-ietf-anima-rfc8366bis}},  
 as it provides a new voucher form with media type "application/voucher-jws+json" and the related serialization. 
 It does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+Another example of an enhancement of {{I-D.draft-ietf-anima-rfc8366bis}} is {{?I-D.ietf-anima-constrained-voucher}}. 
+It provides the serialization of voucher data to CBOR {{?RFC8949}}, 
+with the signature in form of COSE {{?RFC8812}} and the media type "application/voucher-cose+cbor".
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
