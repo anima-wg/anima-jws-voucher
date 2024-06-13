@@ -8,32 +8,31 @@
 <meta content="Thomas Werner" name="author">
 <meta content="Michael Richardson" name="author">
 <meta content='
-       [TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+        defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS. 
        In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided. 
     ' name="description">
-<meta content="xml2rfc 3.16.0" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-anima-jws-voucher-09" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.16.0
-    Python 3.9.6
-    appdirs 1.4.4
-    ConfigArgParse 1.5.3
-    google-i18n-address 2.5.2
-    html5lib 1.1
+  xml2rfc 3.21.0
+    Python 3.10.12
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.2
-    MarkupSafe 2.1.2
-    pycountry 22.3.5
-    PyYAML 6.0
-    requests 2.28.2
-    setuptools 58.0.4
-    six 1.15.0
-    wcwidth 0.2.6
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
+    pycountry 23.12.11
+    PyYAML 6.0.1
+    requests 2.31.0
+    setuptools 59.6.0
+    six 1.16.0
+    wcwidth 0.2.13
+    weasyprint 61.2
 -->
-<link href="anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
+<link href="/usr/src/app/tmp/e496d910-ec58-4e92-9446-a841642b02b9/anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -61,7 +60,6 @@ This document introduces a variant of the voucher artifact in which CMS is repla
 
 @viewport {
   zoom: 1.0;
-  width: extend-to-zoom;
 }
 @-ms-viewport {
   width: extend-to-zoom;
@@ -79,6 +77,7 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   scroll-behavior: smooth;
+  overflow-wrap: break-word;
 }
 .ears {
   display: none;
@@ -309,10 +308,16 @@ blockquote {
   border-radius: 3px;
   margin: 1em 0;
 }
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
 cite {
   display: block;
   text-align: right;
   font-style: italic;
+}
+.xref {
+  overflow-wrap: normal;
 }
 
 /* tables */
@@ -455,6 +460,10 @@ nav.toc li {
 }
 
 .refInstance {
+  margin-bottom: 1.25em;
+}
+
+.refSubseries {
   margin-bottom: 1.25em;
 }
 
@@ -646,7 +655,6 @@ hr.addr {
 /* pagination */
 @media print {
   body {
-
     width: 100%;
   }
   p {
@@ -1207,11 +1215,11 @@ li > p:last-of-type:only-child {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">JWS-voucher</td>
-<td class="right">August 2023</td>
+<td class="right">June 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Werner &amp; Richardson</td>
-<td class="center">Expires 1 March 2024</td>
+<td class="center">Expires 15 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1224,15 +1232,15 @@ li > p:last-of-type:only-child {
 <dd class="internet-draft">draft-ietf-anima-jws-voucher-09</dd>
 <dt class="label-updates">Updates:</dt>
 <dd class="updates">
-<a href="https://www.rfc-editor.org/rfc/rfc8366" class="eref">8366</a> (if approved)</dd>
+<a href="https://www.rfc-editor.org/rfc/rfc8366bis" class="eref">8366bis</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-08-29" class="published">29 August 2023</time>
+<time datetime="2024-06-13" class="published">13 June 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-03-01">1 March 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-15">15 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1249,7 +1257,7 @@ li > p:last-of-type:only-child {
 <h1 id="title">JWS signed Voucher Artifacts for Bootstrapping Protocols</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">[TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+<p id="section-abstract-1"><span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
@@ -1272,7 +1280,7 @@ This document introduces a variant of the voucher artifact in which CMS is repla
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1281,7 +1289,7 @@ This document introduces a variant of the voucher artifact in which CMS is repla
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1388,22 +1396,22 @@ This document introduces a variant of the voucher artifact in which CMS is repla
       </h2>
 <p id="section-1-1">"A Voucher Artifact for Bootstrapping Protocols" <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> and
 "Secure Zero Touch Provisioning" <span>[<a href="#SZTP" class="cite xref">SZTP</a>]</span> to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
-That document provides a serialization of the voucher data to JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) <span>[<a href="#RFC5652" class="cite xref">RFC5652</a>]</span>.
+That document provides a serialization of the voucher data to JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> with cryptographic signing according to the Cryptographic Message Syntax (CMS) <span>[<a href="#RFC5652" class="cite xref">RFC5652</a>]</span>.
 The resulting voucher artifact has the media type "application/voucher-cms+json".<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2"><span>[<a href="#I-D.ietf-anima-constrained-voucher" class="cite xref">I-D.ietf-anima-constrained-voucher</a>]</span> provides a serialization of the voucher data to CBOR <span>[<a href="#RFC8949" class="cite xref">RFC8949</a>]</span>
-with the signature format of COSE <span>[<a href="#RFC8812" class="cite xref">RFC8812</a>]</span>
-and the media type "application/voucher-cose+cbor".<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document provides cryptographic signing of the JSON Voucher Data in form of JSON Web Signature (JWS) <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>
+<p id="section-1-2">This document provides cryptographic signing of the JSON voucher data in form of JSON Web Signature (JWS) <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by <span>[<a href="#I-D.ietf-anima-brski-prm" class="cite xref">I-D.ietf-anima-brski-prm</a>]</span>
-and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).<a href="#section-1-3" class="pilcrow">¶</a></p>
+and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
+This document should be considered as enhancement of <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>,<br>
+as it provides a new voucher form with media type "application/voucher-jws+json" and the related serialization. 
+It does not extend the YANG definition of <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">Another example of an enhancement of <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> is <span>[<a href="#I-D.ietf-anima-constrained-voucher" class="cite xref">I-D.ietf-anima-constrained-voucher</a>]</span>. 
+It provides the serialization of voucher data to CBOR <span>[<a href="#RFC8949" class="cite xref">RFC8949</a>]</span>, 
+with the signature in form of COSE <span>[<a href="#RFC8812" class="cite xref">RFC8812</a>]</span> and the media type "application/voucher-cose+cbor".<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
 For example, <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> provides this context via the media type for the voucher artifact.
 This document utilizes the optional "typ" (Type) Header Parameter of JWS <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> to provide information about the signed object.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">This document should be considered an update to <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> in the category of "See Also" as per <span>[<a href="#I-D.kuehlewind-update-tag" class="cite xref">I-D.kuehlewind-update-tag</a>]</span>.
-[TODO: Fix "Updates:" header with I-D.draft-ietf-anima-rfc8366bis number.]
-It does not extend the YANG definition of <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terminology">
@@ -1420,7 +1428,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <span class="break"></span><dl class="dlParallel" id="section-2-3">
         <dt id="section-2-3.1">JSON Voucher Data:</dt>
         <dd style="margin-left: 1.5em" id="section-2-3.2">
-          <p id="section-2-3.2.1">An unsigned JSON representation of the Voucher Data.<a href="#section-2-3.2.1" class="pilcrow">¶</a></p>
+          <p id="section-2-3.2.1">An unsigned JSON representation of the voucher data.<a href="#section-2-3.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-2-3.3">JWS Voucher:</dt>
@@ -1430,12 +1438,12 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd class="break"></dd>
 <dt id="section-2-3.5">Voucher:</dt>
         <dd style="margin-left: 1.5em" id="section-2-3.6">
-          <p id="section-2-3.6.1">A short form for Voucher Artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-2-3.6.1" class="pilcrow">¶</a></p>
+          <p id="section-2-3.6.1">A short form for voucher artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-2-3.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-2-3.7">Voucher Data:</dt>
         <dd style="margin-left: 1.5em" id="section-2-3.8">
-          <p id="section-2-3.8.1">The raw (serialized) representation of the ietf-voucher YANG module without any enclosing signature, per <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-2-3.8.1" class="pilcrow">¶</a></p>
+          <p id="section-2-3.8.1">The raw (serialized) representation of "ietf-voucher" YANG module without any enclosing signature, per <span>[<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span>.<a href="#section-2-3.8.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1461,14 +1469,17 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       </h2>
 <p id="section-3-1"><span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> defines the following serializations for JWS:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3-2">
-<li id="section-3-2.1">"JWS Compact Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.1" class="pilcrow">¶</a>
+<li id="section-3-2.1">
+          <p id="section-3-2.1.1">"JWS Compact Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-3-2.2">
           <p id="section-3-2.2.1">"JWS JSON Serialization" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3-2.2.2.1">"General JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.1" class="relref">Section 7.2.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3-2.2.2.1">
+              <p id="section-3-2.2.2.1.1">"General JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.1" class="relref">Section 7.2.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-2.2.2.2">"Flattened JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.2" class="relref">Section 7.2.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-3-2.2.2.2">
+              <p id="section-3-2.2.2.2.1">"Flattened JWS JSON Serialization Syntax" in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.2" class="relref">Section 7.2.2</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span><a href="#section-3-2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
@@ -1481,8 +1492,8 @@ as already supported by <span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]
         <h3 id="name-voucher-representation-in-g">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-voucher-representation-in-g" class="section-name selfRef">Voucher Representation in General JWS JSON Serialization Syntax</a>
         </h3>
-<p id="section-3.1-1">JWS Voucher artifacts MUST use the "General JWS JSON Serialization Syntax" defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.1" class="relref">Section 7.2.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
-The following figure summarizes the serialization of JWS Voucher artifacts:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">JWS voucher artifacts MUST use the "General JWS JSON Serialization Syntax" defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-7.2.1" class="relref">Section 7.2.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
+The following figure summarizes the serialization of JWS voucher artifacts:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <span id="name-voucher-representation-in-ge"></span><div id="VoucherGeneralJWSFigure">
 <figure id="figure-1">
           <div class="alignLeft art-text artwork" id="section-3.1-2.1">
@@ -1513,7 +1524,7 @@ The generated JWS Signature is base64url-encoded to become the string value of t
         <h3 id="name-json-voucher-data">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-json-voucher-data" class="section-name selfRef">JSON Voucher Data</a>
         </h3>
-<p id="section-3.2-1">The JSON Voucher Data is an unsigned JSON document <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> that conforms with the data model described by the ietf-voucher YANG module <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-10#section-5.3" class="relref">Section 5.3</a> of [<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> and is encoded using the rules defined in <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>.
+<p id="section-3.2-1">The JSON Voucher Data is an unsigned JSON document <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> that conforms with the data model described by the ietf-voucher YANG module <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-11#section-5.3" class="relref">Section 5.3</a> of [<a href="#I-D.draft-ietf-anima-rfc8366bis" class="cite xref">I-D.draft-ietf-anima-rfc8366bis</a>]</span> and is encoded using the rules defined in <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>.
 The following figure provides an example of JSON Voucher Data:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <span id="name-json-voucher-data-example"></span><div id="VoucherGeneralJWSVoucherPayloadFigure">
 <figure id="figure-2">
@@ -1543,18 +1554,15 @@ The following figure provides an example of JSON Voucher Data:<a href="#section-
         </h3>
 <p id="section-3.3-1">The JWS Protected Header defined in <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> uses the standard header parameters "alg", "typ", and "x5c".
 The "alg" parameter MUST contain the algorithm type used to create the signature, e.g., "ES256" as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
-If present, the "typ" parameter SHOULD contain the value "[TODO: voucher-jws+json]" as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.9" class="relref">Section 4.1.9</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
+If present, the "typ" parameter SHOULD contain the value "voucher-jws+json" as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.9" class="relref">Section 4.1.9</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.
 If X.509 (PKIX) certificates <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> are used, the "x5c" parameter SHOULD contain the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate and chain as defined in <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.3-2">Implementation Note:
 base64-encoded values opposed to base64url-encoded values may contain slashes ('/').
-JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> optionally allows to escape these with backslashes ('').
+JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> optionally allows to escape these with backslashes ('\').
 Hence, depending on the JSON parser/serializer implementation used, they may or may not be included.
 JWS Voucher parsers must be prepared accordingly to extract certificates correctly.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.3-3">Vouchers will often need all certificates in the chain,
-including what would be considered the trust anchor certificate,
-because intermediate devices (such as the Registrar) may need to audit the artifact,
-or end systems may need to pin a trust anchor for future operations.
-Note, a trust anchor SHOULD be provided differently to be trusted.
+<p id="section-3.3-3">To validate voucher signatures all certificates of the certificate chain are required up to the trust anchor,
+Note, to establish trust the trust anchor SHOULD be provided out-of-band upfront.
 This is consistent with <span><a href="https://rfc-editor.org/rfc/rfc8995#section-5.5.2" class="relref">Section 5.5.2</a> of [<a href="#BRSKI" class="cite xref">BRSKI</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.3-4">The following figure gives an example of a JWS Protected Header:<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 <span id="name-jws-protected-header-exampl"></span><div id="VoucherGeneralJWSProtectedHeaderFigure">
@@ -1563,7 +1571,7 @@ This is consistent with <span><a href="https://rfc-editor.org/rfc/rfc8995#sectio
 <pre>
     {
       "alg": "ES256",
-      "typ": "[TODO: voucher-jws+json]",
+      "typ": "voucher-jws+json",
       "x5c": [
         "base64encodedvalue1==",
         "base64encodedvalue2=="
@@ -1907,6 +1915,7 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
       <h2 id="name-references">
 <a href="#section-9" class="section-number selfRef">9. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-9.1">
         <h3 id="name-normative-references">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
@@ -1918,7 +1927,7 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dd class="break"></dd>
 <dt id="I-D.draft-ietf-anima-rfc8366bis">[I-D.draft-ietf-anima-rfc8366bis]</dt>
         <dd>
-<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Pritikin, M.</span>, <span class="refAuthor">Eckert, T. T.</span>, and <span class="refAuthor">Q. Ma</span>, <span class="refTitle">"A Voucher Artifact for Bootstrapping Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-rfc8366bis-10</span>, <time datetime="2023-08-22" class="refDate">22 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-10">https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-10</a>&gt;</span>. </dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Pritikin, M.</span>, <span class="refAuthor">Eckert, T. T.</span>, and <span class="refAuthor">Q. Ma</span>, <span class="refTitle">"A Voucher Artifact for Bootstrapping Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-rfc8366bis-11</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-11">https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-11</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1942,6 +1951,8 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-9.2">
         <h3 id="name-informative-references">
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
@@ -1949,15 +1960,11 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dl class="references">
 <dt id="I-D.ietf-anima-brski-prm">[I-D.ietf-anima-brski-prm]</dt>
         <dd>
-<span class="refAuthor">Fries, S.</span>, <span class="refAuthor">Werner, T.</span>, <span class="refAuthor">Lear, E.</span>, and <span class="refAuthor">M. Richardson</span>, <span class="refTitle">"BRSKI with Pledge in Responder Mode (BRSKI-PRM)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-brski-prm-09</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-brski-prm-09">https://datatracker.ietf.org/doc/html/draft-ietf-anima-brski-prm-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Fries, S.</span>, <span class="refAuthor">Werner, T.</span>, <span class="refAuthor">Lear, E.</span>, and <span class="refAuthor">M. Richardson</span>, <span class="refTitle">"BRSKI with Pledge in Responder Mode (BRSKI-PRM)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-brski-prm-12</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-brski-prm-12">https://datatracker.ietf.org/doc/html/draft-ietf-anima-brski-prm-12</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-anima-constrained-voucher">[I-D.ietf-anima-constrained-voucher]</dt>
         <dd>
-<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (BRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-21</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-21">https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-21</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.kuehlewind-update-tag">[I-D.kuehlewind-update-tag]</dt>
-        <dd>
-<span class="refAuthor">Kühlewind, M.</span> and <span class="refAuthor">S. Krishnan</span>, <span class="refTitle">"Definition of new tags for relations between RFCs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kuehlewind-update-tag-04</span>, <time datetime="2021-07-12" class="refDate">12 July 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-kuehlewind-update-tag-04">https://datatracker.ietf.org/doc/html/draft-kuehlewind-update-tag-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (cBRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-24</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-24">https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ON-PATH">[ON-PATH]</dt>
         <dd>
@@ -2001,6 +2008,7 @@ jPHtuN2Qex6gDxTfaSiKeoXGsOD4JWOgQJPg"
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
 <div id="contributors">
 <section id="appendix-A">
