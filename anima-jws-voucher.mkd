@@ -11,7 +11,7 @@ area: Internet
 wg: anima Working Group
 kw: Internet-Draft
 cat: std
-updates: 8366
+updates: 8366bis
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
@@ -67,7 +67,7 @@ informative:
 
 --- abstract
 
-[TODO: I-D.draft-ietf-anima-rfc8366bis] defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+{{I-D.draft-ietf-anima-rfc8366bis}} defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided.
@@ -89,15 +89,14 @@ This document provides cryptographic signing of the JSON Voucher Data in form of
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
+This document should be considered as enhancement of {{I-D.draft-ietf-anima-rfc8366bis}},  
+as it provides a new voucher form with media type "application/voucher-jws+json" and the related serialization. 
+It does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
 There is no provision across the different voucher signature formats that a receiver could safely recognize which format it uses unless additional context is provided.
 For example, {{BRSKI}} provides this context via the media type for the voucher artifact.
 This document utilizes the optional "typ" (Type) Header Parameter of JWS {{RFC7515}} to provide information about the signed object.
-
-This document should be considered an update to {{I-D.draft-ietf-anima-rfc8366bis}} in the category of "See Also" as per {{?I-D.kuehlewind-update-tag}}.
-[TODO: Fix "Updates:" header with I-D.draft-ietf-anima-rfc8366bis number.]
-It does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 # Terminology
 
@@ -183,7 +182,7 @@ The following figure provides an example of JSON Voucher Data:
 
 The JWS Protected Header defined in {{RFC7515}} uses the standard header parameters "alg", "typ", and "x5c".
 The "alg" parameter MUST contain the algorithm type used to create the signature, e.g., "ES256" as defined in {{Section 4.1.1 of RFC7515}}.
-If present, the "typ" parameter SHOULD contain the value "[TODO: voucher-jws+json]" as defined in {{Section 4.1.9 of RFC7515}}.
+If present, the "typ" parameter SHOULD contain the value "voucher-jws+json" as defined in {{Section 4.1.9 of RFC7515}}.
 If X.509 (PKIX) certificates {{RFC5280}} are used, the "x5c" parameter SHOULD contain the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate and chain as defined in {{Section 4.1.6 of RFC7515}}.
 
 Implementation Note:
@@ -204,7 +203,7 @@ The following figure gives an example of a JWS Protected Header:
 ~~~~
     {
       "alg": "ES256",
-      "typ": "[TODO: voucher-jws+json]",
+      "typ": "voucher-jws+json",
       "x5c": [
         "base64encodedvalue1==",
         "base64encodedvalue2=="
