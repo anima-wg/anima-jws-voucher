@@ -78,10 +78,10 @@ In addition to explaining how the format is created, the "application/voucher-jw
 
 "A Voucher Artifact for Bootstrapping Protocols" {{I-D.draft-ietf-anima-rfc8366bis}} defines a YANG-based data structure used in "Bootstrapping Remote Secure Key Infrastructure" {{!BRSKI}} and
 "Secure Zero Touch Provisioning" {{?SZTP}} to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
-That document provides a serialization of the voucher data to JSON {{RFC8259}} (JSON Voucher Data) with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
+That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
 
-This document provides cryptographic signing of the JSON Voucher Data in form of JSON Web Signature (JWS) {{RFC7515}}
+This document provides cryptographic signing of the JSON voucher data in form of JSON Web Signature (JWS) {{RFC7515}}
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
@@ -105,16 +105,16 @@ This document utilizes the optional "typ" (Type) Header Parameter of JWS {{RFC75
 This document uses the following terms:
 
 JSON Voucher Data:
-: An unsigned JSON representation of the Voucher Data.
+: An unsigned JSON representation of the voucher data.
 
 JWS Voucher:
 : A JWS structure signing the JSON Voucher Data.
 
 Voucher:
-: A short form for Voucher Artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+: A short form for voucher artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 Voucher Data:
-: The raw (serialized) representation of the ietf-voucher YANG module without any enclosing signature, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+: The raw (serialized) representation of "ietf-voucher" YANG module without any enclosing signature, per {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 This document uses the following encoding notations:
 
@@ -139,8 +139,8 @@ as already supported by {{RFC8366}} for CMS-signed vouchers.
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
 
-JWS Voucher artifacts MUST use the "General JWS JSON Serialization Syntax" defined in {{Section 7.2.1 of RFC7515}}.
-The following figure summarizes the serialization of JWS Voucher artifacts:
+JWS voucher artifacts MUST use the "General JWS JSON Serialization Syntax" defined in {{Section 7.2.1 of RFC7515}}.
+The following figure summarizes the serialization of JWS voucher artifacts:
 
 ~~~~
     {
