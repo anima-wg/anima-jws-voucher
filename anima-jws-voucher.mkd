@@ -187,15 +187,12 @@ If X.509 (PKIX) certificates {{RFC5280}} are used, the "x5c" parameter SHOULD co
 
 Implementation Note:
 base64-encoded values opposed to base64url-encoded values may contain slashes ('/').
-JSON {{RFC8259}} optionally allows to escape these with backslashes ('\').
+JSON {{RFC8259}} optionally allows to escape these with backslashes ('\\').
 Hence, depending on the JSON parser/serializer implementation used, they may or may not be included.
 JWS Voucher parsers must be prepared accordingly to extract certificates correctly.
 
-Vouchers will often need all certificates in the chain,
-including what would be considered the trust anchor certificate,
-because intermediate devices (such as the Registrar) may need to audit the artifact,
-or end systems may need to pin a trust anchor for future operations.
-Note, a trust anchor SHOULD be provided differently to be trusted.
+To validate voucher signatures all certificates of the certificate chain are required up to the trust anchor,
+Note, to establish trust the trust anchor SHOULD be provided out-of-band upfront.
 This is consistent with {{Section 5.5.2 of BRSKI}}.
 
 The following figure gives an example of a JWS Protected Header:
