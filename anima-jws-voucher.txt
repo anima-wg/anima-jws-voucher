@@ -6,11 +6,11 @@ anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Updates: 8366bis (if approved)                             M. Richardson
 Intended status: Standards Track                Sandelman Software Works
-Expires: 15 December 2024                                   13 June 2024
+Expires: 21 December 2024                                   19 June 2024
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-09
+                    draft-ietf-anima-jws-voucher-10
 
 Abstract
 
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 December 2024.
+   This Internet-Draft will expire on 21 December 2024.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 1]
+Werner & Richardson     Expires 21 December 2024                [Page 1]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 2]
+Werner & Richardson     Expires 21 December 2024                [Page 2]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 3]
+Werner & Richardson     Expires 21 December 2024                [Page 3]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 4]
+Werner & Richardson     Expires 21 December 2024                [Page 4]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 5]
+Werner & Richardson     Expires 21 December 2024                [Page 5]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 6]
+Werner & Richardson     Expires 21 December 2024                [Page 6]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -389,7 +389,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 7]
+Werner & Richardson     Expires 21 December 2024                [Page 7]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -445,7 +445,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 8]
+Werner & Richardson     Expires 21 December 2024                [Page 8]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -501,7 +501,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024                [Page 9]
+Werner & Richardson     Expires 21 December 2024                [Page 9]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -557,7 +557,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 10]
+Werner & Richardson     Expires 21 December 2024               [Page 10]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -613,7 +613,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 11]
+Werner & Richardson     Expires 21 December 2024               [Page 11]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -669,7 +669,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 12]
+Werner & Richardson     Expires 21 December 2024               [Page 12]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -725,7 +725,7 @@ Internet-Draft                 JWS-voucher                     June 2024
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 13]
+Werner & Richardson     Expires 21 December 2024               [Page 13]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -781,7 +781,7 @@ Contributors
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 14]
+Werner & Richardson     Expires 21 December 2024               [Page 14]
 
 Internet-Draft                 JWS-voucher                     June 2024
 
@@ -837,4 +837,4 @@ Authors' Addresses
 
 
 
-Werner & Richardson     Expires 15 December 2024               [Page 15]
+Werner & Richardson     Expires 21 December 2024               [Page 15]
