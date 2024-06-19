@@ -1,8 +1,8 @@
 ---
-title: JWS signed Voucher Artifacts for Bootstrapping Protocols
-abbrev: JWS-voucher
-docname: draft-ietf-anima-jws-voucher-09
-submissionType: IETF
+title: JWS signed Voucher Artifacts for Bootstrapping Protocols  
+abbrev: JWS-voucher  
+docname: draft-ietf-anima-jws-voucher-10  
+submissionType: IETF  
 
 stand_alone: true
 
