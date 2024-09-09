@@ -67,7 +67,7 @@ informative:
 
 --- abstract
 
-{{I-D.draft-ietf-anima-rfc8366bis}} defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
+I-D.draft-ietf-anima-rfc8366bis defines a digital artifact called voucher as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
 This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.
 
 In addition to explaining how the format is created, the "application/voucher-jws+json" media type is registered and examples are provided.
@@ -81,16 +81,16 @@ In addition to explaining how the format is created, the "application/voucher-jw
 That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 The resulting voucher artifact has the media type "application/voucher-cms+json".
 
-This document provides cryptographic signing of the JSON voucher data in form of JSON Web Signature (JWS) {{RFC7515}}
+This document provides cryptographic signing of the JSON Voucher Data in form of JSON Web Signature (JWS) {{RFC7515}}
 and the media type "application/voucher-jws+json".
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
 This document should be considered as enhancement of {{I-D.draft-ietf-anima-rfc8366bis}},  
-as it provides a new voucher form with media type "application/voucher-jws+json" and the related serialization. 
+as it provides a new voucher form with media type "application/voucher-jws+json" and the related serialization.
 It does not extend the YANG definition of {{I-D.draft-ietf-anima-rfc8366bis}}.
 
-Another example of an enhancement of {{I-D.draft-ietf-anima-rfc8366bis}} is {{?I-D.ietf-anima-constrained-voucher}}. 
-It provides the serialization of voucher data to CBOR {{?RFC8949}}, 
+Another example of an enhancement of {{I-D.draft-ietf-anima-rfc8366bis}} is {{?I-D.draft-ietf-anima-constrained-voucher}}.
+It provides the serialization of voucher data to CBOR {{?RFC8949}},
 with the signature in form of COSE {{?RFC8812}} and the media type "application/voucher-cose+cbor".
 
 With the availability of different encoded vouchers, it is up to an industry specific application statement to indicate/decide which voucher signature format is to be used.
@@ -111,10 +111,19 @@ JWS Voucher:
 : A JWS structure signing the JSON Voucher Data.
 
 Voucher:
-: A short form for voucher artifact and refers to the signed statement from the MASA service that indicates to a pledge the cryptographic identity of the domain it should trust, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+: A short form for voucher artifact and refers to the signed statement from Manufacturer Authorized Signing Authority (MASA) service that indicates to a Pledge the cryptographic identity of the domain it should trust, per {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 Voucher Data:
 : The raw (serialized) representation of "ietf-voucher" YANG module without any enclosing signature, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+MASA (Manufacturer Authorized Signing Authority):
+The entity that, for the purpose of this document, issues and signs the vouchers for a manufacturer's pledges. In some onboarding protocols, the MASA may have an Internet presence and be integral to the onboarding process, whereas in other protocols the MASA may be an offline service that has no active role in the onboarding process, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+Pledge:
+The prospective component attempting to find and securely join a domain. When shipped or in factory reset mode, it only trusts authorized representatives of the manufacturer, per {{I-D.draft-ietf-anima-rfc8366bis}}.
+
+Registrar:
+A representative of the domain that is configured, perhaps autonomically, to decide whether a new device is allowed to join the domain, per {{I-D.draft-ietf-anima-rfc8366bis}}.
 
 This document uses the following encoding notations:
 
@@ -134,8 +143,9 @@ UTF8(STRING):
    - "Flattened JWS JSON Serialization Syntax" in {{Section 7.2.2 of RFC7515}}
 
 A "JWS JSON Serialization Overview" is given in {{Section 3.2 of RFC7515}} and more details on the JWS serializations in {{Section 7 of RFC7515}}.
-This document makes use of the "General JWS JSON Serialization Syntax" of {{RFC7515}} to support multiple signatures,
+This document makes use of "General JWS JSON Serialization Syntax" of {{RFC7515}} to support multiple signatures,
 as already supported by {{RFC8366}} for CMS-signed vouchers.
+Note, "JWS Compact Serialization" is limited to one signature.
 
 ## Voucher Representation in General JWS JSON Serialization Syntax
 
@@ -162,7 +172,7 @@ The generated JWS Signature is base64url-encoded to become the string value of t
 
 ## JSON Voucher Data
 
-The JSON Voucher Data is an unsigned JSON document {{RFC8259}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 5.3 of I-D.draft-ietf-anima-rfc8366bis}} and is encoded using the rules defined in {{RFC7951}}.
+The JSON Voucher Data is an unsigned JSON document {{RFC8259}} that conforms with the data model described by the ietf-voucher YANG module {{RFC7950}} defined in {{Section 7.3 of I-D.draft-ietf-anima-rfc8366bis}} and is encoded using the rules defined in {{RFC7951}}.
 The following figure provides an example of JSON Voucher Data:
 
 ~~~~
@@ -187,11 +197,11 @@ If X.509 (PKIX) certificates {{RFC5280}} are used, the "x5c" parameter SHOULD co
 
 Implementation Note:
 base64-encoded values opposed to base64url-encoded values may contain slashes ('/').
-JSON {{RFC8259}} optionally allows to escape these with backslashes ('\\').
+JSON {{RFC8259}} optionally allows escaping these with backslashes ('\\').
 Hence, depending on the JSON parser/serializer implementation used, they may or may not be included.
 JWS Voucher parsers must be prepared accordingly to extract certificates correctly.
 
-To validate voucher signatures all certificates of the certificate chain are required up to the trust anchor,
+To validate voucher signatures all certificates of the certificate chain are required up to the trust anchor.
 Note, to establish trust the trust anchor SHOULD be provided out-of-band upfront.
 This is consistent with {{Section 5.5.2 of BRSKI}}.
 
@@ -215,9 +225,9 @@ The JWS Signature is generated over the JWS Protected Header and the JWS Payload
 
 # Privacy Considerations
 
-The Voucher Request reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
+The Pledge Voucher Request (PVR) reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
 
-This request occurs via HTTP-over-TLS, however, for the Pledge-to-Registrar TLS connection, the Pledge is provisionally accepting the Registrar server certificate.
+A PVR is transported via HTTP-over-TLS, however, for Pledge-to-Registrar TLS connection a Pledge is provisionally accepting the Registrar server certificate while TLS server authentication.
 Hence it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{ON-PATH}}, as explained in {{Section 10.2 of BRSKI}}.
 
 The use of a JWS header brings no new privacy considerations.
@@ -320,7 +330,7 @@ I6InZvdWNoZXItandzK2pzb24iLCJhbGciOiJFUzI1NiJ9",
 
 ## Example Parboiled Registrar Voucher Request - RVR (from Registrar to MASA)
 The term parboiled refers to food which is partially cooked.
-In {{BRSKI}}, the term refers to a Pledge voucher-request (PVR) which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.
+In {{BRSKI}}, the term refers to a Pledge-Voucher-Request (PVR) which has been received by the Registrar, and then has been processed by the Registrar ("cooked"), and is now being forwarded to the MASA.
 
 The following is an example Registrar voucher-request (RVR) sent from the Registrar to the MASA, in "General JWS JSON Serialization".
 Note that the previous PVR can be seen in the payload as "prior-signed-voucher-request".
