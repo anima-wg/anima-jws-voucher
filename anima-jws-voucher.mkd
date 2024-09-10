@@ -1,7 +1,7 @@
 ---
 title: JWS signed Voucher Artifacts for Bootstrapping Protocols  
 abbrev: JWS-voucher  
-docname: draft-ietf-anima-jws-voucher-10  
+docname: draft-ietf-anima-jws-voucher-11  
 submissionType: IETF  
 
 stand_alone: true
@@ -227,7 +227,7 @@ The JWS Signature is generated over the JWS Protected Header and the JWS Payload
 
 The Pledge Voucher Request (PVR) reveals the IDevID of the component (Pledge) that is in the process of bootstrapping.
 
-A PVR is transported via HTTP-over-TLS, however, for Pledge-to-Registrar TLS connection a Pledge is provisionally accepting the Registrar server certificate while TLS server authentication.
+A PVR is transported via HTTP-over-TLS. However, for the Pledge-to-Registrar TLS connection a Pledge provisionally accepts the Registrar server certificate during the TLS server authentication.
 Hence it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{ON-PATH}}, as explained in {{Section 10.2 of BRSKI}}.
 
 The use of a JWS header brings no new privacy considerations.
