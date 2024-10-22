@@ -109,7 +109,7 @@ Voucher Data:
 : The raw (serialized) representation of the `ietf-voucher` YANG module without any enclosing signature, per {{I-D.ietf-anima-rfc8366bis}}.
 
 MASA (Manufacturer Authorized Signing Authority):
-: The entity that, for the purpose of this document, issues and signs the vouchers for a manufacturer's pledges. In some onboarding protocols, the MASA may have an Internet presence and be integral to the onboarding process, whereas in other protocols the MASA may be an offline service that has no active role in the onboarding process, per {{I-D.ietf-anima-rfc8366bis}}.
+: The entity that, for the purpose of this document, issues and signs the vouchers for manufacturer's pledges. In some onboarding protocols, the MASA may have an Internet presence and be integral to the onboarding process, whereas in other protocols the MASA may be an offline service that has no active role in the onboarding process, per {{I-D.ietf-anima-rfc8366bis}}.
 
 Pledge:
 : The prospective component attempting to find and securely join a domain. When shipped or in factory reset mode, it only trusts authorized representatives of the manufacturer, per {{I-D.ietf-anima-rfc8366bis}}.
@@ -183,7 +183,6 @@ Implementation Note:
 
 To validate voucher signatures, all certificates of the certificate chain are required up to the trust anchor.
 Note, to establish trust the trust anchor SHOULD be provided out-of-band up front.
-This is consistent with {{Section 5.5.2 of RFC8995}}.
 
 The following figure gives an example of a JWS Protected Header:
 
