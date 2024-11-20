@@ -179,7 +179,7 @@ Implementation Note:
 : base64-encoded values, in contrast to base64url-encoded values, may contain slashes (`/`).
   JSON {{RFC8259}} optionally allows escaping these with backslashes (`\\`).
   Hence, depending on the JSON parser/serializer implementation used, they may or may not be included.
-  JWS Voucher parsers need to be prepared accordingly to extract certificates correctly.
+  JWS Voucher parsers MUST be prepared accordingly to extract certificates correctly.
 
 To validate voucher signatures, all certificates of the certificate chain are required up to the trust anchor.
 Note, to establish trust the trust anchor SHOULD be provided out-of-band up front.
