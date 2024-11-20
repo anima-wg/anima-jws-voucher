@@ -263,6 +263,15 @@ These examples are folded according to the {{RFC8792}} Single Backslash rule.
 
 ## Example Pledge-Voucher-Request (PVR)
 
+This private key (of the IDevID) is used to sign a Pledge-Voucher-Request (PVR) by Pledge:
+
+~~~~
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCB9DPTt6EZcuVJ7ptTc
+jyNA93JpuXRXpHK2boJRlJd3lQ==
+-----END PRIVATE KEY-----
+~~~~
+
 The following is an example of a Pledge-Voucher-Request (PVR) as JWS Voucher artifact, which would be sent from a Pledge to the Registrar:
 
 ~~~~
@@ -318,6 +327,15 @@ The term parboiled refers to food which is partially cooked.
 In {{BRSKI}}, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
 then has been processed by the Registrar ("cooked"),
 and is now being forwarded to the MASA.
+
+This private key is used to sign a Registrar-Voucher-Request (RVR) by Registrar:
+
+~~~~
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBHWyAS7tFchxY+5Pv9
+2/sNFKc1FioVMgioCcuVcRnx/A==
+-----END PRIVATE KEY-----
+~~~~
 
 The following is an example Registrar-Voucher-Request (RVR) as JWS Voucher artifact, which would be sent from the Registrar to the MASA.
 Note that the previous PVR can be seen in the payload in the field `prior-signed-voucher-request`.
@@ -418,6 +436,15 @@ IkjgCPeXM8uQHvh8WV6oTMp91TzxK0qv1s7dYQ"
 {: #ExampleParboiledRegistrarVoucherRequestfigure title="Example Parboiled Registrar-Voucher-Request (RVR)" artwork-align="left"}
 
 ## Example Voucher Response
+
+This private key is used to sign a Voucher by MASA:
+
+~~~~
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCD8qlP1JSufuMr+Lc4O
+vf5vmS9XDlQM0zDHU5pIOEqlMA==
+-----END PRIVATE KEY-----
+~~~~
 
 The following is an example voucher response as JWS Voucher artifact, which would be sent from the MASA to the Pledge via Registrar.
 
