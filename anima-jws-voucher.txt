@@ -5,8 +5,8 @@
 anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Intended status: Standards Track                           M. Richardson
-Expires: 24 May 2025                            Sandelman Software Works
-                                                        20 November 2024
+Expires: 25 May 2025                            Sandelman Software Works
+                                                        21 November 2024
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 May 2025.
+   This Internet-Draft will expire on 25 May 2025.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 1]
+Werner & Richardson        Expires 25 May 2025                  [Page 1]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -78,12 +78,12 @@ Table of Contents
    7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
    8.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
      8.1.  Example Pledge-Voucher-Request (PVR)  . . . . . . . . . .   8
-     8.2.  Example Parboiled Registrar-Voucher-Request (RVR) . . . .  10
-     8.3.  Example Voucher Response  . . . . . . . . . . . . . . . .  13
+     8.2.  Example Parboiled Registrar-Voucher-Request (RVR) . . . .   9
+     8.3.  Example Voucher Response  . . . . . . . . . . . . . . . .  12
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  15
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 2]
+Werner & Richardson        Expires 25 May 2025                  [Page 2]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 3]
+Werner & Richardson        Expires 25 May 2025                  [Page 3]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 4]
+Werner & Richardson        Expires 25 May 2025                  [Page 4]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 5]
+Werner & Richardson        Expires 25 May 2025                  [Page 5]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 6]
+Werner & Richardson        Expires 25 May 2025                  [Page 6]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -389,66 +389,15 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                  [Page 7]
+Werner & Richardson        Expires 25 May 2025                  [Page 7]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
 
 8.1.  Example Pledge-Voucher-Request (PVR)
 
-   The following private key (of the IDevID) is used to sign a Pledge-
-   Voucher-Request (PVR) by Pledge:
-
-   -----BEGIN PRIVATE KEY-----
-   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCB9DPTt6EZcuVJ7ptTc
-   jyNA93JpuXRXpHK2boJRlJd3lQ==
-   -----END PRIVATE KEY-----
-   -----BEGIN CERTIFICATE-----
-   MIICODCCAd2gAwIBAgIGAZMw/+4nMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-   OTkxMjMxMjM1OTU5WjBvMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRYwFAYDVQQFEw1raXQtOTg3
-   NjU0MzIxMRYwFAYDVQQDDA1BQkMzLkU3NS0xMDBBMFkwEwYHKoZIzj0CAQYIKoZI
-   zj0DAQcDQgAEOdd+eUacaFBvA27qgyFBA0kjCRM/IsbLMVVzRMavn+nUxh0o+2PM
-   Iy1x2x07/G8UQk55e9KBU1Z/Eoz8oLJtp6N6MHgwMAYIKwYBBQUHASAEJBYibWFz
-   YS10ZXN0Lnh5em1hbnVmYWN0dXJlci5jb206OTQ0MzAfBgNVHSMEGDAWgBRlS803
-   fdE3vVQPkYZbMrbkuwZO+zATBgNVHSUEDDAKBggrBgEFBQcDAjAOBgNVHQ8BAf8E
-   BAMCB4AwCgYIKoZIzj0EAwIDSQAwRgIhAORx7bJJ6opytoNE2eH4wKN3TqhcUwXL
-   IgVrCp5Xlpj6AiEAn9nAk68/GZHC+p4coYHOLknfJYH1lUBpqsFM93nPLBU=
-   -----END CERTIFICATE-----
-   -----BEGIN CERTIFICATE-----
-   MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-   OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
-   dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
-   4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
-   8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
-   DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
-   5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
-   vFa5nvaNiJn9jz4CfmNpIw==
-   -----END CERTIFICATE-----
-
    The following is an example of a Pledge-Voucher-Request (PVR) as JWS
    Voucher artifact, which would be sent from a Pledge to the Registrar:
-
-
-
-
-
-
-
-
-
-
-
-
-Werner & Richardson        Expires 24 May 2025                  [Page 8]
-
-Internet-Draft                 JWS-voucher                 November 2024
-
 
    {
      "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
@@ -494,17 +443,49 @@ Internet-Draft                 JWS-voucher                 November 2024
      ]
    }
 
-               Figure 4: Example Pledge-Voucher-Request (PVR)
 
 
-
-
-
-
-Werner & Richardson        Expires 24 May 2025                  [Page 9]
+Werner & Richardson        Expires 25 May 2025                  [Page 8]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
+
+               Figure 4: Example Pledge-Voucher-Request (PVR)
+
+   The following private key (of the IDevID) is used to sign a Pledge-
+   Voucher-Request (PVR) by Pledge:
+
+   -----BEGIN PRIVATE KEY-----
+   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCB9DPTt6EZcuVJ7ptTc
+   jyNA93JpuXRXpHK2boJRlJd3lQ==
+   -----END PRIVATE KEY-----
+   -----BEGIN CERTIFICATE-----
+   MIICODCCAd2gAwIBAgIGAZMw/+4nMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+   OTkxMjMxMjM1OTU5WjBvMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRYwFAYDVQQFEw1raXQtOTg3
+   NjU0MzIxMRYwFAYDVQQDDA1BQkMzLkU3NS0xMDBBMFkwEwYHKoZIzj0CAQYIKoZI
+   zj0DAQcDQgAEOdd+eUacaFBvA27qgyFBA0kjCRM/IsbLMVVzRMavn+nUxh0o+2PM
+   Iy1x2x07/G8UQk55e9KBU1Z/Eoz8oLJtp6N6MHgwMAYIKwYBBQUHASAEJBYibWFz
+   YS10ZXN0Lnh5em1hbnVmYWN0dXJlci5jb206OTQ0MzAfBgNVHSMEGDAWgBRlS803
+   fdE3vVQPkYZbMrbkuwZO+zATBgNVHSUEDDAKBggrBgEFBQcDAjAOBgNVHQ8BAf8E
+   BAMCB4AwCgYIKoZIzj0EAwIDSQAwRgIhAORx7bJJ6opytoNE2eH4wKN3TqhcUwXL
+   IgVrCp5Xlpj6AiEAn9nAk68/GZHC+p4coYHOLknfJYH1lUBpqsFM93nPLBU=
+   -----END CERTIFICATE-----
+   -----BEGIN CERTIFICATE-----
+   MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+   OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
+   dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
+   4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
+   8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
+   DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
+   5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
+   vFa5nvaNiJn9jz4CfmNpIw==
+   -----END CERTIFICATE-----
 
 8.2.  Example Parboiled Registrar-Voucher-Request (RVR)
 
@@ -513,51 +494,14 @@ Internet-Draft                 JWS-voucher                 November 2024
    received by the Registrar, then has been processed by the Registrar
    ("cooked"), and is now being forwarded to the MASA.
 
-   The following private key is used to sign a Registrar-Voucher-Request
-   (RVR) by Registrar:
-
-   -----BEGIN PRIVATE KEY-----
-   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBHWyAS7tFchxY+5Pv9
-   2/sNFKc1FioVMgioCcuVcRnx/A==
-   -----END PRIVATE KEY-----
-   -----BEGIN CERTIFICATE-----
-   MIIB8TCCAZagAwIBAgIGAZMw/+4tMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
-   MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
-   A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
-   Fw0zNDExMTUxODA0NTlaMHkxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
-   bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMS4wLAYD
-   VQQDDCVSZWdpc3RyYXIgVm91Y2hlciBSZXF1ZXN0IFNpZ25pbmcgS2V5MFkwEwYH
-   KoZIzj0CAQYIKoZIzj0DAQcDQgAEThp6doT2X/k2je2uZh8sIBz8OT0ab6goW/S3
-   oRUUDjbE9MqlG8qKi/KE0YbAbcazMkWVvNnDXOJSrjb7MFmy4qMnMCUwEwYDVR0l
-   BAwwCgYIKwYBBQUHAxwwDgYDVR0PAQH/BAQDAgeAMAoGCCqGSM49BAMCA0kAMEYC
-   IQCN9/dDOtLnj+MgepHhZtYlOQFCxHNyKVjrjPGX1476igIhAMESKoAi8mPKk14s
-   +0hAR9vfWNa3tVybKCLW8xmdVegd
-   -----END CERTIFICATE-----
-   -----BEGIN CERTIFICATE-----
-   MIIB8TCCAZegAwIBAgIGAZMw/+4qMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
-   MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
-   A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
-   Fw0zNDExMTUxODA0NTlaMFwxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
-   bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMREwDwYD
-   VQQDDAhNeVNpdGVDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPdq+JbXi4d3
-   xyC2KYrVdSZ5yqqpaTpDOSUW95AVDeyg8sPtUoiFmFnvHgNXe3cl1/Icp6MY0qgv
-   JNRtpbcOtfSjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIE
-   MB0GA1UdDgQWBBQbkT6sareajkG87WeocLuz2zOaLDAKBggqhkjOPQQDAgNIADBF
-   AiB/rMEQVixUsMe0V613Oq8qB+buxDJDKifuCsciWHwvIgIhAKQM09+Tdtbp5VzV
-   fRPpocbii8ZR4OOiJvHV4Bniw8gz
-   -----END CERTIFICATE-----
-
    The following is an example Registrar-Voucher-Request (RVR) as JWS
    Voucher artifact, which would be sent from the Registrar to the MASA.
-   Note that the previous PVR can be seen in the payload in the field
-   prior-signed-voucher-request.
+   Note, the previous PVR can be seen in the payload in the field prior-
+   signed-voucher-request.
 
 
 
-
-
-
-Werner & Richardson        Expires 24 May 2025                 [Page 10]
+Werner & Richardson        Expires 25 May 2025                  [Page 9]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -613,7 +557,7 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                 [Page 11]
+Werner & Richardson        Expires 25 May 2025                 [Page 10]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -664,49 +608,48 @@ Internet-Draft                 JWS-voucher                 November 2024
 
         Figure 5: Example Parboiled Registrar-Voucher-Request (RVR)
 
+   The following private key is used to sign a Registrar-Voucher-Request
+   (RVR) by Registrar:
 
 
 
-
-
-Werner & Richardson        Expires 24 May 2025                 [Page 12]
+Werner & Richardson        Expires 25 May 2025                 [Page 11]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
 
-8.3.  Example Voucher Response
-
-   The following private key is used to sign a Voucher by MASA:
-
    -----BEGIN PRIVATE KEY-----
-   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCD8qlP1JSufuMr+Lc4O
-   vf5vmS9XDlQM0zDHU5pIOEqlMA==
+   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBHWyAS7tFchxY+5Pv9
+   2/sNFKc1FioVMgioCcuVcRnx/A==
    -----END PRIVATE KEY-----
    -----BEGIN CERTIFICATE-----
-   MIIByTCCAW6gAwIBAgIGAZMw/+4dMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMB4XDTI0MTExNTE4MDQ1OVoXDTM0
-   MTExNTE4MDQ1OVowajELMAkGA1UEBhMCQUcxGzAZBgNVBAoMEk1hbnVmYWN0dXJl
-   cjAwMSBBRzETMBEGA1UECwwKT3JnWCBVbml0QTEpMCcGA1UEAwwgTWFudWZhY3R1
-   cmVyIFZvdWNoZXIgU2lnbmluZyBLZXkwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
-   AARAGzXhymyZ3eBbbC/ZATwXJA7e6pohz7dpXO3Jrat0KDf6Xn7fZVYT+ad6VW47
-   rQbpiUZvNns63NsGec7kp4hxoxIwEDAOBgNVHQ8BAf8EBAMCB4AwCgYIKoZIzj0E
-   AwIDSQAwRgIhAO+ZhULU5y+W1o8igKGDR7+XNbV2hR4QSo31ILdnPq35AiEAhsv/
-   +p8dWLKrhbm67Pq5FDFdaFMNo5sz6G3WQkHaK/k=
+   MIIB8TCCAZagAwIBAgIGAZMw/+4tMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
+   MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
+   A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
+   Fw0zNDExMTUxODA0NTlaMHkxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
+   bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMS4wLAYD
+   VQQDDCVSZWdpc3RyYXIgVm91Y2hlciBSZXF1ZXN0IFNpZ25pbmcgS2V5MFkwEwYH
+   KoZIzj0CAQYIKoZIzj0DAQcDQgAEThp6doT2X/k2je2uZh8sIBz8OT0ab6goW/S3
+   oRUUDjbE9MqlG8qKi/KE0YbAbcazMkWVvNnDXOJSrjb7MFmy4qMnMCUwEwYDVR0l
+   BAwwCgYIKwYBBQUHAxwwDgYDVR0PAQH/BAQDAgeAMAoGCCqGSM49BAMCA0kAMEYC
+   IQCN9/dDOtLnj+MgepHhZtYlOQFCxHNyKVjrjPGX1476igIhAMESKoAi8mPKk14s
+   +0hAR9vfWNa3tVybKCLW8xmdVegd
    -----END CERTIFICATE-----
    -----BEGIN CERTIFICATE-----
-   MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-   OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
-   dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
-   4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
-   8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
-   DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
-   5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
-   vFa5nvaNiJn9jz4CfmNpIw==
+   MIIB8TCCAZegAwIBAgIGAZMw/+4qMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
+   MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
+   A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
+   Fw0zNDExMTUxODA0NTlaMFwxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
+   bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMREwDwYD
+   VQQDDAhNeVNpdGVDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPdq+JbXi4d3
+   xyC2KYrVdSZ5yqqpaTpDOSUW95AVDeyg8sPtUoiFmFnvHgNXe3cl1/Icp6MY0qgv
+   JNRtpbcOtfSjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIE
+   MB0GA1UdDgQWBBQbkT6sareajkG87WeocLuz2zOaLDAKBggqhkjOPQQDAgNIADBF
+   AiB/rMEQVixUsMe0V613Oq8qB+buxDJDKifuCsciWHwvIgIhAKQM09+Tdtbp5VzV
+   fRPpocbii8ZR4OOiJvHV4Bniw8gz
    -----END CERTIFICATE-----
+
+8.3.  Example Voucher Response
 
    The following is an example voucher response as JWS Voucher artifact,
    which would be sent from the MASA to the Pledge via Registrar.
@@ -725,7 +668,8 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 
 
-Werner & Richardson        Expires 24 May 2025                 [Page 13]
+
+Werner & Richardson        Expires 25 May 2025                 [Page 12]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
@@ -772,19 +716,53 @@ Internet-Draft                 JWS-voucher                 November 2024
 
                      Figure 6: Example Voucher Response
 
-9.  References
-
-9.1.  Normative References
+   The following private key is used to sign a Voucher by MASA:
 
 
 
 
 
 
-Werner & Richardson        Expires 24 May 2025                 [Page 14]
+
+
+Werner & Richardson        Expires 25 May 2025                 [Page 13]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
+
+   -----BEGIN PRIVATE KEY-----
+   MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCD8qlP1JSufuMr+Lc4O
+   vf5vmS9XDlQM0zDHU5pIOEqlMA==
+   -----END PRIVATE KEY-----
+   -----BEGIN CERTIFICATE-----
+   MIIByTCCAW6gAwIBAgIGAZMw/+4dMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMB4XDTI0MTExNTE4MDQ1OVoXDTM0
+   MTExNTE4MDQ1OVowajELMAkGA1UEBhMCQUcxGzAZBgNVBAoMEk1hbnVmYWN0dXJl
+   cjAwMSBBRzETMBEGA1UECwwKT3JnWCBVbml0QTEpMCcGA1UEAwwgTWFudWZhY3R1
+   cmVyIFZvdWNoZXIgU2lnbmluZyBLZXkwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
+   AARAGzXhymyZ3eBbbC/ZATwXJA7e6pohz7dpXO3Jrat0KDf6Xn7fZVYT+ad6VW47
+   rQbpiUZvNns63NsGec7kp4hxoxIwEDAOBgNVHQ8BAf8EBAMCB4AwCgYIKoZIzj0E
+   AwIDSQAwRgIhAO+ZhULU5y+W1o8igKGDR7+XNbV2hR4QSo31ILdnPq35AiEAhsv/
+   +p8dWLKrhbm67Pq5FDFdaFMNo5sz6G3WQkHaK/k=
+   -----END CERTIFICATE-----
+   -----BEGIN CERTIFICATE-----
+   MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+   MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+   dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+   OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+   cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
+   dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
+   4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
+   8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
+   DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
+   5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
+   vFa5nvaNiJn9jz4CfmNpIw==
+   -----END CERTIFICATE-----
+
+9.  References
+
+9.1.  Normative References
 
    [BRSKI]    Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
               and K. Watsen, "Bootstrapping Remote Secure Key
@@ -798,6 +776,15 @@ Internet-Draft                 JWS-voucher                 November 2024
               anima-rfc8366bis-12, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-anima-
               rfc8366bis-12>.
+
+
+
+
+
+Werner & Richardson        Expires 25 May 2025                 [Page 14]
+
+Internet-Draft                 JWS-voucher                 November 2024
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -830,18 +817,6 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 9.2.  Informative References
 
-
-
-
-
-
-
-
-Werner & Richardson        Expires 24 May 2025                 [Page 15]
-
-Internet-Draft                 JWS-voucher                 November 2024
-
-
    [I-D.ietf-anima-brski-prm]
               Fries, S., Werner, T., Lear, E., and M. Richardson, "BRSKI
               with Pledge in Responder Mode (BRSKI-PRM)", Work in
@@ -856,6 +831,16 @@ Internet-Draft                 JWS-voucher                 November 2024
               Draft, draft-ietf-anima-constrained-voucher-25, 8 July
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
               anima-constrained-voucher-25>.
+
+
+
+
+
+
+Werner & Richardson        Expires 25 May 2025                 [Page 15]
+
+Internet-Draft                 JWS-voucher                 November 2024
+
 
    [ON-PATH]  "can an on-path attacker drop traffic?", n.d.,
               <https://mailarchive.ietf.org/arch/msg/saag/
@@ -887,17 +872,6 @@ Internet-Draft                 JWS-voucher                 November 2024
               DOI 10.17487/RFC8572, April 2019,
               <https://www.rfc-editor.org/rfc/rfc8572>.
 
-
-
-
-
-
-
-Werner & Richardson        Expires 24 May 2025                 [Page 16]
-
-Internet-Draft                 JWS-voucher                 November 2024
-
-
    [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
               "Handling Long Lines in Content of Internet-Drafts and
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
@@ -914,6 +888,14 @@ Contributors
    Toerless Eckert
    Futurewei Technologies Inc.
    Email: tte+ietf@cs.fau.de
+
+
+
+
+
+Werner & Richardson        Expires 25 May 2025                 [Page 16]
+
+Internet-Draft                 JWS-voucher                 November 2024
 
 
    Esko Dijk
@@ -949,4 +931,22 @@ Authors' Addresses
 
 
 
-Werner & Richardson        Expires 24 May 2025                 [Page 17]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Werner & Richardson        Expires 25 May 2025                 [Page 17]

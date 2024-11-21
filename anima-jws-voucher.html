@@ -32,7 +32,7 @@ In addition to specifying the format, the "application/voucher-jws+json" media t
     wcwidth 0.2.13
     weasyprint 61.2
 -->
-<link href="/usr/src/app/tmp/3a85c0fe-d690-456e-9893-2959a47b59c1/anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
+<link href="/usr/src/app/tmp/90d92fff-c007-403b-9498-4b3c2904b545/anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -1219,7 +1219,7 @@ li > p:last-of-type:only-child {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Werner &amp; Richardson</td>
-<td class="center">Expires 24 May 2025</td>
+<td class="center">Expires 25 May 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1232,12 +1232,12 @@ li > p:last-of-type:only-child {
 <dd class="internet-draft">draft-ietf-anima-jws-voucher-14</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-11-20" class="published">20 November 2024</time>
+<time datetime="2024-11-21" class="published">21 November 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-05-24">24 May 2025</time></dd>
+<dd class="expires"><time datetime="2025-05-25">25 May 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1277,7 +1277,7 @@ In addition to specifying the format, the "application/voucher-jws+json" media t
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1677,46 +1677,10 @@ Thanks for the supporting PoC implementations to Hong Rui Li and He Peng Jia.<a 
         <h3 id="name-example-pledge-voucher-requ">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-example-pledge-voucher-requ" class="section-name selfRef">Example Pledge-Voucher-Request (PVR)</a>
         </h3>
-<p id="section-8.1-1">The following private key (of the IDevID) is used to sign a Pledge-Voucher-Request (PVR) by Pledge:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-8.1-2">
-<pre>
------BEGIN PRIVATE KEY-----
-MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCB9DPTt6EZcuVJ7ptTc
-jyNA93JpuXRXpHK2boJRlJd3lQ==
------END PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-MIICODCCAd2gAwIBAgIGAZMw/+4nMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-OTkxMjMxMjM1OTU5WjBvMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRYwFAYDVQQFEw1raXQtOTg3
-NjU0MzIxMRYwFAYDVQQDDA1BQkMzLkU3NS0xMDBBMFkwEwYHKoZIzj0CAQYIKoZI
-zj0DAQcDQgAEOdd+eUacaFBvA27qgyFBA0kjCRM/IsbLMVVzRMavn+nUxh0o+2PM
-Iy1x2x07/G8UQk55e9KBU1Z/Eoz8oLJtp6N6MHgwMAYIKwYBBQUHASAEJBYibWFz
-YS10ZXN0Lnh5em1hbnVmYWN0dXJlci5jb206OTQ0MzAfBgNVHSMEGDAWgBRlS803
-fdE3vVQPkYZbMrbkuwZO+zATBgNVHSUEDDAKBggrBgEFBQcDAjAOBgNVHQ8BAf8E
-BAMCB4AwCgYIKoZIzj0EAwIDSQAwRgIhAORx7bJJ6opytoNE2eH4wKN3TqhcUwXL
-IgVrCp5Xlpj6AiEAn9nAk68/GZHC+p4coYHOLknfJYH1lUBpqsFM93nPLBU=
------END CERTIFICATE-----
------BEGIN CERTIFICATE-----
-MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
-dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
-4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
-8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
-DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
-5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
-vFa5nvaNiJn9jz4CfmNpIw==
------END CERTIFICATE-----
-</pre><a href="#section-8.1-2" class="pilcrow">¶</a>
-</div>
-<p id="section-8.1-3">The following is an example of a Pledge-Voucher-Request (PVR) as JWS Voucher artifact, which would be sent from a Pledge to the Registrar:<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">The following is an example of a Pledge-Voucher-Request (PVR) as JWS Voucher artifact, which would be sent from a Pledge to the Registrar:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <span id="name-example-pledge-voucher-reque"></span><div id="ExamplePledgeVoucherRequestfigure">
 <figure id="figure-4">
-          <div class="alignLeft art-text artwork" id="section-8.1-4.1">
+          <div class="alignLeft art-text artwork" id="section-8.1-2.1">
 <pre>
 {
   "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
@@ -1767,6 +1731,42 @@ fS2okefBPgekBhAgIKq1OqKSyydah8aE8r-ZGw"
 <a href="#name-example-pledge-voucher-reque" class="selfRef">Example Pledge-Voucher-Request (PVR)</a>
           </figcaption></figure>
 </div>
+<p id="section-8.1-3">The following private key (of the IDevID) is used to sign a Pledge-Voucher-Request (PVR) by Pledge:<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-8.1-4">
+<pre>
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCB9DPTt6EZcuVJ7ptTc
+jyNA93JpuXRXpHK2boJRlJd3lQ==
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIICODCCAd2gAwIBAgIGAZMw/+4nMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+OTkxMjMxMjM1OTU5WjBvMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRYwFAYDVQQFEw1raXQtOTg3
+NjU0MzIxMRYwFAYDVQQDDA1BQkMzLkU3NS0xMDBBMFkwEwYHKoZIzj0CAQYIKoZI
+zj0DAQcDQgAEOdd+eUacaFBvA27qgyFBA0kjCRM/IsbLMVVzRMavn+nUxh0o+2PM
+Iy1x2x07/G8UQk55e9KBU1Z/Eoz8oLJtp6N6MHgwMAYIKwYBBQUHASAEJBYibWFz
+YS10ZXN0Lnh5em1hbnVmYWN0dXJlci5jb206OTQ0MzAfBgNVHSMEGDAWgBRlS803
+fdE3vVQPkYZbMrbkuwZO+zATBgNVHSUEDDAKBggrBgEFBQcDAjAOBgNVHQ8BAf8E
+BAMCB4AwCgYIKoZIzj0EAwIDSQAwRgIhAORx7bJJ6opytoNE2eH4wKN3TqhcUwXL
+IgVrCp5Xlpj6AiEAn9nAk68/GZHC+p4coYHOLknfJYH1lUBpqsFM93nPLBU=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
+dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
+4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
+8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
+DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
+5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
+vFa5nvaNiJn9jz4CfmNpIw==
+-----END CERTIFICATE-----
+</pre><a href="#section-8.1-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="example-parboiled-registrar-voucher-request-rvr">
@@ -1778,46 +1778,11 @@ fS2okefBPgekBhAgIKq1OqKSyydah8aE8r-ZGw"
 In <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span>, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
 then has been processed by the Registrar ("cooked"),
 and is now being forwarded to the MASA.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
-<p id="section-8.2-2">The following private key is used to sign a Registrar-Voucher-Request (RVR) by Registrar:<a href="#section-8.2-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-8.2-3">
-<pre>
------BEGIN PRIVATE KEY-----
-MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBHWyAS7tFchxY+5Pv9
-2/sNFKc1FioVMgioCcuVcRnx/A==
------END PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-MIIB8TCCAZagAwIBAgIGAZMw/+4tMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
-MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
-A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
-Fw0zNDExMTUxODA0NTlaMHkxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
-bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMS4wLAYD
-VQQDDCVSZWdpc3RyYXIgVm91Y2hlciBSZXF1ZXN0IFNpZ25pbmcgS2V5MFkwEwYH
-KoZIzj0CAQYIKoZIzj0DAQcDQgAEThp6doT2X/k2je2uZh8sIBz8OT0ab6goW/S3
-oRUUDjbE9MqlG8qKi/KE0YbAbcazMkWVvNnDXOJSrjb7MFmy4qMnMCUwEwYDVR0l
-BAwwCgYIKwYBBQUHAxwwDgYDVR0PAQH/BAQDAgeAMAoGCCqGSM49BAMCA0kAMEYC
-IQCN9/dDOtLnj+MgepHhZtYlOQFCxHNyKVjrjPGX1476igIhAMESKoAi8mPKk14s
-+0hAR9vfWNa3tVybKCLW8xmdVegd
------END CERTIFICATE-----
------BEGIN CERTIFICATE-----
-MIIB8TCCAZegAwIBAgIGAZMw/+4qMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
-MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
-A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
-Fw0zNDExMTUxODA0NTlaMFwxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
-bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMREwDwYD
-VQQDDAhNeVNpdGVDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPdq+JbXi4d3
-xyC2KYrVdSZ5yqqpaTpDOSUW95AVDeyg8sPtUoiFmFnvHgNXe3cl1/Icp6MY0qgv
-JNRtpbcOtfSjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIE
-MB0GA1UdDgQWBBQbkT6sareajkG87WeocLuz2zOaLDAKBggqhkjOPQQDAgNIADBF
-AiB/rMEQVixUsMe0V613Oq8qB+buxDJDKifuCsciWHwvIgIhAKQM09+Tdtbp5VzV
-fRPpocbii8ZR4OOiJvHV4Bniw8gz
------END CERTIFICATE-----
-</pre><a href="#section-8.2-3" class="pilcrow">¶</a>
-</div>
-<p id="section-8.2-4">The following is an example Registrar-Voucher-Request (RVR) as JWS Voucher artifact, which would be sent from the Registrar to the MASA.
-Note that the previous PVR can be seen in the payload in the field <code>prior-signed-voucher-request</code>.<a href="#section-8.2-4" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">The following is an example Registrar-Voucher-Request (RVR) as JWS Voucher artifact, which would be sent from the Registrar to the MASA.
+Note, the previous PVR can be seen in the payload in the field <code>prior-signed-voucher-request</code>.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <span id="name-example-parboiled-registrar-"></span><div id="ExampleParboiledRegistrarVoucherRequestfigure">
 <figure id="figure-5">
-          <div class="alignLeft art-text artwork" id="section-8.2-5.1">
+          <div class="alignLeft art-text artwork" id="section-8.2-3.1">
 <pre>
 {
   "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
@@ -1916,6 +1881,41 @@ IkjgCPeXM8uQHvh8WV6oTMp91TzxK0qv1s7dYQ"
 <a href="#name-example-parboiled-registrar-" class="selfRef">Example Parboiled Registrar-Voucher-Request (RVR)</a>
           </figcaption></figure>
 </div>
+<p id="section-8.2-4">The following private key is used to sign a Registrar-Voucher-Request (RVR) by Registrar:<a href="#section-8.2-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-8.2-5">
+<pre>
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBHWyAS7tFchxY+5Pv9
+2/sNFKc1FioVMgioCcuVcRnx/A==
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIB8TCCAZagAwIBAgIGAZMw/+4tMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
+MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
+A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
+Fw0zNDExMTUxODA0NTlaMHkxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
+bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMS4wLAYD
+VQQDDCVSZWdpc3RyYXIgVm91Y2hlciBSZXF1ZXN0IFNpZ25pbmcgS2V5MFkwEwYH
+KoZIzj0CAQYIKoZIzj0DAQcDQgAEThp6doT2X/k2je2uZh8sIBz8OT0ab6goW/S3
+oRUUDjbE9MqlG8qKi/KE0YbAbcazMkWVvNnDXOJSrjb7MFmy4qMnMCUwEwYDVR0l
+BAwwCgYIKwYBBQUHAxwwDgYDVR0PAQH/BAQDAgeAMAoGCCqGSM49BAMCA0kAMEYC
+IQCN9/dDOtLnj+MgepHhZtYlOQFCxHNyKVjrjPGX1476igIhAMESKoAi8mPKk14s
++0hAR9vfWNa3tVybKCLW8xmdVegd
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIB8TCCAZegAwIBAgIGAZMw/+4qMAoGCCqGSM49BAMCMFwxCzAJBgNVBAYTAkFR
+MRIwEAYDVQQKDAlNeUNvbXBhbnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0G
+A1UEBwwGTXlTaXRlMREwDwYDVQQDDAhNeVNpdGVDQTAeFw0yNDExMTUxODA0NTla
+Fw0zNDExMTUxODA0NTlaMFwxCzAJBgNVBAYTAkFRMRIwEAYDVQQKDAlNeUNvbXBh
+bnkxFTATBgNVBAsMDE15U3Vic2lkaWFyeTEPMA0GA1UEBwwGTXlTaXRlMREwDwYD
+VQQDDAhNeVNpdGVDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPdq+JbXi4d3
+xyC2KYrVdSZ5yqqpaTpDOSUW95AVDeyg8sPtUoiFmFnvHgNXe3cl1/Icp6MY0qgv
+JNRtpbcOtfSjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIE
+MB0GA1UdDgQWBBQbkT6sareajkG87WeocLuz2zOaLDAKBggqhkjOPQQDAgNIADBF
+AiB/rMEQVixUsMe0V613Oq8qB+buxDJDKifuCsciWHwvIgIhAKQM09+Tdtbp5VzV
+fRPpocbii8ZR4OOiJvHV4Bniw8gz
+-----END CERTIFICATE-----
+</pre><a href="#section-8.2-5" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="example-voucher-response">
@@ -1923,44 +1923,10 @@ IkjgCPeXM8uQHvh8WV6oTMp91TzxK0qv1s7dYQ"
         <h3 id="name-example-voucher-response">
 <a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-example-voucher-response" class="section-name selfRef">Example Voucher Response</a>
         </h3>
-<p id="section-8.3-1">The following private key is used to sign a Voucher by MASA:<a href="#section-8.3-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-8.3-2">
-<pre>
------BEGIN PRIVATE KEY-----
-MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCD8qlP1JSufuMr+Lc4O
-vf5vmS9XDlQM0zDHU5pIOEqlMA==
------END PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-MIIByTCCAW6gAwIBAgIGAZMw/+4dMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMB4XDTI0MTExNTE4MDQ1OVoXDTM0
-MTExNTE4MDQ1OVowajELMAkGA1UEBhMCQUcxGzAZBgNVBAoMEk1hbnVmYWN0dXJl
-cjAwMSBBRzETMBEGA1UECwwKT3JnWCBVbml0QTEpMCcGA1UEAwwgTWFudWZhY3R1
-cmVyIFZvdWNoZXIgU2lnbmluZyBLZXkwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
-AARAGzXhymyZ3eBbbC/ZATwXJA7e6pohz7dpXO3Jrat0KDf6Xn7fZVYT+ad6VW47
-rQbpiUZvNns63NsGec7kp4hxoxIwEDAOBgNVHQ8BAf8EBAMCB4AwCgYIKoZIzj0E
-AwIDSQAwRgIhAO+ZhULU5y+W1o8igKGDR7+XNbV2hR4QSo31ILdnPq35AiEAhsv/
-+p8dWLKrhbm67Pq5FDFdaFMNo5sz6G3WQkHaK/k=
------END CERTIFICATE-----
------BEGIN CERTIFICATE-----
-MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
-MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
-dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
-OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
-cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
-dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
-4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
-8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
-DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
-5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
-vFa5nvaNiJn9jz4CfmNpIw==
------END CERTIFICATE-----
-</pre><a href="#section-8.3-2" class="pilcrow">¶</a>
-</div>
-<p id="section-8.3-3">The following is an example voucher response as JWS Voucher artifact, which would be sent from the MASA to the Pledge via Registrar.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
+<p id="section-8.3-1">The following is an example voucher response as JWS Voucher artifact, which would be sent from the MASA to the Pledge via Registrar.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-voucher-response-2"></span><div id="ExampleVoucherResponsefigure">
 <figure id="figure-6">
-          <div class="alignLeft art-text artwork" id="section-8.3-4.1">
+          <div class="alignLeft art-text artwork" id="section-8.3-2.1">
 <pre>
 {
   "payload": "eyJpZXRmLXZvdWNoZXI6dm91Y2hlciI6eyJhc3NlcnRpb24iOiJsb2\
@@ -2006,6 +1972,40 @@ QedxQXfjlvr-HgYgTYHEhqLo3JE5ePvq5vO5eA"
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-example-voucher-response-2" class="selfRef">Example Voucher Response</a>
           </figcaption></figure>
+</div>
+<p id="section-8.3-3">The following private key is used to sign a Voucher by MASA:<a href="#section-8.3-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-8.3-4">
+<pre>
+-----BEGIN PRIVATE KEY-----
+MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCD8qlP1JSufuMr+Lc4O
+vf5vmS9XDlQM0zDHU5pIOEqlMA==
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIByTCCAW6gAwIBAgIGAZMw/+4dMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMB4XDTI0MTExNTE4MDQ1OVoXDTM0
+MTExNTE4MDQ1OVowajELMAkGA1UEBhMCQUcxGzAZBgNVBAoMEk1hbnVmYWN0dXJl
+cjAwMSBBRzETMBEGA1UECwwKT3JnWCBVbml0QTEpMCcGA1UEAwwgTWFudWZhY3R1
+cmVyIFZvdWNoZXIgU2lnbmluZyBLZXkwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
+AARAGzXhymyZ3eBbbC/ZATwXJA7e6pohz7dpXO3Jrat0KDf6Xn7fZVYT+ad6VW47
+rQbpiUZvNns63NsGec7kp4hxoxIwEDAOBgNVHQ8BAf8EBAMCB4AwCgYIKoZIzj0E
+AwIDSQAwRgIhAO+ZhULU5y+W1o8igKGDR7+XNbV2hR4QSo31ILdnPq35AiEAhsv/
++p8dWLKrhbm67Pq5FDFdaFMNo5sz6G3WQkHaK/k=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIB7DCCAZGgAwIBAgIGAZMw/+4RMAoGCCqGSM49BAMCMFgxCzAJBgNVBAYTAkFR
+MRswGQYDVQQKDBJNYW51ZmFjdHVyZXIwMDEgQUcxEzARBgNVBAsMCk9yZ1ggVW5p
+dEExFzAVBgNVBAMMDk1hbnVmYWN0dXJlckNBMCAXDTI0MTExNTE4MDQ1OVoYDzk5
+OTkxMjMxMjM1OTU5WjBYMQswCQYDVQQGEwJBUTEbMBkGA1UECgwSTWFudWZhY3R1
+cmVyMDAxIEFHMRMwEQYDVQQLDApPcmdYIFVuaXRBMRcwFQYDVQQDDA5NYW51ZmFj
+dHVyZXJDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKGK1Jfq6nIjhePCexmI
+4yDfg5wv0747uxGFPjXyCRtlS8/BTRLaBW9AmNB70CPW376BxPige1Lx3B7aN/Mj
+8oWjRTBDMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0PAQH/BAQDAgIEMB0GA1Ud
+DgQWBBRlS803fdE3vVQPkYZbMrbkuwZO+zAKBggqhkjOPQQDAgNJADBGAiEAvbsq
+5k/991S+jMVFObnv8wNh96VdGX6EcCOiLPgo2fACIQDCCFY21mO9hnfJybCPYNQI
+vFa5nvaNiJn9jz4CfmNpIw==
+-----END CERTIFICATE-----
+</pre><a href="#section-8.3-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
