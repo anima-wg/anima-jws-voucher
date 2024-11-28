@@ -73,7 +73,7 @@ In addition to specifying the format, the "application/voucher-jws+json" media t
 
 # Introduction
 
-"A Voucher Artifact for Bootstrapping Protocols" {{I-D.ietf-anima-rfc8366bis}} defines a YANG-based data structure
+"A Voucher Artifact for Bootstrapping Protocols" {{I-D.ietf-anima-rfc8366bis}} defines a YANG data model
 used in "Bootstrapping Remote Secure Key Infrastructure" (BRSKI) {{!RFC8995}} and "Secure Zero Touch Provisioning" (SZTP) {{?RFC8572}}
 to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
 That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
