@@ -321,9 +321,9 @@ Internet-Draft                 JWS-voucher                 November 2024
 5.  Security Considerations
 
    The issues of how [I-D.ietf-anima-rfc8366bis] vouchers are used in a
-   [BRSKI] system is addressed in Section 11 of [RFC8995].  This
-   document does not change any of those issues, it just changes the
-   signature technology used for voucher request and response artifacts.
+   BRSKI system is addressed in Section 11 of [RFC8995].  This document
+   does not change any of those issues, it just changes the signature
+   technology used for voucher request and response artifacts.
 
    Section 9 of [RFC8572] deals with voucher use in Secure Zero Touch
    Provisioning (SZTP), for which this document also makes no changes to
@@ -356,7 +356,7 @@ Internet-Draft                 JWS-voucher                 November 2024
    Security considerations:  See section [Security Considerations]
    Interoperability considerations:  The format is designed to be
      broadly interoperable.
-   Published specification:  [THIS RFC].
+   Published specification:  THIS RFC
    Applications that use this media type:  ANIMA, 6tisch, and other
      zero-touch bootstrapping/provisioning solutions
    Additional information:
@@ -490,9 +490,9 @@ Internet-Draft                 JWS-voucher                 November 2024
 8.2.  Example Parboiled Registrar-Voucher-Request (RVR)
 
    The term parboiled refers to food which is partially cooked.  In
-   [BRSKI], the term refers to a Pledge-Voucher-Request (PVR) that was
-   received by the Registrar, then has been processed by the Registrar
-   ("cooked"), and is now being forwarded to the MASA.
+   BRSKI [RFC8995], the term refers to a Pledge-Voucher-Request (PVR)
+   that was received by the Registrar, then has been processed by the
+   Registrar ("cooked"), and is now being forwarded to the MASA.
 
    The following is an example Registrar-Voucher-Request (RVR) as JWS
    Voucher artifact, which would be sent from the Registrar to the MASA.
@@ -764,11 +764,6 @@ Internet-Draft                 JWS-voucher                 November 2024
 
 9.1.  Normative References
 
-   [BRSKI]    Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
-              and K. Watsen, "Bootstrapping Remote Secure Key
-              Infrastructure (BRSKI)", RFC 8995, DOI 10.17487/RFC8995,
-              May 2021, <https://www.rfc-editor.org/rfc/rfc8995>.
-
    [I-D.ietf-anima-rfc8366bis]
               Watsen, K., Richardson, M., Pritikin, M., Eckert, T. T.,
               and Q. Ma, "A Voucher Artifact for Bootstrapping
@@ -776,6 +771,11 @@ Internet-Draft                 JWS-voucher                 November 2024
               anima-rfc8366bis-12, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-anima-
               rfc8366bis-12>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
 
 
 
@@ -785,11 +785,6 @@ Werner & Richardson        Expires 2 June 2025                 [Page 14]
 
 Internet-Draft                 JWS-voucher                 November 2024
 
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -832,16 +827,6 @@ Internet-Draft                 JWS-voucher                 November 2024
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
               anima-constrained-voucher-25>.
 
-
-
-
-
-
-Werner & Richardson        Expires 2 June 2025                 [Page 15]
-
-Internet-Draft                 JWS-voucher                 November 2024
-
-
    [ON-PATH]  "can an on-path attacker drop traffic?", n.d.,
               <https://mailarchive.ietf.org/arch/msg/saag/
               m1r9uo4xYznOcf85Eyk0Rhut598/>.
@@ -849,6 +834,13 @@ Internet-Draft                 JWS-voucher                 November 2024
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
               2003, <https://www.rfc-editor.org/rfc/rfc3629>.
+
+
+
+Werner & Richardson        Expires 2 June 2025                 [Page 15]
+
+Internet-Draft                 JWS-voucher                 November 2024
+
 
    [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
@@ -890,14 +882,6 @@ Contributors
    Email: tte+ietf@cs.fau.de
 
 
-
-
-
-Werner & Richardson        Expires 2 June 2025                 [Page 16]
-
-Internet-Draft                 JWS-voucher                 November 2024
-
-
    Esko Dijk
    Email: esko.dijk@iotconsultancy.nl
 
@@ -905,6 +889,13 @@ Internet-Draft                 JWS-voucher                 November 2024
    Steffen Fries
    Siemens AG
    Email: steffen.fries@siemens.com
+
+
+
+
+Werner & Richardson        Expires 2 June 2025                 [Page 16]
+
+Internet-Draft                 JWS-voucher                 November 2024
 
 
 Authors' Addresses
@@ -917,6 +908,15 @@ Authors' Addresses
    Michael Richardson
    Sandelman Software Works
    Email: mcr+ietf@sandelman.ca
+
+
+
+
+
+
+
+
+
 
 
 

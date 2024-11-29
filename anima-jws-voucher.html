@@ -32,7 +32,7 @@ In addition to specifying the format, the "application/voucher-jws+json" media t
     wcwidth 0.2.13
     weasyprint 61.2
 -->
-<link href="/usr/src/app/tmp/76b32d0d-9e71-49a5-aeb2-c1e8c6e3f3e7/anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
+<link href="/usr/src/app/tmp/3c1788a3-e1eb-4489-98f3-f03b070a5b57/anima-jws-voucher.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -1602,7 +1602,7 @@ Hence, it is subject to disclosure by a Dolev-Yao attacker (a "malicious messeng
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">The issues of how <span>[<a href="#I-D.ietf-anima-rfc8366bis" class="cite xref">I-D.ietf-anima-rfc8366bis</a>]</span> vouchers are used in a <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span> system is addressed in <span><a href="https://rfc-editor.org/rfc/rfc8995#section-11" class="relref">Section 11</a> of [<a href="#RFC8995" class="cite xref">RFC8995</a>]</span>.
+<p id="section-5-1">The issues of how <span>[<a href="#I-D.ietf-anima-rfc8366bis" class="cite xref">I-D.ietf-anima-rfc8366bis</a>]</span> vouchers are used in a BRSKI system is addressed in <span><a href="https://rfc-editor.org/rfc/rfc8995#section-11" class="relref">Section 11</a> of [<a href="#RFC8995" class="cite xref">RFC8995</a>]</span>.
 This document does not change any of those issues, it just changes the signature technology used for voucher request and response artifacts.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2"><span><a href="https://rfc-editor.org/rfc/rfc8572#section-9" class="relref">Section 9</a> of [<a href="#RFC8572" class="cite xref">RFC8572</a>]</span> deals with voucher use in Secure Zero Touch Provisioning (SZTP), for which this document also makes no changes to security.<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
@@ -1634,7 +1634,7 @@ Encoding considerations:  JWS+JSON vouchers are JOSE objects
 Security considerations:  See section [Security Considerations]
 Interoperability considerations:  The format is designed to be
   broadly interoperable.
-Published specification:  [THIS RFC].
+Published specification:  THIS RFC
 Applications that use this media type:  ANIMA, 6tisch, and other
   zero-touch bootstrapping/provisioning solutions
 Additional information:
@@ -1775,7 +1775,7 @@ JKYL4lAyT0nAC0jc
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-example-parboiled-registrar" class="section-name selfRef">Example Parboiled Registrar-Voucher-Request (RVR)</a>
         </h3>
 <p id="section-8.2-1">The term parboiled refers to food which is partially cooked.
-In <span>[<a href="#BRSKI" class="cite xref">BRSKI</a>]</span>, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
+In BRSKI <span>[<a href="#RFC8995" class="cite xref">RFC8995</a>]</span>, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
 then has been processed by the Registrar ("cooked"),
 and is now being forwarded to the MASA.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <p id="section-8.2-2">The following is an example Registrar-Voucher-Request (RVR) as JWS Voucher artifact, which would be sent from the Registrar to the MASA.
@@ -2022,10 +2022,6 @@ JKYL4lAyT0nAC0jc
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="BRSKI">[BRSKI]</dt>
-        <dd>
-<span class="refAuthor">Pritikin, M.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Eckert, T.</span>, <span class="refAuthor">Behringer, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"Bootstrapping Remote Secure Key Infrastructure (BRSKI)"</span>, <span class="seriesInfo">RFC 8995</span>, <span class="seriesInfo">DOI 10.17487/RFC8995</span>, <time datetime="2021-05" class="refDate">May 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8995">https://www.rfc-editor.org/rfc/rfc8995</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.ietf-anima-rfc8366bis">[I-D.ietf-anima-rfc8366bis]</dt>
         <dd>
 <span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Pritikin, M.</span>, <span class="refAuthor">Eckert, T. T.</span>, and <span class="refAuthor">Q. Ma</span>, <span class="refTitle">"A Voucher Artifact for Bootstrapping Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-rfc8366bis-12</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-12">https://datatracker.ietf.org/doc/html/draft-ietf-anima-rfc8366bis-12</a>&gt;</span>. </dd>
