@@ -43,7 +43,7 @@ contributor:
   email: steffen.fries@siemens.com
 
 normative:
-  BRSKI: RFC8995
+  RFC8995:
   I-D.ietf-anima-rfc8366bis:
   RFC5280:
   RFC7515:
@@ -214,7 +214,7 @@ The use of a JWS header brings no new privacy considerations.
 
 # Security Considerations
 
-The issues of how {{I-D.ietf-anima-rfc8366bis}} vouchers are used in a {{BRSKI}} system is addressed in {{Section 11 of RFC8995}}.
+The issues of how {{I-D.ietf-anima-rfc8366bis}} vouchers are used in a BRSKI system is addressed in {{Section 11 of RFC8995}}.
 This document does not change any of those issues, it just changes the signature technology used for voucher request and response artifacts.
 
 {{Section 9 of RFC8572}} deals with voucher use in Secure Zero Touch Provisioning (SZTP), for which this document also makes no changes to security.
@@ -236,7 +236,7 @@ This section registers `application/voucher-jws+json` in the "Media Types" regis
     Security considerations:  See section [Security Considerations]
     Interoperability considerations:  The format is designed to be
       broadly interoperable.
-    Published specification:  [THIS RFC].
+    Published specification:  THIS RFC
     Applications that use this media type:  ANIMA, 6tisch, and other
       zero-touch bootstrapping/provisioning solutions
     Additional information:
@@ -351,7 +351,7 @@ JKYL4lAyT0nAC0jc
 ## Example Parboiled Registrar-Voucher-Request (RVR)
 
 The term parboiled refers to food which is partially cooked.
-In {{BRSKI}}, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
+In BRSKI {{RFC8995}}, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
 then has been processed by the Registrar ("cooked"),
 and is now being forwarded to the MASA.
 
