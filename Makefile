@@ -7,3 +7,6 @@ html: xml
 xml:
 	kdrfc -3 ${DRAFT}.mkd
 
+submit: ${DRAFT}.xml
+	curl -s -F "user=mcr+ietf@sandelman.ca" ${REPLACES} -F "xml=@${DRAFT}.xml" https://datatracker.ietf.org/api/submission | jq
+
