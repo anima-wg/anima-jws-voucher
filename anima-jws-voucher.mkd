@@ -11,6 +11,7 @@ area: Internet
 wg: anima Working Group
 kw: Internet-Draft
 cat: std
+stream: IETF
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
@@ -65,26 +66,23 @@ informative:
 
 --- abstract
 
-I-D.ietf-anima-rfc8366bis defines a digital artifact (known as a voucher) as a YANG-defined JSON document that is signed using a Cryptographic Message Syntax (CMS) structure.
-This document introduces a variant of the voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515 to support deployments in which JOSE is preferred over CMS.
+This document introduces a variant of the RFC8366 voucher artifact in which CMS is replaced by the JSON Object Signing and Encryption (JOSE) mechanism described in RFC7515. This supports deployments in which JOSE is preferred over CMS.
 In addition to specifying the format, the "application/voucher-jws+json" media type is registered and examples are provided.
 
 --- middle
 
 # Introduction
 
-"A Voucher Artifact for Bootstrapping Protocols" {{I-D.ietf-anima-rfc8366bis}} defines a YANG data model
-used in "Bootstrapping Remote Secure Key Infrastructure" (BRSKI) {{!RFC8995}} and "Secure Zero Touch Provisioning" (SZTP) {{?RFC8572}}
-to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
-That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
-That resulting voucher artifact has the media type `application/voucher-cms+json`.
-
 This document provides cryptographic signing of voucher data in form of JSON Web Signature (JWS) {{RFC7515}} and the media type `application/voucher-jws+json` to identify the voucher format.
 The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
 
-This document should be considered as enhancement of {{I-D.ietf-anima-rfc8366bis}}, as it provides a new voucher format.
-It is similar to {{?I-D.ietf-anima-constrained-voucher}}, which provides cryptographic signing according COSE {{?RFC8812}} and the media type `application/voucher-cose+cbor`.
+This is an extension to "A Voucher Artifact for Bootstrapping Protocols" {{I-D.ietf-anima-rfc8366bis}} in which the YANG data model is
+used by "Bootstrapping Remote Secure Key Infrastructure" (BRSKI) {{!RFC8995}} and "Secure Zero Touch Provisioning" (SZTP) {{?RFC8572}}
+to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
+That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
+
+This document is similar to {{?I-D.ietf-anima-constrained-voucher}}, which provides cryptographic signing according COSE {{?RFC8812}}.
 These documents do not change nor extend the YANG definitions of {{I-D.ietf-anima-rfc8366bis}}.
 
 With the availability of different voucher formats, it is up to an industry-specific application statement to decide which format is to be used.
@@ -348,12 +346,7 @@ JKYL4lAyT0nAC0jc
 -----END CERTIFICATE-----
 ~~~~
 
-## Example Parboiled Registrar-Voucher-Request (RVR)
-
-The term parboiled refers to food which is partially cooked.
-In BRSKI {{RFC8995}}, the term refers to a Pledge-Voucher-Request (PVR) that was received by the Registrar,
-then has been processed by the Registrar ("cooked"),
-and is now being forwarded to the MASA.
+## Example Registrar-Voucher-Request (RVR)
 
 The following is an example Registrar-Voucher-Request (RVR) as JWS Voucher artifact, which would be sent from the Registrar to the MASA.
 Note, the previous PVR can be seen in the payload in the field `prior-signed-voucher-request`.
@@ -451,7 +444,7 @@ z_zguJPSvR_QdpIbZmjkEyIyL9GJDZ2jACLKVg"
   ]
 }
 ~~~~
-{: #ExampleParboiledRegistrarVoucherRequestfigure title="Example Parboiled Registrar-Voucher-Request (RVR)" artwork-align="left"}
+{: #ExampleRegistrarVoucherRequestfigure title="Example Registrar-Voucher-Request (RVR)" artwork-align="left"}
 
 The following private key is used to sign a Registrar-Voucher-Request (RVR) by Registrar:
 
