@@ -1,7 +1,7 @@
 ---
 title: JWS signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JWS-voucher
-docname: draft-ietf-anima-jws-voucher-15
+docname: draft-ietf-anima-jws-voucher-16
 submissionType: IETF
 
 stand_alone: true
@@ -232,8 +232,7 @@ This section registers `application/voucher-jws+json` in the "Media Types" regis
     Encoding considerations:  JWS+JSON vouchers are JOSE objects
                               signed with one or multiple signers.
     Security considerations:  See section [Security Considerations]
-    Interoperability considerations:  The format is designed to be
-      broadly interoperable.
+    Interoperability considerations:  N/A
     Published specification:  THIS RFC
     Applications that use this media type:  ANIMA, 6tisch, and other
       zero-touch bootstrapping/provisioning solutions
