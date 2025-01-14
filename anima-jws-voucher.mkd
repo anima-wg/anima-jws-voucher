@@ -208,7 +208,7 @@ A PVR is transported via HTTP-over-TLS.
 However, for the Pledge-to-Registrar TLS connection a Pledge provisionally accepts the Registrar server certificate during the TLS server authentication.
 Hence, it is subject to disclosure by a Dolev-Yao attacker (a "malicious messenger") {{ON-PATH}}, as explained in {{Section 10.2 of RFC8995}}.
 
-The use of a JWS header brings no new privacy considerations.
+The use of a JWS header, with mentioned standard header parameters alg, typ, and x5c, brings no new privacy considerations next to {{Section 10.2 of RFC8995}}.
 
 # Security Considerations
 
