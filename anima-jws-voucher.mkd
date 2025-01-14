@@ -1,7 +1,7 @@
 ---
 title: JWS signed Voucher Artifacts for Bootstrapping Protocols
 abbrev: JWS-voucher
-docname: draft-ietf-anima-jws-voucher-13
+docname: draft-ietf-anima-jws-voucher-15
 submissionType: IETF
 
 stand_alone: true
@@ -78,7 +78,7 @@ The encoding specified in this document is used by {{?I-D.ietf-anima-brski-prm}}
 and may be more handy for use cases already using Javascript Object Signing and Encryption (JOSE).
 
 This is an extension to "A Voucher Artifact for Bootstrapping Protocols" {{I-D.ietf-anima-rfc8366bis}} in which the YANG data model is
-used by "Bootstrapping Remote Secure Key Infrastructure" (BRSKI) {{!RFC8995}} and "Secure Zero Touch Provisioning" (SZTP) {{?RFC8572}}
+used by "Bootstrapping Remote Secure Key Infrastructure (BRSKI)" {{!RFC8995}} and "Secure Zero Touch Provisioning (SZTP)" {{?RFC8572}}
 to transfer ownership of a device from a manufacturer to a new owner (customer or operational domain).
 That document provides a serialization of the voucher data to JSON {{RFC8259}} with cryptographic signing according to the Cryptographic Message Syntax (CMS) {{?RFC5652}}.
 
@@ -101,13 +101,13 @@ JWS Voucher:
 : A JWS structure signing the JSON Voucher Data.
 
 Voucher:
-: A short form for voucher artifact and refers to the signed statement from Manufacturer Authorized Signing Authority (MASA) service that indicates to a Pledge the cryptographic identity of the domain it should trust, per {{I-D.ietf-anima-rfc8366bis}}.
+: A short form for voucher artifact and refers to the signed statement from a Manufacturer Authorized Signing Authority (MASA) service that indicates to a Pledge the cryptographic identity of the domain it should trust, per {{I-D.ietf-anima-rfc8366bis}}.
 
 Voucher Data:
 : The raw (serialized) representation of the `ietf-voucher` YANG module without any enclosing signature, per {{I-D.ietf-anima-rfc8366bis}}.
 
 MASA (Manufacturer Authorized Signing Authority):
-: The entity that, for the purpose of this document, issues and signs the vouchers for manufacturer's pledges. In some onboarding protocols, the MASA may have an Internet presence and be integral to the onboarding process, whereas in other protocols the MASA may be an offline service that has no active role in the onboarding process, per {{I-D.ietf-anima-rfc8366bis}}.
+: The entity that, for the purpose of this document, issues and signs the vouchers for manufacturers pledges. In some onboarding protocols, the MASA may have an Internet presence and be integral to the onboarding process, whereas in other protocols the MASA may be an offline service that has no active role in the onboarding process, per {{I-D.ietf-anima-rfc8366bis}}.
 
 Pledge:
 : The prospective component attempting to find and securely join a domain. When shipped or in factory reset mode, it only trusts authorized representatives of the manufacturer, per {{I-D.ietf-anima-rfc8366bis}}.
