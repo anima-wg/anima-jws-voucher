@@ -171,7 +171,7 @@ The JWS Protected Header defined in {{RFC7515}} uses the standard header paramet
 
 * The `alg` parameter MUST contain the algorithm type (e.g., `ES256`) used to create the signature as defined in {{Section 4.1.1 of RFC7515}}.
 * The `typ` parameter is optional and used when more than one kind of object could be present in an application data structure as described in {{Section 4.1.9 of RFC7515}}. If present, the `typ` parameter MUST contain the value `voucher-jws+json`.
-* If X.509 (PKIX) certificates {{RFC5280}} are used, the `x5c` parameter MUST contain the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate as defined in {{Section 4.1.6 of RFC7515}} and SHOULD also contain the certificate chain.
+* If X.509 (PKIX) certificates {{RFC5280}} are used, the `x5c` parameter MUST contain the base64-encoded (not base64url-encoded) X.509 v3 (DER) certificate as defined in {{Section 4.1.6 of RFC7515}} and MUST also contain the certificate chain.
 
 Implementation Note:
 : base64-encoded values, in contrast to base64url-encoded values, may contain slashes (`/`).
@@ -180,7 +180,7 @@ Implementation Note:
   JWS Voucher parsers MUST be prepared accordingly to extract certificates correctly.
 
 To validate voucher signatures, all certificates of the certificate chain are required up to the trust anchor.
-Note, to establish trust the trust anchor SHOULD be provided out-of-band up front.
+Note, to establish trust the trust anchor MUST be provided out-of-band up front.
 
 The following figure gives an example of a JWS Protected Header:
 
@@ -227,8 +227,8 @@ This section registers `application/voucher-jws+json` in the "Media Types" regis
 
     Type name:  application
     Subtype name:  voucher-jws+json
-    Required parameters:  none
-    Optional parameters:  none
+    Required parameters:  N/A
+    Optional parameters:  N/A
     Encoding considerations:  JWS+JSON vouchers are JOSE objects
                               signed with one or multiple signers.
     Security considerations:  See section [Security Considerations]
@@ -238,13 +238,13 @@ This section registers `application/voucher-jws+json` in the "Media Types" regis
     Applications that use this media type:  ANIMA, 6tisch, and other
       zero-touch bootstrapping/provisioning solutions
     Additional information:
-      Magic number(s):  None
+      Magic number(s):  N/A
       File extension(s):  .vjj
-      Macintosh file type code(s):  none
+      Macintosh file type code(s):  N/A
     Person & email address to contact for further information:  IETF
       ANIMA WG
     Intended usage:  LIMITED
-    Restrictions on usage:  NONE
+    Restrictions on usage:  N/A
     Author:  ANIMA WG
     Change controller:  IETF
     Provisional registration? (standards tree only):  NO
