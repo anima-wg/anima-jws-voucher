@@ -5,12 +5,12 @@
 anima Working Group                                            T. Werner
 Internet-Draft                                                Siemens AG
 Intended status: Standards Track                           M. Richardson
-Expires: 18 July 2025                           Sandelman Software Works
-                                                         14 January 2025
+Expires: 19 July 2025                           Sandelman Software Works
+                                                         15 January 2025
 
 
         JWS signed Voucher Artifacts for Bootstrapping Protocols
-                    draft-ietf-anima-jws-voucher-15
+                    draft-ietf-anima-jws-voucher-16
 
 Abstract
 
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 July 2025.
+   This Internet-Draft will expire on 19 July 2025.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 1]
+Werner & Richardson       Expires 19 July 2025                  [Page 1]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -82,7 +82,7 @@ Table of Contents
        6.1.1.  application/voucher-jws+json  . . . . . . . . . . . .   7
    7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
    8.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     8.1.  Example Pledge-Voucher-Request (PVR)  . . . . . . . . . .   8
+     8.1.  Example Pledge-Voucher-Request (PVR)  . . . . . . . . . .   7
      8.2.  Example Registrar-Voucher-Request (RVR) . . . . . . . . .   9
      8.3.  Example Voucher Response  . . . . . . . . . . . . . . . .  12
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 2]
+Werner & Richardson       Expires 19 July 2025                  [Page 2]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -165,7 +165,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 3]
+Werner & Richardson       Expires 19 July 2025                  [Page 3]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -221,7 +221,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 4]
+Werner & Richardson       Expires 19 July 2025                  [Page 4]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -277,7 +277,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 5]
+Werner & Richardson       Expires 19 July 2025                  [Page 5]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -333,7 +333,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                  [Page 6]
+Werner & Richardson       Expires 19 July 2025                  [Page 6]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -354,8 +354,7 @@ Internet-Draft                 JWS-voucher                  January 2025
    Encoding considerations:  JWS+JSON vouchers are JOSE objects
                              signed with one or multiple signers.
    Security considerations:  See section [Security Considerations]
-   Interoperability considerations:  The format is designed to be
-     broadly interoperable.
+   Interoperability considerations:  N/A
    Published specification:  THIS RFC
    Applications that use this media type:  ANIMA, 6tisch, and other
      zero-touch bootstrapping/provisioning solutions
@@ -383,21 +382,17 @@ Internet-Draft                 JWS-voucher                  January 2025
    These examples are folded according to the [RFC8792] Single Backslash
    rule.
 
-
-
-
-
-
-
-Werner & Richardson       Expires 18 July 2025                  [Page 7]
-
-Internet-Draft                 JWS-voucher                  January 2025
-
-
 8.1.  Example Pledge-Voucher-Request (PVR)
 
    The following is an example of a Pledge-Voucher-Request (PVR) as JWS
    Voucher artifact, which would be sent from a Pledge to the Registrar:
+
+
+
+Werner & Richardson       Expires 19 July 2025                  [Page 7]
+
+Internet-Draft                 JWS-voucher                  January 2025
+
 
    {
      "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
@@ -443,17 +438,17 @@ Internet-Draft                 JWS-voucher                  January 2025
      ]
    }
 
-
-
-Werner & Richardson       Expires 18 July 2025                  [Page 8]
-
-Internet-Draft                 JWS-voucher                  January 2025
-
-
                Figure 4: Example Pledge-Voucher-Request (PVR)
 
    The following private key (of the IDevID) is used to sign a Pledge-
    Voucher-Request (PVR) by Pledge:
+
+
+
+Werner & Richardson       Expires 19 July 2025                  [Page 8]
+
+Internet-Draft                 JWS-voucher                  January 2025
+
 
    -----BEGIN PRIVATE KEY-----
    MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCA4b574lJvkZZt+ij+D
@@ -494,18 +489,6 @@ Internet-Draft                 JWS-voucher                  January 2025
    Note, the previous PVR can be seen in the payload in the field prior-
    signed-voucher-request.
 
-
-
-
-
-
-
-
-Werner & Richardson       Expires 18 July 2025                  [Page 9]
-
-Internet-Draft                 JWS-voucher                  January 2025
-
-
    {
      "payload": "eyJpZXRmLXZvdWNoZXItcmVxdWVzdDp2b3VjaGVyIjp7InNlcmlhbC\
    1udW1iZXIiOiJraXQtOTg3NjU0MzIxIiwiaWRldmlkLWlzc3VlciI6IkJCZ3dGb0FVbF\
@@ -515,6 +498,14 @@ Internet-Draft                 JWS-voucher                  January 2025
    RKaU0xWnFZVWRXZVVscWNEZEpiazVzWTIxc2FHSkRNWFZrVnpGcFdsaEphVTlwU25KaF\
    dGRjBUMVJuTTA1cVZUQk5la2w0U1dsM2FXSnRPWFZaTWxWcFQybEtWVmxZVmpKVGVYUm\
    FUREpPYWsxc1NtMVRWVm95WTBad05scHJkRkpRVkRCcFRFTkthbU50Vm1oa1IxWnJURm\
+
+
+
+Werner & Richardson       Expires 19 July 2025                  [Page 9]
+
+Internet-Draft                 JWS-voucher                  January 2025
+
+
    M1ZFVscWIybE5ha0Y1VGtNd2VFMVRNSGxQVmxGM1QxUnZlazVFYjNoT2FUUXdUV3BhWV\
    VscGQybGpTRXAyWlVkc2RHRllValZNV0Vwc1dqSnNlbVJJU21oamFURnFXbGhLTUVscW\
    IybFVWV3hLVVRCU1ZWRXdUa0paYXpsdVVWaGtTbEZyUm01VFZXUkNWMnMwZWxSclVuUl\
@@ -554,14 +545,6 @@ Internet-Draft                 JWS-voucher                  January 2025
    xyTVVOaE1HUkNUVlpXUmxFeVpETlZNVkpZVW01V2ExWXhjRzlYVkU1VFRWZE9kRlp1Yk\
    U1U1JVWTBVMVZXUjFORk1WTlVXR1JHVlZac1JWWnNSbEpVUlZKQ1kwWkNhbUpYVWxwVF\
    ZWcFhaRmRHV1ZWclNrNVZiR3d6VW10R1dsSkdXbEpWVlZwR1pIcEdlVmxXYUZKa1JUbF\
-
-
-
-Werner & Richardson       Expires 18 July 2025                 [Page 10]
-
-Internet-Draft                 JWS-voucher                  January 2025
-
-
    ZXbnBPVDJGc1ZYZFVXSEJLWlVVeFUxZFlaRWRSVm14RlZteEdVbEpGVWtKTlZVcFNZVE\
    F4TmxSSGRGWk5NRFZVVFVob1RsSkZTa05VVlZweVpEQldNMWRWYUV4aU1YQktaVzF2ZD\
    FFd1JsSlhWV3hNWWpGd1NtVnRiM2RTUlVaU1dUQlNVbG93UmtaYU1EVnlUVmhqTWxwc1\
@@ -571,6 +554,14 @@ Internet-Draft                 JWS-voucher                  January 2025
    Zac1NsTXpaRnBSYTBwU1ZsVm9RbFV3UmtaVGEwcGFZVmRLV0ZKdWNGcFZla1YzVjJ4b1\
    QwMUZlSFZoUkZac1lsUkdiMWx0TlZkaVZteFlWR3BDYTFkRmNITlpNbXN4WVcxSmVVMU\
    VXbEJXUmtWM1ZGaHdRbHByU201VWJGcEpWVEF4UmxJd1VrSldNbVJEVlRGYVZXUkdXWE\
+
+
+
+Werner & Richardson       Expires 19 July 2025                 [Page 10]
+
+Internet-Draft                 JWS-voucher                  January 2025
+
+
    pOTVVaNFN6SnNjbVJzUWt4VVZuQjJUVVZvWVU5WWFFVlRWV2MxVmtWR1ZWRnRaRTlXYT\
    JoVVZsVldSVkpGUmt4UmJXUnVZMnRLYmxKVldrTlZWMDVGVVZkd1FsUXdTbTVVYkZwSl\
    ZWUm9RMUZYV1RSU1ZVcENWRlZPUTA1RlJqTlJNbVJhVTFWMGRsZHJiRFpoYWtKR1VWaG\
@@ -613,7 +604,16 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 11]
+
+
+
+
+
+
+
+
+
+Werner & Richardson       Expires 19 July 2025                 [Page 11]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -669,7 +669,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 12]
+Werner & Richardson       Expires 19 July 2025                 [Page 12]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -725,7 +725,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 13]
+Werner & Richardson       Expires 19 July 2025                 [Page 13]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -781,7 +781,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 14]
+Werner & Richardson       Expires 19 July 2025                 [Page 14]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -815,9 +815,9 @@ Internet-Draft                 JWS-voucher                  January 2025
    [I-D.ietf-anima-brski-prm]
               Fries, S., Werner, T., Lear, E., and M. Richardson, "BRSKI
               with Pledge in Responder Mode (BRSKI-PRM)", Work in
-              Progress, Internet-Draft, draft-ietf-anima-brski-prm-16, 7
-              January 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-anima-brski-prm-16>.
+              Progress, Internet-Draft, draft-ietf-anima-brski-prm-17,
+              15 January 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-anima-brski-prm-17>.
 
    [I-D.ietf-anima-constrained-voucher]
               Richardson, M., Van der Stok, P., Kampanakis, P., and E.
@@ -837,7 +837,7 @@ Internet-Draft                 JWS-voucher                  January 2025
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 15]
+Werner & Richardson       Expires 19 July 2025                 [Page 15]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -893,7 +893,7 @@ Contributors
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 16]
+Werner & Richardson       Expires 19 July 2025                 [Page 16]
 
 Internet-Draft                 JWS-voucher                  January 2025
 
@@ -949,4 +949,4 @@ Authors' Addresses
 
 
 
-Werner & Richardson       Expires 18 July 2025                 [Page 17]
+Werner & Richardson       Expires 19 July 2025                 [Page 17]
